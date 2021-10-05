@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="/inc/top.jspf" %>
 <style>
 	* {
 		box-sizing: border-box;/*border포함 250*/
@@ -180,6 +181,7 @@ $(function(){
 	
 });
 </script>>
+
 	<header>
 		<div id="head_img"></div>
 		   <div id="headerText">COFFEE</div>
@@ -195,7 +197,7 @@ $(function(){
 		</div>
 		<div>
 			<ul class="menuList">
-				<li class="coffee"><div class="imgwrap"><a href="/leaf/menu_detail"><img src="img/americano.png" id="img"/></a></div>
+				<li class="coffee"><div class="imgwrap"><a href="/myapp/menu_detail"><img src="img/americano.png" id="img"/></a></div>
 					<div class="imgtext">아이스아메리카노<br/><span class="imgtext2">Iced Americano</span></div>
 					<div class="new">new</div>
 				</li>
@@ -226,3 +228,4 @@ $(function(){
 			</ul>
 		</div>
 	</div>	
+	<%@ include file="/inc/bottom.jspf" %>

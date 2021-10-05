@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="/inc/top.jspf" %>
 <style>
 	body{
 		margin: 0;
@@ -28,7 +29,7 @@
 	    margin-left: 105px;
 	    top: -20px;
 	}
-	img{
+	#fileimg>img{
 		width:200px;
 		height:200px;
 		border-radius:100%;
@@ -36,7 +37,7 @@
 		top: -20px;
     	left: 24px;
 	}
-	#img{
+	#fileimg{
 		position: relative;
 		width: 300px;
 		height:300px;
@@ -176,8 +177,9 @@
 				<textarea id="memo" placeholder="글내용을 입력하는 곳"></textarea><br/>
 			</div><br/>
 			<div id="submit"><input type="submit" value="등록하기"/></div>
-			<div id="img"><img src="img/menu_image.png"/>
+			<div id="fileimg"><img src="img/menu_image.png"/>
 				 <div id="file"><label for="filename" id="filebutton">파일선택</label><div id="uploaded"></div><input type="file" name="filename" id="filename" /></div>
 			</div>
 	</div>	
 	</div>
+<%@ include file="/inc/bottom.jspf" %>

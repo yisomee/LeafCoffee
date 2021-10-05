@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="/inc/top.jspf" %>
 <style>
 	* {
 		box-sizing: border-box;/*border포함 250*/
@@ -203,3 +204,4 @@ $(function(){
 		</ul>
 	</div>
 </div>	
+<%@ include file="/inc/bottom.jspf" %>

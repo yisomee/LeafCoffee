@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="/inc/top.jspf" %>
 <style>
 	body{
 		margin:0px;
@@ -90,3 +91,4 @@
 		</div>
 	</div>
 </div>
+<%@ include file="/inc/bottom.jspf" %>

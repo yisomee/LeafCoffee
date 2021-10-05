@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="/inc/top.jspf" %>
 <style>
 	.main{ 
 		max-width: 1400px;
@@ -363,3 +364,4 @@ $(()=>{
       </table>
 	</div>
 </div>
+<%@ include file="/inc/bottom.jspf" %>
