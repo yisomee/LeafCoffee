@@ -91,12 +91,14 @@ ul,li{
 	width:70%;
 	margin-top:20px;
 	font-family: 'Signika Negative', sans-serif;
+	
 }
 .main-ul{
 	display:flex;
 	justify-content:space-around;
 	width:100%;
 	font-size:1.2em;
+	
 }
 .ulclass{
 	
@@ -126,6 +128,7 @@ ul,li{
     background-color: white;
     display:none;
 }
+
 </style>
 
 </head>
@@ -160,33 +163,36 @@ ul,li{
 					<li><a href="/myapp/menu_Food">FOOD</a></li>
 					<li><a href="/myapp/menu_Beverage">BEVERAGE</a></li>
 					<li><a href="#">MD PRODUCT</a></li>
+					<li><a href="/myapp/menu_Register">메뉴등록</a></li>
 				</ul>					
 			</li>
 <!---------------------------------  -->	
-			<li class="select-li"><a href="#">STORE</a>
+			<li class="select-li"><a href="#">발주하기</a>
 				<ul class="ulclass">
-					<li><a href="#">STORE SEARCH</a></li>
+					<li><a href="/myapp/purchase">발주하기</a></li>
+					<li><a href="/myapp/purchase_Confirm">발주확인(본사)</a></li>
 				</ul>					
 			</li>
 <!----------------------------------  -->	
 			<li class="select-li"><a href="#">MEMBERSHIP</a>
 				<ul class="ulclass">
-					<li><a href="#">MEMBER</a></li>
+					<li><a href="/myapp/membership">MEMBERSHIP</a></li>
+					<li><a href="/myapp/memberGrade">MEMBERGRADE</a></li>
 				</ul>			
 			</li>
 <!--------------------------------------------->
 			<li class="select-li"><a href="#">WHAT`S UP</a>
 				<ul class="ulclass">
-					<li><a href="#">NOTICE</a></li>
-					<li><a href="#">EVENT</a></li>
+					<li><a href="/myapp/noticeList">Notice</a></li>
+					<li><a href="/myapp/social">SOCIAL</a></li>
 				</ul>				
 			</li>
 <!--------------------------------------------->			
 			<li class="select-li"><a href="#">FRANCHISE</a>
 				<ul class="ulclass">
-					<li><a href="#">INFORMATION</a></li>
-					<li><a href="#">REQUEST</a></li>
-					<li><a href="#">Q&A</a></li>
+					<li><a href="/myapp/franchise">Franchise</a></li>
+					<li><a href="/myapp/siren">Siren</a></li>
+					<li><a href="/myapp/home2">가맹점페이지</a></li>
 				</ul>			
 			</li>
 			
