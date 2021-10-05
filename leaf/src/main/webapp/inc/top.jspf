@@ -174,7 +174,19 @@
 <a href="/myapp/purchase_Confirm">발주확인(본사)</a>
 <a href="/myapp/franchise">Franchise</a>
 <a href="/myapp/siren">Siren</a>
+<<<<<<< Updated upstream
 <a href="/myapp/home2">고객메인페이지</a>
+=======
+<<<<<<< HEAD
+<a href="/myapp/noticeList">Notice</a>
+<a href="/myapp/social">Social</a>
+<a href="/myapp/membership">Society</a>
+
+
+=======
+<a href="/myapp/home2">고객메인페이지</a>
+>>>>>>> b0e1b8aa96f266eb1c06b96a496a1cda49028d5f
+>>>>>>> Stashed changes
 <!-- 
 <div id="header">
 		<div id="logo">
