@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ include file="/inc/top.jspf" %>
 
 <style>
 	.bx-wrapper {
@@ -271,3 +272,4 @@
       
        <!-- background -->
 	 <div id="backImg"><img src="img/main1.jpg"  alt=""></div>
+	 <%@ include file="/inc/bottom.jspf" %>
