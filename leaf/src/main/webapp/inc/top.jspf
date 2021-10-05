@@ -15,220 +15,188 @@
 <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
 
 <style>
-	a:link, a:hover, a:visited {
-		text-decoration: none;
-		color: black;
-	}
-	body {
-		margin: 0;
-		padding: 0;
-	}
-	
-	li, ul {
-		margin: 0;
-		padding: 0;
-		list-style-type: none;
-	}
-	.bx-wrapper {
-		border: none;
-		
-		}
-	#header {
-		display:flex;
-		justify-content: space-around;
-    flex-direction: column;
-		height: 130px;
-		width:100vw;
-		background-color:#fff;
-		opacity:0.5;
-		position:fixed;
-		top:0;
-		z-index:3;
-	}
-	.fa-envira{
-		color:rgb(0, 163, 239);
-		font-size:4em;
-		margin:10px;
-	}
-	
-	.topbar {
-		
-		position:relative;
-		
-	}
-	#logo{
-		display:flex;
-		justify-content: space-between;
-	}
-	.topbar>ul>li {
-		float: left;
-		font-size: 0.9em;
-		margin-top: 30px;
-		margin-left: 15px;
-	}
-	
-	.title {
-		diaplay:flex;
-		height: 50px;
-		line-height: 50px;
-		width: 12.5%;
-		text-align: center;
-		color:rgb(0, 163, 239);
-	}
-	.title>ul{
-		display:none;
-		height:150px;
-		background-color:white;
-	}
 
-	#menu>ul{
-		position: relative;
-		background-color:white;
-		display:flex;
-   		justify-content: center;
-		
-		
-	}
-	.menu_item:hover {
-		font-weight: bold;
-		background-image: url('./img/coffee.png'); 
-		background-size: contain;
-		background-repeat: no-repeat;
-	}
-	
-	.hide > a {
-		color: white;
-	}
-
-	#star{
+a:hover{text-decoration:none;
 		color:rgb(0, 163, 239);
-		
-	}
-	#header img{
-		margin-top:10px;
-		width:7%;
-	}
-	#menu{
-		width:100%;
-		height:50px;
-		position: relative;
-		
-	}
+		font-size:1.1em;
+		font-family: 'Signika Negative', sans-serif;
+}
+a{color:black;}
+
+
+body{margin:0;
+
+}
+
+ul,li{
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+
+/*로고글씨left*/
+.fa-envira{color:rgb(0, 163, 239);
+			font-size:3em;
+			
+}
+.login{
+	float:right;
+	width:50%;
+	height:50px;
+	font-family: 'Signika Negative', sans-serif;
+}
+.login>ul{
+	display:flex;
+	justify-content: flex-end;
+	font-size:1.3em;
+}
+.login li{
+	padding: 10px 30px;
+}
+.logoimg{/*로고이미지*/
+	float:left;
+	width:50%;
+	height:80px;
+	margin-top:20px;
+	padding-left: 20px;
+	
+}
+
+.logoimg>img{
+	width: 10%;
+	justify-content: flex-start;
+
+}
+.menu{/*menubar div*/
+	position:absolute;
+	left:15%;
+	width:70%;
+	margin-top:20px;
+	font-family: 'Signika Negative', sans-serif;
+}
+.main-ul{
+	display:flex;
+	justify-content:space-around;
+	width:100%;
+	font-size:1.2em;
+}
+.ulclass{
+	
+	display:none;
+	
+}
+.ulclass>li{
+	margin-top:30px;
+	line-height:10px;
+
+}
+.select-li{
+	width:30%;
+	
+
+}
+.header{
+	position: relative;
+	background-color:yellow;
+		z-index: 10;
+}
+.whitebg{/*마우스 흰색 배경 이벤트*/
+	width:100%;
+	height:300px;
+	position:absolute;
+	z-index: 7;
+    background-color: white;
+    display:none;
+}
 </style>
+
 <script>
 
-	$(function() {
-		// 메뉴바 나오기
-		$(".title").on({
-			mouseenter : function() {
-				$(".title>ul").css('display', 'block');
-				$(this).parent().css('display', 'flex');
-			},
-			mouseleave : function() {
-				$(".title>ul").css('display', 'none');
-			}
-		});
-	
-	
-		// 헤드에 마우스오버 -> 하얀색
-		$("#header").on({
-			mouseenter : function() {
-				$(this).css('opacity','1');
-			},
-			mouseleave : function() {
-				$(this).css('opacity','0.5');
-			}
-		});
-		// 메뉴에 마우스오버 -> 하얀색
-		$('.menu_item').on({
-			mouseenter: function() {
-				$(this).children().css('color', 'rgb(0, 163, 239);');
-			},
-			mouseleave: function() {
-				$(this).children().css('color', 'black');
-			}
-		});
-		$('.title').on({
-			mouseenter: function() {
-				$(this).children("ul").css('color', 'rgb(0, 163, 239)').css('border-bottom','3px solid rgb(0, 163, 239)');
-				$(this).css('color', 'rgb(0, 163, 239)').css('border-bottom','3px solid rgb(0, 163, 239)');
-			},
-			mouseleave: function() {
-				$(this).children().css('color', 'black').css('border-bottom','none');
-				$(this).css('color', 'rgb(0, 163, 239)').css('border-bottom','none');
-			}
-		});
-		
+$(function(){/*메뉴바 전체가 나오는거*/
+	$('.select-li').on({ //이벤트가 발생하는 주체 
+		mouseenter:function(){
+			$('.ulclass').css('display','block');
+			$('.whitebg').css('display','block');
+		},mouseleave:function(){
+			$('.ulclass').css('display','none');
+			$('.whitebg').css('display','none');
+		}
 	});
-	
+});
 	
 </script>
+
+
 </head>
 <body>
-<a href="/myapp/">홈</a> 
-<a href="/myapp/menu_Coffee">메뉴(coffee)</a> 
-<a href="/myapp/menu_Food">메뉴(food)</a> 
-<a href="/myapp/menu_Beverage">메뉴(beverage))</a> 
-<a href="/myapp/menu_Register">메뉴등록</a> 
-<a href="/myapp/purchase">발주하기(수정)</a> 
-<a href="/myapp/purchase_Confirm">발주확인(본사)</a>
-<a href="/myapp/franchise">Franchise</a>
-<a href="/myapp/siren">Siren</a>
-<<<<<<< Updated upstream
-<a href="/myapp/home2">고객메인페이지</a>
-=======
-<<<<<<< HEAD
-<a href="/myapp/noticeList">Notice</a>
-<a href="/myapp/social">Social</a>
-<a href="/myapp/membership">Society</a>
 
+<div class="whitebg"></div>
 
-=======
-<a href="/myapp/home2">고객메인페이지</a>
->>>>>>> b0e1b8aa96f266eb1c06b96a496a1cda49028d5f
->>>>>>> Stashed changes
-<!-- 
-<div id="header">
-		<div id="logo">
-			<i class="fab fa-envira">leaf</i>
-			<div class="topbar">
-				<ul>
-					<li><a href="#">Welcome<span id="star">★</span></a></li>
-
-					<li><a href="#">Logout</a></li>
-				</ul>
-			</div>
-			
-		</div>
-		<div id="menu">
-		<a href="/leaf/">홈</a> 
+<div class="header">
+	<!-- <a href="/leaf"><div class="logoimg"><img src="img/leaflogo-removebg-preview.png"/></div></a> -->
+	<div class="logoimg"><img src="img/leaflogo-removebg-preview.png" onclick="location.href='/myapp'"/></div>
+	
+	<div class="login">
 		<ul>
-			<li class="title"><a href="#">공지사항</a>
-				<ul>
-					<li class="menu_item"><a href="#">공지사항목록</a></li>
-					<li class="menu_item"><a href="#">공지사항쓰기</a></li>
+			<li><a href="/myapp/loginOk">LOGIN</a></li>
+			<li><a href="/myapp/registerOk">JOIN</a></li>	
+		</ul>
+	</div>
+	
+	<div class="menu">
+		<ul class="main-ul">
+			<li class="select-li"><a href="#">ABOUT US</a>
+				<ul class="ulclass">
+					<li><a href="#">IDENTITY</a></li>
+					<li><a href="#">BARISTA</a></li>
+					<li><a href="#">CEO</a></li>
 				</ul>
 			</li>
-			<li class="title"><a href="#">매출분석</a>
-				<ul>
-					<li class="menu_item"><a href="#">매출분석</a></li>
-				</ul>
+<!---------------------------  -->			
+			<li class="select-li"><a href="#">MENU</a>
+				<ul class="ulclass">
+					<li><a href="/myapp/menu_Coffee">COFFEE</a></li>
+					<li><a href="/myapp/menu_Food">FOOD</a></li>
+					<li><a href="/myapp/menu_Beverage">BEVERAGE</a></li>
+					<li><a href="#">MD PRODUCT</a></li>
+					<li><a href="/myapp/menu_Register">메뉴등록</a></li>
+				</ul>					
 			</li>
-			<li class="title"><a href="#">직원관리</a>
-				<ul>
-					<li class="menu_item"><a href="#">직원목록</a></li>
-					<li class="menu_item"><a href="#">직원추가</a></li>
-				</ul>
+<!---------------------------------  -->	
+			<li class="select-li"><a href="#">발주하기</a>
+				<ul class="ulclass">
+					<li><a href="/myapp/purchase">발주하기</a></li>
+					<li><a href="/myapp/purchase_Confirm">발주확인(본사)</a></li>
+				</ul>					
 			</li>
-			<li class="title"><a href="#">재고관리</a>
-				<ul>
-					<li class="menu_item"><a href="#">발주하기</a></li>
-					<li class="menu_item"><a href="#">재고확인</a></li>
-				</ul>
+<!----------------------------------  -->	
+			<li class="select-li"><a href="#">MEMBERSHIP</a>
+				<ul class="ulclass">
+					<li><a href="/myapp/membership">MEMBERSHIP</a></li>
+					<li><a href="/myapp/membergrade">MEMBERGRADE</a></li>
+				</ul>			
+			</li>
+<!--------------------------------------------->
+			<li class="select-li"><a href="#">WHAT`S UP</a>
+				<ul class="ulclass">
+					<li><a href="/myapp/noticeList">Notice</a></li>
+					<li><a href="/myapp/social">SOCIAL</a></li>
+				</ul>				
+			</li>
+<!--------------------------------------------->			
+			<li class="select-li"><a href="#">FRANCHISE</a>
+				<ul class="ulclass">
+					<li><a href="/myapp/franchise">Franchise</a></li>
+					<li><a href="/myapp/siren">Siren</a></li>
+					<li><a href="/myapp/home2">고객메인페이지</a></li>
+				</ul>			
 			</li>
 			
 		</ul>
-	</div>
+		
+		</div>
+	
 	</div>
 
- -->
+
+

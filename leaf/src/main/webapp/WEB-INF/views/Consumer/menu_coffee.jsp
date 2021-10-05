@@ -180,7 +180,7 @@ $(function(){
 	       }, 1200,);
 	
 });
-</script>>
+</script>
 
 	<header>
 		<div id="head_img"></div>
