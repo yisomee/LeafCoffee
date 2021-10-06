@@ -139,8 +139,9 @@ $(()=>{
    <div id="headerText">PURCHASE</div>
 </header>
 <div class="main">
-	<div id="name">발주하기  <a href="/leaf/purchase_Modify"><input type="submit" value="수정하기" id="btn1"/></a>
-				<input type="submit" value="취소하기" id="btn2"/></div>
+	<div id="name">발주하기 <button type="button"  onclick="location.href='purchase_Modify'" id="btn1">수정하기</button>
+	<button type="button" id="btn2">취소하기</button>
+				</div>
 				<hr/>
 	<div class="search_partner">
 	<div class="search">

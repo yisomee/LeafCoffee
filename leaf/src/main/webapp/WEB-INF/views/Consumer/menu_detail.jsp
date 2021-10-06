@@ -14,7 +14,7 @@
    		align-items: center;
 	}
 
-	img{
+	#img{
 		width:500px;
 		height:500px;
 		border-radius:100%;
@@ -45,10 +45,6 @@
 		color:rgb(0, 163, 239);
 		font-size:1.1em;
 	}
-	
-	
-	
-	
 	#left_content{
 		width:400px;
 		flex-direction: column;
