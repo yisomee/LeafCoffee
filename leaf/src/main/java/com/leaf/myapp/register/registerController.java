@@ -26,6 +26,10 @@ public String idSearch() {
 public String pwSearch() {
 	return "register/pwd";
 }
+@RequestMapping("/testlogin")
+public String testlogin() {
+	return "admin/adminmain";
+}
 
 }
 
