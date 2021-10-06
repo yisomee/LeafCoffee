@@ -6,7 +6,7 @@
 	}
 	a:link, a:hover, a:visited {
 		text-decoration: none;
-		color: black;
+		
 	}
 	ul,li{
 		margin:0;
@@ -129,7 +129,6 @@
    		top:-100px;
    		font-size:3em;
    		color:white;
-   		z-index:100;
    		opacity:0.5;
    		text-align:center;
    		position: relative;

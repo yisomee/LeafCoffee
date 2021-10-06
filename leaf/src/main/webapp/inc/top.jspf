@@ -73,16 +73,19 @@ ul,li{
 	width:70%;
 	margin-top:20px;
 	font-family: 'Signika Negative', sans-serif;
+
 }
 .main-ul{
 	display:flex;
 	justify-content:space-around;
 	width:100%;
 	font-size:1.2em;
+	
 }
 .ulclass{
 	
 	display:none;
+	
 	
 }
 .ulclass>li{
@@ -173,7 +176,7 @@ $(function(){/*메뉴바 전체가 나오는거*/
 			<li class="select-li"><a href="#">MEMBERSHIP</a>
 				<ul class="ulclass">
 					<li><a href="/myapp/membership">MEMBERSHIP</a></li>
-					<li><a href="/myapp/membergrade">MEMBERGRADE</a></li>
+					<li><a href="/myapp/memberGrade">MEMBERGRADE</a></li>
 				</ul>			
 			</li>
 <!--------------------------------------------->
@@ -188,7 +191,7 @@ $(function(){/*메뉴바 전체가 나오는거*/
 				<ul class="ulclass">
 					<li><a href="/myapp/franchise">Franchise</a></li>
 					<li><a href="/myapp/siren">Siren</a></li>
-					<li><a href="/myapp/home2">고객메인페이지</a></li>
+					<li><a href="/myapp/home2">가맹점페이지</a></li>
 				</ul>			
 			</li>
 			
