@@ -6,7 +6,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
+
+
 <style>
 @import url(//fonts.googleapis.com/earlyaccess/hanna.css);
 
@@ -128,9 +130,8 @@ body{
 						<input type="radio" name="" value="여"/> 여</li>
 				<li>
 					<label class="label">생년월일</label>
-					<input type="text" name="" class="birth"/>
-					<input type="text" name="" class="birth"/>
-					<input type="text" name="" class="birth"/>
+					<input name="publeYear" autocomplete="off" readonly="readonly">
+					
 				</li>
 				<li><label class="label">전화번호</label>
 					
@@ -148,10 +149,27 @@ body{
 				<li><label class="label">이메일</label><input type="text" name="" class="inputBox"/>@
 				<input type="text" name="" class="inputBox"></li>
 				<li id="joinbtn"><input type="submit" value="가입하기"class="join" /></li>
+				<li id="joinbtn"><input type="submit" value="취소"class="join" /></li>
 			</ul>
 		</form>
 		</div><!--formdiv  -->
 	</div><!-- container -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 
+<script>
+const config = {
+		dateFormat: 'yy-mm-dd',
+		showOn : "button",
+		buttonText:"날짜 선택"
+	}
+	
+			//캘린더
+			$(function() {
+			  $( "input[name='publeYear']" ).datepicker(config);
+			});
+</script>
+-
 </body>
+
 </html>
