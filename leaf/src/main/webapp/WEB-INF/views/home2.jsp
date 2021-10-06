@@ -86,14 +86,14 @@
 		position: absolute;
 		z-index: 10;
 		top: -300px;
+		color:white;
 		font-size: 2em;
-		color: rgb(30, 57, 50);
 		font-weight:bold;
 		margin-left: 200px;
 	}
 	#imgText{
 		font-size:1.5em;
-		color:rgb(0, 163, 239);
+		color:white;
 	}
 	.noticeText_icon, .blank_text{
 		margin-left:-500px;
@@ -206,6 +206,7 @@
 		$('#main1_imgSlider_Txt').innerfade({
 			animationtype : 'slide',
 			speed : 2000,
+			delay : 500,
 			timeout : 5000
 		});
 
@@ -243,13 +244,16 @@
     </div>
     <div>
 		<ul id="main1_imgSlider_Txt">
-			<li><span id="imgText">우리의 작은 말과 행동</span><br/><br/>
+			<li><span id="imgText">우리의 작은 말과 행동</span><br/>
 				 곧 우리의 브랜드가 됩니다</li>
-			<li><span id="imgText">고객이 신뢰할 수 있는 품질로</span> <br/><br/>
+			<li><span id="imgText">고객이 신뢰할 수 있는 품질로</span> <br/>
 				사랑받는 브랜드, 존경받는 기업이 됩시다</li>
-			<li><span id="imgText">우리가 만드는 제품과 서비스로</span><br/><br/>
-				 	고객의 하루를 행복하게 합니다. </li>
-			<li><span id="imgText">맛있는 커피와 최고의 서비스를 제공합시다</span></li>
+			<li><span id="imgText">우리가 만드는 제품과 서비스로</span><br/>
+				 고객의 하루를 행복하게 합니다. </li>
+			<li><span id="imgText">맛있는 커피와 최고의 서비스로</span><br/>
+				 다시찾고 싶은 휴식공간이 되겠습니다.
+			</li>
+					
 		</ul>
 	</div>
     <div class="blank"></div>
