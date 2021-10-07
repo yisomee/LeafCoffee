@@ -21,11 +21,12 @@ ul,li{
 	border: 1px solid gray;
 	position: absolute;
 	left:5%;
+	top:14%
 }
 #mapList{
 	position: absolute;
 	left:8%;
-	top:10%;
+	top:20%;
 	background: white;
 	border-radius: 3%;
 	width:300px;
@@ -82,6 +83,7 @@ input[type="text"]{
 </script>
 </head>
 <body>
+<%@ include file="/inc/top2.jspf" %>
 <div id='map'>
 </div>
 <div id='mapList'>

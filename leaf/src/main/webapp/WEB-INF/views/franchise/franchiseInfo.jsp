@@ -75,7 +75,7 @@ p {
 	font-family: 'Do Hyeon';
 }
 
-li {
+.container li {
 	height: 285px;
 	margin: 0 6px 12px;
 	padding: 0px 12px;
@@ -83,8 +83,8 @@ li {
 	float: left;
 }
 
-ul {
-	width: 80%;
+.container ul {
+	width: 100%;
 	list-style: none;
 	margin: 0 auto;
 }
@@ -140,6 +140,7 @@ dd {
 </style>
 </head>
 <body>
+<%@ include file="/inc/top2.jspf" %>
 	<div class="top">
 		<div class="text">
 			가맹점 창업안내

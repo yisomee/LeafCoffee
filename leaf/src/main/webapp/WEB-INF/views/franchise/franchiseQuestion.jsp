@@ -61,6 +61,7 @@ b {
 </script>
 
 <body>
+<%@ include file="/inc/top2.jspf" %>
 <div class="top"></div>
 	<div class="fna-lists toggleWrap">
 		<ul>
