@@ -7,17 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class StockController {
-	SqlSession sqlSession;
-	
-	public SqlSession getSqlSession() {
-		return sqlSession;
-	}
-	
-	@Autowired
-	public void setSqlSession(SqlSession sqlSession) {
-		this.sqlSession = sqlSession;
-	}
-	
 	
 @RequestMapping("/purchase")
 	public String Purchase() {

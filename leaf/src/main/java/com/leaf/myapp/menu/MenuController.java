@@ -8,15 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class MenuController {
-	SqlSession sqlSession;
-	
-	public SqlSession getSqlSession() {
-		return sqlSession;
-	}
-	@Autowired
-	public void setSqlSession(SqlSession sqlSession) {
-		this.sqlSession = sqlSession;
-	}
 
 	@RequestMapping("/menu_Coffee")
 	   public String MenuCoffee() {
