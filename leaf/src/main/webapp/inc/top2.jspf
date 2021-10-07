@@ -40,11 +40,7 @@ $(function(){/*메뉴바 전체가 나오는거*/
 		font-family: 'Signika Negative', sans-serif;
 }
 
-a:hover{text-decoration:none;
-		color:rgb(0, 163, 239);
-		font-size:1.1em;
-		font-family: 'Signika Negative', sans-serif;
-}
+
 a{color:black;}
 
 
