@@ -97,6 +97,8 @@ body{
 		color:rgb(0, 163, 239);
 		opacity: 0.8;
 		font-family: 'Hanna', fantasy;
+		margin-right:10px;
+		
 		
 		
 	}
@@ -109,6 +111,9 @@ body{
 		outline:none;
 	}
 
+.cancle{
+	margin-left:10px;
+}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
@@ -126,8 +131,8 @@ body{
 				<li><label class="label">비밀번호 <span>*</span></label><input type="password" name="" id="userpwd" class="inputBox"/></li>
 				<li><label class="label">비밀번호확인 <span>*</span></label><input type="password" name="" id="userpwdchk" class="inputBox"/></li>	
 				<li><label class="label">이름 <span>*</span></label><input type="text" name="" id="username" class="inputBox"/>
-						<input type="radio" name="" value="남" checked="checked"/>남
-						<input type="radio" name="" value="여"/> 여</li>
+						<input type="radio" name="gender" value="남" checked="checked"/>남
+						<input type="radio" name="gender" value="여"/> 여</li>
 				<li>
 					<label class="label">생년월일</label>
 					<input name="publeYear" autocomplete="off" readonly="readonly">
@@ -148,8 +153,7 @@ body{
 				<li><label class="label">상세주소</label><input type="text" name="addrdetail" id="addrdetail" class="inputBox"/></li>
 				<li><label class="label">이메일</label><input type="text" name="" class="inputBox"/>@
 				<input type="text" name="" class="inputBox"></li>
-				<li id="joinbtn"><input type="submit" value="가입하기"class="join" /></li>
-				<li id="joinbtn"><input type="submit" value="취소"class="join" /></li>
+				<li id="joinbtn"><input type="submit" value="가입하기"class="join" /><input type="button" value="취소하기" onclick="location.href='/myapp/registerOk'" class="cancle" /></li>
 			</ul>
 		</form>
 		</div><!--formdiv  -->

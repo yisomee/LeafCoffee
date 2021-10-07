@@ -34,21 +34,11 @@ public class MenuController {
 		public String MenuDetail() {
 			return "Consumer/menu_detail";
 	}
-	@RequestMapping("/purchase")
-		public String Purchase() {
-			return "Store/purchase";
-	}
-	@RequestMapping("/purchase_Modify")
-		public String PurchaseModify() {
-			return "Store/purchase_Modify";
-	}
+
 	@RequestMapping("/menu_Register")
 		public String MenuRegister() {
 			return "Head/menu_Register";
 	}
-	@RequestMapping("/purchase_Confirm")
-		public String PurchaseConfirm() {
-			return "Head/purchase_Confirm";
-	}
+
 	
 }

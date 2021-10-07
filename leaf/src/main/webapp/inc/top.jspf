@@ -138,7 +138,7 @@ $(function(){/*메뉴바 전체가 나오는거*/
 <div class="header">
 	<!-- <a href="/leaf"><div class="logoimg"><img src="img/leaflogo-removebg-preview.png"/></div></a> -->
 	<div class="logoimg"><img src="img/leaflogo-removebg-preview.png" onclick="location.href='/myapp'"/></div>
-	
+	<div></div>
 	<div class="login">
 		<ul>
 			<li><a href="/myapp/loginOk">LOGIN</a></li>
@@ -170,6 +170,8 @@ $(function(){/*메뉴바 전체가 나오는거*/
 				<ul class="ulclass">
 					<li><a href="/myapp/purchase">발주하기</a></li>
 					<li><a href="/myapp/purchase_Confirm">발주확인(본사)</a></li>
+					<li><a href="/myapp/Warehousing_Register">입고등록</a></li>
+					<li><a href="/myapp/Warehousing_Management">입고관리</a></li>
 				</ul>					
 			</li>
 <!----------------------------------  -->	
