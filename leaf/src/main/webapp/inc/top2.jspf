@@ -34,11 +34,13 @@ $(function(){/*메뉴바 전체가 나오는거*/
 
 <style>
 
-a:hover{text-decoration:none;
+.changeColor a:hover{text-decoration:none;
 		color:rgb(0, 163, 239);
 		font-size:1.1em;
 		font-family: 'Signika Negative', sans-serif;
 }
+
+
 a{color:black;}
 
 
@@ -135,6 +137,7 @@ ul,li{
 	<!-- <a href="/leaf"><div class="logoimg"><img src="img/leaflogo-removebg-preview.png"/></div></a> -->
 	<div class="logoimg"><img src="img/leaflogo-removebg-preview.png" onclick="location.href='/leaf'"/></div>
 	
+<div class="changeColor">	
 	<div class="login">
 		<ul>
 			<li><a href="/myapp/loginOk">LOGIN</a></li>
@@ -166,6 +169,8 @@ ul,li{
 				<ul class="ulclass">
 					<li><a href="/myapp/purchase">발주하기</a></li>
 					<li><a href="/myapp/purchase_Confirm">발주확인(본사)</a></li>
+					<li><a href="/myapp/Warehousing_Register">입고등록</a></li>
+					<li><a href="/myapp/Warehousing_Management">입고관리</a></li>
 				</ul>					
 			</li>
 <!----------------------------------  -->	
@@ -194,7 +199,7 @@ ul,li{
 		</ul>
 		
 		</div>
-	
+</div><!-- changeColor -->		
 	</div>
 
 

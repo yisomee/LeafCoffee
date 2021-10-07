@@ -1,10 +1,27 @@
-package com.leaf.myapp.notice;
+package com.leaf.myapp.controller;
+
+import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.leaf.myapp.service.NoticeService;
 
 @Controller
 public class NoticeController {
+	@Inject
+	NoticeService noticeService;
+	
+	//글 목록
+	@RequestMapping("/noticeList")
+	public ModelAndView noticeList() {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("list",noticeService.noticeAllSelect());
+		mav.setViewName("notice/noticeList");
+		return mav;
+	}
+	
 	//게시글보기
 	@RequestMapping("/noticeDetail")
 	public String noticeDetail() {
@@ -24,11 +41,6 @@ public class NoticeController {
 	@RequestMapping("/noticeWrite")
 	public String noticeWrite(){
 		return "/notice/noticeForm";
-	}
-	//글 목록
-	@RequestMapping("/noticeList")
-	public String noticeList() {
-		return "/notice/noticeList";
 	}
 	
 	//사회공헌 페이지

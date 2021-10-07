@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -92,65 +93,13 @@ $(()=>{
 		<li>등록일</li>
 		<li>조회수</li>
 		
+		<c:forEach var="noticeVo" items="${list}"> 
 		<li><input type="checkbox" id="" name=""/></li>
-		<li>1</li>
-		<li><a href="/myapp/noticeDetail">제목</a></li>
-		<li>2021-09-11</li>
-		<li>10</li>
-		
-		<li><input type="checkbox" id="" name=""/></li>
-		<li>2</li>
-		<li><a href="/myapp/noticeDetail">제목</a></li>
-		<li>2021-09-11</li>
-		<li>10</li>
-		
-		<li><input type="checkbox" id="" name=""/></li>
-		<li>3</li>
-		<li><a href="/myapp/noticeDetail">제목</a></li>
-		<li>2021-09-11</li>
-		<li>10</li>
-		
-		<li><input type="checkbox" id="" name=""/></li>
-		<li>4</li>
-		<li><a href="/myapp/noticeDetail">제목</a></li>
-		<li>2021-09-11</li>
-		<li>10</li>
-		
-		<li><input type="checkbox" id="" name=""/></li>
-		<li>5</li>
-		<li><a href="/myapp/noticeDetail">제목</a></li>
-		<li>2021-09-11</li>
-		<li>10</li>
-		
-		<li><input type="checkbox" id="" name=""/></li>
-		<li>6</li>
-		<li><a href="/myapp/noticeDetail">제목</a></li>
-		<li>2021-09-11</li>
-		<li>10</li>
-		
-		<li><input type="checkbox" id="" name=""/></li>
-		<li>7</li>
-		<li><a href="/myapp/noticeDetail">제목</a></li>
-		<li>2021-09-11</li>
-		<li>10</li>
-		
-		<li><input type="checkbox" id="" name=""/></li>
-		<li>8</li>
-		<li><a href="/myapp/noticeDetail">제목</a></li>
-		<li>2021-09-11</li>
-		<li>10</li>
-		
-		<li><input type="checkbox" id="" name=""/></li>
-		<li>9</li>
-		<li><a href="/myapp/noticeDetail">제목</a></li>
-		<li>2021-09-11</li>
-		<li>10</li>
-		
-		<li><input type="checkbox" id="" name=""/></li>
-		<li>10</li>
-		<li><a href="/myapp/noticeDetail">제목</a></li>
-		<li>2021-09-11</li>
-		<li>10</li>
+		<li>${noticeVo.no },</li>
+		<li><a href="/myapp/notice/noticeDetail">${noticeVo.title }</a>,</li>
+		<li>${noticeVo.writedate },</li>
+		<li>${noticeVo.hit }</li>
+		</c:forEach>
 	</ul>
 	<ul class="paging">
 		<li><a href="#"><i class="fas fa-angle-double-left"></i></a></li>

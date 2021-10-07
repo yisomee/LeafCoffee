@@ -1,10 +1,17 @@
 package com.leaf.myapp.franchise;
 
+import javax.inject.Inject;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.leaf.myapp.service.FranchiseService;
+
+
 @Controller
 public class FranchiseController {
+@Inject
+FranchiseService franchiseService;
 	
 	@RequestMapping("/franchise")
 	public String fanchise() {
