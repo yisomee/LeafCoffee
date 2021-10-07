@@ -29,7 +29,7 @@
 	.owc-ct{overflow:auto;}
 	.owc-ct>li{float:left; border-bottom:2px solid gray; width:20%; height:30px; font-size:1.2em;text-align:center;}
 	
-	.owc-ct>li:nth-child(2n+1){background:#ddd;padding:15px;clear:both;}	
+	.owc-ct>li:nth-child(2n+1){background:#F5F0E9;padding:15px;clear:both;}	
 	.owc-ct>li:nth-child(2n){width:75%; padding:15px;}
 	.owc-ct>li:nth-child(11){height:200px;}
 	.owc-ct>li:nth-child(12){height:200px; position:relative}

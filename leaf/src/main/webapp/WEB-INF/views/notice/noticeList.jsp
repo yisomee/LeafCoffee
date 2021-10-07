@@ -17,8 +17,8 @@
 	header img{width:100%;height:250px;}
 	header{height:250px;position:relative;}
 	#headerText{position:relative;top:-100px;left:790px;font-size:3em;color:white;z-index:100;opacity:0.5}
-	nav{display:flex;justify-content:center;width:100%;border-bottom:1px solid gray;}
-	nav>div{padding:15px 40px;}
+	#detailMenu{display:flex;justify-content:center;width:100%;border-bottom:1px solid gray;}
+	#detailMenu>div{padding:15px 40px;}
 	#menu1{border-bottom:4px solid rgb(0, 163, 239);}
 	.container{width:1000px;margin:0 auto;}
 	.delete_search{display:flex;justify-content:space-between;border-bottom:3px solid gray;margin-top:60px}
@@ -64,11 +64,12 @@ $(()=>{
 </script>
 </head>
 <body>
+<%@ include file="/inc/top2.jspf" %>
 <header>
 	<img src="img/social2.jpg"/>
 	<div id="headerText">WHAT'S NEW</div>
 </header>
-<nav> 
+<nav id="detailMenu"> 
 	<div id="menu1"><a href="/myapp/noticeList">공지사항</a></div>
 	<div id="menu2"><a href="/myapp/social">사회공헌</a></div>
 </nav>

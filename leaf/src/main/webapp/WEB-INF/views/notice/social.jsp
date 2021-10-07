@@ -9,10 +9,13 @@
 <style>
 	body{margin:0;}
 	ul,li{list-style-type: none;padding:0;margin:0;}
+	header img{width:100%;height:250px;}
+	header{height:250px;}
+	#headerText{position:relative;top:-100px;left:800px;font-size:3em;color:white;z-index:100;opacity:0.5}	
 	nav a{color:#62605F;}
 	a:link, a:hover a:visited{text-decoration: none;}
-	nav{display:flex;justify-content:center;width:100%;border-bottom:1px solid gray;}
-	nav>div{padding:15px 40px;}
+	#detailMenu{display:flex;justify-content:center;width:100%;border-bottom:1px solid gray;}
+	#detailMenu>div{padding:15px 40px;}
 	#menu2{border-bottom:4px solid rgb(0, 163, 239);}
 	.soc_cam{width:1100px;margin:0 auto;}
 	.soc_cam>div:first-child{font-size:1.8em;padding:40px 5px}
@@ -29,18 +32,26 @@
 	.theme>ul>li:last-child{font-size:0.9em;color:gray;text-align:center;padding:25px 0}
 </style>
 <script>
-
+$(()=>{	
+	$("#headerText").animate({
+  	  top: "-160px", opacity:1
+  	  }, 1200,);
+});
 </script>
 </head>
 <body>
-<nav>
+<%@ include file="/inc/top2.jspf" %>
+<header>
+	<img src="img/social2.jpg"/>
+	<span id="headerText">WHAT'S NEW</span>
+</header>
+<nav id="detailMenu">
 	<div id="menu1"><a href="/myapp/noticeList">공지사항</a></div>
 	<div id="menu2"><a href="/myapp/social">사회공헌</a></div>
 </nav>
-
 <div class="soc_cam">
 	<div>Leaf 사회공헌 캠페인 소개</div>
-	<div><img src="img/sbImg.png"/></div>
+	<div><img src="img/social3.jpg"/></div>
 	<div>"우리는 리프가 속한 지역사회에 긍정적인 영향을 미칠 수 있다고 믿으며, 또한 꼭 그래야만 한다고 생각합니다.<br/>
 		이를 위해 한 분의 고객, 한 잔의 음료, 우리의 이웃 사회에 정성을 다합니다."
 	</div>

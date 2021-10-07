@@ -5,7 +5,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="ckeditor/ckeditor.js"></script>
+<!-- include summernote css/js -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 <script>
 	$(()=>{	
 		$("#headerText").animate({
@@ -29,6 +31,20 @@
 	        };
 	        reader.readAsDataURL(imageFile);	        
 	     });
+	      $('#content').summernote({
+	          placeholder: 'Hello stand alone ui',
+	          tabsize: 2,
+	          height: 120,
+	          toolbar: [
+	            ['style', ['style']],
+	            ['font', ['bold', 'underline', 'clear']],
+	            ['color', ['color']],
+	            ['para', ['ul', 'ol', 'paragraph']],
+	            ['table', ['table']],
+	            ['insert', ['link', 'picture', 'video']],
+	            ['view', ['fullscreen', 'codeview', 'help']]
+	          ]
+	        });
 	    
 	});
 </script>
@@ -80,7 +96,7 @@
 		<li id="fu"><span id="fileTitle">파일첨부</span><label for="filename" id="fileUpload">파일 선택</label>
 		<span id="uploaded"></span></li>
 		<li><input type="file" name="filename" id="filename"/></li>
-		<li><input type="submit" value="등록"/><a href="/myapp/noticeList">취소</a></li>
+		<li><input type="submit" value="등록"/><input type="button" value="취소" onclick="location.href='/myapp/noticeList'"/></li>
 	</ul>
 </form>
 </div>

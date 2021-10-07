@@ -10,10 +10,13 @@
 	body{margin:0;}
 	a:link, a:hover a:visited{text-decoration: none;}
 	ul,li{list-style-type: none;padding:0;margin:0;}
-	nav{display:flex;justify-content:center;width:100%;border-bottom:1px solid gray;}
-	nav>div:first-child{padding:15px 53px}
-	nav>div:last-child{padding:15px 28px}
-	nav a{color:#62605F;}
+	header img{width:100%;height:250px;}
+	header{height:250px;}
+	#headerText{position:relative;top:-100px;left:800px;font-size:3em;color:white;z-index:100;opacity:0.5}		
+	#detailMenu{display:flex;justify-content:center;width:100%;border-bottom:1px solid gray;}
+	#detailMenu>div:first-child{padding:15px 53px}
+	#detailMenu>div:last-child{padding:15px 28px}
+	#detailMenu a{color:#62605F;}
 	#menu2{border-bottom:4px solid rgb(0, 163, 239);}
 	.container{width:1100px;margin:0 auto;}
 	.title{font-size:2.5em;color:#382E2C;text-align:center;padding:40px 0 20px 0;border-bottom:1px solid lightgray}
@@ -47,6 +50,9 @@
 </style>
 <script>
 $(()=>{	
+	$("#headerText").animate({
+	  	  top: "-160px", opacity:1
+	  	  }, 1200,);
 	$("#menu1").click(function(){
 		$(this).css('border-bottom','4px solid rgb(0, 163, 239)');
 		$("#menu2").css('border','none');
@@ -59,9 +65,14 @@ $(()=>{
 </script>
 </head>
 <body>
-<nav>
-	<div id="menu1"><a href="/myapp/memberGrade">Society</a></div>
-	<div id="menu2"><a href="/myapp/membership">회원등급혜택</a></div>
+<%@ include file="/inc/top2.jspf" %>
+<header>
+	<img src="img/social2.jpg"/>
+	<span id="headerText">WHAT'S NEW</span>
+</header>
+<nav id="detailMenu">
+	<div id="menu1"><a href="/myapp/membership">Society</a></div>
+	<div id="menu2"><a href="/myapp/memberGrade">회원등급혜택</a></div>
 </nav>
 <div class="container">
 	<div class="title">회원 등급 혜택</div>

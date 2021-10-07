@@ -52,11 +52,6 @@ ul,li{
 	padding:0;
 }
 
-/*로고글씨left*/
-.fa-envira{color:rgb(0, 163, 239);
-			font-size:3em;
-			
-}
 .login{
 	float:right;
 	width:50%;
@@ -117,8 +112,8 @@ ul,li{
 }
 .header{
 	position: relative;
-	background-color:yellow;
-		z-index: 10;
+	height:100px;
+	z-index: 10;
 }
 .whitebg{/*마우스 흰색 배경 이벤트*/
 	width:100%;

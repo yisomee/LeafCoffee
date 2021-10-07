@@ -10,7 +10,7 @@
 	body{margin:0;}
 	ul,li{list-style-type: none;padding:0;margin:0;}
 	a:link, a:hover a:visited{color: dimgray;text-decoration: none;}
-	img{width:100%;height:250px;}
+	header img{width:100%;height:250px;}
 	header{height:250px;}
 	#headerText{position:relative;top:-100px;left:800px;font-size:3em;color:white;z-index:100;opacity:0.5}
 	.around{background-color:#F5F0E9;padding-bottom:50px}
@@ -40,6 +40,7 @@ $(()=>{
 </script>
 </head>
 <body>
+<%@ include file="/inc/top2.jspf" %>
 <header>
 	<img src="img/social2.jpg"/>
 	<span id="headerText">WHAT'S NEW</span>

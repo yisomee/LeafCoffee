@@ -79,7 +79,7 @@
 		<li id="fu"><span id="fileTitle">파일첨부</span><label for="filename" id="fileUpload">파일 선택</label>
 		<sapn id="uploaded"></span></li>
 		<li><input type="file" name="filename" id="filename"/></li>
-		<li><input type="submit" value="수정"/><a href="/leafCafe/noticeList">취소</a></li>
+		<li><input type="submit" value="수정"/><input type="button" value="취소" onclick="location.href='/myapp/noticeList'"/></li>
 	</ul>
 </form>
 </div>
