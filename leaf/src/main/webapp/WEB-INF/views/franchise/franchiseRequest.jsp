@@ -101,6 +101,7 @@ section {
 </style>
 </head>
 <body>
+<%@ include file="/inc/top2.jspf" %>
 	<div class="container">
 		<div class="leftSide">
 		</div>

@@ -326,9 +326,7 @@ span {
 </script>
 </head>
 <body>
-	<div>
-		<h1>Siren Order</h1>
-	</div>
+<%@ include file="/inc/top2.jspf" %>
 	<section class="section1">
 		<div class="position">
 			<h1 id="store">매장 선택</h1>

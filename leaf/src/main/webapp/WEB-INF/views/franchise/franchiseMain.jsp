@@ -98,7 +98,7 @@ font-family: 'Do Hyeon'
 </style>
 </head>
 <body>
-<div><h1>Franchise</h1></div>
+<%@ include file="/inc/top2.jspf" %>
 <section class="section1">
 <img alt="" src="img/Lovepik_com-401492477-paper-map-icon-free-vector-illustration-material.png">
 <div class="text bn1"><span class="txthead">나의 일상이 되는 또 다른 공간</span><br/>커피 한 잔의 여유를 만나는 LEAF 매장<br/>이제 전국 어디에서나 만날 수 있는 LEAF 매장을<br/>지역별, 타입별, 서비스별 등의 설정을 통해 <br/>더욱 쉽고 빠르게 찾아보세요<br/><button type="button" onclick="location.href='storemap'">매장찾기</button></div></section>
