@@ -14,10 +14,10 @@ li{list-style:none;}
 
 /*   메뉴 박스상자배경  */
 #menu-bg{position:absolute; min-width:1400px; width:100%; height:260px; background:white;
-	top:120px; display:none; z-index:100;}
+	top:120px; display:none; z-index:100; box-shadow: 0px 26px 19px 0px rgb(120 120 120 / 10%) border-top: 1px solid gray;}
 
 /*  상단 메뉴바  */
-.headerCon .header{width:1400px; position:absolute;z-index:100;}
+.headerCon .header{width:1400px; position:absolute;z-index:100; overflow:hidden;}
 .headerCon .nav{line-height: 100px; position:relative;left:18%;z-index:100;}
 .headerCon .nav >li{text-align:center;float:left;width: 13%;}
 .headerCon .nav >li>a{color:black;font-size:1.3em;cursor:pointer; font-weight:500;}

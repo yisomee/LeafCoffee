@@ -27,21 +27,18 @@
 	.open-write-ct h2 {margin:30px 0 0 100px;}
 	.owc{width:1200px; margin:50px auto; border-top:3px solid gray;}
 	.owc-ct{overflow:auto;}
-	.owc-ct>li{float:left; border-bottom:2px solid gray; width:20%; height:30px; font-size:1.2em;text-align:center;}
+	.owc-ct>li{float:left; border-bottom:2px solid gray; width:20%; height:25px; font-size:1em;text-align:center;font-family: 'Noto Sans KR'}
 	
-	.owc-ct>li:nth-child(2n+1){background:#F5F0E9;padding:15px;clear:both;}	
+	.owc-ct>li:nth-child(2n+1){background:#FFF0F5;padding:15px;clear:both;font-weight:600;}	
 	.owc-ct>li:nth-child(2n){width:75%; padding:15px;}
 	.owc-ct>li:nth-child(11){height:200px;}
 	.owc-ct>li:nth-child(12){height:200px; position:relative}
 	.owc-ct #content{resize:none; background:#fff; width:95%; height:150px; line-height:35px; font-size:1.4em;
 					border-collapse:collapse; border:1px solid gray;
 	}
-	.owc-ct #text-count{font-size:1.3em;float:right; margin:10px 20px;}
-	.owc-ct #text-count+input[type=submit]{width:150px;height:40px;position:absolute; top:180px; left:390px;}
-	
-	/* 답변달기 */
-	.owc-board{width:1200px; margin:0 auto;}
-	.owc-board h2{margin-bottom:30px;}
+	.owc-ct #text-count{font-size:1.3em;float:right; margin:10px 20px;font-family: 'Noto Sans KR';}
+	.owc-ct #text-count+input[type=submit]{width:150px;height:40px;position:absolute; top:180px; left:390px;box-sizing: border-box;
+    				border: 0px solid; background: rgb(0,192,239); color: #fff; font-weight: bold;}
 	
 </style>
 <script>	
@@ -114,9 +111,7 @@
 					</li>
 				</ul>
 			</div>
-			</form>
-			<div class="owc-board">				
-			</div>
+			</form>			
 		</div>
 	</main>
 	<%@ include file="/inc/bottom3.jspf" %>

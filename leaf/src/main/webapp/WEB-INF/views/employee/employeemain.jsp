@@ -113,12 +113,12 @@
 				<div class="manage-listCon">											
 					<ul id="emp-list-top">
 						<li>선택</li>				
-						<li>사원번호</li>
+						<li>NO</li>
 						<li>사원명</li>
 						<li>직급</li>
 						<li>연락처</li>
-						<li>이메일</li>
-						<li>등록일</li>
+						<li>E-mail</li>
+						<li>입사일</li>
 						<li>재직여부</li>
 					</ul>
 					<ul id="emp-list">	

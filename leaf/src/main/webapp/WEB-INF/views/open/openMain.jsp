@@ -41,7 +41,7 @@
 	/*사원 리스트*/
 	#emp-list{overflow:auto; text-align:center; padding:0;}
 	#emp-list>li{float:left; width:10%; border-bottom: 1px solid black; height:50px; font-size:1.1em; line-height:50px;}
-	#emp-list>li:nth-child(6n+3){width:50%; text-align:left;}
+	#emp-list>li:nth-child(6n+3){width:50%; text-align:left; text-align:center;}
 	
 	
 	/* 페이징 번호*/
@@ -98,7 +98,7 @@
 			<div id="emplistCon">								
 				<ul id="emp-list-top">
 					<li>선택</li>				
-					<li>게시번호</li>
+					<li>NO</li>
 					<li>제목</li>
 					<li>작성자</li>
 					<li>등록일</li>

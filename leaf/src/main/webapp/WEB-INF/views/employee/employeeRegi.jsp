@@ -54,7 +54,7 @@
 	</nav>
 	<main>
 		<div class="main-Form-bg">
-			<form method="post" action="">
+			<form method="post" action="<%=request.getContextPath()%>/employeeRegister">
 				<div class="main-form-Con">
 					<strong>사원등록</strong>				
 					<section class="mf-inputCon">
