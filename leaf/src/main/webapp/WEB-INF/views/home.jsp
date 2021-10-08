@@ -31,7 +31,6 @@ font-family: 'Noto Sans KR';
 	justify-content: center; /*위치한 자리에서 가운데정렬*/
 	margin: 0 auto;
 	position: absolute;
-	z-index: 100;
 	top: 30%;
 	left: 20%;
 }

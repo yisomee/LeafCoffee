@@ -11,7 +11,7 @@
 	ul,li{list-style-type: none;padding:0;margin:0;}
 	header img{width:100%;height:250px;}
 	header{height:250px;}
-	#headerText{position:relative;top:-100px;left:800px;font-size:3em;color:white;z-index:100;opacity:0.5}	
+	#headerText{position:relative;top:-100px;left:800px;font-size:3em;color:white;opacity:0.5}	
 	nav a{color:#62605F;}
 	a:link, a:hover a:visited{text-decoration: none;}
 	#detailMenu{display:flex;justify-content:center;width:100%;border-bottom:1px solid gray;}
@@ -42,8 +42,8 @@ $(()=>{
 <body>
 <%@ include file="/inc/top.jspf" %>
 <header>
-	<img src="img/social2.jpg"/>
-	<span id="headerText">WHAT'S NEW</span>
+	<img src="https://www.baristapaulbassett.co.kr/images/menu/subVisual_coffee.jpg"/>
+	<span id="headerText">SOCIAL</span>
 </header>
 <nav id="detailMenu">
 	<div id="menu1"><a href="/myapp/noticeList">공지사항</a></div>
