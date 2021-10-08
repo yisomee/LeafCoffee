@@ -14,6 +14,10 @@ public class HomeController {
 	@RequestMapping("/home2")
 	public String home2() {
 		return "home2";
+	}	
+
+	@RequestMapping("/adminMainPage")
+	public String adminmainpage() {
+		return "adminmain";
 	}
-	
 }

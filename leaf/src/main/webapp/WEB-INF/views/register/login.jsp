@@ -148,8 +148,7 @@ ul,li{list-style:none;
 	</div><!-- formdiv -->
 </div><!-- container -->
 </div>
-<form method="get" action="<%=request.getContextPath()%>/testlogin">
-	<input type="text" name="testid">
+<form method="get" action="<%=request.getContextPath()%>/testlogin">	
 	<button>테스트로그인</button>
 </form>
 </body>

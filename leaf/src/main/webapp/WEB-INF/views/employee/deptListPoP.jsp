@@ -11,9 +11,9 @@
 	.bonsagroup-Con{width:650px; height:520px; margin:0 auto; padding:0;}
 	#deptPoP-title{text-align:center; padding:10px; font-size:25px; color:gray;}
 	.bonsagroupImg{width:650px; height:400px;}
-	.bg-form form{margin:0 auto;}
+	.bg-form form{margin:0 auto; width:600px;}
 	.bg-form input[type=text]{width:400px; height:40px; border:1px solid gray; border-radius: 3px; box-sizing:border-box; margin-left: 70px; margin-top: 15px;}
-	.bg-form input[type="submit"]{width:100px; height:40px; background:rgb(0,192,236); color:white; border:0px solid;}
+	.bg-form input[type="submit"]{width:100px; height:40px; background:rgb(0,192,236); color:white; border:0px solid; margin-left:10px;}
 </style>
 <script>
 	function setDeptName(){

@@ -6,12 +6,23 @@ public class RegisterVO {
 	private String userpwd;
 	private String username;
 	private String birth;
-	private String tel;
-	private String email;
 	private int membership;
 	private String regdate;
 	private String addr;
 	private String auth;
+	
+	// 연락처
+	private String tel;
+	private String tel1;
+	private String tel2;
+	private String tel3;
+	
+	// 이메일
+	private String email;
+	private String emailid; // @앞
+	private String domain; // @뒤	
+	
+	
 	public String getUserid() {
 		return userid;
 	}

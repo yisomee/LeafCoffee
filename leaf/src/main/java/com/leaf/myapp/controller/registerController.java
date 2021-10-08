@@ -28,7 +28,7 @@ public String pwSearch() {
 }
 @RequestMapping("/testlogin")
 public String testlogin() {
-	return "admin/adminmain";
+	return "adminmain";
 }
 
 }
