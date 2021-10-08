@@ -66,9 +66,9 @@
 <body>
 <div id="container">
 	<div id="left_content">
-		<div class= "content_1">Iced Americano</div><br/>
-		<div class= "content_2">  아이스아메리카노</div><br/>
-		<div class= "content_3">LEAF 시그니처 블렌드로 추출한 에스프레소로 만든 부드럽고 깔끔한 가장 대중적인 커피 메뉴입니다.
+		<div class= "content_1">${MenuVO.p_ename}</div><br/>
+		<div class= "content_2">${MenuVO.p_name }</div><br/>
+		<div class= "content_3">${MenuVO.p_desc }
 		<br/><br/><br/><br/><br/>
 		구분 : Ice <br/><br/>
 		제공사이즈 : Standard
@@ -80,10 +80,10 @@
 	<!-- <i class="fas fa-mug-hot"></i> -->
 		<div class= "content_4"> 영양 정보 </div><br/>
 		<div class= "content_5">1회제공량기준 standard</div><br/>
-		<div class= "content_6">제공량(ml) <span> 360 </span>
-			<hr/><br/>열량(kcal)  <span> 10 </span> 당류(g) <span> 10 </span><br/><br/>
-					  나트륨(mg)  <span> 10 </span> 단백질(g) 	<span> 1 </span><br/><br/>
-					  포화지방(g)  <span> 10 </span> 카페인(mg) <span> 160 </span>
+		<div class= "content_6">제공량(ml) <span> ${MenuVO.p_info1 } </span>
+			<hr/><br/>열량(kcal)  <span> ${MenuVO.p_info2 } </span> 당류(g) <span>  ${MenuVO.p_info3 } </span><br/><br/>
+					  나트륨(mg)  <span>  ${MenuVO.p_info4 }  </span> 단백질(g) 	<span>  ${MenuVO.p_info5 }  </span><br/><br/>
+					  포화지방(g)  <span>  ${MenuVO.p_info6 }  </span> 카페인(mg) <span>  ${MenuVO.p_info7 }  </span>
 		</div>
 	</div>
 </div>

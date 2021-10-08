@@ -1,11 +1,15 @@
 package com.leaf.myapp.controller;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.leaf.myapp.service.MenuService;
+import com.leaf.myapp.vo.MenuVO;
 
 
 @Controller
@@ -20,10 +24,6 @@ public class MenuController {
 	   public String MenuBeverage() {
 		   return "Consumer/menu_beverage";
 	   }
-	@RequestMapping("/menu_detail")
-		public String MenuDetail() {
-			return "Consumer/menu_detail";
-	}
 
 	@RequestMapping("/menu_Register")
 		public String MenuRegister() {
@@ -31,11 +31,10 @@ public class MenuController {
 	}
 
 	//목록
-/*	@RequestMapping("/menu_Coffee")
+	@RequestMapping("/menu_Coffee")
 	   public ModelAndView menuList() {
-	    //  MenuDAOImp dao = sqlSession.getMapper(MenuDAOImp.class);
 	      ModelAndView mav = new ModelAndView();
-	      mav.addObject("MenuList", dao.MenuList());
+	      mav.addObject("MenuList", menuService.MenuList());
 	      mav.setViewName("Consumer/menu_coffee");
 	      return mav;
 	   }
@@ -44,8 +43,8 @@ public class MenuController {
 	public ModelAndView Menu_RegisterOk(MenuVO vo, HttpSession ses) {
 
 	   ModelAndView mav = new ModelAndView();
-	   MenuDAOImp dao = sqlSession.getMapper(MenuDAOImp.class);
-	   int cnt = dao.Menu_RegisterOk(vo);
+	  
+	   int cnt =  menuService.Menu_RegisterOk(vo);
 	   if(cnt>0) {//글등록
 		   mav.setViewName("redirect:menu_Coffee");
 	   }else {
@@ -53,6 +52,15 @@ public class MenuController {
 	   }
 	   return mav;
    }
-   
-	*/
+   //메뉴상세설명페이지
+	@RequestMapping("/menu_detail")
+		public ModelAndView MenuDetail(int p_num) {
+		ModelAndView mav = new ModelAndView();
+		System.out.println("리스트!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println(p_num);
+		mav.addObject("MenuVO",menuService.MenuDetail(p_num));
+		mav.setViewName("Consumer/menu_detail");
+	return mav;
+	}
+	
 }

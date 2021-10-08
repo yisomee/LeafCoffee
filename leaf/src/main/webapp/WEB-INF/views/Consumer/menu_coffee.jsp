@@ -202,9 +202,9 @@ $(function(){
 				</li>
 				
 				<c:forEach var="MenuVO" items="${MenuList}"> 
-				<li class="coffee"><div class="imgwrap"><a href="/myapp/menu_detail"><img src="img/americano.png" id="img"/></a></div>
+				<li class="coffee"><div class="imgwrap"><a href="/myapp/menu_detail?p_num=${MenuVO.p_num}"><img src="img/americano.png" id="img"/></a></div>
 					<div class="imgtext">${MenuVO.p_name}<br/><span class="imgtext2">${MenuVO.p_ename}</span></div>
-					<div class="new"></div>
+					<div class="${MenuVO.new_best}">${MenuVO.new_best}</div>
 				</li>
 				
 				
