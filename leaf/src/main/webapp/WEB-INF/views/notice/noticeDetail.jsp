@@ -49,19 +49,10 @@ $(()=>{
 	<div class="container">
 	 	<div class="title_writedate">
 	 		<div class="blank"></div>
-			<div class="title">추석 연휴 영업시간 안내</div>
-			<div><strong>등록일</strong> <span style="color:gray">2021-09-19</span></div> 
+			<div class="title">${noticeVo.title }</div>
+			<div><strong>등록일</strong> <span style="color:gray">${noticeVo.writedate }</span></div> 
 		</div>
-		<div class="content">			
-			<span>안녕하세요 leaf커피 입니다.<br/>
-			추석 연휴 기간 동안 리프 영업시간이 변경되오니 이용시 참고해 주시기 바랍니다.<br/>
-			연휴기간 매장 영업 시간 12:00~20:00<br/>
-			9월21일 추석 당일 전매장 미운영<br/><br/><br/>			
-			<img src="img/time.jpg" id="noticeImg"/><br/><br/>
-			리프커피와 함께 즐거운 추석 연휴 보내시기 바랍니다.<br/>
-			감사합니다.<br/><br/>	
-			</span>
-		</div>
+		<div class="content">${noticeVo.content }</div>
 	</div>
 </div>
 <div class="btnList">

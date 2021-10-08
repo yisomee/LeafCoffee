@@ -1,5 +1,7 @@
 package com.leaf.myapp.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
@@ -7,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.leaf.myapp.service.NoticeService;
+import com.leaf.myapp.vo.NoticeVO;
+
 
 @Controller
 public class NoticeController {
@@ -20,12 +24,14 @@ public class NoticeController {
 		mav.addObject("list",noticeService.noticeAllSelect());
 		mav.setViewName("notice/noticeList");
 		return mav;
-	}
-	
+	}	
 	//게시글보기
 	@RequestMapping("/noticeDetail")
-	public String noticeDetail() {
-		return "/notice/noticeDetail";
+	public ModelAndView noticeDetail(int no) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("noticeVo", noticeService.noticeView(no));		
+		mav.setViewName("notice/noticeDetail");
+		return mav;	
 	}
 	//글 삭제
 	@RequestMapping("/noticeDelete")

@@ -95,9 +95,9 @@ $(()=>{
 		
 		<c:forEach var="noticeVo" items="${list}"> 
 		<li><input type="checkbox" id="" name=""/></li>
-		<li>${noticeVo.no },</li>
-		<li><a href="/myapp/notice/noticeDetail">${noticeVo.title }</a>,</li>
-		<li>${noticeVo.writedate },</li>
+		<li>${noticeVo.no }</li>
+		<li><a href="/myapp/noticeDetail?no=${noticeVo.no }">${noticeVo.title }</a></li>
+		<li>${noticeVo.writedate }</li>
 		<li>${noticeVo.hit }</li>
 		</c:forEach>
 	</ul>

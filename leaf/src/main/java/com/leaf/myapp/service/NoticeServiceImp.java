@@ -17,5 +17,9 @@ public class NoticeServiceImp implements NoticeService{
 	public List<NoticeVO> noticeAllSelect() {		
 		return noticeDAO.noticeAllSelect();
 	}
+	@Override
+	public NoticeVO noticeView(int no) {
+		return noticeDAO.noticeView(no);
+	}
 	
 }

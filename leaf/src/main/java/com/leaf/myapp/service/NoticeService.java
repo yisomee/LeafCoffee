@@ -6,4 +6,5 @@ import com.leaf.myapp.vo.NoticeVO;
 
 public interface NoticeService {
 	public List<NoticeVO> noticeAllSelect();
+	public NoticeVO noticeView(int no);
 }

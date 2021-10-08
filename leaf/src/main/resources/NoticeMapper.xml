@@ -5,7 +5,10 @@
   <mapper namespace="com.leaf.myapp.dao.NoticeDAO">
   	<select id="noticeAllSelect" resultType="com.leaf.myapp.vo.NoticeVO">
   		select no, title, to_char(writedate, 'MM-DD HH:MI') writedate, hit
-        from board order by no desc
+        from board1 order by no desc
   	</select>
-  	
+  	  <select  id="noticeView" resultType="com.leaf.myapp.vo.NoticeVO">
+        select no, title, content, writedate
+        from board1 where no=#{param1}
+     </select>
   </mapper>
