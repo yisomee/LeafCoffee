@@ -26,6 +26,8 @@ public class EmplyeeVO {
 	private String email;
 	private String emailid; // @¾Õ
 	private String domain; // @µÚ
+	
+	
 	public int getEmp_num() {
 		return emp_num;
 	}

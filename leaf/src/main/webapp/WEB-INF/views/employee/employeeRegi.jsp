@@ -18,6 +18,8 @@
 	.mfi-inputbox .mfi-iB-tel select{width:30%; display:inline-block; height:47px; margin-right:20px;} 
 	.mfi-inputbox .mfi-iB-tel input{width:30%; margin-right:20px;}
 	.mfi-inputbox .mfi-iB-tel input:last-of-type{width:30%; margin-right:0px;}
+	.mfi-inputbox #employeeJoinCheck{width:400px;}
+	.mfi-inputbox #joinCheck{width:122px; background:rgb(0,163,239); color:#fff; border:white;}
 	/* 부서파트 */
 	.mfi-inputbox #dept_name{width:460px;}
 	.mfi-inputbox #dept_img{width:48px; height:48px; float:right; background-image:url(img/empimg.png); background-size:cover;box-sizing: border-box; border: 1px solid gray;}
@@ -49,7 +51,17 @@
 		if(inputbox.value.length==4){
 			frm.tel3.focus();
 		}
-	} 
+	}
+	function joinCheck(){
+		let inputUserid = document.getElementById('employeeJoinCheck').value;		
+		$.ajax({
+			url: "/myapp/employeeJoinChecking",
+			data : "userid="+inputUserid,
+			success : function(result){
+				alert("사원 등록이 가능한 아이디입니다.");
+			}
+		});
+	}
 </script>
 </head>
 <body>
@@ -67,8 +79,15 @@
 						<div class="mfi-img"></div>
 							<p class="mfi-title">사원정보를 입력해주세요.</p>
 						<div class="mfi-inputbox">
-							<strong>사원명
+							<strong>가입 확인 절차
 								<span>(필수)</span>
+							</strong>
+							<input type="text" name="employeeJoinCheck" id="employeeJoinCheck" placeholder="가입한 아이디"/>
+							<input type="button" value="가입확인하기" id="joinCheck" onclick="joinCheck()"/>
+							
+						</div>	
+						<div class="mfi-inputbox">
+							<strong>사원명								
 							</strong>	
 							<input type="text" name="emp_name" id="emp_name" placeholder="사원명"/>
 						</div>
@@ -77,7 +96,7 @@
 								<span>(필수)</span>
 							</strong>
 							<div class="mfi-iB-tel">
-								<select id="emp_tel1" name="emp_tel1">
+								<select id="tel1" name="tel1">
 									<option value="010">010</option>
 									<option value="011">011</option>
 									<option value="016">016</option>
@@ -85,8 +104,8 @@
 									<option value="018">018</option>
 									<option value="019">019</option>								
 								</select>
-								<input type="text" name="emp_tel2" id="emp_tel2"/>
-								<input type="text" name="emp_tel3" id="emp_tel3"/>
+								<input type="text" name="tel2" id="tel2"/>
+								<input type="text" name="tel3" id="tel3"/>
 							</div>
 						</div>
 						<div class="mfi-inputbox">
