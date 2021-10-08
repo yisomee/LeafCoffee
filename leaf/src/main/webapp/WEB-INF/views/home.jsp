@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300&display=swap" rel="stylesheet">
-<%@ include file="/inc/top2.jspf" %>
+
 
 <style>
 body, html {
@@ -62,7 +62,7 @@ to {clip-path: circle(100% at 50% 500px);}
 section { /*section전부다 적용된거*/
 	position: relative;
 	width: 100%;
-	height: 1100px;
+	height: 970px;
 	z-index: 5;
 }
 
@@ -109,8 +109,8 @@ section { /*section전부다 적용된거*/
 
 
 .slideimg { /*앞에 이미지 나오는div relative로 포지션 잡아줌. 글씨 나오게 하기 위해서 z index로 5*/
-	width: 700px;
-	height: 700px;
+	width: 600px;
+	height: 600px;
 	border-radius: 60px;
 	margin: 15% 20% 0 25%;
 	position: relative;
@@ -129,8 +129,8 @@ section { /*section전부다 적용된거*/
 }
 
 .hiddenimg { /*이미지 슬라이더 숨긴div*/
-	width: 3500px;
-	height: 700px;
+	width: 3000px;
+	height: 600px;
 	display: flex;
 	position: relative;
 }
@@ -302,6 +302,18 @@ font-size: 3rem;
     font-weight: 900;
     line-height: 1.4;
     }
+    #video_area {
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: absolute;
+}
+#background_video {
+    z-index: -1;
+    width: 100vw;
+    position: absolute;
+}
 </style>
 </head>
 <body>
@@ -313,12 +325,14 @@ font-size: 3rem;
 	<div class="four">f</div>
 </div>
 <div class="main">
-	
+<%@ include file="/inc/top2.jspf" %>	
 	<div class="comment"><h1>누구나<br/>마음편히 <br/>마실 수 있게</h1></div>
 	<section class="section1"> <!-- 나중에 이미지 들어갈 곳 -->
-	 <video autoplay loop muted class="video">
-				<source src="img/mixkit-latte-art-810.mp4" type="video/mp4"/>
+	 	<div id="video_area">
+	 		<video id="background_video" autoplay loop muted class="video">
+				<source src="img/latte.mp4" type="video/mp4"/>
 			</video>
+		</div>
 	</section>
 
 
@@ -386,7 +400,7 @@ font-size: 3rem;
 		</div>
 
 	</section>
-	
+	<%@ include file="/inc/bottom3.jspf" %>
 </div>
 
 <script

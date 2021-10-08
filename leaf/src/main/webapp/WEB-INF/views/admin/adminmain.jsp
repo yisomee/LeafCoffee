@@ -35,7 +35,7 @@ button{-webkit-border-radius: 0; border-radius: 0; -webkit-appearance: none; -mo
 #menu-bg{position:absolute;	width:100%;	height:260px; background :white; top:70px; opacity:0.887; display:none;}
 .nav{line-height: 100px; position:relative; left:18%;}
 .nav > li {text-align:center; float:left; width: 13%;}
-.nav > li > a {color:white; font-size:1.05em;}
+.nav > li > a {color:black; font-size:1.05em;}
 .nav > li> a:hover{font-size:1.3em; font-weight:300;}
 	/* 드롭다운메뉴 서브메뉴 */
 .sublist>li{margin-top: -30px; text-align:center; height:100px;}
@@ -44,8 +44,8 @@ button{-webkit-border-radius: 0; border-radius: 0; -webkit-appearance: none; -mo
 /* ===================*/
 
 /* 동영상 */
-.jb-box {position: absolute; width:100%; min-width: 1500px; top: -50px; z-index:-1;}
-video {width:100%;}
+.jb-box {position: absolute; width:100%; min-width: 1500px; top: 119px; z-index:-1;}
+video {height:910px; width: 100%;}
 
 /* 중단 가맹점현황, 총임직원, 함께하는 회원*/
 .amount{top:-66px; display: flex; min-width:1500px; width:100%; background: #fff; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); margin: auto;}
@@ -154,13 +154,13 @@ video {width:100%;}
 				</ul>
 			</div>
 	       	
+		</div>
+	</header>	
  	       	<div class="jb-box">
               <video muted autoplay loop>
                 <source src="img/adminbgvideo.mp4" type="video/mp4">                
               </video>
             </div>
-		</div>
-	</header>	
 	
       
     <!-- 중앙부 -->

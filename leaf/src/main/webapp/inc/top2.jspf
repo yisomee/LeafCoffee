@@ -58,6 +58,7 @@ ul,li{
 	float:right;
 	width:50%;
 	height:50px;
+	
 	font-family: 'Signika Negative', sans-serif;
 }
 .login>ul{
@@ -70,7 +71,7 @@ ul,li{
 }
 .logoimg{/*로고이미지*/
 	float:left;
-	width:50%;
+	width:170px;
 	height:80px;
 	margin-top:20px;
 	padding-left: 20px;
@@ -78,7 +79,7 @@ ul,li{
 }
 
 .logoimg>img{
-	width: 10%;
+	width: 100%;
 	justify-content: flex-start;
 
 }
@@ -86,7 +87,7 @@ ul,li{
 	position:absolute;
 	left:15%;
 	width:70%;
-	margin-top:20px;
+	margin-top: 75px;
 	font-family: 'Signika Negative', sans-serif;
 	
 }
@@ -114,12 +115,12 @@ ul,li{
 }
 .header{
 	position: relative;
-	height:100px;
+	height:120px;
 	z-index: 10;
 }
 .whitebg{/*마우스 흰색 배경 이벤트*/
 	width:100%;
-	height:300px;
+	height:450px;
 	position:absolute;
 	z-index: 7;
     background-color: white;
@@ -132,30 +133,25 @@ ul,li{
 <body>
 
 <div class="whitebg"></div>
+	
 
 <div class="header">
-	<!-- <a href="/leaf"><div class="logoimg"><img src="img/leaflogo-removebg-preview.png"/></div></a> -->
-	<div class="logoimg"><img src="img/leaflogo-removebg-preview.png" onclick="location.href='/leaf'"/></div>
-	
-<div class="changeColor">	
 	<div class="login">
 		<ul>
 			<li><a href="/myapp/loginOk">LOGIN</a></li>
 			<li><a href="/myapp/registerOk">JOIN</a></li>	
 		</ul>
 	</div>
+	<!-- <a href="/leaf"><div class="logoimg"><img src="img/leaflogo-removebg-preview.png"/></div></a> -->
+	<div class="logoimg"><img src="img/leaflogo-removebg-preview.png" onclick="location.href='/myapp/'"/></div>
+	
+<div class="changeColor">	
 	
 	<div class="menu">
 		<ul class="main-ul">
-			<li class="select-li"><a href="#">ABOUT US</a>
-				<ul class="ulclass">
-					<li><a href="#">IDENTITY</a></li>
-					<li><a href="#">BARISTA</a></li>
-					<li><a href="#">CEO</a></li>
-				</ul>
-			</li>
+			
 <!---------------------------  -->			
-			<li class="select-li"><a href="#">MENU</a>
+			<li class="select-li"><a href="/myapp/menu_Coffee">MENU</a>
 				<ul class="ulclass">
 					<li><a href="/myapp/menu_Coffee">COFFEE</a></li>
 					<li><a href="/myapp/menu_Food">FOOD</a></li>
@@ -165,7 +161,7 @@ ul,li{
 				</ul>					
 			</li>
 <!---------------------------------  -->	
-			<li class="select-li"><a href="#">발주하기</a>
+			<li class="select-li"><a href="/myapp/purchase">발주하기</a>
 				<ul class="ulclass">
 					<li><a href="/myapp/purchase">발주하기</a></li>
 					<li><a href="/myapp/purchase_Confirm">발주확인(본사)</a></li>
@@ -174,21 +170,21 @@ ul,li{
 				</ul>					
 			</li>
 <!----------------------------------  -->	
-			<li class="select-li"><a href="#">MEMBERSHIP</a>
+			<li class="select-li"><a href="/myapp/membership">MEMBERSHIP</a>
 				<ul class="ulclass">
 					<li><a href="/myapp/membership">MEMBERSHIP</a></li>
 					<li><a href="/myapp/memberGrade">MEMBERGRADE</a></li>
 				</ul>			
 			</li>
 <!--------------------------------------------->
-			<li class="select-li"><a href="#">WHAT`S UP</a>
+			<li class="select-li"><a href="/myapp/noticeList">WHAT`S UP</a>
 				<ul class="ulclass">
 					<li><a href="/myapp/noticeList">Notice</a></li>
 					<li><a href="/myapp/social">SOCIAL</a></li>
 				</ul>				
 			</li>
 <!--------------------------------------------->			
-			<li class="select-li"><a href="#">FRANCHISE</a>
+			<li class="select-li"><a href="/myapp/franchise">FRANCHISE</a>
 				<ul class="ulclass">
 					<li><a href="/myapp/franchise">Franchise</a></li>
 					<li><a href="/myapp/siren">Siren</a></li>
