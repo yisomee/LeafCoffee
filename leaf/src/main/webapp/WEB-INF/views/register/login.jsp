@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ include file="/inc/top2.jspf" %>
+<%@ include file="/inc/top.jspf" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -148,8 +148,6 @@ ul,li{list-style:none;
 	</div><!-- formdiv -->
 </div><!-- container -->
 </div>
-<form method="get" action="<%=request.getContextPath()%>/testlogin">	
-	<button>테스트로그인</button>
-</form>
+
 </body>
 </html>

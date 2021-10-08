@@ -11,13 +11,15 @@ public class HomeController {
 		return "home";
 	}
 	
-	@RequestMapping("/home2")
+	@RequestMapping("/franHome")
 	public String home2() {
-		return "home2";
-	}	
-
-	@RequestMapping("/adminMainPage")
-	public String adminmainpage() {
-		return "adminmain";
+		return "franHome";
 	}
+	
+	@RequestMapping("/adminHome")
+	public String testlogin() {
+		return "adminHome";
+	}
+
+	
 }
