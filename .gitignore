@@ -1,3 +1,4 @@
 /.metadata/
 leaf/target/m2e-wtp/web-resources/META-INF/maven/com.leaf/myapp/pom.properties
 leaf/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
+leaf/src/main/webapp/img/latte.mp4
