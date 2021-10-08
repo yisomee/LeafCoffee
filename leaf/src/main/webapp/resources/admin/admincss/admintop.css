@@ -9,8 +9,14 @@ li{list-style:none;}
 #top-info>li{float:left; padding:0 10px;}
 #top-info>li:last-child{padding:0 0 0 30px;}
 #top-info>li:last-child> a:hover{color:red;	font-weight:600;}
-
 .headerCon{width:1400px; margin:0 auto;}
+.logoimg{/*로고이미지*/
+	float:left;
+	width:170px;
+	height:80px;
+	margin-top:20px;
+	padding-left: 20px;
+}
 
 /*   메뉴 박스상자배경  */
 #menu-bg{position:absolute; min-width:1400px; width:100%; height:260px; background:white;

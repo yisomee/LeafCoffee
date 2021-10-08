@@ -29,11 +29,25 @@ button{-webkit-border-radius: 0; border-radius: 0; -webkit-appearance: none; -mo
 #top-info>li:last-child{padding:0 0 0 30px;}
 #top-info>li:last-child> a:hover{color:red;	font-weight:600;}
 #top-info> li:before{content: ''; display: inline-block; width: 1px; height: 11px; border-left: 1px solid #777; line-height: 1; margin-left: 12px; margin-right: 12px;}
+.logoimg{/*로고이미지*/
+	position: absolute;
+	float:left;
+	width:170px;
+	height:80px;
+	margin-top:20px;
+	padding-left: 20px;
+	z-index:20;
+}
+.logoimg>img{
+	width: 100%;
+	justify-content: flex-start;
+
+}
 	/* 메뉴바*/
 .header{width:100%; height:300px; margin:auto; position:relative; z-index:100;}
 .header a:hover{font-size:1.2em; color:blue;}
 #menu-bg{position:absolute;	width:100%;	height:260px; background :white; top:70px; opacity:0.887; display:none;}
-.nav{line-height: 100px; position:relative; left:18%;}
+.nav{line-height: 85px; position:relative; left:18%;}
 .nav > li {text-align:center; float:left; width: 13%;}
 .nav > li > a {color:black; font-size:1.05em;}
 .nav > li> a:hover{font-size:1.3em; font-weight:300;}
@@ -114,9 +128,12 @@ video {height:910px; width: 100%;}
 <body>
 	<!-- 상단부 -->	
 	<header>
+	<div class="logoimg"><img src="img/leaflogo-removebg-preview.png" onclick="location.href='/myapp/'"/></div>
 		<div class="intro_bg">
 			<div id="top-div">
 				<ul id="top-info">
+					<li><a href="/myapp/adminHome">본사</a></li>
+					<li><a href="/myapp/franHome">가맹점</a></li>
 					<li>인사부</li>
 					<li id="info-name">전예찬 <span>님</span></li>
 					<li><a href="#">로그아웃</a></li>
@@ -129,7 +146,8 @@ video {height:910px; width: 100%;}
 					<li class="home"><a href="<%=request.getContextPath()%>/adminMainPage">HOME</a></li>
 					<li><a href="#">SUPERVISE</a>
 						<ul class="sublist">
-							<li><a href="#">제품관리</a></li>
+							
+							<li><a href="/myapp/menu_Register">메뉴등록</a></li>
 							<li><a href="<%=request.getContextPath()%>/employeeManagePage">직원관리</a></li>
 							<li><a href="<%=request.getContextPath()%>/partnerManagePage">파트너 관리</a></li>
 						</ul>
@@ -138,6 +156,13 @@ video {height:910px; width: 100%;}
 						<ul class="sublist">
 							<li><a href="<%=request.getContextPath()%>/openQuestionPage">창업 문의 내용</a></li>
 							<li><a href="#">전국 가맹점 보기</a></li>						
+						</ul>
+					</li>
+					<li><a href="#">PRODUCT</a>
+						<ul class="sublist">
+							<li><a href="/myapp/purchase_Confirm">발주확인(본사)</a></li>
+							<li><a href="/myapp/Warehousing_Register">입고등록</a></li>
+							<li><a href="/myapp/Warehousing_Management">입고관리</a></li>					
 						</ul>
 					</li>
 					<li><a href="#">SALES</a>

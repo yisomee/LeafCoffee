@@ -13,8 +13,11 @@
 </head>
 <body>
 <header class="top-menu-nav">
+	<div class="logoimg"><img src="img/leaflogo-removebg-preview.png" onclick="location.href='/myapp/'"/></div>
 	<div id="top-div">
 		<ul id="top-info">
+			<li><a href="/myapp/adminHome">본사</a></li>
+			<li><a href="/myapp/franHome">가맹점</a></li>
 			<li>인사부</li>
 			<li id="info-name">박동현 <span>님</span></li>
 			<li><a href="#">로그아웃</a></li>

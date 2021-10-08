@@ -40,7 +40,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
-	<%@ include file="/inc/top3.jspf" %>
+	<%@ include file="/inc/adminTop.jspf" %>
 	<nav class="top-banner-nav">
 		<div class="tbn-menu1"><a href="<%=request.getContextPath()%>/partnerManagePage">파트너검색</a></div>
 		<div class="tbn-menu2"><a href="<%=request.getContextPath()%>/partnerManageRegi">파트너등록</a></div>	   	   

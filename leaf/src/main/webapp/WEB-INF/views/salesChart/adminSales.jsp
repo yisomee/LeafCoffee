@@ -487,7 +487,7 @@ label.y = 10;
 <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
 </head>
 <body>
-	<%@ include file="/inc/top3.jspf" %>
+	<%@ include file="/inc/adminTop.jspf" %>
 	<nav class="top-banner-nav">
 	   <div class="tbn-menu1"><a href="adminSalesChart.jsp">매출현황</a></div>	   	   	   
 	</nav>

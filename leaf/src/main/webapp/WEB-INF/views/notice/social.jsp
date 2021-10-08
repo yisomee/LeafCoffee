@@ -40,7 +40,7 @@ $(()=>{
 </script>
 </head>
 <body>
-<%@ include file="/inc/top2.jspf" %>
+<%@ include file="/inc/top.jspf" %>
 <header>
 	<img src="img/social2.jpg"/>
 	<span id="headerText">WHAT'S NEW</span>

@@ -140,7 +140,7 @@ dd {
 </style>
 </head>
 <body>
-<%@ include file="/inc/top2.jspf" %>
+<%@ include file="/inc/top.jspf" %>
 	<div class="top">
 		<div class="text">
 			가맹점 창업안내

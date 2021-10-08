@@ -83,7 +83,7 @@ input[type="text"]{
 </script>
 </head>
 <body>
-<%@ include file="/inc/top2.jspf" %>
+<%@ include file="/inc/top.jspf" %>
 <div id='map'>
 </div>
 <div id='mapList'>

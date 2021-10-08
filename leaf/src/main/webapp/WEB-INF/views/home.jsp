@@ -325,7 +325,7 @@ font-size: 3rem;
 	<div class="four">f</div>
 </div>
 <div class="main">
-<%@ include file="/inc/top2.jspf" %>	
+<%@ include file="/inc/top.jspf" %>	
 	<div class="comment"><h1>누구나<br/>마음편히 <br/>마실 수 있게</h1></div>
 	<section class="section1"> <!-- 나중에 이미지 들어갈 곳 -->
 	 	<div id="video_area">

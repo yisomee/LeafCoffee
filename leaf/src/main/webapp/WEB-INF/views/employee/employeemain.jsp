@@ -70,7 +70,7 @@
 </style>
 </head>
 <body>
-	<%@ include file="/inc/top3.jspf" %>
+	<%@ include file="/inc/adminTop.jspf" %>
 	<nav class="top-banner-nav">
 	  <div class="tbn-menu1"><a href="<%=request.getContextPath()%>/employeeManagePage">사원검색</a></div>
 	  <div class="tbn-menu2"><a href="<%=request.getContextPath()%>/employeeRegiPage">사원등록</a></div>	   
