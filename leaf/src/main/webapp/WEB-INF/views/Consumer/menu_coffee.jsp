@@ -200,6 +200,15 @@ $(function(){
 					<div class="imgtext">아이스아메리카노<br/><span class="imgtext2">Iced Americano</span></div>
 					<div class="new">new</div>
 				</li>
+				
+				<c:forEach var="MenuVO" items="${MenuList}"> 
+				<li class="coffee"><div class="imgwrap"><a href="/myapp/menu_detail"><img src="img/americano.png" id="img"/></a></div>
+					<div class="imgtext">${MenuVO.p_name}<br/><span class="imgtext2">${MenuVO.p_ename}</span></div>
+					<div class="new"></div>
+				</li>
+				
+				
+				<!-- 
 				<li class="latte"><div class="imgwrap"><img src="img/latte.png" id="img"/></div>
 					<div class="imgtext">마키아토<br/><span class="imgtext2">Machiato</span></div>
 				</li>
@@ -224,6 +233,8 @@ $(function(){
 				<li class="latte"><div class="imgwrap"><img src="img/Einspanner.png" id="img"/></div>
 					<div class="imgtext">제주바다 아인슈페너<br/><span class="imgtext2">Jeju Ocean Einspanner</span></div>
 				</li>
+				 -->
+				</c:forEach>
 			</ul>
 		</div>
 	</div>	
