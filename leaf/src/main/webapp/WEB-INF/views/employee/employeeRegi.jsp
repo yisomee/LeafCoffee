@@ -44,6 +44,12 @@
 	function deptPopOpen(){		
 		window.open("<%=request.getContextPath()%>/deptlist","dept_list","width=680,height=560");	
 	}
+	
+	function goFocus(inputbox){
+		if(inputbox.value.length==4){
+			frm.tel3.focus();
+		}
+	} 
 </script>
 </head>
 <body>
@@ -54,7 +60,7 @@
 	</nav>
 	<main>
 		<div class="main-Form-bg">
-			<form method="post" action="<%=request.getContextPath()%>/employeeRegister">
+			<form method="post" action="<%=request.getContextPath()%>/employeeRegister" name="frm">
 				<div class="main-form-Con">
 					<strong>사원등록</strong>				
 					<section class="mf-inputCon">

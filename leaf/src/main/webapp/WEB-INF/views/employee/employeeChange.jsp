@@ -39,6 +39,12 @@
 	function deptPopOpen(){		
 		window.open("<%=request.getContextPath()%>/deptlist","dept_list","width=680,height=560");	
 	}
+	function goFocus(inputbox){
+		if(inputbox.value.length==4){
+			frm.tel3.focus();
+		}
+	} 
+	
 </script>
 </head>
 <body>
@@ -50,7 +56,7 @@
 	</nav>
 	<main>
 		<div>
-			<form method="post" action="">
+			<form method="post" action="" name="frm">
 				<div class="main-form-Con">
 					<strong>사원수정</strong>				
 					<section class="mf-inputCon">

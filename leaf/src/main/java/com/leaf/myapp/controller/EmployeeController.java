@@ -1,12 +1,20 @@
 package com.leaf.myapp.controller;
 
+import javax.inject.Inject;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.leaf.myapp.service.EmployeeService;
 
 @Controller
 public class EmployeeController {
-
+	@Inject
+	EmployeeService employeeService;
+	
+	
 	@RequestMapping("/employeeManagePage")
 	public String employeemain() {		
 		return "employee/employeemain";
@@ -23,6 +31,13 @@ public class EmployeeController {
 	public ModelAndView employeeChange() {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("employee/employeeChange");
+		return mav;
+	}
+	// 사원등록
+	@RequestMapping(value="/employeeRegister", method=RequestMethod.POST)
+	public ModelAndView employeeRegister() {
+		ModelAndView mav = new ModelAndView();
+		
 		return mav;
 	}
 	
