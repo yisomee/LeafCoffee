@@ -143,7 +143,6 @@ video {height:910px; width: 100%;}
 			<div class="header">			
 				<div id="menu-bg"></div>
 				<ul class="nav">
-					<li class="home"><a href="<%=request.getContextPath()%>/adminMainPage">HOME</a></li>
 					<li><a href="#">SUPERVISE</a>
 						<ul class="sublist">
 							

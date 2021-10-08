@@ -29,7 +29,7 @@ ul,li{
 .w250, .w280, .w118{
 	border: none;
 	border-bottom: 1px solid black;
-	background: rgb(249, 244, 240);
+	
 	height: 30px;
 }
 .container {
@@ -39,7 +39,7 @@ ul,li{
 
 .leftSide {
 	position: fixed;
-	top: 10%;
+	top: 20%;
 	background: url(img/pngwing.png) no-repeat;
 	width: 40%;
 	height: 700px;
@@ -51,8 +51,7 @@ ul,li{
 	width: 60%;
 	height: 700px;
 	width: 50%;
-	right: 0px;
-	z-index:15;
+	
 }
 
 section {
@@ -83,7 +82,7 @@ section {
     margin-right: 10px;
 }
 .rightTitle{
-	height: 200px;
+	height: 70px;
 }
 .btn-wrap{
 	width: 430px;

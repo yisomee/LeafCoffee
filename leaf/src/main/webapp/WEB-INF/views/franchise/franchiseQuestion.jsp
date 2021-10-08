@@ -20,19 +20,19 @@ ul, li {
 
 .toggleWrap {
 	width: 1400px;
-	margin: 0 auto;
+	margin: 101px auto;
 }
 
 .list-title {
 	border-bottom: 1px solid #ddd;
-	font-size: 1.9em;
+	font-size: 1em;
 	padding: 10px;
 }
 
 .toggleBox {
 	display: none;
 	padding: 20px;
-	font-size: 1.1em;
+	font-size: 1em;
 	color:gray;
 	border-bottom: 1px solid #ddd;
 }
@@ -140,5 +140,6 @@ b {
 
 		</ul>
 	</div>
+	<%@ include file="/inc/bottom3.jspf" %>
 </body>
 </html>

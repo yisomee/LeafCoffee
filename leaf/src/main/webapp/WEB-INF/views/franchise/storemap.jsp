@@ -13,7 +13,7 @@ ul,li{
  margin: 0;
  padding: 0;
  list-style: none;
- font-family: 'Do Hyeon'
+ 
 }
 #map {
 	width: 90%;
@@ -32,6 +32,7 @@ ul,li{
 	width:300px;
 	height: 580px;
 	opacity: 0.8;
+	font-family: 'Do Hyeon'
 }
 .searchstore{
 	background: rgb(0,163,239);
