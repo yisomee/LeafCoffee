@@ -5,8 +5,22 @@ public class NoticeVO {
 	private String title;
 	private String writedate;
 	private int hit;
-	private String username;
+	private String userid;
+	private String content;
 	
+	
+	public String getUserid() {
+		return userid;
+	}
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
 	public int getNo() {
 		return no;
 	}
@@ -30,12 +44,6 @@ public class NoticeVO {
 	}
 	public void setHit(int hit) {
 		this.hit = hit;
-	}
-	public String getUsername() {
-		return username;
-	}
-	public void setUsername(String username) {
-		this.username = username;
 	}
 	
 	

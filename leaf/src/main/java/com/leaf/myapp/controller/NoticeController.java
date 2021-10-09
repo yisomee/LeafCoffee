@@ -3,9 +3,11 @@ package com.leaf.myapp.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.leaf.myapp.service.NoticeService;
@@ -17,7 +19,7 @@ public class NoticeController {
 	@Inject
 	NoticeService noticeService;
 	
-	//±Û ¸ñ·Ï
+	//ê¸€ ëª©ë¡
 	@RequestMapping("/noticeList")
 	public ModelAndView noticeList() {
 		ModelAndView mav = new ModelAndView();
@@ -25,7 +27,8 @@ public class NoticeController {
 		mav.setViewName("notice/noticeList");
 		return mav;
 	}	
-	//°Ô½Ã±Ûº¸±â
+	
+	//ê²Œì‹œê¸€ë³´ê¸°
 	@RequestMapping("/noticeDetail")
 	public ModelAndView noticeDetail(int no) {
 		ModelAndView mav = new ModelAndView();
@@ -33,23 +36,60 @@ public class NoticeController {
 		mav.setViewName("notice/noticeDetail");
 		return mav;	
 	}
-	//±Û »èÁ¦
+	//ê¸€ ì‚­ì œ
 	@RequestMapping("/noticeDelete")
-	public String NoticeDelete() {
-		return "/notice/noticeList";
+	public ModelAndView NoticeDelete(int no, HttpSession session) {
+		String userid = "goguma";
+		int result = noticeService.noticeDel(no, userid);
+		ModelAndView mav = new ModelAndView();
+		if(result>0) {
+			mav.setViewName("redirect:noticeList");
+		}else {
+			mav.addObject("no", no);
+			mav.setViewName("redirect:noticeDetail");
+		}
+		return mav;
 	}
-	//±Û ¼öÁ¤
+	//ê¸€ ìˆ˜ì •
 	@RequestMapping("/noticeEdit")
-	public String noticeEdit() {
-		return "/notice/noticeEdit";
+	public ModelAndView noticeEdit(int no) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("vo", noticeService.noticeView(no));
+		mav.setViewName("notice/noticeEdit");
+		return mav;
 	}
-	//±Û¾²±â
+	@RequestMapping(value="/noticeEditOk", method=RequestMethod.POST)
+	public ModelAndView noticeEditOk(NoticeVO vo, HttpSession ses) {
+		vo.setUserid((String)ses.getAttribute("userid"));
+		int result = noticeService.noticeEdit(vo);
+		ModelAndView mav = new ModelAndView();
+		if(result>0) {
+			mav.addObject("no", vo.getNo());
+			mav.setViewName("redirect:noticeDetail");
+		}else {
+			mav.setViewName("notice/noticeEditResult");
+		}
+		return mav;
+	}
+	//ê¸€ì“°ê¸°
 	@RequestMapping("/noticeWrite")
 	public String noticeWrite(){
 		return "/notice/noticeForm";
 	}
-	
-	//»çÈ¸°øÇå ÆäÀÌÁö
+	//ï¿½Ûµï¿½ï¿½ï¿½Ï±ï¿½
+	@RequestMapping(value="/noticeWriteOk", method=RequestMethod.POST)
+	public ModelAndView noticeWriteOk(NoticeVO vo, HttpSession session) {
+//		vo.setUserid((String)session.getAttribute("userid"));		
+		int writeResult = noticeService.noticeWrite(vo);
+		ModelAndView mav = new ModelAndView();
+		 if(writeResult>0) {//ï¿½Û¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	         mav.setViewName("redirect:noticeList");
+	     }else {
+	         mav.setViewName("redirect:noticeWrite");
+	     }
+	     return mav;
+	}
+	//ì‚¬íšŒê³µí—Œ í˜ì´ì§€
 	@RequestMapping("/social")
 	public String social() {
 		return "/notice/social";

@@ -9,7 +9,7 @@
 <style>
 	body{margin:0;}
 	ul,li{list-style-type: none;padding:0;margin:0;}
-	a:link, a:hover a:visited{color: dimgray;text-decoration: none;}
+	a:link, a:hover a:visited{color: dimgray;text-decoration:none;}
 	header img{width:100%;height:250px;}
 	header{height:250px;}
 	#headerText{position:relative;top:-100px;left:800px;font-size:3em;color:white;z-index:100;opacity:0.5}
@@ -32,10 +32,16 @@
 	.link>li:first-child{font-size:0.8em;font-weight:bold;}
 </style>	
 <script>
+	function delCheck(no){
+		if(confirm("삭제할까요?")){
+			location.href='/myapp/noticeDelete?no='+no;
+		}
+	}
 $(()=>{	
 	$("#headerText").animate({
   	  top: "-160px", opacity:1
   	  }, 1200,);
+	
 });
 </script>
 </head>
@@ -56,8 +62,8 @@ $(()=>{
 	</div>
 </div>
 <div class="btnList">
-	<button type="button" onclick="location.href='/myapp/noticeList'">삭제</button>
-	<button type="button" onclick="location.href='/myapp/noticeEdit'">수정</button>
+	<button type="button" onclick="location.href='javascript:delCheck(${noticeVo.no})'">삭제</button>
+	<button type="button" onclick="location.href='/myapp/noticeEdit?no=${noticeVo.no}'">수정</button>
 	<button type="button" onclick="location.href='/myapp/noticeList'">목록</button>
 </div>	
 <div class="prev_nextBtn">

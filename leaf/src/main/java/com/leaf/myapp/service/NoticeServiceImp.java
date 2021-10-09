@@ -21,5 +21,19 @@ public class NoticeServiceImp implements NoticeService{
 	public NoticeVO noticeView(int no) {
 		return noticeDAO.noticeView(no);
 	}
+	@Override
+	public int noticeWrite(NoticeVO vo) {
+
+		return noticeDAO.noticeWrite(vo);
+	}
+	@Override
+	public int noticeEdit(NoticeVO vo) {
+		
+		return noticeDAO.noticeEdit(vo);
+	}
+	@Override
+	public int noticeDel(int no, String userid) {
+		return noticeDAO.noticeDel(no, userid);
+	}
 	
 }
