@@ -35,14 +35,14 @@ public class EmployeeController {
 		return mav;
 	}
 	
-	// »ç¿øµî·Ï Æû¿¡¼­ °¡ÀÔÇÑ ¾ÆÀÌµðÀÎÁö È®ÀÎ
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 	@RequestMapping(value="/employeeJoinChecking", produces="application/text;charset=UTF-8")
 	@ResponseBody
 	public String employeeJoinCheck(String userid) {
-		
+		return "";
 	}
 	
-	// »ç¿øµî·Ï
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping(value="/employeeRegister", method=RequestMethod.POST)
 	public ModelAndView employeeRegister() {
 		ModelAndView mav = new ModelAndView();
