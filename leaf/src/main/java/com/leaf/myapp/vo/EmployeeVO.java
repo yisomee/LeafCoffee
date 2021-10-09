@@ -1,6 +1,6 @@
 package com.leaf.myapp.vo;
 
-public class EmplyeeVO {
+public class EmployeeVO {
 	private int emp_num;
 	private String emp_posi; // 직급
 	private String emp_regdate; // 입사일		

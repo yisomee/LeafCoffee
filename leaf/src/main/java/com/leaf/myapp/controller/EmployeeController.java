@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
+import com.leaf.myapp.vo.EmployeeVO;
 import com.leaf.myapp.service.EmployeeService;
 
 @Controller
@@ -35,20 +35,19 @@ public class EmployeeController {
 		return mav;
 	}
 	
-	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
-	@RequestMapping(value="/employeeJoinChecking", produces="application/text;charset=UTF-8")
-	@ResponseBody
-	public String employeeJoinCheck(String userid) {
-		return "";
-	}
-	
-	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-	@RequestMapping(value="/employeeRegister", method=RequestMethod.POST)
-	public ModelAndView employeeRegister() {
-		ModelAndView mav = new ModelAndView();
+	// »ç¿øµî·Ï Æû¿¡¼­ °¡ÀÔÇÑ ¾ÆÀÌµðÀÎÁö È®ÀÎ
+		@RequestMapping(value="/employeeJoinChecking")
+		@ResponseBody
+		public EmployeeVO employeeJoinCheck(String userid) {		
+			return employeeService.checkJoinId(userid);
+		}
 		
-		return mav;
-	}
+		// »ç¿øµî·Ï
+		@RequestMapping(value="/employeeRegister", method=RequestMethod.POST)
+		public ModelAndView employeeRegister() {
+			ModelAndView mav = new ModelAndView();		
+			return mav;
+		}
 	
 	
 }
