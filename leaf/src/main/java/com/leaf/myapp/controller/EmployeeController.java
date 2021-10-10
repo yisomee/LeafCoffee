@@ -36,18 +36,18 @@ public class EmployeeController {
 	}
 	
 	// 사원등록 폼에서 가입한 아이디인지 확인
-		@RequestMapping(value="/employeeJoinChecking")
-		@ResponseBody
-		public EmployeeVO employeeJoinCheck(String userid) {		
-			return employeeService.checkJoinId(userid);
-		}
+	@RequestMapping("/employeeJoinChecking")
+	@ResponseBody
+	public EmployeeVO employeeJoinCheck(String userid) {		
+		return employeeService.checkJoinId(userid);
+	}
 		
-		// 사원등록
-		@RequestMapping(value="/employeeRegister", method=RequestMethod.POST)
-		public ModelAndView employeeRegister() {
-			ModelAndView mav = new ModelAndView();		
-			return mav;
-		}
+	// 사원등록
+	@RequestMapping(value="/employeeRegister", method=RequestMethod.POST)
+	public ModelAndView employeeRegister() {
+		ModelAndView mav = new ModelAndView();		
+		return mav;
+	}
 	
 	
 }
