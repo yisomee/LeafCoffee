@@ -163,9 +163,9 @@ body{
             </li>
             <li><label class="label">주소</label><input type="text" name="addr" id="addr" class="inputBox"/></li>
             <li><label class="label">상세주소</label><input type="text" name="addrdetail" id="addrdetail" class="inputBox"/></li>
-            <li><label class="label">이메일</label><input type="text" name="emailid" class="inputBox"/>@
-            <input type="text" name="domain" class="inputBox">
-            <input type="button" id="" value="인증하기"/>
+            <li><label class="label">이메일</label><input type="text" id="emailid" name="emailid" class="inputBox"/>@
+            <input type="text" name="domain" id="domain" class="inputBox">
+            <input type="button" name="emailConfirm" id="emailConfirm" value="인증하기"/>
             </li>
             <li id="joinbtn"><input type="submit" value="가입하기"class="join" /></li>
       </form>
@@ -212,7 +212,7 @@ const config = {
          $(function(){
             $("#idChk").click(function(){
                var datas="userid="+$("#userid").val().trim();
-                  console.log(datas);//고구마들어옴.
+                  //console.log(datas);//고구마들어옴.
                $.ajax({
                   url:"/myapp/idCheck",
                   data:datas,
@@ -278,6 +278,28 @@ const config = {
 
              });
          });
+//이메일 인증번호 확인했을때 팝업창
+
+	$(function(){
+		$('#emailConfirm').click(function(){
+			var datas="email="+$("#emailid").val()+"@"+$("#domain").val();
+      console.log(datas);//고구마들어옴.
+        $.ajax({
+           url:"/myapp/emailSending",
+           data:datas,
+           success:function(result){
+              console.log(result);
+				let popUrl="/myapp/register/emailCheck?dice="+result;
+				let popOption="width = 400px, height=400px, top=300px, left=300px, scrollbars=yes";
+				
+				window.open(popUrl,"이메일 인증",popOption);	
+              
+            
+           }
+        });
+     });
+		
+});
 
 
 </script>
