@@ -56,7 +56,7 @@
 	    border: 0;
 	}
 	.bx-wrapper{
-		height: 610px;
+		height: 800px;
 		overflow: hidden;
 	}
 	.blank{
@@ -121,7 +121,7 @@
 	    margin-left:-500px;
 	}
 	.fav_img{
-	    top: 800px;
+	    top: 1000px;
 	    left: 1000px;
 	    right: -10px;
 	    width: 672px;
@@ -217,16 +217,16 @@
 
 		 // 스크롤
 		 $(window).scroll(function() {
-			 if(window.scrollY > 1500) {
+			 if(window.scrollY > 1000) {
 			 	$('.noticeText_icon').animate({marginLeft:'500px'},1500);
 			 }
-			 if(window.scrollY > 600) {
+			 if(window.scrollY > 400) {
 				 	$('.blank_text1').animate({marginLeft:'400px'},500);
 				 }
-			 if(window.scrollY > 600) {
+			 if(window.scrollY > 400) {
 				 	$('.blank_text2').animate({marginLeft:'400px'},1000);
 				 }
-			 if(window.scrollY > 600) {
+			 if(window.scrollY > 400) {
 				 	$('.blank_text3').animate({marginLeft:'400px'},1500);
 				 }
 		 });
