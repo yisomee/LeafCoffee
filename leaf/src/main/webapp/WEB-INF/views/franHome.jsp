@@ -30,8 +30,8 @@
 
 	.item>img{
     width: 100%;
-    height: 100vh;
     border:0;
+    margin-top: -150px;
 }
 /* 이솜이 파일 css */
 	#backImg{
@@ -55,6 +55,10 @@
 	    box-shadow: none;
 	    border: 0;
 	}
+	.bx-wrapper{
+		height: 610px;
+		overflow: hidden;
+	}
 	.blank{
 	    position: relative;
 	    z-index: -2;
@@ -65,7 +69,7 @@
 	.notice{
 	    display: flex;
 	    flex: 4 1 0;
-	    height: 800px;
+	    height: 740px;
 	    background-color:white;  /*#e0e5ec;*/
 	    
 	}
@@ -86,6 +90,7 @@
 		position: absolute;
 		z-index: 10;
 		top: -300px;
+		right:3%;
 		color:white;
 		font-size: 2em;
 		font-weight:bold;
@@ -116,13 +121,13 @@
 	    margin-left:-500px;
 	}
 	.fav_img{
-		background-image: url(https://image.istarbucks.co.kr/upload/common/img/main/2021/2021_autumn_fav.png);
-	    top: -409px;
+	    top: 800px;
 	    left: 1000px;
 	    right: -10px;
 	    width: 672px;
 	    height: 458px;
-	    position: relative;
+	    position: absolute;
+}
 	}
 	
 	
@@ -239,18 +244,18 @@
             <img src="img/coffee8.jpg"/>
         </div>
         <div class="item">
-            <img src="img/main1.jpg"/>
+            <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8"/>
     	</div>
     </div>
     <div>
 		<ul id="main1_imgSlider_Txt">
 			<li><span id="imgText">우리의 작은 말과 행동</span><br/>
 				 곧 우리의 브랜드가 됩니다</li>
-			<li><span id="imgText">고객이 신뢰할 수 있는 품질로</span> <br/>
+			<li><span id="imgText">고객이 신뢰할 수<br/>있는 품질로</span> <br/>
 				사랑받는 브랜드, 존경받는 기업이 됩시다</li>
-			<li><span id="imgText">우리가 만드는 제품과 서비스로</span><br/>
+			<li><span id="imgText">우리가 만드는 <br/>제품과 서비스로</span><br/>
 				 고객의 하루를 행복하게 합니다. </li>
-			<li><span id="imgText">맛있는 커피와 최고의 서비스로</span><br/>
+			<li><span id="imgText">맛있는 커피와 <br/>최고의 서비스로</span><br/>
 				 다시찾고 싶은 휴식공간이 되겠습니다.
 			</li>
 					
@@ -258,7 +263,9 @@
 	</div>
     <div class="blank"></div>
     <span class="blank_text1">PICK </span><br/><span class="blank_text2">YOUR</span><br/> <span class="blank_text3">FAVORITE</span>
-    <div class="fav_img"></div>
+    <div class="fav_img">
+    	<img alt="" src="https://image.istarbucks.co.kr/upload/common/img/main/2021/2021_autumn_fav.png">
+    </div>
             <div class="notice">
             <div class="noticeText_icon">
                 <div class="noticeText">NOTICE</div><br/>
@@ -275,5 +282,5 @@
              </div>
       
        <!-- background -->
-	 <div id="backImg"><img src="img/main1.jpg"  alt=""></div>
-	 <%@ include file="/inc/bottom.jspf" %>
+	 <div id="backImg"><img src="https://www.baristapaulbassett.co.kr/images/aboutus/ceo01.jpg"  alt=""></div>
+	 <%@ include file="/inc/bottom3.jspf" %>
