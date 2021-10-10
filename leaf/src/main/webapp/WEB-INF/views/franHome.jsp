@@ -121,9 +121,8 @@
 	    margin-left:-500px;
 	}
 	.fav_img{
-	    top: 1000px;
-	    left: 1000px;
-	    right: -10px;
+	    top: 1060px;
+   		left: 960px;
 	    width: 672px;
 	    height: 458px;
 	    position: absolute;
@@ -209,7 +208,7 @@
 	    
 		//이미지 설명
 		$('#main1_imgSlider_Txt').innerfade({
-			animationtype : 'slide',
+			animationtype : 'fade',
 			speed : 2000,
 			delay : 500,
 			timeout : 5000
@@ -220,10 +219,10 @@
 			 if(window.scrollY > 1000) {
 			 	$('.noticeText_icon').animate({marginLeft:'500px'},1500);
 			 }
-			 if(window.scrollY > 400) {
+			 if(window.scrollY > 450) {
 				 	$('.blank_text1').animate({marginLeft:'400px'},500);
 				 }
-			 if(window.scrollY > 400) {
+			 if(window.scrollY > 420) {
 				 	$('.blank_text2').animate({marginLeft:'400px'},1000);
 				 }
 			 if(window.scrollY > 400) {
@@ -266,6 +265,7 @@
     <div class="fav_img">
     	<img alt="" src="https://image.istarbucks.co.kr/upload/common/img/main/2021/2021_autumn_fav.png">
     </div>
+    <div class="blank"></div>
             <div class="notice">
             <div class="noticeText_icon">
                 <div class="noticeText">NOTICE</div><br/>
