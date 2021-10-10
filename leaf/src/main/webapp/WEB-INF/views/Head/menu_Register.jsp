@@ -21,8 +21,9 @@
 	}
 	
 	.row{
-		width:100px;
+		width:131px;
 		display: inline-block;
+		font-weight:bold;
 	}
 	.Nutrition{
 		position: relative;
@@ -56,7 +57,7 @@
 		
 	}
 	.will-be-moved {
-		top: -143px;
+		top: -137px;
     	position: relative;
 	}
 	input{
@@ -152,34 +153,63 @@
 		       }, 1200,);
 	});
 	
+	$(function(){
+		console.log("폼", $(".form"));
+		$(".m_code").change(function(){
+			var selectedCtg = $(".m_code:selected").val();
+			if(selectedCtg == "coffee") {
+				$(".s_code .coffee").css('display','block');
+				$(".s_code :not(.coffee)").css('display','none');
+			}else if(selectedCtg == "beverage"){
+				$(".s_code .beverage").css('display','block');
+				$(".s_code :not(.beverage)").css('display','none');
+			}else if(selectedCtg == "food"){
+				$(".s_code .food").css('display','block');
+				$(".s_code :not(.food)").css('display','none');
+			}else if(selectedCtg == "product"){
+				$(".s_code .product").css('display','block');
+				$(".s_code :not(.product)").css('display','none');
+			}	
+	
+		});
+
+		$("#headerText").animate({
+		       top: "-160px", opacity:1
+		       }, 1200,);
+	});
+	
 </script>
 <header>
 	<div id="head_img"></div>
-	<div id="headerText">MENU</div>
+	<div id="headerText">MENU REGISTER</div>
 </header>
-	<form method="post" action="/myapp/menu_RegisterOk">
+	<form method="post" action="/myapp/menu_RegisterOk" >
 		<div class="container">
 			<div class="inputbox">
-				<div id="reg">등록하기</div><br/><br/>
+				<!-- <div id="reg">등록하기</div><br/><br/> -->
 				<div class="row">분  류</div>
-					<select class="form" name="l_ctg">
-					    <option value="">대분류</option>
-					    <option value="10">food</option>
-					    <option value="20"> product</option>
+				    <select class="form m_code"  name="m_code">
+					    <option value="">메뉴선택</option>
+					    <option value="coffee" class="m_code coffee">coffee</option>
+					    <option value="beverage" class="m_code beverage">beverage</option>
+					    <option value="food" class="m_code food">food</option>
+					    <option value="product" class="m_code product">product</option>
 				    </select>
-				    <select class="form"  name="m_ctg">
-					    <option value="">중분류</option>
-					    <option value="11">coffee</option>
-					    <option value="12">beverage</option>
-					    <option value="13">food</option>
-				    </select>
-				    <select class="form"  name="s_ctg">
-					    <option value="">소분류</option>
-					    <option value="110">coffee</option>
-					    <option value="111">espresso</option>
-					    <option value="112">latte</option>
+				    <select class="form s_code"  name="s_code">
+					    <option value="" >상세분류</option>
+					    <option value="shot" class="coffee">shot</option>
+					    <option value="latte" class="coffee">latte</option>
+					    <option value="espresso" class="coffee">espresso</option>
+					    <option value="bakery" class="food">bakery</option>
+					    <option value="cake" class="food">cake</option>
+					    <option value="tea" class="beverage">tea</option>
+					    <option value="ade" class="beverage">ade</option>
+					    <option value="yogurt" class="beverage">yogurt</option>
+					    <option value="Bean" class="product">Bean</option>
+					    <option value="Tumbler" class="product">Tumbler</option>
+					    <option value="product" class="product">mug</option>
 				    </select><br/><br/>
-				
+		
 				<div class="row">제품명</div>
 					<input type="text" class="form" name="p_name"/><br/>
 				<div class="row">제품명(영어)</div>	
@@ -207,7 +237,7 @@
 					<textarea id="memo" placeholder="글내용을 입력하는 곳" name="p_desc"></textarea><br/>
 				</div><br/>
 				<div id="submit"><input type="submit" value="등록하기"/></div>
-				<div id="fileimg"><img src="img/menu_image.png"/>
+				<div id="fileimg"><img src="img/menuregister.png"/>
 					 <div id="file"><label for="filename" id="filebutton">파일선택</label><div id="uploaded"></div><input type="file" name="p_img" id="filename" /></div>
 				</div>
 			</div>	

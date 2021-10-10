@@ -170,7 +170,7 @@ height: 46px;
 					<li><a href="/myapp/menu_Coffee">COFFEE</a></li>
 					<li><a href="/myapp/menu_Food">FOOD</a></li>
 					<li><a href="/myapp/menu_Beverage">BEVERAGE</a></li>
-					<li><a href="#">MD PRODUCT</a></li>
+					<li><a href="/myapp/menu_Product">MD PRODUCT</a></li>
 				</ul>					
 			</li>
 <!----------------------------------  -->	

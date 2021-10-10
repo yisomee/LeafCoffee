@@ -199,6 +199,12 @@ $(function(){
 				<div class="imgtext">다크 헤이즐넛 케이크<br/><span class="imgtext2">Dark Hazelnut Cake</span></div>
 				<div class="new">new</div>
 			</li>	
+			<c:forEach var="MenuVO" items="${MenuList}"> 
+				<li class="${MenuVO.s_code}"><div class="imgwrap"><a href="/myapp/menu_detail?p_num=${MenuVO.p_num}"><img src="img/${MenuVO.p_img}" id="img"/></a></div>
+					<div class="imgtext">${MenuVO.p_name}<br/><span class="imgtext2">${MenuVO.p_ename}</span></div>
+					<div class="${MenuVO.new_best}">${MenuVO.new_best}</div>
+				</li>
+			</c:forEach>
 		</ul>
 	</div>
 </div>	

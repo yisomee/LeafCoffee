@@ -2,9 +2,9 @@ package com.leaf.myapp.vo;
 
 public class MenuVO {
 	private int p_num;
-	private int l_code;
-	private int m_code;
-	private int s_code;
+	private String m_code;
+	private String s_code;
+
 	private String p_name;
 	private String p_ename;
 	private int p_price;
@@ -26,25 +26,6 @@ public class MenuVO {
 	}
 	public void setP_num(int p_num) {
 		this.p_num = p_num;
-	}
-	
-	public int getL_code() {
-		return l_code;
-	}
-	public void setL_code(int l_code) {
-		this.l_code = l_code;
-	}
-	public int getM_code() {
-		return m_code;
-	}
-	public void setM_code(int m_code) {
-		this.m_code = m_code;
-	}
-	public int getS_code() {
-		return s_code;
-	}
-	public void setS_code(int s_code) {
-		this.s_code = s_code;
 	}
 	public String getP_name() {
 		return p_name;
@@ -148,6 +129,18 @@ public class MenuVO {
 	}
 	public void setP_info7(String p_info7) {
 		this.p_info7 = p_info7;
+	}
+	public String getM_code() {
+		return m_code;
+	}
+	public void setM_code(String m_code) {
+		this.m_code = m_code;
+	}
+	public String getS_code() {
+		return s_code;
+	}
+	public void setS_code(String s_code) {
+		this.s_code = s_code;
 	}
 	
 }

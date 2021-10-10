@@ -196,44 +196,12 @@ $(function(){
 		</div>
 		<div>
 			<ul class="menuList">
-				<li class="coffee"><div class="imgwrap"><a href="/myapp/menu_detail"><img src="img/americano.png" id="img"/></a></div>
-					<div class="imgtext">아이스아메리카노<br/><span class="imgtext2">Iced Americano</span></div>
-					<div class="new">new</div>
-				</li>
-				
+			
 				<c:forEach var="MenuVO" items="${MenuList}"> 
-				<li class="coffee"><div class="imgwrap"><a href="/myapp/menu_detail?p_num=${MenuVO.p_num}"><img src="img/americano.png" id="img"/></a></div>
+				<li class="${MenuVO.s_code}"><div class="imgwrap"><a href="/myapp/menu_detail?p_num=${MenuVO.p_num}"><img src="img/${MenuVO.p_img}" id="img"/></a></div>
 					<div class="imgtext">${MenuVO.p_name}<br/><span class="imgtext2">${MenuVO.p_ename}</span></div>
 					<div class="${MenuVO.new_best}">${MenuVO.new_best}</div>
-				</li>
-				
-				
-				<!-- 
-				<li class="latte"><div class="imgwrap"><img src="img/latte.png" id="img"/></div>
-					<div class="imgtext">마키아토<br/><span class="imgtext2">Machiato</span></div>
-				</li>
-				<li class="espresso"><div class="imgwrap"><img src="img/espresso.png" id="img"/></div>
-					<div class="imgtext">에스프레소<br/><span class="imgtext2">Espresso</span></div>
-					<div class="best">best</div>
-				</li>
-				<li class="latte"><div class="imgwrap"><img src="img/icecreamlatte.png" id="img"/></div>
-					<div class="imgtext">아이스크림라떼<br/><span class="imgtext2">Icecream Latte</span></div>
-					<div class="best">best</div>
-				</li>
-				<li class="latte"><div class="imgwrap"><img src="img/malcha.png" id="img"/></div>
-					<div class="imgtext">아이스 제주 말차 카페 라떼<br/><span class="imgtext2">Iced Jeju Malcha Cafe Latte</span></div>
-				</li>
-				<li class="latte"><div class="imgwrap"><img src="img/latte2.png" id="img"/></div>
-					<div class="imgtext">아이스 카페라떼<br/><span class="imgtext2">Iced Cafe Latte</span></div>
-					<div class="best">best</div>
-				</li>
-				<li class="latte"><div class="imgwrap"><img src="img/caramel.png" id="img"/></div>
-					<div class="imgtext">아이스 카라멜마끼야또<br/><span class="imgtext2">Iced Caramel Macchiato</span></div>
-				</li>
-				<li class="latte"><div class="imgwrap"><img src="img/Einspanner.png" id="img"/></div>
-					<div class="imgtext">제주바다 아인슈페너<br/><span class="imgtext2">Jeju Ocean Einspanner</span></div>
-				</li>
-				 -->
+				</li> 
 				</c:forEach>
 			</ul>
 		</div>

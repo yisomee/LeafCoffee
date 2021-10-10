@@ -15,11 +15,7 @@ public class MenuServiceImp implements MenuService{
 	@Inject
 	MenuDAO menuDAO;
 
-	@Override
-	public List<MenuVO> MenuList() {
-		// TODO Auto-generated method stub
-		return menuDAO.MenuList();
-	}
+	
 
 	@Override
 	public int Menu_RegisterOk(MenuVO vo) {
@@ -32,5 +28,13 @@ public class MenuServiceImp implements MenuService{
 		// TODO Auto-generated method stub
 		return menuDAO.MenuDetail(p_num);
 	}
+
+	@Override
+	public List<MenuVO> MenuList(String m_code) {
+		// TODO Auto-generated method stub
+		return menuDAO.MenuList(m_code);
+	}
+
+
 	
 }

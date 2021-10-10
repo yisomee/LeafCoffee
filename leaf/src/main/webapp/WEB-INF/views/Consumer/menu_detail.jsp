@@ -74,14 +74,14 @@
 		제공사이즈 : Standard
 	</div>
 	</div>
-	<div><img src="img/americano.png" id="img"/></div>
+	<div><img src="img/${MenuVO.p_img}" id="img"/></div>
 	<div id="right_content">
 	<i class="fas fa-flask"></i>
 	<!-- <i class="fas fa-mug-hot"></i> -->
 		<div class= "content_4"> 영양 정보 </div><br/>
 		<div class= "content_5">1회제공량기준 standard</div><br/>
 		<div class= "content_6">제공량(ml) <span> ${MenuVO.p_info1 } </span>
-			<hr/><br/>열량(kcal)  <span> ${MenuVO.p_info2 } </span> 당류(g) <span>  ${MenuVO.p_info3 } </span><br/><br/>
+			<hr/><br/>열량(kcal)  <span> &nbsp;&nbsp;${MenuVO.p_info2 } </span> 당류(g) <span>  ${MenuVO.p_info3 } </span><br/><br/>
 					  나트륨(mg)  <span>  ${MenuVO.p_info4 }  </span> 단백질(g) 	<span>  ${MenuVO.p_info5 }  </span><br/><br/>
 					  포화지방(g)  <span>  ${MenuVO.p_info6 }  </span> 카페인(mg) <span>  ${MenuVO.p_info7 }  </span>
 		</div>

@@ -208,6 +208,12 @@ $(function(){
 			<li class="yogurt"><div class="imgwrap"><img src="img/StrawberryYogurt.png" id="img"/></div>
 				<div class="imgtext">스트로베리 요거트<br/><span class="imgtext2">Strawberry Yogurt</span></div>
 			</li>
+			<c:forEach var="MenuVO" items="${MenuList}"> 
+				<li class="${MenuVO.s_code}"><div class="imgwrap"><a href="/myapp/menu_detail?p_num=${MenuVO.p_num}"><img src="img/${MenuVO.p_img}" id="img"/></a></div>
+					<div class="imgtext">${MenuVO.p_name}<br/><span class="imgtext2">${MenuVO.p_ename}</span></div>
+					<div class="${MenuVO.new_best}">${MenuVO.new_best}</div>
+				</li>
+			</c:forEach>
 		</ul>
 	</div>
 </div>	
