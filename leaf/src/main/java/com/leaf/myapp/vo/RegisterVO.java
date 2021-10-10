@@ -10,17 +10,17 @@ public class RegisterVO {
 	private String regdate;
 	private String addr;
 	private String auth;
-	
-	// ¿¬¶ôÃ³
+	private String publeYear;
+	// ï¿½ï¿½ï¿½ï¿½Ã³
 	private String tel;
 	private String tel1;
 	private String tel2;
 	private String tel3;
 	
-	// ÀÌ¸ÞÀÏ
+	// ï¿½Ì¸ï¿½ï¿½ï¿½
 	private String email;
-	private String emailid; // @¾Õ
-	private String domain; // @µÚ	
+	private String emailid; // @ï¿½ï¿½
+	private String domain; // @ï¿½ï¿½	
 	
 	
 	public String getUserid() {
@@ -42,10 +42,13 @@ public class RegisterVO {
 		this.username = username;
 	}
 	public String getBirth() {
+		birth=publeYear;
 		return birth;
 	}
 	public void setBirth(String birth) {
 		this.birth = birth;
+		
+		
 	}
 	public int getMembership() {
 		return membership;
@@ -73,7 +76,7 @@ public class RegisterVO {
 	}
 	
 	
-	// ÀÌ¸ÞÀÏ
+	// ï¿½Ì¸ï¿½ï¿½ï¿½
 	public String getEmail() {
 		email = emailid+"@"+domain;
 		return email;
@@ -100,7 +103,7 @@ public class RegisterVO {
 		this.domain = domain;
 	}
 
-	// ¿¬¶ôÃ³
+	// ï¿½ï¿½ï¿½ï¿½Ã³
 	public String getTel() {
 		tel = tel1+"-"+tel2+"-"+tel3;
 		return tel;
@@ -132,6 +135,13 @@ public class RegisterVO {
 	public void setTel3(String tel3) {
 		this.tel3 = tel3;
 	}
+	public String getPubleYear() {
+		return publeYear;
+	}
+	public void setPubleYear(String publeYear) {
+		this.publeYear = publeYear;
+	}
+	
 	
 
 }

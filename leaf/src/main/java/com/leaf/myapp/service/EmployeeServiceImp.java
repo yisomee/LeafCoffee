@@ -6,7 +6,7 @@ import com.leaf.myapp.vo.EmployeeVO;
 import com.leaf.myapp.dao.EmployeeDAO;
 
 @Service
-public class EmployeeImp implements EmployeeService{
+public class EmployeeServiceImp implements EmployeeService{
 	@Inject
 	EmployeeDAO employeeDAO;
 

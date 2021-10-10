@@ -163,8 +163,8 @@ body{
             </li>
             <li><label class="label">주소</label><input type="text" name="addr" id="addr" class="inputBox"/></li>
             <li><label class="label">상세주소</label><input type="text" name="addrdetail" id="addrdetail" class="inputBox"/></li>
-            <li><label class="label">이메일</label><input type="text" name="email" class="inputBox"/>@
-            <input type="text" name="" class="inputBox">
+            <li><label class="label">이메일</label><input type="text" name="emailid" class="inputBox"/>@
+            <input type="text" name="domain" class="inputBox">
             <input type="button" id="" value="인증하기"/>
             </li>
             <li id="joinbtn"><input type="submit" value="가입하기"class="join" /></li>
