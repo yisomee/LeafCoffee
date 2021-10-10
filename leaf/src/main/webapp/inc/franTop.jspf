@@ -146,7 +146,7 @@ $(function(){/*메뉴바 전체가 나오는거*/
 			<li><a href="/myapp/adminHome">본사</a></li>
 			<li><a href="/myapp/franHome">가맹점</a></li>
 			<li><a href="/myapp/loginOk">LOGIN</a></li>
-			<li><a href="/myapp/registerOk">JOIN</a></li>	
+			<li><a href="/myapp/register">JOIN</a></li>	
 		</ul>
 	</div>
 	
