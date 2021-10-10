@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <title>사원 등록</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.2.0/css/all.min.css" integrity="sha512-6c4nX2tn5KbzeBJo9Ywpa0Gkt+mzCzJBrE1RB6fmpcsoN+b/w/euwIMuQKNyUoU/nToKN3a8SgNOtPrbW12fug==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <style>
 	/*.main-Form-bg{background-image: url(img/regibg1.jpg); background-size: cover; background-attachment: fixed;}*/
 	.main-form-Con{max-width: 570px; margin: 0 auto; padding: 70px 0 50px;}
@@ -18,11 +19,12 @@
 	.mfi-inputbox .mfi-iB-tel select{width:30%; display:inline-block; height:47px; margin-right:20px;} 
 	.mfi-inputbox .mfi-iB-tel input{width:30%; margin-right:20px;}
 	.mfi-inputbox .mfi-iB-tel input:last-of-type{width:30%; margin-right:0px;}
-	.mfi-inputbox #employeeJoinCheck{width:400px;}
-	.mfi-inputbox #joinCheck{width:122px; background:rgb(0,163,239); color:#fff; border:white;}
+	.mfi-inputbox #employeeJoinCheck{width:400px; float:left;}
+	.mfi-inputbox #joinCheck{width:122px; background:rgb(0,163,239); color:#fff; border:0px solid; margin-left:6px; box-sizing:border-box;}
 	/* 부서파트 */
 	.mfi-inputbox #dept_name{width:460px;}
 	.mfi-inputbox #dept_img{width:48px; height:48px; float:right; background-image:url(img/empimg.png); background-size:cover;box-sizing: border-box; border: 1px solid gray;}
+	.mfi-inputbox #emp_posi{width:530px; display:inline-block; height:47px; margin-right:20px;}
 	.regiForm-submit{width: 530px; margin: 0 auto; padding:20px 20px 40px;}
 	.regiForm-submit #emp-regi{width:530px; padding:15px;background: rgb(0,192,239); border: 1px solid white; color: white; font-size: 1.1em}
 	
@@ -42,6 +44,9 @@
    .top-banner-nav>.tbn-menu2{border-bottom:4px solid rgb(0, 163, 239);}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
+<script src="https://npmcdn.com/flatpickr/dist/l10n/ko.js"></script>
 <script>
 	function deptPopOpen(){		
 		window.open("<%=request.getContextPath()%>/deptlist","dept_list","width=680,height=560");	
@@ -52,16 +57,83 @@
 			frm.tel3.focus();
 		}
 	}
-	function joinCheck(){
-		let inputUserid = document.getElementById('employeeJoinCheck').value;		
-		$.ajax({
-			url: "/myapp/employeeJoinChecking",
-			data : "userid="+inputUserid,
-			success : function(result){
-				alert("사원 등록이 가능한 아이디입니다.");
+	$(()=>{
+		let regExpId = /^[a-z0-9]*$/;
+		let regExpPosi = /^[가-힣]*$/;		
+		
+		$('#joinCheck').click(function(){
+			let inputUserid = "";
+			inputUserid = $('#employeeJoinCheck').val();
+			if(inputUserid===null || !inputUserid || inputUserid.length>20){
+				alert("가입한 아이디를 입력해주세요.");				
+				$('#employeeJoinCheck').focus();
+				return false;
 			}
+			else{
+				if(!regExpId.test(inputUserid)){
+					alert("아이디는 영문자와 숫자만 입력 가능합니다.");
+					$('#employeeJoinCheck').focus();
+					return false;
+				}else{
+						// 화면에 회원정보가 출력됨. (아이디,이름,연락처,이메일)
+						$.ajax({
+							url : "/myapp/employeeJoinChecking",
+							data : "userid="+inputUserid,
+							method: "post",
+							success : function(result){ 								
+								if(result == '' || result==null){
+									alert("존재하지 않는 아이디입니다.");
+									$('#employeeJoinCheck').focus();
+									return false;
+								}
+							
+								let yesOrNo = confirm("회원이름 : "+result.username+" 이 맞습니까?");
+								if(!yesOrNo){
+									$('#employeeJoinCheck').val("");
+									$('#employeeJoinCheck').focus();
+									return false;						
+								}else{
+									$('#employeeJoinCheck').val(result.userid);
+									$('#username').val(result.username);
+									let tel1 = result.tel1;
+									$('#tel1').val(tel1).prop('selected',true);
+									$('#tel2').val(result.tel2);
+									$('#tel3').val(result.tel3);
+									$('#email').val(result.email);
+									
+								}
+							}, error : function(){
+								alert("존재하지 않는 아이디입니다.");
+								return false;
+							}
+						});
+					}			
+			}
+		});// 가입확인절차 click함수	
+		
+		// 입사일 선택달력
+		flatpickr("#emp_regdate");
+		let dateSelect = document.querySelector('#emp_regdate');
+		flatpickr.localize(flatpickr.l10ns.ko);
+		flatpickr(dateSelect);
+		dateSelect.flatpickr({
+			maxDate:new Date(),
+			disable:[
+				function(date){ // 주말선택 제외
+					return(date.getDay()===0||date.getDay()===6);
+				}
+			]			
 		});
-	}
+		
+		
+		$("#emp-regi").click(function(){
+			console.log($('#emp_regdate').val());
+			console.log($('#dept_name').val());
+			console.log($('#username').val());
+			
+		});
+	});
+				
 </script>
 </head>
 <body>
@@ -83,18 +155,14 @@
 								<span>(필수)</span>
 							</strong>
 							<input type="text" name="employeeJoinCheck" id="employeeJoinCheck" placeholder="가입한 아이디"/>
-							<input type="button" value="가입확인하기" id="joinCheck" onclick="joinCheck()"/>
-							
+							<input type="button" value="가입여부확인" id="joinCheck"/>
 						</div>	
 						<div class="mfi-inputbox">
-							<strong>사원명								
-							</strong>	
-							<input type="text" name="emp_name" id="emp_name" placeholder="사원명"/>
+							<strong>사원명</strong>	
+							<input type="text" name="username" id="username" placeholder="사원명" readonly/>
 						</div>
 						<div class="mfi-inputbox">
-							<strong>연락처
-								<span>(필수)</span>
-							</strong>
+							<strong>연락처</strong>
 							<div class="mfi-iB-tel">
 								<select id="tel1" name="tel1">
 									<option value="010">010</option>
@@ -109,10 +177,8 @@
 							</div>
 						</div>
 						<div class="mfi-inputbox">
-							<strong>이메일
-								<span>(필수)</span>
-							</strong>
-							<input type="email" name="emp_email" id="emp_email" placeholder="이메일"/>
+							<strong>이메일</strong>
+							<input type="email" name="email" id="email" placeholder="이메일" readonly/>
 						</div>
 					</section>
 
@@ -128,19 +194,26 @@
 							<strong>직급
 								<span>(필수)</span>
 							</strong>	
-							<input type="text" name="emp_posi" id="emp_posi" placeholder="직급"/>							
+							<select name="emp_posi" id="emp_posi">
+								<option value="level1">사원</option>
+								<option value="level2">주임</option>
+								<option value="level3">대리</option>
+								<option value="level4">과장</option>
+								<option value="level5">차장</option>
+								<option value="level6">부장</option>
+							</select> 						
 						</div>
 						<div class="mfi-inputbox">
-							<strong>등록일</strong>	
-							<input type="text" name="emp_regdate" id="emp_regdate" readonly/>							
+							<strong>입사일</strong>	
+							<input name="emp_regdate" id="emp_regdate" placeholder="입사일 선택하기"/>						
 						</div>						
 					</section>
 				<div class="regiForm-submit">					
-					<input type="submit" id="emp-regi" value="등록하기"/>
+					<input type="button" id="emp-regi" value="등록하기"/>
 				</div>
 				</div>
 			</form>
-		</div>
+		</div>		
 	</main>
 	<%@ include file="/inc/bottom3.jspf" %>
 </body>

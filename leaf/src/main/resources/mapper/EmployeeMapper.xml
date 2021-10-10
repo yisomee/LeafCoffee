@@ -3,4 +3,8 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.leaf.myapp.dao.EmployeeDAO">
+	<select id="checkJoinId" resultType="com.leaf.myapp.vo.EmployeeVO">
+		select userid,username,tel,email from registers
+		where userid=#{param1}
+	</select>
 </mapper>

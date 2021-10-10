@@ -1,5 +1,7 @@
 package com.leaf.myapp.service;
 
+import com.leaf.myapp.vo.EmployeeVO;
+
 public interface EmployeeService {
-	//public int employeeInsert();
+	public EmployeeVO checkJoinId(String userid);
 }

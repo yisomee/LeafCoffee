@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
+import com.leaf.myapp.vo.EmployeeVO;
 import com.leaf.myapp.service.EmployeeService;
 
 @Controller
@@ -35,18 +35,17 @@ public class EmployeeController {
 		return mav;
 	}
 	
-	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
-	@RequestMapping(value="/employeeJoinChecking", produces="application/text;charset=UTF-8")
+	// »ç¿øµî·Ï Æû¿¡¼­ °¡ÀÔÇÑ ¾ÆÀÌµðÀÎÁö È®ÀÎ
+	@RequestMapping("/employeeJoinChecking")
 	@ResponseBody
-	public String employeeJoinCheck(String userid) {
-		return "";
+	public EmployeeVO employeeJoinCheck(String userid) {		
+		return employeeService.checkJoinId(userid);
 	}
-	
-	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		
+	// »ç¿øµî·Ï
 	@RequestMapping(value="/employeeRegister", method=RequestMethod.POST)
 	public ModelAndView employeeRegister() {
-		ModelAndView mav = new ModelAndView();
-		
+		ModelAndView mav = new ModelAndView();		
 		return mav;
 	}
 	

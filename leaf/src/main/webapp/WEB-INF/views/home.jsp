@@ -325,8 +325,7 @@ font-size: 3rem;
 						<!-- 뒤에 가려지는 div -->
 						<img src="img/br.jfif" /><img src="img/1.jpg" /><img
 							src="img/hand.jfif" /><img src="img/baristro.jpg" /><img
-							src="img/4.jpg" /><img
-							src="img/lastSlide.png"/>
+							src="img/4.jpg" />
 
 					</div>
 					<div class="leaf">leaf</div>
@@ -398,7 +397,7 @@ font-size: 3rem;
 		});
 	});
 	$(function slide() {
-		$('.hiddenimg').animate({marginLeft:"-3000px"},10000)
+		$('.hiddenimg').animate({marginLeft:"-2400px"},10000)
 		.animate({marginLeft:"0px"},0,slide);
 	});
 		
