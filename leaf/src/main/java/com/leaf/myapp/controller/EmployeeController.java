@@ -5,6 +5,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.leaf.myapp.service.EmployeeService;
@@ -33,7 +34,15 @@ public class EmployeeController {
 		mav.setViewName("employee/employeeChange");
 		return mav;
 	}
-	// »ç¿øµî·Ï
+	
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
+	@RequestMapping(value="/employeeJoinChecking", produces="application/text;charset=UTF-8")
+	@ResponseBody
+	public String employeeJoinCheck(String userid) {
+		return "";
+	}
+	
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping(value="/employeeRegister", method=RequestMethod.POST)
 	public ModelAndView employeeRegister() {
 		ModelAndView mav = new ModelAndView();

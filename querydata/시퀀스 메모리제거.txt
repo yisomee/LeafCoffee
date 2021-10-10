@@ -1,0 +1,10 @@
+alter sequence boardSq nocache; -- 시퀀스 캐시메모리 제거
+-- boardSq를 시퀀스변수명으로 변경
+
+--테이블쓰레기제거
+purge recyclebin;
+
+--franchise테이블 시퀀스생성
+create sequence s1
+start with 1
+increment by 1;

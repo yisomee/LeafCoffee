@@ -61,13 +61,19 @@ to {clip-path: circle(100% at 50% 500px);}
 section { /*section전부다 적용된거*/
 	position: relative;
 	width: 100%;
-	height: 970px;
+	height: 900px;
 	z-index: 5;
+}
+.section1{
+	height: 820px;
+}
+.section3{
+	background: #F5F0E9;
 }
 
 .sort {/*정렬div */
 	width: 80%;
-	height: 1100px;
+	height: 820px;
 	margin: 0 auto;
 	/*background-color:blue;*/
 	display: flex;
@@ -77,27 +83,43 @@ section { /*section전부다 적용된거*/
 .write {
 	width: 30%;
 	/*background-color:green;*/
-	height: 1100px;
-	padding-top: 20%;
+	height: 820px;
+	padding-top: 9%;
+}
+.write>h1{
+	font-size: 3.5rem;
+    font-family: 'Signika Negative';
+    margin-bottom: .5rem;
+    font-weight: 600;
+    line-height: 1.4;
+}
+.write>p{
+	font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.7;
+    margin-bottom: 3rem;
+    }
+.write>a:hover{
+	text-decoration: none;
 }
 
-
 .menubtn { /*메뉴 안에 색깔 변하는거*/
-	width: 300px;
-	height: 50px;
-	padding: 5px;
-	font-size: 1.5rem;
-	font-weight: bold;
+	width: 345px;
+	height: 65px;
+	padding-left: 30px;
 	background: white;
-	color: rgb(0, 163, 239);
 	transition: 0.25s;
 	border: 1px solid black;
+    line-height: 60px;
+    font-size: 1rem;
+    font-weight: 600;
 }
 
 .menubtn:hover { /*마우스 오버시 메뉴색깔 분홍색으로 변하는거*/
-	box-shadow: inset 12.5em 0 0 0 rgb(0, 163, 239);
+	box-shadow: inset 25em 0 0 0 rgb(0, 163, 239);
 	color: white;
 	border-color: rgb(0, 163, 239);
+	padding-left: 32px;
 }
 
 .img { /*이미지 들어가는div*/
@@ -110,8 +132,8 @@ section { /*section전부다 적용된거*/
 .slideimg { /*앞에 이미지 나오는div relative로 포지션 잡아줌. 글씨 나오게 하기 위해서 z index로 5*/
 	width: 600px;
 	height: 600px;
-	border-radius: 60px;
-	margin: 15% 20% 0 25%;
+	border-radius: 150px;
+	margin: 14% 0% 0 45%;
 	position: relative;
 	overflow: hidden;
 	z-index: 5;
@@ -122,41 +144,48 @@ section { /*section전부다 적용된거*/
 	color: white;
 	position: absolute;
 	z-index: 15;
-	left: 30%;
-	top: 25%;
+	left: 24%;
+	top: 22%;
 	opacity: 0.5;
 }
 
 .hiddenimg { /*이미지 슬라이더 숨긴div*/
-	width: 3000px;
+	width: 3600px;
 	height: 600px;
+	overflow:auto;
 	display: flex;
 	position: relative;
 }
 
 .hiddenimg>img { /*이미지들 슬라이더 넓이 높이*/
-	width: 700px;
-	height: 700px;
+	width: 600px;
 }
 
 .circleimg {/*원통이미지*/
-	width: 500px;
-	height: 500px;
-	border-radius: 100%;
+	
+	position: absolute;
 	overflow: hidden;
 }
 
 .circleimgright{/*원통이미지*/
-	
-	position: absolute;
-	bottom: 5%;
+	width: 400px;
+	height: 400px;
+	border-radius: 100%;
+	top: 8%;
 	right: 10%;
-	
+}
+.circleimgleft{/*사각이미지*/
+	width: 900px;
+	bottom: 10%;
+	left: 35%;
+}
+.circleimgleft>img{
+width:900px;
 }
 
-.circleimg>img{/*원통이미지*/
-	width: 500px;
-	height: 500px;
+.circleimgright>img{/*원통이미지*/
+	width: 400px;
+	margin-top: -47px;
 }
 
 .circleimg>img:hover {
@@ -184,20 +213,6 @@ section { /*section전부다 적용된거*/
 	-webkit-transition: transform .35s;
 	transition: all 0.3s ease-in-out;
 }
-
-.sec4-2-1>img{
-	width:300px;
-	height:300px;
-	position: relative;
-	top:200px;
-	left:100px;
-
-}
-
-.section5{
-	background-color:pink;
-
-}
 span{
 	display: inline-block;
 	margin: 0 -.075em;
@@ -224,62 +239,9 @@ span{
 	animation-delay: .2s;
 }
 
-@keyframes loading { 0% {
-	transform: scale(1);
-}
-100%{transform:scale(0.8);
-
-
-}
-}
-/*스크롤이벤트*/
-.section4 { width: 250%; height: 100%; display: flex; flex-wrap: nowrap; }
-.section01, .section02 { background: orange;}
-
-
-#img1{
-position: absolute;
-top:100px;
-left:300px;
-width:600px;
-height:600px;
-}
-
-#img2{
-position: absolute;
-top:500px;
-left:1500px;
-width:500px;
-height:500px;
-border-radius: 20%;
-}
-#img3{
-position: absolute;
-top:100px;
-left:200px;
-width:600px;
-height:600px;
-border-radius: 70%;
-
-}
-
-#img4{
-position: absolute;
-top:100px;
-left:1000px;
-width:600px;
-height:600px;
-
-
-}
-
-
-
-
-.section01wirte{
-	position: fixed;
-	top:0px;
-	left:0px;
+@keyframes loading { 
+0% {transform: scale(1);}
+100%{transform:scale(0.8);}
 }
 .video{
 	position:absolute;
@@ -287,9 +249,9 @@ height:600px;
 	width:100%;}
 .comment{
 	position: absolute;
-    top: 35%;
+    top: 28%;
     right: 8%;
-    z-index: 15;
+    z-index: 9;
     color: white;
     font-weight: bold;
     line-height: 50px;
@@ -312,6 +274,7 @@ font-size: 3rem;
     z-index: -1;
     width: 100vw;
     position: absolute;
+    top: -260px;
 }
 </style>
 </head>
@@ -348,21 +311,22 @@ font-size: 3rem;
 					세상의<br /> 모든 바리스타
 				</h1>
 				<p>
-					left에 오시면 <br /> 누구나 언제 어디서든<br /> 최고의 커피를 즐길 수 있습니다
+					leaf에 오시면 <br /> 누구나 언제 어디서든<br /> 최고의 커피를 즐길 수 있습니다
 				</p>
-				<a href="#"><div class="menubtn">menu</div></a>
+				<a href="/myapp/menu_Beverage"><div class="menubtn">COFFEE</div></a>
 				<!-- 효과넣어줄거 -->
 			</div>
 
 			<div class="img">
-				<!-- 이미지 슬라이더 들어가는div 넓이 70 -->
+				<!-- 이미지 슬라이더 들어가는div 넓이 600 -->
 				<div id="slideimg" class="slideimg">
-					<!-- 보더레디오스 적용한거 이미지 500사이즈 -->
+					<!-- 보더레디오스 적용한거 이미지 600사이즈 -->
 					<div class="hiddenimg">
 						<!-- 뒤에 가려지는 div -->
 						<img src="img/br.jfif" /><img src="img/1.jpg" /><img
-							src="img/hand.jfif" /><img src="img/2.jpg" /> <img
-							src="img/4.jpg" />
+							src="img/hand.jfif" /><img src="img/baristro.jpg" /><img
+							src="img/4.jpg" /><img
+							src="img/lastSlide.png"/>
 
 					</div>
 					<div class="leaf">leaf</div>
@@ -379,21 +343,21 @@ font-size: 3rem;
 					<span>N</span>
 				</h3>
 				<h1>
-					행복한<br />일상을 함께
+					당신과 행복한<br />일상을 함께
 				</h1>
 				<p>
-					일상의 즐거움을 <br />창조하는<br /> 선진기업
+					일상의 즐거움을 <br />창조하는 leaf<br /> 커피에 대한 모든 서비스를 제공합니다.
 				</p>
-				<a href="#"><div class="menubtn">menu</div></a>
+				<a href="/myapp/membership"><div class="menubtn" style="background: #F5F0E9;">MEMBERSHIP</div></a>
 			</div>
 
 
 			<div class="img">
-				<div class="circleimg">
-					<img src="img/br.jfif" />
+				<div class="circleimg circleimgleft">
+					<img src="https://www.baristapaulbassett.co.kr/images/society/introductionVisual.jpg" />
 				</div>
 				<div class="circleimg circleimgright">
-					<img src="img/beanjpg.jpg" />
+					<img src="img/cute-cafe.jpg" />
 				</div>
 			</div>
 		</div>
@@ -434,19 +398,19 @@ font-size: 3rem;
 		});
 	});
 	$(function slide() {
-		$('.hiddenimg').animate({marginLeft:"-2000px"},7000)
+		$('.hiddenimg').animate({marginLeft:"-3000px"},10000)
 		.animate({marginLeft:"0px"},0,slide);
 	});
 		
 $(()=>{ /*맨처음 글자 날라오는 애니메이션*/
-            $('.one').animate({marginLeft:"0px",marginRight:"0px",opacity:1,fontSize:"5rem"},500)
-            .delay(1000).animate({marginLeft:"150px",marginRight:"150px" ,opacity:0,fontSize:"8rem"},500);
-            $('.two').animate({marginLeft:"0px",marginRight:"0px",opacity:1,fontSize:"5rem"},500)
-            .delay(1000).animate({marginLeft:"150px",marginRight:"150px" ,opacity:0,fontSize:"8rem"},500);
-            $('.three').animate({marginLeft:"0px",marginRight:"0px",opacity:1,fontSize:"5rem"},500)
-            .delay(1000).animate({marginLeft:"150px",marginRight:"150px" ,opacity:0,fontSize:"8rem"},500);
-            $('.four').animate({marginLeft:"0px",marginRight:"0px",opacity:1,fontSize:"5rem"},500)
-            .delay(1000).animate({marginLeft:"150px",marginRight:"150px" ,opacity:0,fontSize:"8rem"},500);
+            $('.one').animate({marginLeft:"0px",marginRight:"0px",opacity:1,fontSize:"9rem"},500)
+            .delay(1000).animate({marginLeft:"150px",marginRight:"150px" ,opacity:0,fontSize:"14rem"},300);
+            $('.two').animate({marginLeft:"0px",marginRight:"0px",opacity:1,fontSize:"9rem"},500)
+            .delay(1000).animate({marginLeft:"150px",marginRight:"150px" ,opacity:0,fontSize:"14rem"},300);
+            $('.three').animate({marginLeft:"0px",marginRight:"0px",opacity:1,fontSize:"9rem"},500)
+            .delay(1000).animate({marginLeft:"150px",marginRight:"150px" ,opacity:0,fontSize:"14rem"},300);
+            $('.four').animate({marginLeft:"0px",marginRight:"0px",opacity:1,fontSize:"9rem"},500)
+            .delay(1000).animate({marginLeft:"150px",marginRight:"150px" ,opacity:0,fontSize:"14rem"},300);
             
             $('.main')
             .delay(2300)

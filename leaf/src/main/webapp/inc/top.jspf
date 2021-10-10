@@ -43,7 +43,9 @@ $(function(){/*메뉴바 전체가 나오는거*/
 
 a{color:black;}
 
-
+a:hover{
+	text-decoration: none;
+}
 body{margin:0;
 
 }
@@ -81,11 +83,13 @@ ul,li{
 .logoimg>img{
 	width: 100%;
 	justify-content: flex-start;
+	margin-top: 20px;
+    margin-left: 20px;
 
 }
 .menuBar{/*menubar div*/
 	position:absolute;
-	left:20%;
+	left:15%;
 	width:70%;
 	margin-top: 75px;
 	font-family: 'Signika Negative', sans-serif;
@@ -99,9 +103,8 @@ ul,li{
 	
 }
 .ulclass{
-	
 	display:none;
-	
+    margin-top: -16px
 }
 .ulclass>li{
 	margin-top:50px;
@@ -109,10 +112,17 @@ ul,li{
 
 }
 .select-li{
-	width:30%;
-	
-
+    width: 25%;
+    text-align: center;
 }
+.select-li>div{width: 160px;
+height: 46px;
+    margin: 0 auto;
+}
+.select-li>div:hover{
+	border-bottom: 4px solid rgb(0, 163, 239);
+}
+
 .header{
 	position: relative;
 	height:120px;
@@ -154,7 +164,7 @@ ul,li{
 		<ul class="main-ul">
 			
 <!---------------------------  -->			
-			<li class="select-li"><a href="/myapp/menu_Coffee">MENU</a>
+			<li class="select-li"><div><a href="/myapp/menu_Coffee">MENU</a></div>
 				<ul class="ulclass">
 					<li><a href="/myapp/siren">SIREN ORDER</a></li>
 					<li><a href="/myapp/menu_Coffee">COFFEE</a></li>
@@ -164,21 +174,21 @@ ul,li{
 				</ul>					
 			</li>
 <!----------------------------------  -->	
-			<li class="select-li"><a href="/myapp/membership">MEMBERSHIP</a>
+			<li class="select-li"><div><a href="/myapp/membership">MEMBERSHIP</a></div>
 				<ul class="ulclass">
 					<li><a href="/myapp/membership">SOCIETY</a></li>
 					<li><a href="/myapp/memberGrade">MEMBERGRADE</a></li>
 				</ul>			
 			</li>
 <!--------------------------------------------->
-			<li class="select-li"><a href="/myapp/noticeList">WHAT`S UP</a>
+			<li class="select-li"><div><a href="/myapp/noticeList">WHAT`S UP</a></div>
 				<ul class="ulclass">
 					<li><a href="/myapp/noticeList">NOTICE</a></li>
 					<li><a href="/myapp/social">SOCIAL</a></li>
 				</ul>				
 			</li>
 <!--------------------------------------------->			
-			<li class="select-li"><a href="/myapp/franchise">FRANCHISE</a>
+			<li class="select-li"><div><a href="/myapp/franchise">FRANCHISE</a></div>
 				<ul class="ulclass">
 					<li><a href="/myapp/storemap">STORE</a></li>
 					<li><a href="/myapp/franchiseInfo">INFOMATION</a></li>
