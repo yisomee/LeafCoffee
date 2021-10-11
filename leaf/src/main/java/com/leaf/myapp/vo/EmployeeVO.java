@@ -6,13 +6,16 @@ public class EmployeeVO {
 	private String emp_regdate; // 입사일		
 	private int dept_num; // 부서코드
 	private String dept_name; // 부서명
+	private String emp_status; // 재직여부
 	
+	
+	private String nullid; // 가입은 되어있지만 사원등록은 안한 아이디
 	private String userid;
 	private String userpwd;
 	private String username;
 	private String birth;
 	private int membership;
-	private String regdate;
+	private String regdate; //회원등록일
 	private String addr;
 	private String auth;
 	
@@ -57,6 +60,14 @@ public class EmployeeVO {
 	}
 	public void setDept_name(String dept_name) {
 		this.dept_name = dept_name;
+	}	
+	
+	
+	public String getNullid() {
+		return nullid;
+	}
+	public void setNullid(String nullid) {
+		this.nullid = nullid;
 	}
 	public String getUserid() {
 		return userid;
@@ -160,6 +171,12 @@ public class EmployeeVO {
 	}
 	public void setDomain(String domain) {
 		this.domain = domain;
+	}
+	public String getEmp_status() {
+		return emp_status;
+	}
+	public void setEmp_status(String emp_status) {
+		this.emp_status = emp_status;
 	}
 	
 	

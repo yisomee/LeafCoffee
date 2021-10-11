@@ -16,10 +16,10 @@
 	.mfi-title{background: #fff; border-bottom: 1px solid #ddd; color: #777; font-size: 18px; line-height: 24px; text-align: center;padding: 30px 20px 30px; margin:0;}
 	.mfi-inputbox input{border: 1px solid #ddd; border-radius: 3px; box-sizing: border-box; display: inline-block; width:530px; padding:15px;}
 	.mfi-inputbox strong{color: #222; display: block; font-size: 18px; margin-bottom: 10px;}
-	.mfi-inputbox .mfi-iB-tel select{width:30%; display:inline-block; height:47px; margin-right:20px;} 
+	.mfi-inputbox .mfi-iB-tel #tel1{width:30%; display:inline-block; height:47px; margin-right:20px;} 
 	.mfi-inputbox .mfi-iB-tel input{width:30%; margin-right:20px;}
 	.mfi-inputbox .mfi-iB-tel input:last-of-type{width:30%; margin-right:0px;}
-	.mfi-inputbox #employeeJoinCheck{width:400px; float:left;}
+	.mfi-inputbox #userid{width:400px; float:left;}
 	.mfi-inputbox #joinCheck{width:122px; background:rgb(0,163,239); color:#fff; border:0px solid; margin-left:6px; box-sizing:border-box;}
 	/* 부서파트 */
 	.mfi-inputbox #dept_name{width:460px;}
@@ -58,21 +58,20 @@
 		}
 	}
 	$(()=>{
-		let regExpId = /^[a-z0-9]*$/;
-		let regExpPosi = /^[가-힣]*$/;		
+		const regExpId = /^[a-z0-9]*$/;				
 		
 		$('#joinCheck').click(function(){
 			let inputUserid = "";
-			inputUserid = $('#employeeJoinCheck').val();
-			if(inputUserid===null || !inputUserid || inputUserid.length>20){
+			inputUserid = $('#userid').val();
+			if(inputUserid===null || inputUserid==""){
 				alert("가입한 아이디를 입력해주세요.");				
-				$('#employeeJoinCheck').focus();
+				$('#userid').focus();
 				return false;
 			}
-			else{
+			else{				
 				if(!regExpId.test(inputUserid)){
 					alert("아이디는 영문자와 숫자만 입력 가능합니다.");
-					$('#employeeJoinCheck').focus();
+					$('#userid').focus();
 					return false;
 				}else{
 						// 화면에 회원정보가 출력됨. (아이디,이름,연락처,이메일)
@@ -80,23 +79,28 @@
 							url : "/myapp/employeeJoinChecking",
 							data : "userid="+inputUserid,
 							method: "post",
-							success : function(result){ 								
+							success : function(result){								
 								if(result == '' || result==null){
 									alert("존재하지 않는 아이디입니다.");
-									$('#employeeJoinCheck').focus();
+									$('#userid').focus();
+									return false;
+								}
+								if(result.nullid!=0 ){
+									alert("이미 가입된 사원입니다.");
+									$('#userid').val('');
+									$('#userid').focus();									
 									return false;
 								}
 							
 								let yesOrNo = confirm("회원이름 : "+result.username+" 이 맞습니까?");
 								if(!yesOrNo){
-									$('#employeeJoinCheck').val("");
-									$('#employeeJoinCheck').focus();
+									$('#userid').val("");
+									$('#userid').focus();
 									return false;						
 								}else{
-									$('#employeeJoinCheck').val(result.userid);
+									$('#userid').val(result.userid);
 									$('#username').val(result.username);
-									let tel1 = result.tel1;
-									$('#tel1').val(tel1).prop('selected',true);
+									$('#tel1').val(result.tel1);
 									$('#tel2').val(result.tel2);
 									$('#tel3').val(result.tel3);
 									$('#email').val(result.email);
@@ -123,15 +127,8 @@
 					return(date.getDay()===0||date.getDay()===6);
 				}
 			]			
-		});
+		});		
 		
-		
-		$("#emp-regi").click(function(){
-			console.log($('#emp_regdate').val());
-			console.log($('#dept_name').val());
-			console.log($('#username').val());
-			
-		});
 	});
 				
 </script>
@@ -154,7 +151,7 @@
 							<strong>가입 확인 절차
 								<span>(필수)</span>
 							</strong>
-							<input type="text" name="employeeJoinCheck" id="employeeJoinCheck" placeholder="가입한 아이디"/>
+							<input type="text" name="userid" id="userid" placeholder="가입한 아이디"/>
 							<input type="button" value="가입여부확인" id="joinCheck"/>
 						</div>	
 						<div class="mfi-inputbox">
@@ -164,16 +161,9 @@
 						<div class="mfi-inputbox">
 							<strong>연락처</strong>
 							<div class="mfi-iB-tel">
-								<select id="tel1" name="tel1">
-									<option value="010">010</option>
-									<option value="011">011</option>
-									<option value="016">016</option>
-									<option value="017">017</option>
-									<option value="018">018</option>
-									<option value="019">019</option>								
-								</select>
-								<input type="text" name="tel2" id="tel2"/>
-								<input type="text" name="tel3" id="tel3"/>
+								<input type="text" id="tel1" name="tel1" readonly>									
+								<input type="text" name="tel2" id="tel2" readonly/>
+								<input type="text" name="tel3" id="tel3" readonly/>
 							</div>
 						</div>
 						<div class="mfi-inputbox">
@@ -195,12 +185,12 @@
 								<span>(필수)</span>
 							</strong>	
 							<select name="emp_posi" id="emp_posi">
-								<option value="level1">사원</option>
-								<option value="level2">주임</option>
-								<option value="level3">대리</option>
-								<option value="level4">과장</option>
-								<option value="level5">차장</option>
-								<option value="level6">부장</option>
+								<option value="사원">사원</option>
+								<option value="주임">주임</option>
+								<option value="대리">대리</option>
+								<option value="과장">과장</option>
+								<option value="차장">차장</option>
+								<option value="부장">부장</option>
 							</select> 						
 						</div>
 						<div class="mfi-inputbox">
@@ -208,8 +198,9 @@
 							<input name="emp_regdate" id="emp_regdate" placeholder="입사일 선택하기"/>						
 						</div>						
 					</section>
-				<div class="regiForm-submit">					
-					<input type="button" id="emp-regi" value="등록하기"/>
+				<div class="regiForm-submit">
+					<input type="hidden" name="dept_num" id="dept_num"/>										
+					<input type="submit" id="emp-regi" value="등록하기"/>
 				</div>
 				</div>
 			</form>

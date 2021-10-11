@@ -17,7 +17,16 @@
 </style>
 <script>
 	function setDeptName(){
+		let deptNum = 1;			
+		switch($('#dept_name').val()){
+		case "인사부" :  deptNum=7000; break;
+		case "품질관리부" : deptNum=7100; break;
+		case "가맹관리부" : deptNum=7200; break;
+		case "시설부" : deptNum=7300; break;
+		case "경영부" : deptNum=8000;			
+		}		
 		opener.document.getElementById("dept_name").value= document.getElementById("dept_name").value;
+		opener.document.getElementById("dept_num").value = deptNum;
 		window.close();
 	}
 	function bosaGroup(num){		
@@ -35,6 +44,7 @@
 <body>
 	<div class="bonsagroup-Con">
 		<h1 id="deptPoP-title">조직도</h1>
+		<hr>
 		<img src="img/bonsagroup.png" class="bonsagroupImg" usemap='#bsgroup'/>
 		<map name='bsgroup'>
 			<area shape='rect' coords='43,194,176,234' href="#" onclick="bosaGroup(1)">

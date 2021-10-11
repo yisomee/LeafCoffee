@@ -5,8 +5,43 @@
 <head>
 <meta charset="UTF-8">
 <title>사원관리</title>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+	const regExpEmpNum = /^[0-9]{1,4}$/;
+	const regExpDeptName = /^[가-힣]{1,10}$/;
 
+	$(()=>{
+		$('#searchEmpBtn').click(function(){
+			let searchKey = $('#searchKey').val();
+			let searchWord = $('#searchWord').val();
+			
+			if(searchWord===null || searchWord==""){
+				alert("검색어를 입력해주세요.");
+				return false;
+			}else if(searchKey==='emp_num'){
+				if(!regExpEmpNum.test(searchWord)){
+					alert("사원번호는 4자리 숫자만 입력가능합니다.");
+					return false;
+				}
+			}else if(searchKey==="username"){
+				if(!regExpDeptName.test(searchWord)){
+					alert("올바른 사원명을 입력해주세요");
+					return false;
+				}
+			}else if(searchKey==="dept_name"){
+				if(!regExpDeptName.test(searchWord)){
+					alert("올바른 부서명을 입력해주세요");
+					return false;
+				}
+			}
+			location.href = "/myapp/searchEmployeeList?"+searchKey+"="+searchWord;
+	 			
+					
+		});
+					
+	});
+</script>
 <style>
 	/* 사원 컨테이너 */
 	.emplistCon{height:650px; overflow:scroll;}
@@ -17,9 +52,9 @@
 	.searchWord-titleImg{height:100px; width:300px; display: inline-block; margin-left:220px; margin-top:15px;}
 	.searchWord-title{font-size:1.4em; display:inline-block; position:relative; top:-24px; left:35px;}	
 	#searchForm{display: inline-block; width: 730px; height: 60px; top: -29px;position:relative;}
-	select[name=searchEmpSelect]{height:50px; width:100px; font-size:1em;}
+	select[name=searchKey]{height:50px; width:100px; font-size:1em;}
 	input[name="searchWord"]{height:50px; width:500px; font-size:1em;}
-	input[value="search"]{height:50px; width:100px; box-sizing: border-box; font-size:1em;}
+	input[value="검색하기"]{height:50px; width:100px; box-sizing: border-box; font-size:1em;}
 	
 	/* 사원 리스트 정렬 select박스 */
 	.array_button{width:1400px; height:80px;}
@@ -29,22 +64,22 @@
 	.manage-List-container{width:1400px; height:800px; margin:50px auto 0 auto;}	
  	#emp-list-top{overflow:auto; text-align:center; padding:0; background-color:#ddd; height:50px; font-size:1.13em; line-height:45px;}
 	#emp-list-top>li{float:left; width:10%; border-top:3px solid gray;}
-	#emp-list-top>li:nth-child(8n+1){width:3%;}
-	#emp-list-top>li:nth-child(8n+2){width:7%;}
-	#emp-list-top>li:nth-child(8n+5){width:15%;}	
-	#emp-list-top>li:nth-child(8n+6){width:25%;}
-	#emp-list-top>li:nth-child(8n+7){width:20%;}
+	#emp-list-top>li:nth-child(9n+1){width:3%;}
+	#emp-list-top>li:nth-child(9n+2){width:7%;}
+	#emp-list-top>li:nth-child(9n+5){width:10%;}	
+	#emp-list-top>li:nth-child(9n+6){width:15%;}
+	#emp-list-top>li:nth-child(9n+7){width:20%;}
+	#emp-list-top>li:nth-child(9n+8){width:15%;}
 	 
 	/*사원 리스트*/
 	.manage-listCon{overflow:auto; text-align:center; padding:0;}
 	#emp-list>li{float:left; width:10%; border-bottom: 1px solid gray; height:50px; font-size:1.1em; line-height:50px;}
-	#emp-list>li:nth-child(8n+1){width:3%;}
-	#emp-list>li:nth-child(8n+2){width:7%;}
-	#emp-list>li:nth-child(8n+5){width:15%;}
-	#emp-list>li:nth-child(8n+6){width:25%;}
-	#emp-list>li:nth-child(8n+7){width:20%;}
-	
-	
+	#emp-list>li:nth-child(9n+1){width:3%;}
+	#emp-list>li:nth-child(9n+2){width:7%;}
+	#emp-list>li:nth-child(9n+5){width:10%;}
+	#emp-list>li:nth-child(9n+6){width:15%;}
+	#emp-list>li:nth-child(9n+7){width:20%; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;}
+	#emp-list>li:nth-child(9n+8){width:15%;}		
 	
 	/*================================================*/
 	
@@ -90,31 +125,32 @@
 				<div class="emptopCon">
 					<span class="searchWord-titleImg"><img src="img/empimg.png"><span class="searchWord-title">직원검색</span></span>
 					<div id="searchForm">
-						<select name="searchEmpSelect">
-							<option value="empno">사원번호</option>
-							<option value="empname">사원명</option>
-							<option value="deptname">부서명</option>
+						<select name="searchKey" id="searchKey">
+							<option value="emp_num">사원번호</option>
+							<option value="username">사원명</option>
+							<option value="dept_name">부서명</option>
 						</select>
 						<input type="text" name="searchWord" id="searchWord"/>
-						<input type="button" value="search"/>
+						<input type="button" value="검색하기" id="searchEmpBtn"/>
 					</div>
 				</div>
 				
 				<div class="array_button">
 					<!-- 정렬기준 선택 -->				
-					<select name="empArraySelect">
-						<option value="" selected>--정렬--</option>
-						<option value="arrayEmpNo">사원번호</option>
-						<option value="arrayEmpName">사원명</option>
-						<option value="arrayEmpPosi">직급순</option>
+					<select name="empArraySelect" id="empArraySelect">
+						<option value="" selected>-- 정렬 --</option>
+						<option value="emp_num">사원번호</option>
+						<option value="username">사원명</option>
+						<option value="emp_posi">직급순</option>
 					</select>					
 				</div>
 				<!-- 사원 리스트 -->
 				<div class="manage-listCon">											
 					<ul id="emp-list-top">
-						<li>선택</li>				
+						<li><i class="fas fa-check"></i></li>				
 						<li>NO</li>
 						<li>사원명</li>
+						<li>부서명</li>
 						<li>직급</li>
 						<li>연락처</li>
 						<li>E-mail</li>
@@ -122,50 +158,15 @@
 						<li>재직여부</li>
 					</ul>
 					<ul id="emp-list">	
-						<li><input type="radio" id="emp-select" name="emp-select"/></li>
+						<li><input type="radio" name="emp-select"/></li>
 						<li>2000</li>
 						<li>박동현</li>
+						<li>인사부</li>
 						<li>부장</li>
 						<li>010-1111-2222</li>
 						<li>bakdohy@naver.com</li>
 						<li>2021-09-25</li>
-						<li>Y</li>
-						
-						<li><input type="radio" id="emp-select" name="emp-select"/></li>
-						<li>2001</li>
-						<li>박동현</li>
-						<li>부장</li>
-						<li>010-1111-2222</li>
-						<li>bakdohy@naver.com</li>
-						<li>2021-09-25</li>
-						<li>Y</li>
-						
-						<li><input type="radio" id="emp-select" name="emp-select"/></li>
-						<li>2002</li>
-						<li>박동현</li>
-						<li>부장</li>
-						<li>010-1111-2222</li>
-						<li>bakdohy@naver.com</li>
-						<li>2021-09-25</li>
-						<li>Y</li>
-						
-						<li><input type="radio" id="emp-select" name="emp-select"/></li>
-						<li>2003</li>
-						<li>박동현</li>
-						<li>부장</li>
-						<li>010-1111-2222</li>
-						<li>bakdohy@naver.com</li>
-						<li>2021-09-25</li>
-						<li>Y</li>
-						
-						<li><input type="radio" id="emp-select" name="emp-select"/></li>
-						<li>2004</li>
-						<li>박동현</li>
-						<li>부장</li>
-						<li>010-1111-2222</li>
-						<li>bakdohy@naver.com</li>
-						<li>2021-09-25</li>
-						<li>Y</li>
+						<li>Y</li>						
 					</ul>				
 				</div>
 				<!-- 페이징 버튼 -->
@@ -189,11 +190,7 @@
 			</div>
 		</main>
 	</form>
-<script>
-	$(()=>{
-		
-	});
-</script>	
+
 	
 	
 	<%@ include file="/inc/bottom3.jspf" %>
