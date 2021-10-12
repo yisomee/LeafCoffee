@@ -131,6 +131,33 @@ $(()=>{
 	
 });
 
+//서버에서 List컬렉션 객체 비동기식으로 가져오기
+$(()=>{
+    	console.log($(".product"));
+    	console.log($(".product").children());
+	    $(".product").on('click',function(){
+    	console.log($(this));
+    	console.log($(this).children(".first").text());
+    	console.log($(this).children(".second").text());
+	      var url = "/myapp/purchasePartner";
+	      var params = {"hq_num": $(this).children(".first").text() }
+	      
+	      $.ajax({
+	         url:url,
+	         data:params,
+	         success:function(r){
+	        	 var rr = $(r)
+	        	 console.log(rr);
+	            rr.each(function(idx,vo){
+	               $("#view1").html(vo.part_company);
+	               $("#view2").html(vo.part_num);
+	               $("#view3").html(vo.part_name);
+	               $("#view4").html(vo.part_tel);
+	            });
+	         }
+	      });
+	   }); 
+	});
 </script>
 </head>
 <body>
@@ -157,63 +184,13 @@ $(()=>{
 			<tr>
 				<td>1</td>
 				<td>블랙원두</td>
+			</tr>
+			<c:forEach var="ProductVO" items="${ProductList}">
+				<tr class="product">
+					<td class="first">${ProductVO.hq_num}</td>
+					<td>${ProductVO.hq_name}</td>
 				</tr>
-			<tr>
-				<td>2</td>
-				<td>화이트원두</td>
-			</tr>
-			<tr>
-				<td>3</td>
-				<td>종이컵</td>
-			</tr>
-			<tr>
-				<td>4</td>
-				<td>플라스틱컵</td>
-			</tr>
-			<tr>
-				<td>5</td>
-				<td>빨대</td>
-			</tr>
-			<tr>
-				<td>1</td>
-				<td>블랙원두</td>
-				</tr>
-			<tr>
-				<td>2</td>
-				<td>화이트원두</td>
-			</tr>
-			<tr>
-				<td>3</td>
-				<td>종이컵</td>
-			</tr>
-			<tr>
-				<td>4</td>
-				<td>플라스틱컵</td>
-			</tr>
-			<tr>
-				<td>5</td>
-				<td>빨대</td>
-			</tr>
-			<tr>
-				<td>1</td>
-				<td>블랙원두</td>
-				</tr>
-			<tr>
-				<td>2</td>
-				<td>화이트원두</td>
-			</tr>
-			<tr>
-				<td>3</td>
-				<td>종이컵</td>
-			</tr>
-			<tr>
-				<td>4</td>
-				<td>플라스틱컵</td>
-			</tr>
-			<tr>
-				<td>5</td>
-				<td>빨대</td>
-			</tr>
+			</c:forEach>
 			</tbody>
 		</table>
 	</div>
@@ -221,19 +198,19 @@ $(()=>{
 		<table class='table'>
 			<tr>
 				<td>거래처명</td>
-				<td>비트캠프</td>
+				<td id="view1">거래처명</td>
 				</tr>
 			<tr>
 				<td>거래처번호</td>
-				<td>5</td>
+				<td id="view2"></td>
 			</tr>
 			<tr>
 				<td>담당자</td>
-				<td>박보검</td>
+				<td id="view3"></td>
 			</tr>
 			<tr>
 				<td>연락처</td>
-				<td>010-1234-5678</td>
+				<td id="view4"></td>
 			</tr>
 		</table>
 	</div>
@@ -261,30 +238,6 @@ $(()=>{
             </tr>
              <tr>
                <td>2-2</td>
-               <td>블랙원두</td>
-               <td>10000원</td>
-               <td><input type="text" class="text"/>개</td>
-               <td><input type="submit" class='btn3' value="발주"/></td>
-               <td><input type="text" class="text"/></td>
-            </tr>
-            <tr>
-               <td>2-3</td>
-               <td>블랙원두</td>
-               <td>10000원</td>
-               <td><input type="text" class="text"/>개</td>
-               <td><input type="submit" class='btn3' value="발주"/></td>
-               <td><input type="text" class="text"/></td>
-            </tr>
-            <tr>
-               <td>2-4</td>
-               <td>블랙원두</td>
-               <td>10000원</td>
-               <td><input type="text" class="text"/>개</td>
-               <td><input type="submit" class='btn3' value="발주"/></td>
-               <td><input type="text" class="text"/></td>
-            </tr>
-            <tr>
-               <td>2-5</td>
                <td>블랙원두</td>
                <td>10000원</td>
                <td><input type="text" class="text"/>개</td>
@@ -327,39 +280,8 @@ $(()=>{
 	                <td>5개</td>
 	                <td>50000</td>
                	    <td>2021-09-19</td>
-               	    <td>대기</td>
-               	 
+               	    <td>대기</td>    	 
 	            </tr>
-	            <tr>
-	             	<td>3</td>
-	               	<td>2-3</td>
-	                <td>블랙원두</td>
-	                <td>10000원</td>
-	                <td>5개</td>
-	                <td>50000</td>
-               	    <td>2021-09-19</td>
-               	    <td>대기</td>
-	               </tr>
-	            <tr>
-	             	<td>4</td>
-	               	<td>2-4</td>
-	                <td>블랙원두</td>
-	                <td>10000원</td>
-	                <td>5개</td>
-	                <td>50000</td>
-               	    <td>2021-09-19</td>
-               	    <td>대기</td>
-	                 </tr>
-	            <tr>
-	             	<td>5</td>
-	               	<td>2-5</td>
-	                <td>블랙원두</td>
-	                <td>10000원</td>
-	                <td>5개</td>
-	                <td>50000</td>
-               	    <td>2021-09-19</td>
-               	    <td>완료</td>
-	              </tr>
          </tbody>
       </table>
 	</div>

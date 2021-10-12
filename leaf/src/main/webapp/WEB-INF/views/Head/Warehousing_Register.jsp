@@ -140,7 +140,7 @@ nav>div {
 	width: 460px;
 }
 
-.mfi-inputbox #part_code {
+.mfi-inputbox #part_code, #part_num {
 	width: 530px;
 	display: inline-block;
 	height: 40px;
@@ -211,14 +211,14 @@ nav>div {
 	<div id="headerText">Warehousing Register</div>
 </header>
 <div class="container">
-<form method="post" action="">
+<form method="post" action="/myapp/warehousing_RegisterOk">
 		<div class="main-form-Con">
 			<section class="mf-inputCon">
 				<div class="mfi-img"></div>
 				<p class="mfi-title">입고된정보를 입력해주세요.</p>
 				<div class="mfi-inputbox">
 					<strong> <span>분류명(필수)</span>
-					</strong> <select name="part_code" id="part_code">
+					</strong> <select name="" id="part_code">
 						<option value="bipum">비품</option>
 						<option value="food">식자재</option>
 						<option value="transit">운송</option>
@@ -227,31 +227,27 @@ nav>div {
 				</div>
 				<div class="mfi-inputbox">
 					<strong>업체명 <span>(필수)</span>
-					</strong> <select name="part_code" id="part_code">
-						<option value="bipum">비품</option>
-						<option value="food">식자재</option>
-						<option value="transit">운송</option>
-						<option value="equipment">설비</option>
+					</strong> <select name="part_num" id="part_num">
+						<option value="1">수영물산</option>
+						<option value="21">뚜우웅</option>
+						<option value=""></option>
+						<option value=""></option>
 					</select>
 				</div>
 				<div class="mfi-inputbox">
-					<strong>등록일</strong> <input type="text" name="part_regdate"
-						id="part_regdate" readonly />
+					<strong>등록일</strong> <input type="text" name="ware_date" id="part_regdate" readonly />
 				</div>
 				<div class="mfi-inputbox">
 					<strong>제품명 <span>(필수)</span>
-					</strong> <input type="text" name="part_company" id="part_company"
-						placeholder="제품명" />
+					</strong> <input type="text" name="hq_name" id="part_company" placeholder="제품명" />
 				</div>
 				<div class="mfi-inputbox">
 					<strong>입고수량 <span>(필수)</span>
-					</strong> <input type="text" name="part_company" id="part_company"
-						placeholder="입고수량" />
+					</strong> <input type="text" name="ware_cnt" id="part_company" placeholder="입고수량" />
 				</div>
 				<div class="mfi-inputbox">
 					<strong>입고가격 <span>(필수)</span>
-					</strong> <input type="text" name="part_company" id="part_company"
-						placeholder="입고가격" />
+					</strong> <input type="text" name="ware_price" id="part_company" placeholder="입고가격" />
 				</div>
 			<div class="regiForm-submit">					
 					<input type="submit" id="part-regi" value="등록하기"/>

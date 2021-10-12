@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+  
+<mapper namespace="com.leaf.myapp.dao.ProductDAO">
+	<!-- 발주페이지 제품리스트 -->
+	<select id="ProductList"  resultType="com.leaf.myapp.vo.ProductVO">
+		select hq_num, hq_name, pc_price, ware_price, ware_cnt, ware_date, part_num, emp_num from product
+	</select>
+	<!-- 발주시 제품클릭하면 협렵업체-->	
+	<select id="ProductPartner" parameterType="int" resultType="com.leaf.myapp.vo.ProductVO">
+  		select h.hq_num, h.part_num, p.part_company, p.part_name, p.part_tel, p.part_email, p.part_code_name from product h join partner p on h.part_num = p.part_num where hq_num=#{param1}
+  	</select>
+
+ 	<!-- 입고리스트 -->
+ 	<select id="WarehousingList" resultType="com.leaf.myapp.vo.ProductVO">
+		<![CDATA[
+			select h.hq_num, p.part_code_name, h.hq_name, h.ware_price, h.ware_cnt, p.part_name, p.part_company, p.part_tel, p.part_email from product h join partner p on h.part_num = p.part_num	
+			
+		]]>
+	</select>
+	<!-- 입고등록 -->	
+	<insert id="Warehousing_RegisterOk" parameterType="com.leaf.myapp.vo.ProductVO">	
+		insert into product(hq_num, part_num, hq_name, ware_cnt, ware_price, emp_num) values(product_sq.nextval, #{part_num}, #{hq_name}, #{ware_cnt}, #{ware_price}, #{emp_num})
+	</insert>
+</mapper>
