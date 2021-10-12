@@ -8,3 +8,106 @@ purge recyclebin;
 create sequence s1
 start with 1
 increment by 1;
+
+-- 회원등록
+insert into registers(userid,userpwd,username,birth,tel,email,membership,regdate,addr,auth)
+values('apple','1234','김동현','19951219','010-7192-1311','happy951219@naver.com','3',sysdate,'서울시 서대문구','회원');
+insert into registers(userid,userpwd,username,birth,tel,email,membership,regdate,addr,auth)
+values('banana','12345','강호동','19700220','011-3163-3102','rkdghehd@nate.com','3',sysdate,'마산시 강동구','회원');
+insert into registers(userid,userpwd,username,birth,tel,email,membership,regdate,addr,auth)
+values('appp1','12345','김국진','19950511','010-2153-6122','dbwotjr@naver.com','3','2020-12-05','서울시 강남구','회원');
+insert into registers(userid,userpwd,username,birth,tel,email,membership,regdate,addr,auth)
+values('apple2','12345','김영한','19790922','010-4267-4532','rladudgks@nate.com','3',sysdate,'서울시 강동구','회원');
+insert into registers(userid,userpwd,username,birth,tel,email,membership,regdate,addr,auth)
+values('apple3','12345','김영웅','19601225','010-3163-3102','rladuddn@nate.com','3',sysdate,'서울시 마포구','회원');
+insert into registers(userid,userpwd,username,birth,tel,email,membership,regdate,addr,auth)
+values('apple4','12345','김찬호','19951224','017-3635-4325','rlacksgh@nate.com','3',sysdate,'서울시 은평구','회원');
+insert into registers(userid,userpwd,username,birth,tel,email,membership,regdate,addr,auth)
+values('apple5','12345','이주영','19900401','016-1234-1235','dlwndud@nate.com','3',sysdate,'서울시 종로구','회원');
+insert into registers(userid,userpwd,username,birth,tel,email,membership,regdate,addr,auth)
+values('apple6','12345','오준석','19730510','011-4348-6785','dhwnstjr@nate.com','3',sysdate,'서울시 노원구','회원');
+insert into registers(userid,userpwd,username,birth,tel,email,membership,regdate,addr,auth)
+values('apple7','12345','주재영','19711221','017-3482-5951','wnwodud@nate.com','3',sysdate,'서울시 용산구','회원');
+insert into registers(userid,userpwd,username,birth,tel,email,membership,regdate,addr,auth)
+values('apple8','12345','오민욱','19950523','019-8690-5709','dhalsdnr@nate.com','3',sysdate,'서울시 중구','회원');
+insert into registers(userid,userpwd,username,birth,tel,email,membership,regdate,addr,auth)
+values('apple9','12345','황예창','19901229','017-5679-4389','ghkddpckd@nate.com','3',sysdate,'서울시 성동구','회원');
+insert into registers(userid,userpwd,username,birth,tel,email,membership,regdate,addr,auth)
+values('apple10','12345','김회곤','19700321','010-2163-2701','rlaghlrhs@nate.com','3',sysdate,'서울시 서초구','회원');
+insert into registers(userid,userpwd,username,birth,tel,email,membership,regdate,addr,auth)
+values('apple11','12345','이예림','19700521','010-4163-6109','dldpfla@nate.com','3',sysdate,'서울시 중랑구','회원');
+insert into registers(userid,userpwd,username,birth,tel,email,membership,regdate,addr,auth)
+values('apple12','12345','신제철','19700121','010-9111-1107','tlswpcjf@nate.com','3',sysdate,'서울시 영등포구','회원');
+insert into registers(userid,userpwd,username,birth,tel,email,membership,regdate,addr,auth)
+values('apple13','12345','김훈섭','19700222','010-3163-6105','rlagnstjq@nate.com','3',sysdate,'서울시 강서구','회원');
+insert into registers(userid,userpwd,username,birth,tel,email,membership,regdate,addr,auth)
+values('apple14','12345','홍수빈','19710810','010-3983-2104','ghdtnqls@nate.com','3',sysdate,'서울시 도봉구','회원');
+insert into registers(userid,userpwd,username,birth,tel,email,membership,regdate,addr,auth)
+values('apple15','12345','김정호','19800727','010-9163-9001','rlawjdgh@nate.com','3',sysdate,'서울시 서대문구','회원');
+insert into registers(userid,userpwd,username,birth,tel,email,membership,regdate,addr,auth)
+values('apple16','12345','박응서','19930608','010-8863-8809','qkrdmdtj@nate.com','3',sysdate,'인천시 서구','회원');
+insert into registers(userid,userpwd,username,birth,tel,email,membership,regdate,addr,auth)
+values('apple17','12345','강우석','19770108','011-4173-5304','rkddntjr@nate.com','3',sysdate,'과천시 과천동','회원');
+insert into registers(userid,userpwd,username,birth,tel,email,membership,regdate,addr,auth)
+values('apple18','12345','손동근','199400323','010-2123-5122','thsehdrms@nate.com','3',sysdate,'관천시 중앙동','회원');
+insert into registers(userid,userpwd,username,birth,tel,email,membership,regdate,addr,auth)
+values('apple1','12345','박국환','19971027','010-6533-5804','qkrrnrghks@naver.com','3',sysdate,'과천시 별암동','회원');
+insert into registers(userid,userpwd,username,birth,tel,email,membership,regdate,addr,auth)
+values('apple20','12345','테스트용','19991221','010-6431-4391','xptmxmdyd@naver.com','3',sysdate,'서울시 테스트','회원');
+insert into registers(userid,userpwd,username,birth,tel,email,membership,regdate,addr,auth)
+values('apple21','12345','테스트용1','1991231','010-3412-4391','xptmxmdyd12@naver.com','3',sysdate,'서울시 테스트','회원');
+commit;        
+-- 본사직원테이블 재직여부 필드추가
+alter table employee2 add(emp_status varchar(1) not null);
+commit;
+select * from registers;
+-- 본사직원 시퀀스 생성
+create sequence empSq
+start with 2000
+increment by 1;
+alter sequence empSq nocache;
+                -- 부서테이블
+insert into department2(dept_num,dept_name) values(7000,'인사부');
+insert into department2(dept_num,dept_name) values(7100,'품질관리부');
+insert into department2(dept_num,dept_name) values(7200,'가맹관리부');
+insert into department2(dept_num,dept_name) values(7300,'시설부');
+insert into department2(dept_num,dept_name) values(8000,'경영부');
+	-- 본사직원 레코드 추가
+insert into employee2(emp_num, dept_num,emp_posi,emp_regdate,userid,emp_status)
+values(empSq.nextval,7000,'사원','2021-10-10','banana','Y');
+insert into employee2(emp_num, dept_num,emp_posi,emp_regdate,userid,emp_status)
+values(empSq.nextval,7100,'대리','2021-09-02','apple','Y');
+insert into employee2(emp_num, dept_num,emp_posi,emp_regdate,userid,emp_status)
+values(empSq.nextval,7200,'주임','2016-04-22','apple1','Y');
+insert into employee2(emp_num, dept_num,emp_posi,emp_regdate,userid,emp_status)
+values(empSq.nextval,7300,'부장','2010-01-03','apple2','Y');
+insert into employee2(emp_num, dept_num,emp_posi,emp_regdate,userid,emp_status)
+values(empSq.nextval,7000,'대리','2015-03-09','apple3','Y');
+insert into employee2(emp_num, dept_num,emp_posi,emp_regdate,userid,emp_status)
+values(empSq.nextval,7100,'사원','2020-02-22','apple4','Y');
+insert into employee2(emp_num, dept_num,emp_posi,emp_regdate,userid,emp_status)
+values(empSq.nextval,7200,'대리','2017-05-12','apple5','Y');
+insert into employee2(emp_num, dept_num,emp_posi,emp_regdate,userid,emp_status)
+values(empSq.nextval,7300,'사원','2021-05-05','apple6','Y');
+insert into employee2(emp_num, dept_num,emp_posi,emp_regdate,userid,emp_status)
+values(empSq.nextval,7000,'대리','2019-05-22','apple7','Y');
+insert into employee2(emp_num, dept_num,emp_posi,emp_regdate,userid,emp_status)
+values(empSq.nextval,7100,'사원','2020-01-09','apple8','Y');
+insert into employee2(emp_num, dept_num,emp_posi,emp_regdate,userid,emp_status)
+values(empSq.nextval,7200,'차장','2013-02-18','apple9','Y');
+insert into employee2(emp_num, dept_num,emp_posi,emp_regdate,userid,emp_status)
+values(empSq.nextval,7300,'사원','2021-09-21','apple10','Y');
+insert into employee2(emp_num, dept_num,emp_posi,emp_regdate,userid,emp_status)
+values(empSq.nextval,8000,'사원','2020-12-22','apple11','Y');
+insert into employee2(emp_num, dept_num,emp_posi,emp_regdate,userid,emp_status)
+values(empSq.nextval,7000,'대리','2018-03-03','apple12','Y');
+insert into employee2(emp_num, dept_num,emp_posi,emp_regdate,userid,emp_status)
+values(empSq.nextval,7100,'과장','2015-07-04','apple13','Y');
+insert into employee2(emp_num, dept_num,emp_posi,emp_regdate,userid,emp_status)
+values(empSq.nextval,7200,'과장','2016-02-08','apple14','Y');
+insert into employee2(emp_num, dept_num,emp_posi,emp_regdate,userid,emp_status)
+values(empSq.nextval,7300,'사원','2021-10-01','apple15','Y');
+insert into employee2(emp_num, dept_num,emp_posi,emp_regdate,userid,emp_status)
+values(empSq.nextval,7100,'부장','2009-05-07','apple16','Y');
+insert into employee2(emp_num, dept_num,emp_posi,emp_regdate,userid,emp_status)
+values(empSq.nextval,7200,'차장','2014-03-14','apple17','Y');
