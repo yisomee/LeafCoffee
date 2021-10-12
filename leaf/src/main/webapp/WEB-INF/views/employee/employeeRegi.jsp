@@ -104,6 +104,8 @@
 									$('#tel2').val(result.tel2);
 									$('#tel3').val(result.tel3);
 									$('#email').val(result.email);
+									$('#idcheck').val(0);
+									$('#userid').prop('readonly',true);
 									
 								}
 							}, error : function(){
@@ -127,7 +129,23 @@
 					return(date.getDay()===0||date.getDay()===6);
 				}
 			]			
-		});		
+		});
+		
+		$('form[name=frm]').submit(function(){
+			if($('#idcheck').val()===1 || $('#userid').val()==='' || $('#userid').val()==null){
+				alert("가입여부 확인이 필요합니다.");
+				return false;
+			}
+			if($('#dept_name').val()==='' || $('#dept_name').val()==null){
+				alert("부서명을 입력해주세요.");
+				return false;
+			}
+			if($('#emp_regdate').val()==='' || $('#emp_regdate').val()==null){
+				alert("입사일을 입력해주세요.");
+				return false;
+			}
+		});
+
 		
 	});
 				
@@ -151,6 +169,7 @@
 							<strong>가입 확인 절차
 								<span>(필수)</span>
 							</strong>
+							<input type="hidden" value="1" id="idcheck" name="idcheck"/>
 							<input type="text" name="userid" id="userid" placeholder="가입한 아이디"/>
 							<input type="button" value="가입여부확인" id="joinCheck"/>
 						</div>	
