@@ -151,7 +151,9 @@ height: 46px;
 		<ul>
 			<li><a href="/myapp/adminHome">본사</a></li>
 			<li><a href="/myapp/franHome">가맹점</a></li>
-			<li><a href="/myapp/loginOk">LOGIN</a></li>
+			<c:if test="${logname==null}"><li><a href="/myapp/login">LOGIN</a></li></c:if>
+			<c:if test="${logname!=null}"><li><a href="/myapp/logout">LOGOUT</a></li></c:if>
+			${logname}
 			<li><a href="/myapp/register">JOIN</a></li>	
 		</ul>
 	</div>

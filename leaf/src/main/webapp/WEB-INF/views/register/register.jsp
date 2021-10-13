@@ -283,12 +283,13 @@ const config = {
 	$(function(){
 		$('#emailConfirm').click(function(){
 			var datas="email="+$("#emailid").val()+"@"+$("#domain").val();
-      console.log(datas);//고구마들어옴.
+     				 console.log(datas);//email주소 들어옴.
         $.ajax({
            url:"/myapp/emailSending",
            data:datas,
            success:function(result){
               console.log(result);
+              
 				let popUrl="/myapp/register/emailCheck?dice="+result;
 				let popOption="width = 400px, height=400px, top=300px, left=300px, scrollbars=yes";
 				

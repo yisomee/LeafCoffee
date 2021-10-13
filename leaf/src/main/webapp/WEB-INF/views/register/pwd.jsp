@@ -146,21 +146,58 @@ ul,li{list-style:none;
 		<li>비밀번호찾기</li>
 	</ul>
 	<div class="formdiv">
-		<form method="post" id="" action="">
-	
-	
 	<ul class="logins">
-			<li><label class="label">아이디</label></li><li><input type="text" name="" id="userid" class="inputBox"/></li>
-			<li><label class="label">전화번호</label></li><li><input type="text" name="" id="tel" class="inputBox"/>
-				<input type="button" id="" value="인증하기"/>
-			</li>
-			<li><label class="label">인증번호</label></li><li><input type="text" name="" id="tel"  class="inputBox"/>
-				<input type="button" id="" value="확인"/>
-			<li id="subbtn"><input type="submit" value="다음" class="next"/></li>
+			<li><label class="label">아이디</label></li>
+			<li><input type="text" name="userid" id="userid" class="inputBox"/></li>
+			<li><label class="label">전화번호</label></li>
+			<li><input type="text" name="tel" id="tel" class="inputBox"/>
+			<input type="button" id="inputPhoneNumber" value="인증번호발송"/></li>
+			<li><label class="label">인증번호</label></li><li><input type="text" name="inputCertifiedNumber" id="inputCertifiedNumber"  class="inputBox"/>
+			<input type="button" id="checkBtn" value="인증번호확인"/>
+		
 		</ul>
-		</form>
+
 	</div><!-- formdiv -->
 </div><!-- container -->
+<script>
+
+$(function(){
+
+	
+	$('#inputPhoneNumber').click(function(){
+		let phoneNumber = $('#tel').val();
+		alert('인증번호 발송 완료!');
+		$.ajax({
+			type: "GET",
+			url: "/myapp/check/sendSMS",
+			data: {"phoneNumber" : phoneNumber}, 
+			success: function(res){
+		   		$('#checkBtn').click(function(){
+		        	if($.trim(res) ==$('#inputCertifiedNumber').val()){ 
+	                	alert( '인증성공!','휴대폰 인증이 정상적으로 완료되었습니다.','success')
+	                	
+							$.ajax({//메일만 보내면된다
+								url:"/myapp/update/emailNumber",
+								data:{"tel" : $('#tel').val()},
+								success: function(res){
+									if(res==0){
+										alert('이메일전송실패');
+									}else{
+										alert('이메일전송완료');
+										location.href='/myapp/login';
+										
+									}
+								}
+							});
+					
+					}
+				});
+			}
+		});
+	});
+});
+
+</script>
 
 </body>
 </html>

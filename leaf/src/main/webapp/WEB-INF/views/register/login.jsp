@@ -127,12 +127,12 @@ ul,li{list-style:none;
 <div class="nowrapdiv">
 <div class="containers">
 	<div class="formdiv">
-		<form method="post" id="" action="/myapp/loginOk">
+		<form method="post"action="/myapp/loginOk">
 		<ul class="loginPage">
-			<li><label class="label">아이디</label></li><li><input type="text" name="" id="userid" class="inputBox"/></li>
-			<li><label class="label">비밀번호</label></li><li><input type="password" name="" id="userpwd" class="inputBox"/></li>
-		</ul>
+			<li><label class="label">아이디</label></li><li><input type="text" name="userid" id="userid" class="inputBox"/></li>
+			<li><label class="label">비밀번호</label></li><li><input type="password" name="userpwd" id="userpwd" class="inputBox"/></li>
 			<input type="submit" value="로그인"class="join" />
+		</ul>
 		<ul class="search">
 			<li><a href="/myapp/idOk">아이디찾기</a></li>
 			<li><a href="/myapp/pwdOk">비밀번호 찾기</a></li>

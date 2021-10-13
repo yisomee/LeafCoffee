@@ -105,18 +105,15 @@ public class RegisterVO {
 
 	// ����ó
 	public String getTel() {
-		tel = tel1+"-"+tel2+"-"+tel3;
+		
+			tel = tel1+tel2+tel3;
+		
 		return tel;
 	}
 	public void setTel(String tel) {
 		this.tel = tel;
 		
-		String[] AllTel = tel.split("-");
-		this.tel1 = AllTel[0];
-		this.tel2 = AllTel[1];
-		this.tel3 = AllTel[2];
-		
-	}
+			}
 	public String getTel1() {
 		return tel1;
 	}
