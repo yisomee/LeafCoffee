@@ -20,24 +20,41 @@ import com.leaf.myapp.vo.ProductVO;
 public class ProductController {
 	@Inject
 	ProductService productService;
-	//발주페이지에 목록보여주기 
-	@RequestMapping("/purchase")
-	   public ModelAndView ProductList() {
-	      ModelAndView mav = new ModelAndView();
-	      mav.addObject("ProductList", productService.ProductList());
-	      mav.setViewName("Store/purchase");
-	      return mav;
-	   }
-	//발주페이지에 목록클릭시 파트너 띄우기 ajax
+	//발주페이지에 목록클릭시 파트너, 발주창 띄우기 ajax
 	@RequestMapping(value="/purchasePartner")
 	@ResponseBody
 	public List<ProductVO>ajaxPartner(int hq_num){
 		ModelAndView mav = new ModelAndView();
-		List<ProductVO> list = productService.ProductPartner(hq_num);		
-		
+		List<ProductVO> list = productService.ProductPartner(hq_num);			
 		return list;
 	}
 	
+//발주하기
+@RequestMapping(value="/Purchase_RegisterOk", method = RequestMethod.POST)
+public ModelAndView Purchase_RegisterOk(ProductVO vo) {
+	ModelAndView mav = new ModelAndView();  
+	productService.Purchase_RegisterOk(vo);
+	mav.addObject(vo);
+	mav.setViewName("redirect:purchase");
+	System.out.println(vo.getHq_num());
+	System.out.println(vo.getPc_cnt());
+	//System.out.println(hq_num);
+	//System.out.println(hq_name);
+	//System.out.println(ware_price);
+	//System.out.println(pc_cnt);
+	return mav;
+}
+	//발주페이지에 목록보여주기 
+	// 발주페이지에 발주 클릭시 발주 창 보여주기
+	@RequestMapping("/purchase")
+	 public ModelAndView purchaseList() {
+	      ModelAndView mav = new ModelAndView();
+	     // List<ProductVO> vo = productService.purchaseList();
+	      mav.addObject("ProductList", productService.ProductList());
+	      mav.addObject("purchaseList", productService.purchaseList());
+	      mav.setViewName("Store/purchase");
+	      return mav;
+	}
 	
 	
 	@RequestMapping("/purchase_Modify")
@@ -49,7 +66,7 @@ public class ProductController {
 	public String PurchaseConfirm() {
 		return "Head/purchase_Confirm";
 	}
-	
+	//입고리스트
 	@RequestMapping("/Warehousing_Management")
 	 public ModelAndView WarehousingList() {
 	      ModelAndView mav = new ModelAndView();
@@ -73,5 +90,5 @@ public class ProductController {
 		mav.addObject(vo);
 		mav.setViewName("redirect:Warehousing_Management");
 		return mav;
-}
+	}
 }

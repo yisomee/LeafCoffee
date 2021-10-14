@@ -230,7 +230,7 @@ nav>div {
 					</strong> <select name="part_num" id="part_num">
 						<option value="1">수영물산</option>
 						<option value="21">뚜우웅</option>
-						<option value=""></option>
+						<option value="22">서준물산</option>
 						<option value=""></option>
 					</select>
 				</div>
