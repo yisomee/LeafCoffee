@@ -44,6 +44,20 @@ public class ProductServiceImp implements ProductService{
 	}
 
 
+	@Override
+	public int Purchase_RegisterOk(ProductVO vo) {
+		// TODO Auto-generated method stub
+		return productDAO.Purchase_RegisterOk(vo);
+	}
+
+
+	@Override
+	public List<ProductVO> purchaseList() {
+		// TODO Auto-generated method stub
+		return productDAO.purchaseList();
+	}
+
+
 
 
 }

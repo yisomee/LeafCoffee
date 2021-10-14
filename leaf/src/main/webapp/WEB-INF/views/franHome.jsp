@@ -57,13 +57,13 @@
 	    border: 0;
 	}
 	.bx-wrapper{
-		height: 800px;
+		height: 920px;
 		overflow: hidden;
 	}
 	.blank{
 	    position: relative;
 	    z-index: -2;
-	    height:40vh;
+	    height:25vh;
 	    background-color: white;
 	    opacity: 0;
 	}
@@ -116,11 +116,11 @@
 	    font-size:6em;
 	    font-weight:bold;
 	    margin-left:-500px;
-	    top:-200px;
+	    top:-25px;
 	}
 	.fav_img{
-	    top: 1060px;
-   		left: 960px;
+	    top: 1280px;
+   		left: 1060px;
 	    width: 672px;
 	    height: 458px;
 	    position: absolute;
@@ -149,7 +149,7 @@
 html{
   height: 100%;
   font-family: 'Montserrat', sans-serif;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 body{
@@ -314,7 +314,7 @@ body{
     <div class="fav_img">
     	<img alt="" src="https://image.istarbucks.co.kr/upload/common/img/main/2021/2021_autumn_fav.png">
     </div>
-				
+	<div class="blank"></div>			
 <section class="hero-section">
   <div class="card-grid">
     <a class="card" href="#">

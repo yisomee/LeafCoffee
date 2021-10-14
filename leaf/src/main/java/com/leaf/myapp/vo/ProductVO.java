@@ -4,10 +4,9 @@ public class ProductVO {
 	//제품 vo
 	private int hq_num;
 	private String hq_name;
-	private int pc_price; 
 	private int ware_price;
-	private int ware_cnt;
 	private String ware_date;
+	private int ware_cnt;
 	private int emp_num;
 	//파트너 vo
 	private int part_num;
@@ -17,19 +16,25 @@ public class ProductVO {
 	private String part_email;
 	private String part_code_name;
 	private String part_regdate;
+	private int order_status;
+	
+	//발주 vo
+	private int pc_num;
+	private int pc_cnt;
+	private String pc_date;
+	private int fc_num;
+
+	//가맹점 vo
+	// 나중에 넣자..........
+
+	
+	
 	
 	public int getHq_num() {
 		return hq_num;
 	}
 	public void setHq_num(int hq_num) {
 		this.hq_num = hq_num;
-	}
-
-	public int getPc_price() {
-		return pc_price;
-	}
-	public void setPc_price(int pc_price) {
-		this.pc_price = pc_price;
 	}
 	public int getWare_price() {
 		return ware_price;
@@ -102,6 +107,36 @@ public class ProductVO {
 	}
 	public void setPart_regdate(String part_regdate) {
 		this.part_regdate = part_regdate;
+	}
+	public int getPc_num() {
+		return pc_num;
+	}
+	public void setPc_num(int pc_num) {
+		this.pc_num = pc_num;
+	}
+	public int getPc_cnt() {
+		return pc_cnt;
+	}
+	public void setPc_cnt(int pc_cnt) {
+		this.pc_cnt = pc_cnt;
+	}
+	public String getPc_date() {
+		return pc_date;
+	}
+	public void setPc_date(String pc_date) {
+		this.pc_date = pc_date;
+	}
+	public int getFc_num() {
+		return fc_num;
+	}
+	public void setFc_num(int fc_num) {
+		this.fc_num = fc_num;
+	}
+	public int getOrder_status() {
+		return order_status;
+	}
+	public void setOrder_status(int order_status) {
+		this.order_status = order_status;
 	}
 	
 	

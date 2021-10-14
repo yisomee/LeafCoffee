@@ -7,19 +7,24 @@
 <mapper namespace="com.leaf.myapp.dao.ProductDAO">
 	<!-- 발주페이지 제품리스트 -->
 	<select id="ProductList"  resultType="com.leaf.myapp.vo.ProductVO">
-		select hq_num, hq_name, pc_price, ware_price, ware_cnt, ware_date, part_num, emp_num from product
+		select hq_num, hq_name, ware_price, ware_cnt, ware_date, part_num, emp_num from product
 	</select>
-	<!-- 발주시 제품클릭하면 협렵업체-->	
+	<!-- 발주시 제품클릭하면 파트너, 발주창 ajax-->	
 	<select id="ProductPartner" parameterType="int" resultType="com.leaf.myapp.vo.ProductVO">
-  		select h.hq_num, h.part_num, p.part_company, p.part_name, p.part_tel, p.part_email, p.part_code_name from product h join partner p on h.part_num = p.part_num where hq_num=#{param1}
+  		select h.hq_num, h.hq_name, h.ware_price, h.part_num, p.part_company, p.part_name, p.part_tel, p.part_email, p.part_code_name from product h join partner p on h.part_num = p.part_num where hq_num=#{param1}
   	</select>
+	<!-- 발주하기 -->	
+	<insert id="Purchase_RegisterOk" parameterType="com.leaf.myapp.vo.ProductVO">	
+		insert into purchase(pc_num, pc_cnt, hq_num) values(purchase_sq.nextval, #{pc_cnt},#{hq_num})
+	</insert>
+	<!-- 발주한거 보는리스트 -->	
+	<select id="purchaseList" resultType="com.leaf.myapp.vo.ProductVO">
+		select p.pc_num, h.hq_num, h.hq_name, h.ware_price, h.ware_cnt, p.pc_date, order_status from product h join purchase p on h.hq_num = p.hq_num
+	</select>
 
  	<!-- 입고리스트 -->
  	<select id="WarehousingList" resultType="com.leaf.myapp.vo.ProductVO">
-		<![CDATA[
-			select h.hq_num, p.part_code_name, h.hq_name, h.ware_price, h.ware_cnt, p.part_name, p.part_company, p.part_tel, p.part_email from product h join partner p on h.part_num = p.part_num	
-			
-		]]>
+		select h.hq_num, p.part_code_name, h.hq_name, h.ware_price, h.ware_cnt, p.part_name, p.part_company, p.part_tel, p.part_email from product h join partner p on h.part_num = p.part_num	
 	</select>
 	<!-- 입고등록 -->	
 	<insert id="Warehousing_RegisterOk" parameterType="com.leaf.myapp.vo.ProductVO">	

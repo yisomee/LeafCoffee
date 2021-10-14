@@ -9,22 +9,24 @@
 	}
 	.search{
 		width:400px;
-		height:586px;
+		height:500px;
 		float:left;
 		margin-left:10px;
 		margin-right:10px;
+		overflow:scroll;
 	}
 	.partner{
 		width:400px;
 		float:left;
 		margin:10px; 
+		
 	}
 	.search_partner{
 		width:400px;
 	}
 	.purchase{
 		width: 965px;
-		height:585px;
+		height:500px;
 		display:flex;
 		margin:10px; 
 		overflow: auto;
@@ -39,9 +41,6 @@
 	}
 	.text{
 		width:100px;
-	}
-	.search{
-		overflow:scroll;
 	}
 	table,td{
 		padding-top: 0px;
@@ -58,7 +57,7 @@
 	#btn1{
 		margin-left:1100px;
 	}
-	#name{
+	#name, #name2{
 		font-size:1.5em;
 		font-weight:bold;
 		margin:10px;
@@ -81,6 +80,21 @@
 	textarea{
 		resize:none;
 	}
+	.product{
+		cursor:pointer;
+	}
+	
+	#purchase{
+		width:966px;
+	}
+	#purchase>ul{
+		display:flex;
+	}
+	#purchase div{
+		margin-left:10%;
+		float:left;
+	}
+	
 	 /*head 이미지*/
 	 header{
    		height:250px;
@@ -110,7 +124,8 @@
 		height:250px;
 	}
 </style>
-<script>
+<script defer>
+var hq_num=0;
 $(()=>{
 	$('#myinput').keyup(function(){
 		var data = $(this).val().toLowerCase();
@@ -122,42 +137,96 @@ $(()=>{
 			$(this).toggle(idx>-1);
 		});
 	});
-	$(".btn3").click(function(){
-		alert('발주신청 되었습니다.');
-	});
+
 	$("#headerText").animate({
 	       top: "-160px", opacity:1
 	       }, 1200,);
 	
 });
 
-//서버에서 List컬렉션 객체 비동기식으로 가져오기
+//서버에서 List컬렉션 객체 비동기식으로 가져오기 (상품정보->거래처정보, 발주)
 $(()=>{
-    	console.log($(".product"));
-    	console.log($(".product").children());
 	    $(".product").on('click',function(){
-    	console.log($(this));
-    	console.log($(this).children(".first").text());
-    	console.log($(this).children(".second").text());
 	      var url = "/myapp/purchasePartner";
-	      var params = {"hq_num": $(this).children(".first").text() }
-	      
+	      var hq_num = $(this).children(".first").text();
+	      var params = {"hq_num": hq_num}
+	      $("#hq_num").val(hq_num);
+	        	 console.log(hq_num);
 	      $.ajax({
 	         url:url,
 	         data:params,
 	         success:function(r){
 	        	 var rr = $(r)
-	        	 console.log(rr);
+	        	 var tag = "";
 	            rr.each(function(idx,vo){
+	            	tag = "";
 	               $("#view1").html(vo.part_company);
-	               $("#view2").html(vo.part_num);
-	               $("#view3").html(vo.part_name);
-	               $("#view4").html(vo.part_tel);
+	               $("#view2").html(vo.part_code_name);
+	               $("#view3").html(vo.part_num);
+	               $("#view4").html(vo.part_name);
+	               $("#view5").html(vo.part_tel);
+	               $("#hq_num").val(hq_num);
+	               tag = "<form method='post' action='/myapp/Purchase_RegisterOk'><div>" + vo.hq_num + "</div><div>" + vo.hq_name + "</div><div>" + (vo.ware_price - 2000) + "</div>";
+	               tag += "<div><input id='user_input' type='text' class='text' />개</div>";
+	               tag += "<div><input type='submit' class='btn3' value='발주' /></div>";
+	               tag += "<div><input id='hq_num' value='hq_num' type='hidden' /></div>"
+	               tag += "<div><input type='text' class='text' /></div></form>";
+	               $("#purchase").html(tag);
+	               $("#hq_num").val(hq_num);
+	             /*  $("#purchase").append("<form method='post' action='/myapp/Purchase_RegisterOk'>");
+	               $("#purchase").append("<div>");
+	               $("#purchase").append("<div name='hq_num'>" + vo.hq_num + "</div>");
+	               $("#purchase").append("<div>" + vo.hq_name + "</div>");
+	               $("#purchase").append("<div>" + (vo.ware_price - 2000) + "</div>");
+	               $("#purchase").append("<div><input type='text' class='text' name='pc_cnt' />개</div>");
+	               $("#purchase").append("<div><input type='submit' class='btn3' value='발주' /></div>");
+	               $("#purchase").append("<div><input type='text' class='text' /></div>");
+	               $("#purchase").append("</div>");
+	             */
+	/*            
+	               
+	               $("#hq_num").attr('name', "hq_num");
+	               $("#hq_num").val(vo.hq_num);
+	           //    $("#hq_name").attr('name', "vo.hq_name");
+	           //    $("#hq_name").val(vo.hq_name);
+	        //       $("#ware_price").attr('name', "ware_price");
+	          //     $("#ware_price").val(vo.ware_price);
+	               
+	               $("#pc_cnt").attr('name', "pc_cnt");
+	               $("#pc_cnt").val($("#user_input").val());
+    
+	               console.log($("#user_input").val());
+	               console.log($("#hq_num").attr('name'));
+	               console.log($("#hq_num").val());
+	               console.log($("#hq_name").attr('name'));
+	               console.log($("#ware_price").attr('name'));
+	               console.log($("#pc_cnt").attr('name'));
+	               /*
+	                pc_cnt, , hq_num,
+	               $(".purchase-table > tbody").append("<form>");
+	               $(".purchase-table > tbody").append("<tr>");
+	               $(".purchase-table > tbody").append("<td>" + vo.hq_num + "</td>");
+	               $(".purchase-table > tbody").append("<td>" + vo.hq_name + "</td>");
+	               $(".purchase-table > tbody").append("<td>" + (vo.ware_price - 2000) + "</td>");
+	               $(".purchase-table > tbody").append("<td><input type='text' class='text' />개</td>");
+	               $(".purchase-table > tbody").append("<td><input type='submit' class='btn3' value='발주' /></td>");
+	               $(".purchase-table > tbody").append("<td><input type='text' class='text' /></td>");
+	               $(".purchase-table > tbody").append("</tr>");
+	               $(".purchase-table > tbody").append("</form>");
+	               */
 	            });
 	         }
 	      });
-	   }); 
+	   });
+		$(document).on('click', '.btn3', function(){
+			$('#frm').submit();
+			alert(hq_num);
+			alert('발주신청 되었습니다.');
+		});
 	});
+	
+//서버에서 List컬렉션 객체 비동기식으로 가져오기 (상품정보->발주)
+
 </script>
 </head>
 <body>
@@ -176,47 +245,60 @@ $(()=>{
 		<table class='table table-hover table-active'>
 			<thead>
 			<tr>
-				<td>상품번호</td>
-				<td>제품명</td>
+				<td><b>상품번호</b></td>
+				<td><b>제품명</b></td>
 			</tr>
 			</thead>
 			<tbody id='searchList'>	
-			<tr>
-				<td>1</td>
-				<td>블랙원두</td>
-			</tr>
-			<c:forEach var="ProductVO" items="${ProductList}">
-				<tr class="product">
-					<td class="first">${ProductVO.hq_num}</td>
-					<td>${ProductVO.hq_name}</td>
-				</tr>
-			</c:forEach>
+				<c:forEach var="ProductVO" items="${ProductList}">
+					<tr class="product">
+						<td class="first">${ProductVO.hq_num}</td>
+						<td>${ProductVO.hq_name}</td>
+					</tr>
+				</c:forEach>
 			</tbody>
 		</table>
 	</div>
 	<div class="partner">
+	<div id="name2">거래처정보</div>
 		<table class='table'>
 			<tr>
-				<td>거래처명</td>
-				<td id="view1">거래처명</td>
-				</tr>
+				<td><b>거래처명</b></td>
+				<td id="view1"></td>
+			</tr>
 			<tr>
-				<td>거래처번호</td>
+				<td><b>분류</b></td>
 				<td id="view2"></td>
 			</tr>
 			<tr>
-				<td>담당자</td>
+				<td><b>거래처번호</b></td>
 				<td id="view3"></td>
 			</tr>
 			<tr>
-				<td>연락처</td>
+				<td><b>담당자</b></td>
 				<td id="view4"></td>
+			</tr>
+			<tr>
+				<td><b>연락처</b></td>
+				<td id="view5"></td>
 			</tr>
 		</table>
 	</div>
 	</div>
 	<div class="purchase">
-		 <table class="table table-hover table-active">
+         	   	<div id="purchase">
+         	   		<div>상품번호</div>
+         	   		<div>제품명</div>
+         	   		<div>발주가격</div>
+         	   		<div>발주수량</div>
+         	   		<div>발주</div>
+         	   		<div>비고</div>
+         	   	</div>
+         	   	<div></div>
+         	   	
+     
+	<!-- 
+	 <table class="table table-hover table-active purchase-table">
       	<thead>
             <tr class="table-active">
                <td>상품번호</td>
@@ -227,25 +309,17 @@ $(()=>{
                <td>비고</td>
             </tr>
             </thead>
-            <tbody>
-              <tr>
-               <td>2-1</td>
-               <td>블랙원두</td>
-               <td>10000원</td>
-               <td><input type="text" class="text"/>개</td>
-               <td><input type="submit" class='btn3' value="발주"/></td>
-               <td><input type="text" class="text"/></td>
-            </tr>
-             <tr>
-               <td>2-2</td>
-               <td>블랙원두</td>
-               <td>10000원</td>
-               <td><input type="text" class="text"/>개</td>
-               <td><input type="submit" class='btn3' value="발주"/></td>
-               <td><input type="text" class="text"/></td>
-            </tr>
-         </tbody>
+         	   <tbody></tbody>
+         	 
       </table>
+      		<!-- 데이터를 몰래 훔쳐갈 폼 
+            <form id="frm" method="post" action="/myapp/Purchase_RegisterOk">
+            	<input id="hq_num" type="hidden" />
+            	<input id="hq_name" type="hidden" />
+            	<input id="ware_price" type="hidden" />
+            	<input id="pc_cnt" type="hidden" />
+            </form>
+	 -->	
 	</div>
 	<div class="purchase_ok">
 		 <table class="table table-hover table-active">
@@ -262,26 +336,18 @@ $(()=>{
             </tr>
             </thead>
             <tbody>
+            	<c:forEach var="ProductVO" items="${purchaseList}">
 	             <tr>
-	             	<td>1</td>
-	               	<td>2-1</td>
-	                <td>블랙원두</td>
-	                <td>10000원</td>
-	                <td>5개</td>
+	             	<td>${ProductVO.pc_num}</td>
+	               	<td>${ProductVO.hq_num}</td>
+	                <td>${ProductVO.hq_name}</td>
+	                <td>${ProductVO.ware_price}</td>
+	                <td>${ProductVO.ware_cnt}</td>
 	                <td>50000</td>
-               	    <td>2021-09-19</td>
-               	    <td>대기</td>
+               	    <td>${ProductVO.pc_date}</td>
+               	    <td>${ProductVO.order_status}</td>
 	            </tr>
-	            <tr>
-	             	<td>2</td>
-	               	<td>2-2</td>
-	                <td>블랙원두</td>
-	                <td>10000원</td>
-	                <td>5개</td>
-	                <td>50000</td>
-               	    <td>2021-09-19</td>
-               	    <td>대기</td>    	 
-	            </tr>
+	            </c:forEach>
          </tbody>
       </table>
 	</div>
