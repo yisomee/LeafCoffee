@@ -201,7 +201,7 @@ const config = {
                     $(".id1").text("4~12자의 영문 소문자, 숫자만 가능합니다.");
                     $(".id1").attr("style","color:red").css("margin-left","120px").css("margin-top","-20px");
                    }else{
-                    $(".id1").text("옳바른 형식입니다.");
+                    $(".id1").text("올바른 형식입니다.");
                     $(".id1").attr("style","color:green").css("margin-left","120px").css("margin-top","-20px");
                    }
             

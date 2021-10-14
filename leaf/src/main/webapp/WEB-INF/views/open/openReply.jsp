@@ -58,6 +58,7 @@
 </head>
 <body>
 	<%@ include file="/inc/adminTop.jspf" %>
+	<div class=top-banner-imgCon></div>
 	<nav class="top-banner-nav">
 	   <div class="tbn-menu1"><a href="<%=request.getContextPath()%>/openQuestionPage">창업문의목록</a></div>
 	   <div class="tbn-menu2">창업문의내용</div>	   	   	   

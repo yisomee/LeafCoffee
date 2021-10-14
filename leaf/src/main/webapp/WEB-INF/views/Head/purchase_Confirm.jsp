@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="/inc/franTop.jspf" %>
+<%@ include file="/inc/adminTop.jspf" %>
 <style>
 	.container{ 
 		max-width: 1400px;
@@ -63,7 +63,7 @@
    		top:-100px;
    		font-size:3em;
    		color:white;
-   		z-index:100;
+   	
    		opacity:0.5;
    		text-align:center;
    		position: relative;

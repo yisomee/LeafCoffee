@@ -19,7 +19,7 @@
 	.blank{flex:1 1 15%}
 	.title{flex:1 1 70%;font-size:1.5em;text-align:center;color:#382E2C}
 	.title_writedate>div:last-child{flex:1 1 15%;font-size:0.8em;}
-	.content{padding:40px 0px;color:#62605F}
+	.content{padding:40px 0px;color:#62605F;min-height:500px}
 	#noticeImg{width:800px;height:950px}
 	.btnList{display:flex;justify-content:end;width:1200px;margin:0 auto;padding:30px 0px;}
 	.btnList button{font-size:1.2em;padding:13px 30px;margin-right:20px;background-color:#9F8362;border:none;color:white;font-size:0.9em;cursor:pointer;}

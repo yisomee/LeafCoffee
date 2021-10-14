@@ -51,7 +51,7 @@ li{list-style:none;}
 a:link, a:hover a:visited{text-decoration: none;}
 /* button{background-color:white;cursor:pointer;}   */ 
 /*상단 이미지와 네비바 */
-.top-banner-imgCon{background:url(../../../img/managerbannerimg.jpg) no-repeat center; background-size:cover;
+.top-banner-imgCon{background:url(https://www.baristapaulbassett.co.kr/images/whatsnew/eventSubVisual.jpg) no-repeat center; background-size:cover;
 					height:250px;position:relative; min-width:1400px; overflow:hidden;}   
 .top-banner-imgCon .headerText{width:1400px;font-size:3em;color:white;z-index:100;opacity:1; margin:90px auto 0;text-align:center;}
 .top-banner-nav{display:flex;justify-content:center;width:100%;border-bottom:1px solid gray;}
