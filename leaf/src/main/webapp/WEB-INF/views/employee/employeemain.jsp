@@ -55,14 +55,10 @@
 				
 				let nowPageMinerOne = nowPage-1;  // 현재페이지-1
 				nowPageMinerOne = "'"+nowPageMinerOne+"'";
-				
-				
-				//let nowPagePlusOne = nowPage+1;  // 현재페이지+1
-				//nowPagePlusOne = "'"+nowPagePlusOne+"'";
+								
 				let nextBtn = parseInt(nowPage);
 				let plusOne = parseInt("1");
-				let nowPagePlusOne = parseInt(nextBtn + plusOne);
-				
+				let nowPagePlusOne = parseInt(nextBtn + plusOne);				
 				
 				////////////////////////////////////
 				if(nowPage>1){
@@ -84,8 +80,12 @@
 							$('.page_nation').append('<a href="javascript:listSelect('+j+','+sk+','+sw+')">'+j+'</a>');						
 						}
 					}
-				}				
-				$('.page_nation').append('<a class="arrow next" href="javascript:listSelect('+nowPagePlusOne+','+sk+','+sw+')"></a>');
+				}
+				if(nowPage==result.pvo.totalPage){
+					$('.page_nation').append('<a class="arrow next" href="javascript:listSelect('+result.pvo.totalPage+','+sk+','+sw+')"></a>');					
+				}else{
+					$('.page_nation').append('<a class="arrow next" href="javascript:listSelect('+nowPagePlusOne+','+sk+','+sw+')"></a>');
+				}
 				$('.page_nation').append('<a class="arrow nnext" href="javascript:listSelect('+result.pvo.totalPage+','+sk+','+sw+')"></a>');
 			}
 		}, error:function(){	
@@ -95,7 +95,14 @@
 		}); 			
 	}// 자바스크립트 함수
 	
-	$(()=>{	
+	$(()=>{
+		// 처음 화면 로그인시
+		listSelect(1, '', '');
+		
+		
+		// submit 엔터누르기 제어하기
+		
+		
 		
 		$('#searchEmpBtn').click(function(){
 			let searchKey = $('#searchKey').val();
@@ -152,25 +159,41 @@
 					var sk = "'"+result.pvo.searchKey+"'"; //스크립트 메소드의 매개변수 String값을 셋팅시 값으로 인식시켜주기 위함
 					var sw = "'"+result.pvo.searchWord+"'";
 					
-					if(result.pvo.nowPage>1){
+					let nowPageMinerOne = nowPage-1;  // 현재페이지-1
+					nowPageMinerOne = "'"+nowPageMinerOne+"'";
+									
+					let nextBtn = parseInt(nowPage);
+					let plusOne = parseInt("1");
+					let nowPagePlusOne = parseInt(nextBtn + plusOne);				
+					
+					////////////////////////////////////
+					if(nowPage>1){
 						$('.page_nation').append('<a class="arrow pprev" href="javascript:listSelect(1,'+sk+','+sw+')"></a>');
-						$('.page_nation').append('<a class="arrow prev" href="javascript:listSelect('+result.pvo.nowPage-1+','+sk+','+sw+')"></a>');
+						$('.page_nation').append('<a class="arrow prev" href="javascript:listSelect('+nowPageMinerOne+','+sk+','+sw+')"></a>');					
 						
-					}
-					if(result.pvo.nowPage==1){
+					}else if(nowPage==1){
 						$('.page_nation').append('<a class="arrow pprev" href="javascript:listSelect(1,'+sk+','+sw+')"></a>');
-						$('.page_nation').append('<a class="arrow prev" href="javascript:listSelect(1,'+sk+','+sw+')"></a>');						
+						$('.page_nation').append('<a class="arrow prev" href="javascript:listSelect(1,'+sk+','+sw+')"></a>');
+											
+					}				
+					for (var j = result.pvo.startPage; j <=result.pvo.startPage+result.pvo.onePageViewNum-1; j++) {						
+						var sk = "'"+result.pvo.searchKey+"'";
+						var sw = "'"+result.pvo.searchWord+"'";
+						if(j<=result.pvo.totalPage){
+							if(j==nowPage){
+								$('.page_nation').append('<a class="active" href="javascript:listSelect('+j+','+sk+','+sw+')">'+j+'</a>');
+							}else if(j!=nowPage){
+								$('.page_nation').append('<a href="javascript:listSelect('+j+','+sk+','+sw+')">'+j+'</a>');						
+							}
+						}
 					}
-										
-					
-					
-					for (var i = 1; i <=result.pvo.totalPage; i++) {						
-					//	var sk = "'"+result.pvo.searchKey+"'";
-					//	var sw = "'"+result.pvo.searchWord+"'";
-						$('.page_nation').append('<a href="javascript:listSelect('+i+','+sk+','+sw+')">'+i+'</a>');						
+					if(nowPage==result.pvo.totalPage){
+						$('.page_nation').append('<a class="arrow next" href="javascript:listSelect('+result.pvo.totalPage+','+sk+','+sw+')"></a>');					
+					}else{
+						$('.page_nation').append('<a class="arrow next" href="javascript:listSelect('+nowPagePlusOne+','+sk+','+sw+')"></a>');
 					}
-					$('.page_nation').append("<a class='arrow next' href='#'></a>");
-					$('.page_nation').append("<a class='arrow nnext' href='#'></a>");
+					$('.page_nation').append('<a class="arrow nnext" href="javascript:listSelect('+result.pvo.totalPage+','+sk+','+sw+')"></a>');
+				
 										
 					
 				},error:function(){
@@ -181,7 +204,6 @@
 
 		});
 	/*	listSelect(${pagevo.nowPage}, '${pagevo.searchKey}', '${pagevo.searchWord}'); */			
-		
 	});		
 
 </script>

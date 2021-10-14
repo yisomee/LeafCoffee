@@ -13,7 +13,7 @@
 				join department2 dept
 				   	on emp.dept_num = dept.dept_num
 				order by emp_num desc)			
-			where rownum<=${onePageRecord*nowPage} order by emp_num asc) 
+			where rownum<=${rnChange} order by emp_num asc) 
 		where rownum<=${onePageRecord} order by emp_num desc		 		
 		]]>
 	</select>

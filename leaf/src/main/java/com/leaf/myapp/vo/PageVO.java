@@ -45,8 +45,8 @@ public class PageVO {
 		
 		if(nowPage!=0) {
 			startPage = (nowPage-1)/onePageViewNum*onePageViewNum+1;
+			rnChange = nowPage*onePageRecord;
 		}
-		rnChange = nowPage*onePageRecord;
 	}
 	public int getTotalPage() {
 		return totalPage;
