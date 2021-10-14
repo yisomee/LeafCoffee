@@ -136,7 +136,7 @@ ul,li{list-style:none;
 		<ul class="search">
 			<li><a href="/myapp/idOk">아이디찾기</a></li>
 			<li><a href="/myapp/pwdOk">비밀번호 찾기</a></li>
-			<li><a href="/myapp/registerOk">회원가입</a></li>
+			<li><a href="/myapp/register">회원가입</a></li>
 		</ul>
 		<div class="anotherlogindiv">
 			<div class="anotherlogin" id="kakaologin"><a href="#">카카오톡 로그인</a></div>
