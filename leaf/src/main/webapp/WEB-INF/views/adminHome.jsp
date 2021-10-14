@@ -21,36 +21,129 @@ body{width:100%;display:inline-grid;/* body 여백으로인해 임시 선언 */}
 h1 {font-size: 48px; font-weight: 100;}
 button{-webkit-border-radius: 0; border-radius: 0; -webkit-appearance: none; -moz-appearance: none; appearance: none; border:0; background-color:transparent; color:black;}
 
-/* top include login, menubar */
-.intro_bg{background-repeat:no-repeat; background-size:cover; width: 100%; height:700px; margin:auto; min-width:1500px; overflow:hidden; position:relative;}
-#top-div{width:1280px; margin:auto; height:50px; position:relative; z-index:100;}
-#top-info{line-height:50px;	position: relative; left: 1000px;}
-#top-info>li{float:left; padding:0 10px;}
-#top-info>li:last-child{padding:0 0 0 30px;}
-#top-info>li:last-child> a:hover{color:red;	font-weight:600;}
-#top-info> li:before{content: ''; display: inline-block; width: 1px; height: 11px; border-left: 1px solid #777; line-height: 1; margin-left: 12px; margin-right: 12px;}
+
+.changeColor a:hover{text-decoration:none;
+		color:rgb(0, 163, 239);
+		font-size:1.1em;
+		font-family: 'Signika Negative', sans-serif;
+}
+
+
+a{color:black;}
+
+a:hover{
+	text-decoration: none;
+}
+body{margin:0;
+
+}
+
+ul,li{
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+
+.login{
+	float:right;
+	width:50%;
+	height:50px;
+	
+	font-family: 'Signika Negative', sans-serif;
+}
+.login>ul{
+	display:flex;
+	justify-content: flex-end;
+	font-size:1em;
+}
+.login li{
+	padding: 10px 30px;
+}
 .logoimg{/*로고이미지*/
-	position: absolute;
 	float:left;
-	width:170px;
+	width:120px;
 	height:80px;
 	margin-top:20px;
 	padding-left: 20px;
-	z-index:20;
+	
 }
+#section1{position:relative;height: 800px;}
+#section2{position:relative;background: rgb(245, 240, 233);}
 .logoimg>img{
 	width: 100%;
 	justify-content: flex-start;
+	margin-top: 20px;
+    margin-left: 20px;
 
 }
-	/* 메뉴바*/
-.header{width:100%; height:300px; margin:auto; position:relative; z-index:100;}
-.header a:hover{font-size:1.2em; color:blue;}
-#menu-bg{position:absolute;	width:100%;	height:260px; background :white; top:70px; opacity:0.887; display:none;}
-.nav{line-height: 85px; position:relative; left:18%;}
-.nav > li {text-align:center; float:left; width: 13%;}
-.nav > li > a {color:black; font-size:1.05em;}
-.nav > li> a:hover{font-size:1.3em; font-weight:300;}
+.menuBar{/*menubar div*/
+	position:absolute;
+	left:15%;
+	width:70%;
+	margin-top: 75px;
+	font-family: 'Signika Negative', sans-serif;
+	
+}
+.main-ul{
+	display:flex;
+	justify-content:space-around;
+	width:100%;
+	font-size:1.2em;
+	
+}
+.ulclass{
+	display:none;
+    margin-top: -16px
+}
+.ulclass>li{
+	margin-top:50px;
+	line-height:10px;
+
+}
+.select-li{
+    width: 25%;
+    text-align: center;
+}
+.select-li>div{width: 160px;
+height: 46px;
+    margin: 0 auto;
+}
+.select-li>div:hover{
+	border-bottom: 4px solid rgb(0, 163, 239);
+}
+
+.header{
+	position: relative;
+	height:120px;
+	z-index: 10;
+	border-bottom: 1px solid #ddd;
+}
+.whitebg{/*마우스 흰색 배경 이벤트*/
+	width:100%;
+	height:450px;
+	position:absolute;
+	z-index: 7;
+    background-color: white;
+    display:none;
+}
+.menubtn { /*메뉴 안에 색깔 변하는거*/
+	width: 345px;
+	height: 65px;
+	padding-left: 30px;
+	background: rgb(245, 240, 233);
+	transition: 0.25s;
+	border: 1px solid black;
+    line-height: 60px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.menubtn:hover { /*마우스 오버시 메뉴색깔 분홍색으로 변하는거*/
+	box-shadow: inset 25em 0 0 0 rgb(0, 163, 239);
+	color: white;
+	border-color: rgb(0, 163, 239);
+	padding-left: 32px;
+}
 	/* 드롭다운메뉴 서브메뉴 */
 .sublist>li{margin-top: -30px; text-align:center; height:100px;}
 .sublist{height:220px; display:none;}
@@ -58,26 +151,26 @@ button{-webkit-border-radius: 0; border-radius: 0; -webkit-appearance: none; -mo
 /* ===================*/
 
 /* 동영상 */
-.jb-box {position: absolute; width:100%; min-width: 1500px; top: 119px; z-index:-1;}
-video {height:910px; width: 100%;}
+.jb-box {position: relative; width:99vw; height: 100vh; overflow:hidden; z-index:-1;}
+video { width: 100%; position:absolute; top:-111px;}
 
 /* 중단 가맹점현황, 총임직원, 함께하는 회원*/
-.amount{top:-66px; display: flex; min-width:1500px; width:100%; background: #fff; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); margin: auto;}
-.amount > li {flex: 1; height: 132px;}
-.amount > li > div {text-align: center; margin-top:37px; height:57px;}
+.amount{top:-66px; display: flex; min-width:1500px; width:100%; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); margin: auto;}
+.amount > li {flex: 1; height: 180px;}
+.amount > li > div {text-align: center; margin-top:55px; height:57px;}
 .amount > li:not(:last-child) > div{border-right:1px solid #E1E1E1;}
 .contents1{font-size: 20px; font-weight: lighter;}
 .result{font-size: 24px; display:inline-block; font-size:2em;}
-#sales-container{margin:0 auto;}
-#sales-count{display:inline-block; width:800px; height:100px; border:1px solid black; text-align:center; margin-top: 50px; padding-top: 10px;}
+#sales-container{margin:0 auto;width:800px;}
+#sales-count{background:white; display:inline-block; width:800px; height:100px; border:1px solid black; text-align:center; margin-top: 50px; padding-top: 10px;}
 #sales-count>span{font-size:2em;}
-.shadow_eff{position:relative; color:#002F2F; background: white; height: 162px; top: 10px;}
+.shadow_eff{position:relative; color:#002F2F; height: 162px; }
 .shadow_eff:before,.shadow_eff:after{content:""; position:absolute; z-index:-1; width:300px; left:5px; top:80%; bottom:15px; background: #000; box-shadow: 0 20px 15px #000; transform: rotate(-5deg);}
 .shadow_eff:after{transform: rotate(5deg); right: 5px; left: auto;}
 /*-------------*/
 
 /* 중단 카드슬라이드 */
-.container{position: relative; display: flex; margin: auto;background: white; width: 1500px; top: 35px; justify-content: space-between;}
+.container{position: relative; display: flex; margin: auto;width: 1500px; justify-content: space-between;}
 .container .card{position: relative; cursor: pointer; text-align:center;}
 .container .card .face{width: 300px; height: 200px; transition: 0.5s;}
 .container .card .face.face1{position: relative; display: flex; justify-content: center; align-items: center; z-index: 1; transform: translateY(100px);}
@@ -98,12 +191,12 @@ video {height:910px; width: 100%;}
 /*---------------------------*/
 
 /* 중단  NOTICE 슬라이드부   */
-.notice-container{width: 100%; height:900px; min-width: 1500px; margin-top: 40px;}
+.notice-container{width: 100%; height:900px; min-width: 1500px; }
 .notice-container .notice{width:1500px; margin:auto; min-width:1400px; position:relative;}
 .notice-container .notice:before{content: ""; position: absolute; top: 130px; width: 100%; height: 1px; background-color: #cccccb;}
 .notice-top>h1{text-align: center; margin-top:50px; margin-left:100px;}
 .notice-top>div {text-align: center; margin-top:5px; margin-left:100px;}
-.notice-body{margin-top:50px; position: relative; height: 500px;}
+.notice-body{margin-top:75px; position: relative; height: 500px;}
 .main-bn {position:absolute; width:100%; height:630px;}
 .main-bn > .slider > .slides > .bn {position:absolute; transition:opacity 1s, visibility 1s; background-repeat:no-repeat; background-position:center; background-size:cover;
     top:0; left:0; right:0; bottom:0; opacity:0; visibility:hidden; height:530px; width:60%;}
@@ -114,7 +207,12 @@ video {height:910px; width: 100%;}
 .slider{position: relative;}
 .main-bn > .slider > .slides > .bn > .inner-txt > .view {position:absolute; display:inline-block; top:420px; left:150px; width:200px; text-align:center; font-size:1.1em; background:rgb(0, 163, 239);}
 .main-bn > .slider > .slides > .bn > .inner-txt > div > a {display:block; line-height:45px; transition:color .3s; color:white;}
-.main-bn > .slider > .slides > .bn > .inner-txt > div > a:hover {color:red;}	
+.main-bn > .slider > .slides > .bn > .inner-txt > div > a:hover {color:red;}
+.inner-txt a{
+	position:absolute;
+	top:390px;
+	left:65px; 
+}	
 .main-bn > .slider > .page-btns {position: absolute; left: 713px; bottom: 55px; width: 200px; top: 550px; height: 50px;}
 .main-bn > .slider > .page-btns > .page-btn {position: absolute; display: inline-block; color: black; cursor: pointer; width: 30px; height: 50px; bottom:14px; left:10px;}
 .main-bn > .slider > .page-btns > .next-btn {left: 115px;}
@@ -125,68 +223,89 @@ video {height:910px; width: 100%;}
 #leaf-right-btn{width:80px;	height:60px;}	
 </style>
 </head>
+<script>
+
+$(function(){/*메뉴바 전체가 나오는거*/
+	$('.select-li').on({ //이벤트가 발생하는 주체 
+		mouseenter:function(){
+			$('.ulclass').css('display','block');
+			$('.whitebg').css('display','block');
+		},mouseleave:function(){
+			$('.ulclass').css('display','none');
+			$('.whitebg').css('display','none');
+		}
+	});
+});
+	
+</script>
 <body>
-	<!-- 상단부 -->	
-	<header>
+	<!-- 상단부 -->
+	<div class="whitebg"></div>
+	
+
+<div class="header">
+	<div class="login">
+		<ul>
+			<li><a href="/myapp/adminHome">본사</a></li>
+			<li><a href="/myapp/franHome">가맹점</a></li>
+			<li><a href="/myapp/loginOk">LOGIN</a></li>
+			<li><a href="/myapp/register">JOIN</a></li>	
+		</ul>
+	</div>
+	<!-- <a href="/leaf"><div class="logoimg"><img src="img/leaflogo-removebg-preview.png"/></div></a> -->
 	<div class="logoimg"><img src="img/leaflogo-removebg-preview.png" onclick="location.href='/myapp/'"/></div>
-		<div class="intro_bg">
-			<div id="top-div">
-				<ul id="top-info">
-					<li><a href="/myapp/adminHome">본사</a></li>
-					<li><a href="/myapp/franHome">가맹점</a></li>
-					<li>인사부</li>
-					<li id="info-name">전예찬 <span>님</span></li>
-					<li><a href="#">로그아웃</a></li>
-				</ul>
-			</div>
-					
-			<div class="header">			
-				<div id="menu-bg"></div>
-				<ul class="nav">
-					<li><a href="#">SUPERVISE</a>
-						<ul class="sublist">
-							
-							<li><a href="/myapp/menu_Register">메뉴등록</a></li>
-							<li><a href="<%=request.getContextPath()%>/employeeManagePage">직원관리</a></li>
-							<li><a href="<%=request.getContextPath()%>/partnerManagePage">파트너 관리</a></li>
-						</ul>
-					</li>
-					<li><a href="#">OPEN</a>
-						<ul class="sublist">
-							<li><a href="<%=request.getContextPath()%>/openQuestionPage">창업 문의 내용</a></li>
-							<li><a href="#">전국 가맹점 보기</a></li>						
-						</ul>
-					</li>
-					<li><a href="#">PRODUCT</a>
-						<ul class="sublist">
-							<li><a href="/myapp/purchase_Confirm">발주확인(본사)</a></li>
+	
+<div class="changeColor">	
+	
+	<div class="menuBar">
+		<ul class="main-ul">
+			
+<!---------------------------  -->			
+			<li class="select-li"><div><a href="/myapp/menu_Register">SUPERVISE</a></div>
+				<ul class="ulclass">
+					<li><a href="/myapp/menu_Register">메뉴 관리</a></li>
+					<li><a href="<%=request.getContextPath()%>/employeeManagePage">직원 관리</a></li>
+					<li><a href="<%=request.getContextPath()%>/partnerManagePage">파트너 관리</a></li>
+				</ul>					
+			</li>
+<!----------------------------------  -->	
+			<li class="select-li"><div><a href="/myapp/purchase_Confirm">PRODUCT</a></div>
+				<ul class="ulclass">
+					<li><a href="/myapp/purchase_Confirm">발주확인(본사)</a></li>
 							<li><a href="/myapp/Warehousing_Register">입고등록</a></li>
-							<li><a href="/myapp/Warehousing_Management">입고관리</a></li>					
-						</ul>
-					</li>
-					<li><a href="#">SALES</a>
-						<ul class="sublist">
-							<li><a href="<%=request.getContextPath()%>/adminSalesMainPage">메뉴별 매출 현황</a></li>														
-						</ul>
-					</li>
-					<li><a href="#">COMMUNITY</a>
-						<ul class="sublist">
-							<li><a href="#">공지사항</a></li>
-							<li><a href="#">사회공헌 현황</a></li>							
-						</ul>
-					</li>
-				</ul>
-			</div>
-	       	
+							<li><a href="/myapp/Warehousing_Management">입고관리</a></li>
+				</ul>			
+			</li>
+<!--------------------------------------------->
+			<li class="select-li"><div><a href="/myapp/noticeList">WHAT`S UP</a></div>
+				<ul class="ulclass">
+					<li><a href="/myapp/noticeList">NOTICE</a></li>
+				</ul>				
+			</li>
+<!--------------------------------------------->			
+			<li class="select-li"><div><a href="/myapp/franchise">FRANCHISE</a></div>
+				<ul class="ulclass">
+					<li><a href="/myapp/storemap">STORE</a></li>
+					<li><a href="<%=request.getContextPath()%>/openQuestionPage">창업 문의 내용</a></li>
+					<li><a href="<%=request.getContextPath()%>/adminSalesMainPage">메뉴별 매출 현황</a></li>
+				</ul>			
+			</li>
+			
+		</ul>
+		
 		</div>
-	</header>	
+</div><!-- changeColor -->		
+</div>
+		
+	
+		
  	       	<div class="jb-box">
               <video muted autoplay loop>
                 <source src="img/adminbgvideo.mp4" type="video/mp4">                
               </video>
             </div>
 	
-      
+<section id='section1'> 
     <!-- 중앙부 -->
     <div>
 		<ul class="amount">
@@ -282,9 +401,9 @@ video {height:910px; width: 100%;}
             </div>
         </div>
     </div>
+</section>
 	
-	
-	
+	<section id='section2'>
 	
 	<!-- 홍보물 -->
 	<div class="notice-container">
@@ -305,7 +424,7 @@ video {height:910px; width: 100%;}
 					                        Tough times never last, but tough people do.<br>
 					                        자세한 사항은 아래 버튼을 클릭해주세요.
 										</div>					                        
-			                        <div class="view inline-block"><a href="#">자세히 보기</a></div>
+			                       		 <a href="#"><div class="menubtn">자세히 보기</div></a>
 			                    </div>
 			                </div>
 			                <div class="bn" style="background-image:url('img/machine.png');">
@@ -315,7 +434,7 @@ video {height:910px; width: 100%;}
 					                        It is kind of fun to do the impossible.<br>
 					                        자세한 사항은 아래 버튼을 클릭해주세요.
 					                    </div>    
-			                        <div class="view inline-block"><a href="#">자세히 보기</a></div>
+			                        <a href="#"><div class="menubtn">자세히 보기</div></a>
 			                    </div>
 			                </div>			                
 			                <div class="bn" style="background-image:url('img/bongsa.jpg');">
@@ -325,11 +444,11 @@ video {height:910px; width: 100%;}
 					                        I didn’t get there by wishing for it or hoping for it, but by working for it.<br>
 					                        자세한 사항은 아래 버튼을 클릭해주세요.
 					                	</div>
-			                        <div class="view inline-block"><a href="#">자세히 보기</a></div>
+			                        <a href="#"><div class="menubtn">자세히 보기</div></a>
 			                    </div>
 			                </div>				                
 			            </div>
-			            <div class="page-btns">
+			            <div class="page-btns" style="display:none;">
 			                <button class="page-btn prev-btn"><i class="xi-angle-left"><img src="img/leaf.gif" id="leaf-left-btn"></i></button>
 			                <button class="page-btn next-btn"><i class="xi-angle-right"><img src="img/leaf.gif" id="leaf-right-btn"></i></button>
 			                <div class="page-no">
@@ -343,6 +462,7 @@ video {height:910px; width: 100%;}
 	      	</div>	
       	</div>
 	</div>
+	</section>
 	<script>
 //드롭다운 메뉴창
 $('.nav>li:not(.home)').on('mouseenter',function(){
@@ -453,7 +573,7 @@ $('.page-btn').click(function(){
 
 setInterval(function(){
     $('.next-btn').click();
-	}, 8000);
+	}, 6000);
 
 // 슬라이더 페이지 번호 지정
 function pageNumber__Init(){

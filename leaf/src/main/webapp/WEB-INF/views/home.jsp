@@ -32,7 +32,7 @@ font-family: 'Noto Sans KR';
 	margin: 0 auto;
 	position: absolute;
 	top: 30%;
-	left: 20%;
+	left: 22%;
 }
 
 .one, .two, .three, .four { /*로딩할때 leat 글씨 날라오게 하는거.*/
@@ -65,7 +65,7 @@ section { /*section전부다 적용된거*/
 	z-index: 5;
 }
 .section1{
-	height: 820px;
+	    height: 940px;
 }
 .section3{
 	background: #F5F0E9;
@@ -137,6 +137,7 @@ section { /*section전부다 적용된거*/
 	position: relative;
 	overflow: hidden;
 	z-index: 5;
+	margin-left:80%;
 }
 
 .leaf {
@@ -150,15 +151,15 @@ section { /*section전부다 적용된거*/
 }
 
 .hiddenimg { /*이미지 슬라이더 숨긴div*/
-	width: 3600px;
+	width: 3691px;
 	height: 600px;
-	overflow:auto;
+	overflow: auto;
 	display: flex;
 	position: relative;
 }
 
 .hiddenimg>img { /*이미지들 슬라이더 넓이 높이*/
-	width: 600px;
+	height: 600px;
 }
 
 .circleimg {/*원통이미지*/
@@ -172,12 +173,12 @@ section { /*section전부다 적용된거*/
 	height: 400px;
 	border-radius: 100%;
 	top: 8%;
-	right: 10%;
+	right: 70%;
 }
 .circleimgleft{/*사각이미지*/
 	width: 900px;
 	bottom: 10%;
-	left: 35%;
+	left: 0%;
 }
 .circleimgleft>img{
 width:900px;
@@ -276,6 +277,10 @@ font-size: 3rem;
     position: absolute;
     top: -260px;
 }
+.posi{
+position: absolute;
+    right: 0%;
+    }
 </style>
 </head>
 <body>
@@ -336,7 +341,7 @@ font-size: 3rem;
 	</section>
 	<section class="section3">
 		<div class="sort"><!-- 정렬해주는거 -->
-			<div class="write">
+			<div class="write posi">
 				<h3>
 					<span>V</span> <span>I</span> <span>S</span> <span>I</span> <span>O</span>
 					<span>N</span>
@@ -397,7 +402,7 @@ font-size: 3rem;
 		});
 	});
 	$(function slide() {
-		$('.hiddenimg').animate({marginLeft:"-2400px"},10000)
+		$('.hiddenimg').animate({marginLeft:"-3091px"},10000)
 		.animate({marginLeft:"0px"},0,slide);
 	});
 		
@@ -418,7 +423,17 @@ $(()=>{ /*맨처음 글자 날라오는 애니메이션*/
             });
 });
 	
-
+$(window).scroll(function() {
+	if(window.scrollY > 400) {
+	 	$('.slideimg').animate({marginLeft:'40%'},1500);
+	 }
+	 if(window.scrollY > 1300) {
+		 	$('.circleimgright').animate({right:'40%'},1500);
+		 }
+	 if(window.scrollY > 1400) {
+		 	$('.circleimgleft').animate({left:'13%'},3000);
+		 }
+});
          
 </script>
 
