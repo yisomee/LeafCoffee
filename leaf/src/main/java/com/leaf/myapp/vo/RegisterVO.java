@@ -8,7 +8,12 @@ public class RegisterVO {
 	private String birth;
 	private int membership;
 	private String regdate;
-	private String addr;
+	
+	private String addr;//우편번호
+	private String addr1;//주소
+	private String addr2;//상세주소
+	
+	
 	private String auth;
 	private String publeYear;
 	// ����ó
@@ -63,6 +68,7 @@ public class RegisterVO {
 		this.regdate = regdate;
 	}
 	public String getAddr() {
+	
 		return addr;
 	}
 	public void setAddr(String addr) {
@@ -138,6 +144,19 @@ public class RegisterVO {
 	public void setPubleYear(String publeYear) {
 		this.publeYear = publeYear;
 	}
+	public String getAddr1() {
+		return addr1;
+	}
+	public void setAddr1(String addr1) {
+		this.addr1 = addr1;
+	}
+	public String getAddr2() {
+		return addr2;
+	}
+	public void setAddr2(String addr2) {
+		this.addr2 = addr2;
+	}
+
 	
 	
 
