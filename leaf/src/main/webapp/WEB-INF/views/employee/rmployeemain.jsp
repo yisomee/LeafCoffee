@@ -6,97 +6,12 @@
 <meta charset="UTF-8">
 <title>사원관리</title>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
-<script
-  src="https://code.jquery.com/jquery-3.6.0.js"
-  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-  crossorigin="anonymous"></script>
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 	const regExpEmpNum = /^[0-9]{1,4}$/;
 	const regExpDeptName = /^[가-힣]{1,10}$/;
-	
-	function listSelect(i,searchKey,searchWord){
-											
-		let nowPage = i;
-			
-		//ajax로 검색한 리스트 출력.(라디오버튼,사원번호,사원명,직급,연락처,이메일,입사일,재직여부)
-		$.ajax({
-		url: "/myapp/empSearch",
-		data : "searchKey="+searchKey+"&"+
-				"searchWord="+searchWord+"&"+
-				"nowPage="+nowPage,	
-		success:function(result){ // List<EmployeeVO>
-			let empvo = $(result.empvo);
-			
-			if(empvo.length==0){
-				let notSearch = '<li>'+searchWord+'에 대해 0건이 발견되었습니다.</li>';					
-				$('#emp-list').html(notSearch);
-			}else{
-				let empNumList = '';
-				
-				empvo.each(function(idx,vo){
-					empNumList +='<li><input type="radio" name="emp-select"/></li>'+
-								'<li>'+vo.emp_num+'</li>'+
-								'<li>'+vo.username+'</li>'+
-								'<li>'+vo.dept_name+'</li>'+
-								'<li>'+vo.emp_posi+'</li>'+
-								'<li>'+vo.tel+'</li>'+
-								'<li>'+vo.email+'</li>'+
-								'<li>'+vo.emp_regdate+'</li>'+
-								'<li>'+vo.emp_status+'</li>';
-				});				
-				$('#emp-list').html(empNumList);
-				
-				// 페이징					
-				$('.page_nation').empty(); // 버튼을 담을 div를 비워줌
-				
-				var sk = "'"+result.pvo.searchKey+"'"; //스크립트 메소드의 매개변수 String값을 셋팅시 값으로 인식시켜주기 위함
-				var sw = "'"+result.pvo.searchWord+"'";
-				
-				let nowPageMinerOne = nowPage-1;  // 현재페이지-1
-				nowPageMinerOne = "'"+nowPageMinerOne+"'";
-				
-				
-				//let nowPagePlusOne = nowPage+1;  // 현재페이지+1
-				//nowPagePlusOne = "'"+nowPagePlusOne+"'";
-				let nextBtn = parseInt(nowPage);
-				let plusOne = parseInt("1");
-				let nowPagePlusOne = parseInt(nextBtn + plusOne);
-				
-				
-				////////////////////////////////////
-				if(nowPage>1){
-					$('.page_nation').append('<a class="arrow pprev" href="javascript:listSelect(1,'+sk+','+sw+')"></a>');
-					$('.page_nation').append('<a class="arrow prev" href="javascript:listSelect('+nowPageMinerOne+','+sk+','+sw+')"></a>');					
-					
-				}else if(nowPage==1){
-					$('.page_nation').append('<a class="arrow pprev" href="javascript:listSelect(1,'+sk+','+sw+')"></a>');
-					$('.page_nation').append('<a class="arrow prev" href="javascript:listSelect(1,'+sk+','+sw+')"></a>');
-										
-				}				
-				for (var j = result.pvo.startPage; j <=result.pvo.startPage+result.pvo.onePageViewNum-1; j++) {						
-					var sk = "'"+result.pvo.searchKey+"'";
-					var sw = "'"+result.pvo.searchWord+"'";
-					if(j<=result.pvo.totalPage){
-						if(j==nowPage){
-							$('.page_nation').append('<a class="active" href="javascript:listSelect('+j+','+sk+','+sw+')">'+j+'</a>');
-						}else if(j!=nowPage){
-							$('.page_nation').append('<a href="javascript:listSelect('+j+','+sk+','+sw+')">'+j+'</a>');						
-						}
-					}
-				}				
-				$('.page_nation').append('<a class="arrow next" href="javascript:listSelect('+nowPagePlusOne+','+sk+','+sw+')"></a>');
-				$('.page_nation').append('<a class="arrow nnext" href="javascript:listSelect('+result.pvo.totalPage+','+sk+','+sw+')"></a>');
-			}
-		}, error:function(){	
-			console.log("실패");
-			return false;
-			}
-		}); 			
-	}// 자바스크립트 함수
-	
-	$(()=>{	
-		
+
+	$(()=>{
 		$('#searchEmpBtn').click(function(){
 			let searchKey = $('#searchKey').val();
 			let searchWord = $('#searchWord').val();
@@ -120,70 +35,69 @@
 					return false;
 				}
 			}			
-			let nowPage=1;
-			
+	 		
 			$.ajax({
-				url: "/myapp/empSearch",
-				data : "searchKey="+searchKey+"&"+
-						"searchWord="+searchWord+"&"+
-						"nowPage="+nowPage,
-				success:function(result){
-					let empvo = $(result.empvo);
+	 			url:"/myapp/totalPage",	
+ 				data : "searchKey="+searchKey+"&"+
+					"searchWord="+searchWord,
+				success:function(result){					
 					
-					let empNumList = '';					
-					empvo.each(function(idx,vo){
-						empNumList +='<li><input type="radio" name="emp-select"/></li>'+
-									'<li>'+vo.emp_num+'</li>'+
-									'<li>'+vo.username+'</li>'+
-									'<li>'+vo.dept_name+'</li>'+
-									'<li>'+vo.emp_posi+'</li>'+
-									'<li>'+vo.tel+'</li>'+
-									'<li>'+vo.email+'</li>'+
-									'<li>'+vo.emp_regdate+'</li>'+
-									'<li>'+vo.emp_status+'</li>';						
-					}); // empvo.each문
-					
-					$('#emp-list').html(empNumList);
-					
-									
-					// 페이징					
-					$('.page_nation').empty(); // 버튼을 담을 div를 비워줌
-					
-					var sk = "'"+result.pvo.searchKey+"'"; //스크립트 메소드의 매개변수 String값을 셋팅시 값으로 인식시켜주기 위함
-					var sw = "'"+result.pvo.searchWord+"'";
-					
-					if(result.pvo.nowPage>1){
-						$('.page_nation').append('<a class="arrow pprev" href="javascript:listSelect(1,'+sk+','+sw+')"></a>');
-						$('.page_nation').append('<a class="arrow prev" href="javascript:listSelect('+result.pvo.nowPage-1+','+sk+','+sw+')"></a>');
-						
-					}
-					if(result.pvo.nowPage==1){
-						$('.page_nation').append('<a class="arrow pprev" href="javascript:listSelect(1,'+sk+','+sw+')"></a>');
-						$('.page_nation').append('<a class="arrow prev" href="javascript:listSelect(1,'+sk+','+sw+')"></a>');						
-					}
-										
-					
-					
-					for (var i = 1; i <=result.pvo.totalPage; i++) {						
-					//	var sk = "'"+result.pvo.searchKey+"'";
-					//	var sw = "'"+result.pvo.searchWord+"'";
-						$('.page_nation').append('<a href="javascript:listSelect('+i+','+sk+','+sw+')">'+i+'</a>');						
+					// 페이징 버튼
+					$('.page_nation').empty();
+					$('.page_nation').append("<a class='arrow pprev' href='#'></a>");
+					$('.page_nation').append("<a class='arrow prev' href='#'></a>");
+					for (var i = 1; i <=result.totalPage; i++) {
+						$('.page_nation').append("<a href='javascript:listSelect("+i+","+searchKey+","+searchWord+")'>"+i+"</a>");
 					}
 					$('.page_nation').append("<a class='arrow next' href='#'></a>");
 					$('.page_nation').append("<a class='arrow nnext' href='#'></a>");
-										
-					
-				},error:function(){
-					console.log("검색 불러오기 실패");
-					return false;
-				}		
-			});
-
+					console.log("나");
+				}	
+	 		});
 		});
-	/*	listSelect(${pagevo.nowPage}, '${pagevo.searchKey}', '${pagevo.searchWord}'); */			
-		
-	});		
-
+		listSelect(${pagevo.nowPage}, '${pagevo.searchKey}', '${pagevo.searchWord}');			
+	});
+	 		function listSelect(i,searchKey,searchWord){
+	 			let nowPage = i;
+	 			console.log("함수호출");
+				//ajax로 검색한 리스트 출력.(라디오버튼,사원번호,사원명,직급,연락처,이메일,입사일,재직여부)
+				$.ajax({
+				url: "/myapp/empSearch",
+				data : "searchKey="+searchKey+"&"+
+						"searchWord="+searchWord+"&"+
+						"nowPage="+nowPage,	
+				success:function(result){ // List<EmployeeVO>
+					let $result = $(result);
+					console.log("성공");
+					if($result.length==0){
+						let notSearch = '<li>'+searchWord+'에 대해 0건이 발견되었습니다.</li>';					
+						$('#emp-list').html(notSearch);
+					}else{
+						let empNumList = '';
+						
+						$result.each(function(idx,vo){
+							empNumList +='<li><input type="radio" name="emp-select"/></li>'+
+										'<li>'+vo.emp_num+'</li>'+
+										'<li>'+vo.username+'</li>'+
+										'<li>'+vo.dept_name+'</li>'+
+										'<li>'+vo.emp_posi+'</li>'+
+										'<li>'+vo.tel+'</li>'+
+										'<li>'+vo.email+'</li>'+
+										'<li>'+vo.emp_regdate+'</li>'+
+										'<li>'+vo.emp_status+'</li>';
+						});
+						console.log(empNumList);
+						$('#emp-list').html(empNumList);
+					}
+				}, error:function(){	
+					console.log("실패");
+					return false;
+					}
+				});	
+				
+				
+		 			
+	 		}		
 </script>
 <style>
 	/* 사원 컨테이너 */
@@ -301,17 +215,17 @@
 						<li>재직여부</li>
 					</ul>
 					<ul id="emp-list">
-					<%-- <c:forEach var="empvo" items="${empvo}">	 --%>
+					<c:forEach var="empvo" items="${empvo}">	
 						<li><input type="radio" name="emp-select"/></li>
-						<li>1</li>
-						<li>2</li>
-						<li>3</li>
-						<li>4</li>
-						<li>5</li>
-						<li>6</li>
-						<li>7</li>
-						<li>8</li>
-					<%-- </c:forEach> --%>							
+						<li>${empvo.emp_num}</li>
+						<li>${empvo.username}</li>
+						<li>${empvo.dept_name}</li>
+						<li>${empvo.emp_posi}</li>
+						<li>${empvo.tel}</li>
+						<li>${empvo.email}</li>
+						<li>${empvo.emp_regdate}</li>
+						<li>${empvo.emp_status}</li>
+					</c:forEach>							
 					</ul>				
 				</div>
 				<!-- 페이징 버튼 -->

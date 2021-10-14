@@ -1,9 +1,9 @@
 package com.leaf.myapp.vo;
 
 public class PageVO {
-	private int totalRecord;
+	private int totalRecord; // 총 레코드 수
 	private int nowPage=1; // 현재 페이지 번호
-	private int totalPage;
+	private int totalPage; // 총 페이지수
 	private int onePageRecord=10; //한페이지당 레코드 수
 	
 	private int startPage=1;
@@ -12,10 +12,22 @@ public class PageVO {
 	private String searchKey;
 	private String searchWord;
 	
+	private int rnChange; // 현재페이지 * 한페이지당 레코드 수
+	
+	
+	
 	
 	// 현재페이지 * 한페이지당 레코드 수
 	// 한페이지당 레코드수
 	
+	public int getRnChange() {
+		return rnChange;
+	}
+	public void setRnChange(int rnChange) {
+		this.rnChange = rnChange;
+	}
+	
+	////////////
 	public int getTotalRecord() {
 		return totalRecord;
 	}
@@ -34,6 +46,7 @@ public class PageVO {
 		if(nowPage!=0) {
 			startPage = (nowPage-1)/onePageViewNum*onePageViewNum+1;
 		}
+		rnChange = nowPage*onePageRecord;
 	}
 	public int getTotalPage() {
 		return totalPage;
@@ -45,7 +58,7 @@ public class PageVO {
 		return onePageRecord;
 	}
 	public void setOnePageRecord(int onePageRecord) {
-		this.onePageRecord = onePageRecord;
+		this.onePageRecord = onePageRecord;		
 	}
 	public int getStartPage() {
 		return startPage;

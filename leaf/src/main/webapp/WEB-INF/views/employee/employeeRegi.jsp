@@ -42,6 +42,14 @@
    
    /* 네비바 사원등록선택된 파란색 밑줄 */
    .top-banner-nav>.tbn-menu2{border-bottom:4px solid rgb(0, 163, 239);}
+   
+   /* 폼 데이터 미입력시 나타나는 글씨*/
+   .error-Message{display:inline-block; margin:10px 0 0 10px; color:red;}
+   #idcheck-error{display:none;}
+   #deptName-error{display:none;}
+   #empRegdate-error{display:none;}
+   
+   
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
@@ -106,6 +114,7 @@
 									$('#email').val(result.email);
 									$('#idcheck').val(0);
 									$('#userid').prop('readonly',true);
+									$('#idcheck-error').css('display','none');
 									
 								}
 							}, error : function(){
@@ -131,19 +140,32 @@
 			]			
 		});
 		
+		$('#dept_img').click(function(){
+			if($('#dept_name').val()!='' || $('#dept_name').val()!=null){
+				$('#deptName-error').css('display','none');
+			}
+		});
+		$('#emp_regdate').click(function(){
+			if($('#emp_regdate').val()!='' || $('#emp_regdate').val()!=null){
+				$('#empRegdate-error').css('display','none');
+			}
+		});
+		
 		$('form[name=frm]').submit(function(){
 			if($('#idcheck').val()===1 || $('#userid').val()==='' || $('#userid').val()==null){
-				alert("가입여부 확인이 필요합니다.");
+				$('#idcheck-error').css('display','block');
+				$('#idcheck-error').focus();
 				return false;
 			}
 			if($('#dept_name').val()==='' || $('#dept_name').val()==null){
-				alert("부서명을 입력해주세요.");
+				$('#deptName-error').css('display','block');
 				return false;
 			}
 			if($('#emp_regdate').val()==='' || $('#emp_regdate').val()==null){
-				alert("입사일을 입력해주세요.");
+				$('#empRegdate-error').css('display','block');
 				return false;
 			}
+			
 		});
 
 		
@@ -172,6 +194,7 @@
 							<input type="hidden" value="1" id="idcheck" name="idcheck"/>
 							<input type="text" name="userid" id="userid" placeholder="가입한 아이디"/>
 							<input type="button" value="가입여부확인" id="joinCheck"/>
+							<span id="idcheck-error" class="error-Message">가입여부 확인이 필요합니다.</span>
 						</div>	
 						<div class="mfi-inputbox">
 							<strong>사원명</strong>	
@@ -198,6 +221,7 @@
 							</strong>	
 							<input type="text" name="dept_name" id="dept_name" placeholder="부서명" readonly/>
 							<button type="button" id="dept_img" onclick="deptPopOpen()"></button>
+							<span id="deptName-error" class="error-Message">부서명을 입력해주세요!</span>
 						</div>
 						<div class="mfi-inputbox">
 							<strong>직급
@@ -214,7 +238,8 @@
 						</div>
 						<div class="mfi-inputbox">
 							<strong>입사일</strong>	
-							<input name="emp_regdate" id="emp_regdate" placeholder="입사일 선택하기"/>						
+							<input name="emp_regdate" id="emp_regdate" placeholder="입사일 선택하기"/>
+							<span id="empRegdate-error" class="error-Message">입사일을 선택해주세요!</span>							
 						</div>						
 					</section>
 				<div class="regiForm-submit">
