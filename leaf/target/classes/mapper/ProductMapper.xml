@@ -28,6 +28,6 @@
 	</select>
 	<!-- 입고등록 -->	
 	<insert id="Warehousing_RegisterOk" parameterType="com.leaf.myapp.vo.ProductVO">	
-		insert into product(hq_num, part_num, hq_name, ware_cnt, ware_price, emp_num) values(product_sq.nextval, #{part_num}, #{hq_name}, #{ware_cnt}, #{ware_price}, #{emp_num})
+		insert into product(hq_num, part_num, hq_name, ware_cnt, ware_price, emp_num) values(product_sq.nextval, #{part_num}, #{hq_name}, #{ware_cnt}, #{ware_price}, 2000)
 	</insert>
 </mapper>

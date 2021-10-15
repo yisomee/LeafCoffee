@@ -25,12 +25,16 @@
          $(this).css('border-bottom','4px solid rgb(0, 163, 239)');
          $("#menu1").css('border','none');
       });
-       $('#content').summernote({
-            height: 150,   //set editable area's height
+      $('#content').summernote({
+            height: 450,   //set editable area's height
             codemirror: { // codemirror options
               theme: 'monokai'
             }
-          });       
+      });
+      $(document).ready(function(){
+    	 $('.note-resizebar').css('display','none'); 
+      });
+   
    });
 </script>
 <style>
@@ -44,12 +48,14 @@
    nav{display:flex;justify-content:center;width:100%;border-bottom:1px solid gray;}
    nav>div{padding:15px 40px;}
    #menu1{border-bottom:4px solid rgb(0, 163, 239);}
-   .title{width:1200px;margin:0 auto;text-align:center;padding:20px 0px;color:#382E2C;font-size:1.5em;}
+   .write{width:1200px;margin:0 auto;text-align:center;padding:20px 0px;color:#2E1500;font-size:1.5em;}
    #boardTitle:focus{outline:none;}
-   .container{background-color:#F5F0E9;}
-   .form{width:900px;margin:0 auto;}   
-   .form>li:first-child input{width:900px;height:30px;margin-top:20px;border:none}
-   .form>li:first-child input::placeholder{padding-left:10px}
+   .background{background-color:#F5F0E9;width:100%;height:80vh}
+   .form{width:900px;margin:0 auto;}  
+   #title{width:900px;height:30px;margin:10px 0;border:none;}
+   #title::placeholder{padding-left:10px}   
+   #title:focus{outline:none}
+   .form>li:nth-child(2){height:530px}
    .form>li:last-child{text-align:end}
    .form>li:last-child input{margin:0 0 40px 15px;padding:10px 25px;background-color:#9F8362;border:none;color:white;cursor:pointer}
    .form>li:last-child a{padding:9.51px 24px;margin:15px; background-color:#9F8362;color:white;font-size:0.9em}
@@ -61,18 +67,18 @@
 	<div id="headerText">WHAT'S NEW</div>
 </header>
 <nav> 
-	 <div id="menu1"><a href="/myapp/noticeList">공지사항</a></div>
-   <div id="menu2"><a href="/myapp/social">사회공헌</a></div>
+	<div id="menu1"><a href="/myapp/noticeList">공지사항</a></div>
+	<div id="menu2"><a href="/myapp/social">사회공헌</a></div>
 </nav>
-<div class="title">글쓰기</div>
-<div class="container">
-<form method="post" action="/myapp/noticeWriteOk">
-   <ul class="form">
-      <li><input type="text" name="title" id="title" placeholder="제목을 입력하세요."/></li>
-      <li><textarea name="content" id="content"></textarea></li>
-      <li><input type="submit" value="등록"/><input type="button" value="취소" onclick="location.href='/myapp/noticeList'"/></li>
-   </ul>
-</form>
+<div class="background">
+	<div class="write">글쓰기</div>
+	<form method="post" action="/myapp/noticeWriteOk">
+	   <ul class="form">
+	      <li><input type="text" name="title" id="title" placeholder="제목을 입력하세요."/></li>
+	      <li><textarea name="content" id="content"></textarea></li>
+	      <li><input type="submit" value="등록"/><input type="button" value="취소" onclick="location.href='/myapp/noticeList'"/></li>
+	   </ul>
+	</form>
 </div>
 </body>
 </html>

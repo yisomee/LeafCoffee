@@ -7,8 +7,8 @@ public class NoticeVO {
 	private int hit;
 	private String userid;
 	private String content;
-	
-	
+	private int[] delCheck;
+		
 	public String getUserid() {
 		return userid;
 	}
@@ -44,6 +44,12 @@ public class NoticeVO {
 	}
 	public void setHit(int hit) {
 		this.hit = hit;
+	}
+	public int[] getDelCheck() {
+		return delCheck;
+	}
+	public void setDelCheck(int[] delCheck) {
+		this.delCheck = delCheck;
 	}
 	
 	

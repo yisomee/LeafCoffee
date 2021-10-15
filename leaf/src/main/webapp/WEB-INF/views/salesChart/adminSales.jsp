@@ -488,6 +488,7 @@ label.y = 10;
 </head>
 <body>
 	<%@ include file="/inc/adminTop.jspf" %>
+	<div class=top-banner-imgCon></div>
 	<nav class="top-banner-nav">
 	   <div class="tbn-menu1"><a href="adminSalesChart.jsp">매출현황</a></div>	   	   	   
 	</nav>

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="/inc/top.jspf"%>
+<%@ include file="/inc/adminTop.jspf"%>
 <style>
 body {
 	margin: 0;
@@ -228,9 +228,10 @@ nav>div {
 				<div class="mfi-inputbox">
 					<strong>업체명 <span>(필수)</span>
 					</strong> <select name="part_num" id="part_num">
-						<option value="1">수영물산</option>
-						<option value="21">뚜우웅</option>
-						<option value="22">서준물산</option>
+						<option value="1">서준물산</option>
+						<option value="2">수영물산</option>
+						<option value="3">이솜나라
+						</option>
 						<option value=""></option>
 					</select>
 				</div>

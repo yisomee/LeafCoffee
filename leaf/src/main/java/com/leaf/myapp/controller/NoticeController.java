@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.leaf.myapp.service.NoticeService;
+import com.leaf.myapp.vo.NoticePagingVO;
 import com.leaf.myapp.vo.NoticeVO;
 
 
@@ -19,19 +20,35 @@ public class NoticeController {
 	@Inject
 	NoticeService noticeService;
 	
-	//글 목록
-	@RequestMapping("/noticeList")
-	public ModelAndView noticeList() {
+	//게시글 리스트
+    @RequestMapping("/noticeList")
+    public ModelAndView boardList(NoticePagingVO pVo) {
+    	ModelAndView mav = new ModelAndView();
+        System.out.println(pVo.getSearchKeyword());
+		//총레코드수
+    	pVo.setTotalRecord(noticeService.totalRecordCount(pVo));
+    	System.out.println(pVo.getTotalRecord());
+		mav.addObject("pVo",pVo);   
+		mav.addObject("list",noticeService.noticePageSelect(pVo));
+		mav.setViewName("notice/noticeList");
+		return mav;      
+   }
+   
+	//게시글 리스트
+/*	@RequestMapping("/noticeList")
+	public ModelAndView noticeList(NoticePagingVO pVo) {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("list",noticeService.noticeAllSelect());
 		mav.setViewName("notice/noticeList");
 		return mav;
-	}	
-	
+	}
+		
+	*/
 	//게시글보기
 	@RequestMapping("/noticeDetail")
-	public ModelAndView noticeDetail(int no) {
-		ModelAndView mav = new ModelAndView();
+	public ModelAndView noticeDetail(int no, NoticeVO vo) {
+		ModelAndView mav = new ModelAndView();	
+		vo.setHit(noticeService.hitCount(vo));		
 		mav.addObject("noticeVo", noticeService.noticeView(no));		
 		mav.setViewName("notice/noticeDetail");
 		return mav;	
@@ -50,7 +67,7 @@ public class NoticeController {
 		}
 		return mav;
 	}
-	//글 수정
+	//글 수정폼
 	@RequestMapping("/noticeEdit")
 	public ModelAndView noticeEdit(int no) {
 		ModelAndView mav = new ModelAndView();
@@ -58,6 +75,7 @@ public class NoticeController {
 		mav.setViewName("notice/noticeEdit");
 		return mav;
 	}
+	//글수정
 	@RequestMapping(value="/noticeEditOk", method=RequestMethod.POST)
 	public ModelAndView noticeEditOk(NoticeVO vo, HttpSession ses) {
 		vo.setUserid((String)ses.getAttribute("userid"));
@@ -67,28 +85,38 @@ public class NoticeController {
 			mav.addObject("no", vo.getNo());
 			mav.setViewName("redirect:noticeDetail");
 		}else {
-			mav.setViewName("notice/noticeEditResult");
+			mav.addObject("msg","수정");
+			mav.setViewName("notice/noticeResult");
 		}
 		return mav;
 	}
-	//글쓰기
+	//글쓰기폼
 	@RequestMapping("/noticeWrite")
 	public String noticeWrite(){
 		return "/notice/noticeForm";
 	}
-	//�۵���ϱ�
+	//글쓰기
 	@RequestMapping(value="/noticeWriteOk", method=RequestMethod.POST)
 	public ModelAndView noticeWriteOk(NoticeVO vo, HttpSession session) {
 //		vo.setUserid((String)session.getAttribute("userid"));		
 		int writeResult = noticeService.noticeWrite(vo);
 		ModelAndView mav = new ModelAndView();
-		 if(writeResult>0) {//�۾��� ����
+		 if(writeResult>0) {
 	         mav.setViewName("redirect:noticeList");
 	     }else {
 	         mav.setViewName("redirect:noticeWrite");
 	     }
 	     return mav;
 	}
+	//선택항목 삭제
+	@RequestMapping(value="/deleteCheck",method=RequestMethod.POST)
+	public ModelAndView deleteCheck(NoticeVO vo) {
+		ModelAndView mav = new ModelAndView();
+		int result=noticeService.delChk(vo.getDelCheck());
+		mav.setViewName("redirect:noticeList");
+		return mav;
+	}
+
 	//사회공헌 페이지
 	@RequestMapping("/social")
 	public String social() {

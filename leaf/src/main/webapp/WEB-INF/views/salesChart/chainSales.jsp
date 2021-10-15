@@ -117,6 +117,7 @@
 </head>
 <body>
 	<%@ include file="/inc/adminTop.jspf" %>
+	<div class=top-banner-imgCon></div>
 	
 	<main id="admin-sale-main">
 		<div id="notice-con">
