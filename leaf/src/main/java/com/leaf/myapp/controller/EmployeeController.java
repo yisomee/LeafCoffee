@@ -6,8 +6,6 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
-import org.apache.ibatis.logging.stdout.StdOutImpl;
-import org.springframework.http.StreamingHttpOutputMessage;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,26 +21,49 @@ public class EmployeeController {
 	@Inject
 	EmployeeService employeeService;	
 	
+	//직원검색 메인페이지
 	@RequestMapping("/employeeManagePage")
 	public ModelAndView employeemain(PageVO pVo) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("employee/employeemain");
 		return mav;
 	}
+	// 직원등록
 	@RequestMapping("/employeeRegiPage")
 	public String employeeRegiPage() {
 		return "employee/employeeRegi";
 	}
+	// 부서목록
 	@RequestMapping("/deptlist")
 	public String deptlist() {
 		return "employee/deptListPoP";
 	}
+	
+	// 사원 정보수정
 	@RequestMapping("/employeeChange")
-	public ModelAndView employeeChange() {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("employee/employeeChange");
+	public ModelAndView employeeChange(int emp_num) {
+		ModelAndView mav = new ModelAndView();		
+		mav.addObject("empvo", employeeService.employeeChangeInfo(emp_num));		
+		mav.setViewName("employee/employeeChange");			
+		
 		return mav;
 	}
+	
+	// 사원수정에 대한 결과
+	@RequestMapping("/employeeChangeResult")
+	public ModelAndView employeeChangeResult(EmployeeVO empvo) {
+		ModelAndView mav = new ModelAndView();
+		EmployeeVO empvoController = empvo;
+		employeeService.employeeChangeResult(empvoController);
+		if(cnt>0) {
+			mav.setViewName("redirect:employeeManagePage");
+		}else {
+			mav.setViewName("employee/employeeChangeFail");
+		}
+		
+		return mav;
+	}
+	
 	
 	// 직원검색(사원번호,사원명,부서명)	
 	  @RequestMapping("/empSearch")	  
@@ -70,6 +91,7 @@ public class EmployeeController {
 		  return empMap; 
 	  }
 	  
+	  // 페이징용
 	  @RequestMapping("/totalPage")
 	  @ResponseBody
 	  public PageVO totalPage(PageVO pVo) {

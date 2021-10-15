@@ -5,14 +5,16 @@ import java.util.List;
 import com.leaf.myapp.vo.EmployeeVO;
 import com.leaf.myapp.vo.PageVO;
 
-public interface EmployeeService {
-	public List<EmployeeVO> allEmployeeList(PageVO pVo);
+public interface EmployeeService {	
 
 	public List<EmployeeVO> searchEmployeeList(PageVO pVo);
 	public PageVO page(String searchKey, String searchWord);	
 	
-	
-	
 	public EmployeeVO checkJoinId(String userid);
-	public int employeeRegiInsert(EmployeeVO empVo);	
+	public int employeeRegiInsert(EmployeeVO empVo); 
+	
+	
+	// 사원정보 수정	
+	public EmployeeVO employeeChangeInfo(int emp_num);
+	public int employeeChangeResult(EmployeeVO empvo);
 }

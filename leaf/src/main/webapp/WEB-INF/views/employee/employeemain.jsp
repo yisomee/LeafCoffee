@@ -98,13 +98,9 @@
 	$(()=>{
 		// 처음 화면 로그인시
 		listSelect(1, '', '');
+	
 		
-		
-		// submit 엔터누르기 제어하기
-		
-		
-		
-		$('#searchEmpBtn').click(function(){
+		$('#searchEmpBtn').on('click focus keydown',function(){
 			let searchKey = $('#searchKey').val();
 			let searchWord = $('#searchWord').val();
 			
@@ -202,8 +198,34 @@
 				}		
 			});
 
+		});// 검색 클릭이벤트
+
+		
+		////////////////////////////////
+		$(document).on('click','input[name=emp-select]',function(){
+			let selectEmpNum = $(this).parent().next().text();
+			
+			$('#empChange').click(function(){
+				
+				function empChangeGo(emp_num){
+					let empForm = document.createElement('form');
+					empForm.setAttribute('method','post');
+					empForm.setAttribute('action','/myapp/employeeChange');
+					
+					let empValue;
+					empValue = document.createElement('input');
+					empValue.setAttribute('type','hidden');
+					empValue.setAttribute('name','emp_num');
+					empValue.setAttribute('value',emp_num);
+					
+					empForm.appendChild(empValue);
+					document.body.appendChild(empForm);
+					empForm.submit();
+				}
+				empChangeGo(selectEmpNum);
+			});
 		});
-	/*	listSelect(${pagevo.nowPage}, '${pagevo.searchKey}', '${pagevo.searchWord}'); */			
+			
 	});		
 
 </script>
@@ -221,12 +243,12 @@
 	input[name="searchWord"]{height:50px; width:500px; font-size:1em;}
 	input[value="검색하기"]{height:50px; width:100px; box-sizing: border-box; font-size:1em;}
 	
-	/* 사원 리스트 정렬 select박스 */
-	.array_button{width:1400px; height:80px;}
-	select[name=empArraySelect]{font-size:1.1em; display:inline-block; width:100px; height:40px; position:relative; left:1300px; top:20px;}
+	
+	
+	
 	
 	/* 사원리스트 top */
-	.manage-List-container{width:1400px; height:800px; margin:50px auto 0 auto;}	
+	.manage-List-container{width:1400px; height:1000px; margin:50px auto 0 auto;}	
  	#emp-list-top{overflow:auto; text-align:center; padding:0; background-color:#ddd; height:50px; font-size:1.13em; line-height:45px;}
 	#emp-list-top>li{float:left; width:10%; border-top:3px solid gray;}
 	#emp-list-top>li:nth-child(9n+1){width:3%;}
@@ -237,7 +259,7 @@
 	#emp-list-top>li:nth-child(9n+8){width:15%;}
 	 
 	/*사원 리스트*/
-	.manage-listCon{overflow:auto; text-align:center; padding:0;}
+	.manage-listCon{overflow:auto; text-align:center; padding:0; margin-top:70px;}
 	#emp-list>li{float:left; width:10%; border-bottom: 1px solid gray; height:50px; font-size:1.1em; line-height:50px;}
 	#emp-list>li:nth-child(9n+1){width:3%;}
 	#emp-list>li:nth-child(9n+2){width:7%;}
@@ -277,7 +299,7 @@
 	</nav>
 	
 	<!-- 메인부 -->
-	<form method="post" action="<%=request.getContextPath()%>/employeeChange">		
+	<!-- <form method="post" action="<%=request.getContextPath()%>/employeeChange">   -->		
 		<main>	
 			<div class="notice-con">
 				<div class="page-main-notice">
@@ -299,16 +321,7 @@
 						<input type="button" value="검색하기" id="searchEmpBtn"/>
 					</div>
 				</div>
-				
-				<div class="array_button">
-					<!-- 정렬기준 선택 -->				
-					<select name="empArraySelect" id="empArraySelect">
-						<option value="" selected>-- 정렬 --</option>
-						<option value="emp_num">사원번호</option>
-						<option value="username">사원명</option>
-						<option value="emp_posi">직급순</option>
-					</select>					
-				</div>
+
 				<!-- 사원 리스트 -->
 				<div class="manage-listCon">											
 					<ul id="emp-list-top">
@@ -322,41 +335,21 @@
 						<li>입사일</li>
 						<li>재직여부</li>
 					</ul>
-					<ul id="emp-list">
-					<%-- <c:forEach var="empvo" items="${empvo}">	 --%>
-						<li><input type="radio" name="emp-select"/></li>
-						<li>1</li>
-						<li>2</li>
-						<li>3</li>
-						<li>4</li>
-						<li>5</li>
-						<li>6</li>
-						<li>7</li>
-						<li>8</li>
-					<%-- </c:forEach> --%>							
+					<ul id="emp-list">																	
 					</ul>				
 				</div>
 				<!-- 페이징 버튼 -->
 				<div class="page_wrap">
 					<!-- 사원등록 -->
 					<div class="emp-button">					
-						<input type="submit" value="사원수정" name="empChange" id="empChange"/>
+						<input type="button" value="사원수정" name="empChange" id="empChange"/>
 					</div>
 					<div class="page_nation">
-						<a class="arrow pprev" href="#"></a>
-						<a class="arrow prev" href="#"></a>
-						<a class="active" href="#">1</a> 
-						<a href="#">2</a>
-						<a href="#">3</a>
-						<a href="#">4</a>
-						<a href="#">5</a>
-						<a class="arrow next" href="#"></a>
-						<a class="arrow nnext" href="#"></a>
 					</div>
 				</div>	
 			</div>
 		</main>
-	</form>
+<!-- 	</form>  -->
 
 	
 	

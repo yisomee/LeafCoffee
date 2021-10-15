@@ -17,22 +17,10 @@ public class EmployeeServiceImp implements EmployeeService{
 	@Inject
 	EmployeeDAO employeeDAO;	
 	
-	@Override
-	public List<EmployeeVO> allEmployeeList(PageVO pVo) {
-		
-		return null;
-	}
-//		@Override
-//	public List<EmployeeVO> searchEmployeeList(PageVO pVo) {
-//		// TODO Auto-generated method stub
-//		return employeeDAO.searchEmployeeList(pVo);
-//	}
-	
 	@Override 
 	public List<EmployeeVO> searchEmployeeList(PageVO pVo) {
 		return employeeDAO.searchEmployeeList(pVo);		
-	}
-	 
+	}	 
 
 	@Override
 	public EmployeeVO checkJoinId(String userid) {
@@ -47,6 +35,17 @@ public class EmployeeServiceImp implements EmployeeService{
 	@Override
 	public PageVO page(String searchKey, String searchWord) {
 		return employeeDAO.page(searchKey, searchWord);
+	}
+
+	@Override
+	public EmployeeVO employeeChangeInfo(int emp_num) {		
+		return employeeDAO.employeeChangeInfo(emp_num);
+	}
+
+	@Override
+	public int employeeChangeResult(EmployeeVO empvo) {
+		int result = 0;
+		return result;
 	}
 
 	

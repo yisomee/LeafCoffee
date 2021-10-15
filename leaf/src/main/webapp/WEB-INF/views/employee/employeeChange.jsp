@@ -19,6 +19,7 @@
 	/* 부서파트 */
 	.mfi-inputbox #dept_name{width:460px;}
 	.mfi-inputbox #dept_img{width:48px; height:48px; float:right; background-image:url(img/empimg.png); background-size:cover;box-sizing: border-box; border: 1px solid gray;}
+	.mfi-inputbox #emp_posi{width:530px; display:inline-block; height:47px; margin-right:20px;}
 	.regiForm-submit{width: 530px; margin: 0 auto 30px; padding:20px 20px;}
 	.regiForm-submit #emp-regi{width:530px; padding:15px;background: rgb(0,192,239); border: 1px solid white; color: white; font-size: 1.1em}
 	
@@ -56,46 +57,31 @@
 	</nav>
 	<main>
 		<div>
-			<form method="post" action="" name="frm">
+			<form method="post" action="myapp/employeeChangeResult" name="frm">
 				<div class="main-form-Con">
 					<strong>사원수정</strong>				
 					<section class="mf-inputCon">
 						<div class="mfi-img"></div>
 						<p class="mfi-title">사원정보를 수정해주세요.</p>
 						<div class="mfi-inputbox">
-							<strong>사원번호
-								<span></span>
-							</strong>	
-							<input type="text" name="emp_num" id="emp_num" readonly/>
+							<strong>사원번호</strong>	
+							<input type="text" name="emp_num" id="emp_num" value="${empvo.emp_num}" readonly/>
 						</div>	
 						<div class="mfi-inputbox">
-							<strong>사원명
-								<span></span>
-							</strong>	
-							<input type="text" name="emp_name" id="emp_name" readonly/>
+							<strong>사원명</strong>	
+							<input type="text" name="emp_name" id="emp_name" value="${empvo.username}" readonly/>
 						</div>
 						<div class="mfi-inputbox">
-							<strong>연락처
-								<span>(필수)</span>
-							</strong>
+							<strong>연락처</strong>
 							<div>
-								<select id="tel1">
-									<option value="010">010</option>
-									<option value="011">011</option>
-									<option value="016">016</option>
-									<option value="017">017</option>
-									<option value="018">018</option>
-									<option value="019">019</option>								
-								</select>
-								<input type="text" name="tel2" id="tel2"/>
-								<input type="text" name="tel3" id="tel3"/>
+								<input type="text" id="tel1" name="tel1" value="${empvo.tel1}" readonly/>							
+								<input type="text" name="tel2" id="tel2" value="${empvo.tel2}" readonly/>
+								<input type="text" name="tel3" id="tel3" value="${empvo.tel3}" readonly/>
 							</div>
 						</div>
 						<div class="mfi-inputbox">
-							<strong>이메일
-								<span>(필수)</span>
-							</strong>
-							<input type="email" name="emp_email" id="emp_email" placeholder="이메일"/>
+							<strong>이메일</strong>
+							<input type="email" name="emp_email" id="emp_email"  value="${empvo.email}" readonly/>
 						</div>
 					</section>
 
@@ -104,24 +90,36 @@
 							<strong>부서번호
 								<span></span>
 							</strong>	
-							<input type="text" name="dept_num" id="dept_num" readonly/>
+							<input type="text" name="dept_num" id="dept_num"  value="${empvo.dept_num}" readonly/>
 						</div>
 						<div class="mfi-inputbox">
 							<strong>부서명
 								<span>(필수)</span>
 							</strong>	
-							<input type="text" name="dept_name" id="dept_name" placeholder="부서명" readonly/>
+							<input type="text" name="dept_name" id="dept_name" placeholder="부서명"  value="${empvo.dept_name}" readonly/>
 							<button type="button" id="dept_img" onclick="deptPopOpen()"></button>
 						</div>
 						<div class="mfi-inputbox">
 							<strong>직급
 								<span>(필수)</span>
 							</strong>	
-							<input type="text" name="emp_posi" id="emp_posi" placeholder="직급"/>							
+							<select name="emp_posi" id="emp_posi">
+								<script>
+									let empPosition = ['사원','주임','대리','과장','차장','부장'];
+									let empPosi = '${empvo.emp_posi}';
+									for(var a=0;a<empPosition.length;a++){
+										document.write("<option value='"+empPosition[a]+"'");
+										if(empPosi==empPosition[a]){
+											document.write("selected");
+										}
+										document.write(">"+empPosition[a]+"</option>");
+									}
+								</script>								
+							</select>							
 						</div>
 						<div class="mfi-inputbox">
 							<strong>등록일</strong>	
-							<input type="text" name="emp_regdate" id="emp_regdate" readonly/>							
+							<input type="text" name="emp_regdate" id="emp_regdate" value="${empvo.emp_regdate}" readonly/>							
 						</div>						
 					</section>
 				<div class="regiForm-submit">					
