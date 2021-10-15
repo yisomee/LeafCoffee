@@ -296,15 +296,6 @@ $(function(){/*메뉴바 전체가 나오는거*/
 		</div>
 </div><!-- changeColor -->		
 </div>
-		
-	
-		
- 	       	<div class="jb-box">
-              <video muted autoplay loop>
-                <source src="img/adminbgvideo.mp4" type="video/mp4">                
-              </video>
-            </div>
-	
 <section id='section1'> 
     <!-- 중앙부 -->
     <div>

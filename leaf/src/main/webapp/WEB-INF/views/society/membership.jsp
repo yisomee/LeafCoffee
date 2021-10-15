@@ -172,5 +172,6 @@ $(()=>{
 		</ul>
 	</div>
 </div>
+<%@ include file="/inc/bottom.jspf" %>
 </body>
 </html>
