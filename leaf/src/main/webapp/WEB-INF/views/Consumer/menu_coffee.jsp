@@ -206,4 +206,4 @@ $(function(){
 			</ul>
 		</div>
 	</div>	
-	<%@ include file="/inc/bottom.jspf" %>
+	<%@ include file="/inc/bottom3.jspf" %>

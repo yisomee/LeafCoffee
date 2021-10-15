@@ -8,20 +8,36 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
 
-
+<script>
+	function allCheck(){
+		console.log(iddoublecheck+","+pwdDoubleCheck+","+emailCheck);
+		if(iddoublecheck==1&&pwdDoubleCheck==1&&emailCheck==1){
+			return true;
+		}
+		location.href='#userid'; 
+		return false;
+	};
+$(()=>{
+	
+		
+// 	console.log(idDoubleCheck+","+pwdDoubleCheck+","+emailCheck);
+// 	if(idDoubleCheck==1&&pwdDoubleCheck==1&& emailCheck==1){
+// 		return false;
+// 	}else{
+// 		return false;
+// 	}
+	});
+</script>
 <style>
-@import url(//fonts.googleapis.com/earlyaccess/hanna.css);
-
-body{
-   font-family: 'Hanna', fantasy;
-}
-
 
    ul,li{margin:0; padding:0; list-style:none;}
    .imglogo{
       height:250px;
       padding-left: 400px;
       
+   }
+   .id1, .pw1, .pw2, .mail{
+   		font-size: 0.7rem;
    }
    .imglogo img{
       width: 300px;
@@ -32,11 +48,13 @@ body{
     height: 800px;
     display: flex;
     align-items: center;
+    font-size: 0.8rem;
    }
    
    .formdiv{
       width:700px;
       float: right;
+      margin-top: 150px;
    }
    .imgdiv{
       width:700px;
@@ -53,52 +71,67 @@ body{
       height: 50px;
       text-align: center;   
    }
-   .inputBox{
-      width:200px;
-      height:30px;
+   .inputBox, .hasDatepicker{
+      width:250px;
+      height:35px;
       border:none;border-right:0px; border-top:0px; border-left:0px; border-bottom:1px solid;
    }
-   
-   input[type=button]{
-      background-color:white;
-      width: 110px;
-      height:50px;
-      border-radius: 10px;
-      transition-duration: 0.3s;
-      border:1px solid rgb(0, 163, 239);
-      font-size: 1.1em;
-      color:rgb(0, 163, 239);
-      opacity: 0.8;
-      font-family: 'Hanna', fantasy;
-      
-      
+   .inputBoxLong{
+   	width:370px;
    }
-   
+   .inputBoxShort{
+   	width:117px;
+   }
+   .inputBox:focus, .hasDatepicker:focus, .tel:focus{
+   	border: 1px solid rgb(0, 163, 239);
+	border-bottom: 1px solid rgb(0, 163, 239);
+	border-radius: 5px;
+   }
+   input[type=button], .ui-datepicker-trigger{
+	   	background-color: white;
+	    width: 110px;
+	    height: 35px;
+	    border-radius: 2px;
+	    border: 1px solid rgb(0, 163, 239);
+	    font-size: 0.9em;
+	    color: rgb(0, 163, 239);
+	    margin-left: 7px;
+	    transition: 0.4s;
+   }
+   input[type=button]:hover, .ui-datepicker-trigger:hover, .join:hover{ /*마우스 오버시 메뉴색깔 분홍색으로 변하는거*/
+	box-shadow: inset 30em 0 0 0 rgb(0, 163, 239);
+	color: white;
+	border-color: rgb(0, 163, 239);
+}
+   input[type=radio]{
+   		margin-left:20px;
+   		margin-right:5px;
+   		
+   }
 
-   .birth, .tel{
-      width:50px;
+   .tel{
+      width:113px;
       height:30px;
       border:none;border-right:0px; border-top:0px; border-left:0px; border-bottom:1px solid;
       outline:none;
+      margin-right:11px;
    
    }
    #joinbtn{
       text-align: center;
+      margin-top: 15px;
    }
    .join{
    
-   background-color:white;
-      width: 100px;
-      height:50px;
-      border-radius: 10px;
-      transition-duration: 0.3s;
-      border:1px solid rgb(0, 163, 239);
-      font-size: 1.1em;
-      color:rgb(0, 163, 239);
-      opacity: 0.8;
-      font-family: 'Hanna', fantasy;
-      margin-right:10px;
-      
+   background-color: white;
+	    width: 370px;
+	    height: 45px;
+	    border-radius: 2px;
+	    border: 1px solid rgb(0, 163, 239);
+	    font-size: 1.2em;
+	    color: rgb(0, 163, 239);
+	 	margin-left:-88px;
+	    transition: 0.4s;
       
       
    }
@@ -107,7 +140,7 @@ body{
       heigh
       
    }
-   span{
+   .formdiv span{
       color:red;
    }
    
@@ -118,8 +151,114 @@ body{
 .cancle{
    margin-left:10px;
 }
+.footer_copy, .footer_link{
+display: flex;
+    justify-content: center;
+}
+.footer_link{
+	margin-bottom: 9px;
+}
+.footer{
+	padding: 80px 0 32px;
+    box-sizing: border-box;
+    font-size:0.7rem;
+    color: gray;
+}
+.footer_link>li{
+	padding: 0 5px 0 5px;
+    border-right: 1px solid #ddd;
+}
+.footer_link>li:last-child{
+border-right:none;
+}
+.footer_link span{
+	color: gray;
+}
+.blind{
+	color: rgb(0, 163, 239);
+	font-weight: 800;
+}
+.footer_copy>span{
+	padding: 0 5px 0 5px;
+}
+.ui-datepicker-year{
+	width:30% !important;
+	border:none;
+}
+ .ui-widget-header { border: 0px solid #dddddd; background: #fff; } 
 
+ .ui-datepicker-calendar>thead>tr>th { font-size: 14px !important; } 
 
+ .ui-datepicker .ui-datepicker-header { position: relative; padding: 10px 0; } 
+ .ui-state-default{
+ 	background: white !important;
+ }
+ .ui-state-default,
+ .ui-widget-content .ui-state-default,
+ .ui-widget-header .ui-state-default,
+ .ui-button,
+ html .ui-button.ui-state-disabled:hover,
+ html .ui-button.ui-state-disabled:active { border: 0px solid #c5c5c5; background-color: transparent; font-weight: normal; color: #454545; text-align: center; } 
+
+ .ui-datepicker .ui-datepicker-title { margin: 0 0em; line-height: 16px; text-align: center; font-size: 14px; padding: 0px; font-weight: bold; } 
+
+ .ui-datepicker { display: none; background-color: #fff; border-radius: 4px; margin-top: 10px; margin-left: 0px; margin-right: 0px; padding: 20px; padding-bottom: 10px; width: 300px; box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.1); } 
+
+ .ui-widget.ui-widget-content { border: 1px solid #eee; } 
+
+ #datepicker:focus>.ui-datepicker { display: block; } 
+
+ .ui-datepicker-prev,
+ .ui-datepicker-next { cursor: pointer; } 
+
+ .ui-datepicker-next { float: right; } 
+
+ .ui-state-disabled { cursor: auto; color: hsla(0, 0%, 80%, 1); } 
+
+ .ui-datepicker-title { text-align: center; padding: 10px; font-weight: 100; font-size: 20px; } 
+
+ .ui-datepicker-calendar { width: 100%; } 
+
+ .ui-datepicker-calendar>thead>tr>th { padding: 5px; font-size: 20px; font-weight: 400; } 
+
+ .ui-datepicker-calendar>tbody>tr>td>a { color: #000; font-size: 12px !important; font-weight: bold !important; text-decoration: none;}
+
+ .ui-datepicker-calendar>tbody>tr>.ui-state-disabled:hover { cursor: auto; background-color: #fff; } 
+
+ .ui-datepicker-calendar>tbody>tr>td { border-radius: 100%; width: 44px; height: 30px; cursor: pointer; padding: 5px; font-weight: 100; text-align: center; font-size: 12px; } 
+
+ .ui-datepicker-calendar>tbody>tr>td:hover { background-color: transparent; opacity: 0.6; } 
+
+ .ui-state-hover,
+ .ui-widget-content .ui-state-hover,
+ .ui-widget-header .ui-state-hover,
+ .ui-state-focus,
+ .ui-widget-content .ui-state-focus,
+ .ui-widget-header .ui-state-focus,
+ .ui-button:hover,
+ .ui-button:focus { border: 0px solid #cccccc; background-color: transparent; font-weight: normal; color: #2b2b2b; } 
+
+ .ui-widget-header .ui-icon { background-image: url('img/btns.png'); } 
+
+ .ui-icon-circle-triangle-e { background-position: -20px 0px; background-size: 36px; } 
+
+ .ui-icon-circle-triangle-w { background-position: -0px -0px; background-size: 36px; } 
+
+ .ui-datepicker-calendar>tbody>tr>td:first-child a { color: red !important; } 
+
+ .ui-datepicker-calendar>tbody>tr>td:last-child a { color: #0099ff !important; } 
+
+ .ui-datepicker-calendar>thead>tr>th:first-child { color: red !important; } 
+
+ .ui-datepicker-calendar>thead>tr>th:last-child { color: #0099ff !important; } 
+
+ .ui-state-highlight,
+ .ui-widget-content .ui-state-highlight,
+ .ui-widget-header .ui-state-highlight { border: 0px; background: #f1f1f1; border-radius: 50%; padding-top: 10px; padding-bottom: 10px; } 
+
+ .inp { padding: 10px 10px; background-color: #f1f1f1; border-radius: 4px; border: 0px; } 
+
+ .inp:focus { outline: none; background-color: #eee; } 
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
@@ -130,16 +269,16 @@ body{
          
          <div class="imgdiv"/> <img src="img/ilustcut.png" /></div>
          <div class="formdiv">
-            <form method="post" id="registerform" action="/myapp/registerOk">
+            <form method="post" id="registerform" action="/myapp/registerOk" onsubmit="return allCheck()">
          <ul>
             <li><label class="label">아이디 <span>*</span></label><input type="text" name="userid" id="userid" class="inputBox"/>
                   <input type="button" id="idChk" value="아이디중복검사"/><br/>
                   <div class="id1"></div>
                   
                   </li>
-            <li><label class="label">비밀번호 <span>*</span></label><input type="password" name="userpwd" id="userpwd" class="inputBox"/>
+            <li><label class="label">비밀번호 <span>*</span></label><input type="password" name="userpwd" id="userpwd" class="inputBox inputBoxLong"/>
                <div class="pw1"></div></li>
-            <li><label class="label">비밀번호확인 <span>*</span></label><input type="password" name="userpwdchk" id="userpwdchk" class="inputBox"/>
+            <li><label class="label">비밀번호확인 <span>*</span></label><input type="password" name="userpwdchk" id="userpwdchk" class="inputBox inputBoxLong"/>
                <div class="pw2"></div></li>
                   
             <li><label class="label">이름 <span>*</span></label><input type="text" name="username" id="username" class="inputBox"/>
@@ -158,27 +297,52 @@ body{
                
             </li>
             
-            <li><label class="label">우편번호</label><input type="text" name="addr" id="addr" class="inputBox"/>
+            <li><label class="label">우편번호</label><input type="text" name="addr1" id="addr1" class="inputBox"/>
             <input type="button" onclick="sample6_execDaumPostcode()" id="zipSearch" value="우편번호찾기"/>
             </li>
-            <li><label class="label">주소</label><input type="text" name="addr1" id="addr1" class="inputBox"/></li>
-            <li><label class="label">상세주소</label><input type="text" name="addr2" id="addr2" class="inputBox"/></li>
-            <li><label class="label">참고항목</label><input type="text" id="sample6_extraAddress" placeholder="참고항목"></li>
-            <li><label class="label">이메일</label><input type="text" id="emailid" name="emailid" class="inputBox"/>@
-            <input type="text" name="domain" id="domain" class="inputBox">
-            <input type="button" name="emailConfirm" id="emailConfirm" value="인증하기"/>
+            <li><label class="label">주소</label><input type="text" name="addr2" id="addr2" class="inputBox inputBoxLong"/></li>
+            <li><label class="label">상세주소</label><input type="text" name="addr3" id="addr3" class="inputBox inputBoxLong"/></li>
+            <li><label class="label">참고항목</label><input type="text" name="addr4" id="addr4" class="inputBox inputBoxLong"></li>
+            <li style="height: 40px;"><label class="label">이메일</label><input type="text" id="emailid" name="emailid" class="inputBox inputBoxShort"/>@
+            <input type="text" name="domain" id="domain" class="inputBox inputBoxShort">
+            <input type="button" name="emailConfirm" id="emailConfirm" value="인증번호발송"/>
             </li>
+            <li id="emailCheck" style="display:none;"><input style="margin-left: 120px;
+    margin-bottom: 20px;" id="email"type="text" name="emailCheck"  class="inputBox inputBoxLong" placeholder="인증번호 입력"><br/><div class="mail"></div></li>
             <li id="joinbtn"><input type="submit" value="가입하기"class="join" /></li>
+     	 </ul>
       </form>
       <div class="emailCheck"></div>
       </div><!--formdiv  -->
    </div><!-- container -->
+      <div class="footer">
+        <div class="footer_inner">
+            <!--[주]고객센터,제휴문의,서비스안내-->
+            <ul class="footer_link" id="footer_link">
+                <li><a target="_blank" class="footer_item" href="http://www.naver.com/rules/service.html"
+                       id="fot.agreement"><span class="text">이용약관</span></a></li>
+                <li><a target="_blank" class="footer_item" href="http://www.naver.com/rules/privacy.html"
+                       id="fot.privacy"><span class="text">개인정보처리방침</span></a></li>
+                <li><a target="_blank" class="footer_item" href="http://www.naver.com/rules/disclaimer.html"
+                       id="fot.disclaimer"><span class="text">책임의 한계와 법적고지</span></a></li>
+                <li><a target="_blank" class="footer_item"
+                       href="https://help.naver.com/support/service/main.nhn?serviceNo=532" id="fot.help"><span
+                                class="text">회원정보 고객센터</span></a></li>
+            </ul>
+            <div class="footer_copy">
+                    <span class="footer_logo"><span class="blind">LEAF</span></span>
+                <span class="text">Copyright</span>
+                <span class="corp">© leaf Corp.</span>
+                <span class="text">All Rights Reserved.</span>
+            </div>
+        </div>
+    </div>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 
 <script>
-
-
+var idcheck =0;
+var iddoublecheck=0;
 
 const config = {
       dateFormat: 'yy-mm-dd',
@@ -200,9 +364,12 @@ const config = {
                  if(!getCheck.test($("#userid").val())){
                     $(".id1").text("4~12자의 영문 소문자, 숫자만 가능합니다.");
                     $(".id1").attr("style","color:red").css("margin-left","120px").css("margin-top","-20px");
+                    idcheck=0;
+                    iddoublecheck=0;
                    }else{
                     $(".id1").text("올바른 형식입니다.");
                     $(".id1").attr("style","color:green").css("margin-left","120px").css("margin-top","-20px");
+                    idcheck=1;
                    }
             
             });
@@ -212,7 +379,8 @@ const config = {
          //아이디 중복체크
          $(function(){
             $("#idChk").click(function(){
-               var datas="userid="+$("#userid").val().trim();
+               if(idcheck!=0){
+            	var datas="userid="+$("#userid").val().trim();
                   //console.log(datas);//고구마들어옴.
                $.ajax({
                   url:"/myapp/idCheck",
@@ -222,14 +390,18 @@ const config = {
                      if(result==1){
                         $(".id1").text("중복된 아이디 입니다.");
                         $(".id1").attr("style","color:red").css("margin-left","120px").css("margin-top","-20px");
-                        
+                        iddoublecheck=0;
                      }else{
                         $(".id1").text("사용가능한 아이디 입니다.");
                         $(".id1").attr("style","color:green").css("margin-left","120px").css("margin-top","-20px");
-                        
+                        iddoublecheck=1;
                      }
                   }
                });
+               }else{
+            	   $(".id1").text("형식에 맞지 않는 아이디는 중복검사를 할 수 없습니다.");
+                   $(".id1").attr("style","color:red").css("margin-left","120px").css("margin-top","-20px");
+               }
             });
          });
          
@@ -238,6 +410,9 @@ const config = {
 </script>
 <script>
 //비밀번호 유효성 검사
+var pwdCheck = 0;
+var pwdDoubleCheck =0;
+var emailCheck = 0;
             $(function(){
                var reg = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
                $('#userpwd').keyup(function(){
@@ -246,18 +421,23 @@ const config = {
                if(/(\w)\1\1\1/.test(pw)){
                $(".pw1").text('같은 문자를 4번 이상 사용하실 수 없습니다.');
                 $(".pw1").attr("style","color:red").css("margin-left","120px").css("margin-top","-20px");
+                pwdCheck = 0;
                 }else if(pw.search(id) > -1){
                    $(".pw1").text("비밀번호에 아이디가 포함되었습니다.");
                    $(".pw1").attr("style","color:red").css("margin-left","120px").css("margin-top","-20px");
+                   pwdCheck = 0;
                 }else if(pw.search(/\s/) != -1){
                    $(".pw1").text("비밀번호는 공백 없이 입력해주세요.");
                    $(".pw1").attr("style","color:red").css("margin-left","120px").css("margin-top","-20px");
+                   pwdCheck = 0;
                 }else if(false == reg.test(pw)) {
                   $(".pw1").text('비밀번호는 8자 이상이어야 하며, 숫자/대문자/소문자/특수문자를 모두 포함해야 합니다.');
                   $(".pw1").attr("style","color:red").css("margin-left","120px").css("margin-top","-20px");
+                  pwdCheck = 0;
                 }else{
                    $(".pw1").text("사용가능한 비밀번호 입니다.");
                    $(".pw1").attr("style","color:green").css("margin-left","120px").css("margin-top","-20px");
+                   pwdCheck = 1;
                 }
 
             });
@@ -268,39 +448,56 @@ const config = {
          
          $(function(){
              $('#userpwdchk').keyup(function(){
-                 if($('#userpwd').val()!=$('#userpwdchk').val()){
-                    $(".pw2").text("비밀번호가 일치하지 않습니다.");
-                    $(".pw2").attr("style","color:red").css("margin-left","120px").css("margin-top","-20px");
-                   
-                 } else{
-                   $(".pw2").text('비밀번호가 일치합니다.');
-                   $(".pw2").attr("style","color:green").css("margin-left","120px").css("margin-top","-20px");
-                 }
+            	 if(pwdCheck==1){
+            		 
+	                 if($('#userpwd').val()!=$('#userpwdchk').val()){
+	                    $(".pw2").text("비밀번호가 일치하지 않습니다.");
+	                    $(".pw2").attr("style","color:red").css("margin-left","120px").css("margin-top","-20px");
+	                    pwdDoubleCheck =0;
+	                   
+	                 } else{
+	                   $(".pw2").text('비밀번호가 일치합니다.');
+	                   $(".pw2").attr("style","color:green").css("margin-left","120px").css("margin-top","-20px");
+	                   pwdDoubleCheck =1;
+	                 }
+            	 }else{
+	                   $(".pw2").text('사용가능한 비밀 번호가 아닙니다.');
+	                   $(".pw2").attr("style","color:red").css("margin-left","120px").css("margin-top","-20px");
+            		 
+            	 }
 
              });
          });
 //이메일 인증번호 확인했을때 팝업창
 
 	$(function(){
+		var dice;
 		$('#emailConfirm').click(function(){
 			var datas="email="+$("#emailid").val()+"@"+$("#domain").val();
-     				 console.log(datas);//email주소 들어옴.
         $.ajax({
            url:"/myapp/emailSending",
            data:datas,
            success:function(result){
-              console.log(result);
-              
-				let popUrl="/myapp/register/emailCheck?dice="+result;
-				let popOption="width = 400px, height=400px, top=300px, left=300px, scrollbars=yes";
-				
-				window.open(popUrl,"이메일 인증",popOption);	
-              
-            
+              dice = result;
+              $('#emailCheck').css('display','block');
            }
         });
      });
 		
+	$('#emailCheck').keyup(function(){
+		console.log(dice); 
+		console.log($('#email').val()); 
+		if($('#email').val()!=dice){
+			$(".mail").text("인증번호가 일치하지 않습니다.");
+            $(".mail").attr("style","color:red").css("margin-left","120px").css("margin-top","-20px");
+            emailCheck=0;
+		}else{
+			$(".mail").text("인증번호가 일치합니다.");
+            $(".mail").attr("style","color:green").css("margin-left","120px").css("margin-top","-20px");
+            emailCheck=1;
+		};
+		
+	});	
 });
 
 
@@ -342,22 +539,22 @@ const config = {
                         extraAddr = ' (' + extraAddr + ')';
                     }
                     // 조합된 참고항목을 해당 필드에 넣는다.
-                    document.getElementById("sample6_extraAddress").value = extraAddr;
+                    document.getElementById("addr4").value = extraAddr;
                 
                 } else {
-                    document.getElementById("sample6_extraAddress").value = '';
+                    document.getElementById("addr4").value = '';
                 }
 
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                document.getElementById("addr").value = data.zonecode;
-                document.getElementById("addr1").value = addr;
+                document.getElementById("addr1").value = data.zonecode;
+                document.getElementById("addr2").value = addr;
                 // 커서를 상세주소 필드로 이동한다.
-                document.getElementById("addr2").focus();
+                document.getElementById("addr3").focus();
             }
         }).open();
     }
 
-
+	
 </script>
 
 

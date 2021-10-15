@@ -75,7 +75,7 @@ $(()=>{
 <body>
 <%@ include file="/inc/top.jspf" %>
 <header>
-   <img src="https://www.baristapaulbassett.co.kr/images/menu/subVisual_coffee.jpg"/>
+   <img src="https://www.starbucks.co.kr/common/img/coffee/coffee_espresso_wrap_bg.jpg"/>
    <div id="headerText">WHAT'S NEW</div>
 </header>
 <nav id="detailMenu"> 
@@ -133,5 +133,6 @@ $(()=>{
       </ul>
     
 </div>
+<%@ include file="/inc/bottom.jspf" %>
 </body>
 </html>
