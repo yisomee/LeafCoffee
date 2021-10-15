@@ -46,6 +46,6 @@
 		where emp.emp_num = #{emp_num}
 	</select>
 	<update id="employeeChangeResult" parameterType="com.leaf.myapp.vo.EmployeeVO">
-		update set emp
+		update employee2 set dept_num=#{dept_num}, emp_posi = #{emp_posi} where emp_num = #{emp_num}
 	</update>
 </mapper>

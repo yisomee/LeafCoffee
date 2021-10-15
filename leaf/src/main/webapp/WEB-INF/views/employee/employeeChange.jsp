@@ -58,7 +58,7 @@
 	</nav>
 	<main>
 		<div>
-			<form method="post" action="myapp/employeeChangeResult" name="frm">
+			<form method="post" action="<%=request.getContextPath()%>/employeeChangeResult" name="frm">
 				<div class="main-form-Con">
 					<strong>사원수정</strong>				
 					<section class="mf-inputCon">

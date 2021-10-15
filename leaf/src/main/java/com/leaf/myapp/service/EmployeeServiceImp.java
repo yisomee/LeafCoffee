@@ -43,9 +43,8 @@ public class EmployeeServiceImp implements EmployeeService{
 	}
 
 	@Override
-	public int employeeChangeResult(EmployeeVO empvo) {
-		int result = 0;
-		return result;
+	public int employeeChangeResult(EmployeeVO empvo) {		
+		return employeeDAO.employeeChangeResult(empvo);
 	}
 
 	

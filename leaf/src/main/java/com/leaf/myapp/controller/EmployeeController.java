@@ -50,16 +50,18 @@ public class EmployeeController {
 	}
 	
 	// 사원수정에 대한 결과
-	@RequestMapping("/employeeChangeResult")
+	@RequestMapping(value="/employeeChangeResult", method=RequestMethod.POST)
 	public ModelAndView employeeChangeResult(EmployeeVO empvo) {
-		ModelAndView mav = new ModelAndView();
-		EmployeeVO empvoController = empvo;
-		employeeService.employeeChangeResult(empvoController);
+		ModelAndView mav = new ModelAndView();		
+		
+		int cnt = employeeService.employeeChangeResult(empvo);		
 		if(cnt>0) {
-			mav.setViewName("redirect:employeeManagePage");
+			mav.addObject("result",1);
+			mav.addObject("emp_num",empvo.getEmp_num());						
 		}else {
-			mav.setViewName("employee/employeeChangeFail");
+			mav.addObject("result",2);
 		}
+		mav.setViewName("employee/employeeChangeResult");
 		
 		return mav;
 	}
