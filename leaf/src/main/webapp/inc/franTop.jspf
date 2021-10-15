@@ -195,7 +195,7 @@ height: 46px;
 				<ul class="ulclass">
 					<li><a href="/myapp/storemap">STORE</a></li>
 					<li><a href="/myapp/franchiseInfo">INFOMATION</a></li>
-					<li><a href="/myapp/franchiseRequest">REQUEST</a></li>
+					<li><a href="/myapp/openRequest">REQUEST</a></li>
 					<li><a href="/myapp/franchiseQuestion">Q&A</a></li>
 				</ul>			
 			</li>
