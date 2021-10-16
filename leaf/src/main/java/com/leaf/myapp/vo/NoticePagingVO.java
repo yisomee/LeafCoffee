@@ -1,16 +1,17 @@
 package com.leaf.myapp.vo;
 
 public class NoticePagingVO {
-	private int nowPage=1;//ÇöÀçº¸°íÀÖ´ÂÆäÀÌÁö
-	private int totalPage;//ÃÑÆäÀÌÁö¼ö
+	private int nowPage=1;//ï¿½ï¿½ï¿½çº¸ï¿½ï¿½ï¿½Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private int totalPage;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	private int pageRecord=15;
 	private int onePageNumCount=5;
 	private int startPage=1;
-	private int totalRecord;//Äõ¸®¹®À¸·Î ¼¼ÆÃÇÔ
+	private int totalRecord;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	
 	private int nowRecordMul = nowPage*pageRecord;
 	
 	
-	//°Ë»ö 
+	//ï¿½Ë»ï¿½ 
 	private String searchKeyword;
 		
 	public String getSearchKeyword() {
