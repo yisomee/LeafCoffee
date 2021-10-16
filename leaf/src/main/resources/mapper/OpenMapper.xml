@@ -4,10 +4,34 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.leaf.myapp.dao.OpenDAO">
 	<select id="openUserPageGoInfo" resultType="com.leaf.myapp.vo.OpenRequestVO">
-		select tel, email from registers where userid=#{param1}
+		select tel openhopetel, email from registers where userid=#{param1}
 	</select>
 	<insert id="openRequestInfo" parameterType="com.leaf.myapp.vo.OpenRequestVO">
-		insert into openQuestion(oq_num,openhopeaddr,content,writedate,userid)
-		values(opensq.nextval,'서울시/서대문구','창업문의드립니다',sysdate,'apple');
+		insert into openQuestion(oq_num,openhopeaddr,content,writedate,userid,oq_status,openhopetel)
+		values(opensq.nextval,#{openhopeaddr},#{content},sysdate,#{userid},'답변대기',#{openhopetel})
 	</insert>
+	<select id="authOpenAccess" resultType="int" parameterType="String">
+		select dept_num from employee2 where userid=#{param1}
+	</select>
+	<select id="openListpage" resultType="com.leaf.myapp.vo.PageVO">
+		select count(oq_num) totalRecord from openQuestion oq
+		join registers regi
+		on oq.userid = regi.userid
+		<if test='param2 !=null and param2 !=""'>	
+			where #{param1} like '%'||#{param2}||'%'
+		</if>		 
+	</select>
+	<select id="searchOpenQuestionList" resultType="com.leaf.myapp.vo.OpenRequestVO" parameterType="com.leaf.myapp.vo.PageVO">
+		select * from    
+    		(select * from 
+        		(select oq_num, content, regi.username ,to_char(writedate,'YYYY-MM-DD hh:MM') writedate , oq_status from openQuestion oq
+        		join registers regi
+        		on regi.userid = oq.userid 
+        		<if test='searchWord!="" and searchKey!=""'>
+        			where ${searchKey} like '%${searchWord}%'
+        		</if>
+        		order by writedate desc)
+    			where rownum<![CDATA[<=]]> ${rnChange} order by writedate asc)
+			where rownum<![CDATA[<=]]> ${onePageRecord} order by writedate desc
+	</select>
 </mapper>  

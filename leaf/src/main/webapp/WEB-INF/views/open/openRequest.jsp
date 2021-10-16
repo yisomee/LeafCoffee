@@ -45,7 +45,7 @@ section {position: relative; height: 700px;	z-index:8;}
 #bottombox{height:800px;}
 form[name=frmInquiry] li:nth-of-type(2n-1){padding-top:25px;}
 form[name=frmInquiry] input[type=radio]:nth-of-type(2n) {margin-left:30px;}
-#tel{width:100px;}
+#tel1{width:100px;}
 .telinput{width:143px;border: none; border-bottom: 1px solid black;}
 .errorMessage{color:red; display:none; font-weight: bold;}
 </style>
@@ -110,7 +110,7 @@ form[name=frmInquiry] input[type=radio]:nth-of-type(2n) {margin-left:30px;}
 	function formInputCheck(){
 		if(!$('#person_agree_y').is(':checked')){
 			$('#userInfoAgree').css('display','block');
-			$('#person_agree_y').focus();
+			$('#person_agree_y').focus();			
 			return false;
 		}
 		if($('#content').val()==null || $('#content').val()==""){
@@ -143,16 +143,18 @@ form[name=frmInquiry] input[type=radio]:nth-of-type(2n) {margin-left:30px;}
 						required maxlength="50" class="w280" readonly></li>
 					<li>휴대폰 번호<b>*</b></li>
 					<li>
-						<select name="tel" id="tel">
+						<select name="tel1" id="tel1">
 							<script>
 								let telNumber = ['010','011','016','017','018','019'];
 								let tel = '${orqVo.tel1}'  // 031
 								
-								for(var i=0;i<telNumber.length;i++){
-									document.write("<option name='"+telNumber[i]+"' value='"+telNumber[i]+"'");
+								let aa = "";
+								for(var i=0;i<telNumber.length;i++){								
+									document.write("<option value='"+telNumber[i]+"'");
 									if(tel==telNumber[i]) document.write("selected");
 									document.write(">"+telNumber[i]+"</option>");									
 								}
+								
 							</script>
 						</select> 
 						<input type="text" id="tel2" class="telinput" value="${orqVo.tel2}"
@@ -209,8 +211,7 @@ form[name=frmInquiry] input[type=radio]:nth-of-type(2n) {margin-left:30px;}
 				</ul>
 				<div class="btn-wrap">
 					<input type="submit" class="reg" id="btn_submit" value="문의 등록"/>
-					<a class="reg cancel" id="btn_cancle">취소</a>
-					<input type="hidden" name="userid" value="${orqVo.userid}"/>
+					<a class="reg cancel" id="btn_cancle">취소</a>										
 				</div>				
 			</form>
 		</div>

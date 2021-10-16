@@ -6,6 +6,217 @@
 <meta charset="UTF-8">
 <title>창업문의</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>	
+	const regExpUserName = /^[가-힣]{1,10}$/;
+	
+	function listSelect(i,searchKey,searchWord){
+											
+		let nowPage = i;
+			
+		//ajax로 검색한 리스트 출력.(라디오버튼,사원번호,사원명,직급,연락처,이메일,입사일,재직여부)
+		$.ajax({			
+		url: "/myapp/openQuestionSearch",
+		data : "searchKey="+searchKey+"&"+
+				"searchWord="+searchWord+"&"+
+				"nowPage="+nowPage,	
+		success:function(result){
+			let openvo = $(result.openvo);
+			
+			if(openvo.length==0){
+				let notSearch = '<li>'+searchWord+'에 대해 0건이 발견되었습니다.</li>';					
+				$('#open-list').html(notSearch);
+			}else{
+				let openList = '';
+				
+				openvo.each(function(idx,vo){
+					openList +='<li><input type="radio" name="regi-select"/></li>'+
+					'<li>'+vo.oq_num+'</li>'+
+					'<li>'+vo.content+'</li>'+
+					'<li>'+vo.username+'</li>'+
+					'<li>'+vo.writedate+'</li>'+
+					'<li>'+vo.oq_status+'</li>';
+				});				
+				$('#open-list').html(openList);
+				
+				// 페이징					
+				$('.page_nation').empty(); // 버튼을 담을 div를 비워줌
+				
+				var sk = "'"+result.pvo.searchKey+"'"; //스크립트 메소드의 매개변수 String값을 셋팅시 값으로 인식시켜주기 위함
+				var sw = "'"+result.pvo.searchWord+"'";
+				
+				let nowPageMinerOne = nowPage-1;  // 현재페이지-1
+				nowPageMinerOne = "'"+nowPageMinerOne+"'";
+								
+				let nextBtn = parseInt(nowPage);
+				let plusOne = parseInt("1");
+				let nowPagePlusOne = parseInt(nextBtn + plusOne);				
+				
+				////////////////////////////////////
+				if(nowPage>1){
+					$('.page_nation').append('<a class="arrow pprev" href="javascript:listSelect(1,'+sk+','+sw+')"></a>');
+					$('.page_nation').append('<a class="arrow prev" href="javascript:listSelect('+nowPageMinerOne+','+sk+','+sw+')"></a>');					
+					
+				}else if(nowPage==1){
+					$('.page_nation').append('<a class="arrow pprev" href="javascript:listSelect(1,'+sk+','+sw+')"></a>');
+					$('.page_nation').append('<a class="arrow prev" href="javascript:listSelect(1,'+sk+','+sw+')"></a>');
+										
+				}				
+				for (var j = result.pvo.startPage; j <=result.pvo.startPage+result.pvo.onePageViewNum-1; j++) {						
+					var sk = "'"+result.pvo.searchKey+"'";
+					var sw = "'"+result.pvo.searchWord+"'";
+					
+					if(j<=result.pvo.totalPage){
+						if(j==nowPage){
+							$('.page_nation').append('<a class="active" href="javascript:listSelect('+j+','+sk+','+sw+')">'+j+'</a>');
+							
+						}else if(j!=nowPage){
+							$('.page_nation').append('<a href="javascript:listSelect('+j+','+sk+','+sw+')">'+j+'</a>');
+							
+						}
+					}
+				}
+				if(nowPage==result.pvo.totalPage){
+					$('.page_nation').append('<a class="arrow next" href="javascript:listSelect('+result.pvo.totalPage+','+sk+','+sw+')"></a>');					
+				}else{
+					$('.page_nation').append('<a class="arrow next" href="javascript:listSelect('+nowPagePlusOne+','+sk+','+sw+')"></a>');
+				}
+				$('.page_nation').append('<a class="arrow nnext" href="javascript:listSelect('+result.pvo.totalPage+','+sk+','+sw+')"></a>');
+			}
+		}, error:function(){	
+			console.log("실패");
+			return false;
+			}
+		}); 			
+	}// 자바스크립트 함수
+	
+	$(()=>{
+		// 처음 화면 로그인시
+		listSelect(1, '', '');	
+		
+		$('#searchWord').on('keyup',function(e){
+			
+			if(e.keyCode ===13){ // 검색창에서 엔터눌렀을 때			
+			
+				let searchKey = $('#searchKey').val();
+				let searchWord = $('#searchWord').val();
+				
+				if(searchWord===null || searchWord==""){
+					alert("검색어를 입력해주세요.");
+					return false;
+				}else if(searchKey==="username"){
+					if(!regExpUserName.test(searchWord)){
+						alert("올바른 회원명을 입력해주세요");
+						return false;
+					}
+				}
+				
+				let nowPage=1;
+				
+				$.ajax({
+					url: "/myapp/openQuestionSearch",
+					data : "searchKey="+searchKey+"&"+
+							"searchWord="+searchWord+"&"+
+							"nowPage="+nowPage,
+					success:function(result){
+						let openvo = $(result.openvo);
+						
+						if(openvo.length==0){
+							let notSearch = '<li>'+searchWord+'에 대해 0건이 발견되었습니다.</li>';					
+							$('#open-list').html(notSearch);
+						}else{
+						
+							let openList = '';					
+							openvo.each(function(idx,vo){
+								openList +='<li><input type="radio" name="regi-select"/></li>'+
+											'<li>'+vo.oq_num+'</li>'+
+											'<li>'+vo.content+'</li>'+
+											'<li>'+vo.username+'</li>'+
+											'<li>'+vo.writedate+'</li>'+
+											'<li>'+vo.oq_status+'</li>';															
+							}); // openvo.each문						
+							$('#open-list').html(openList);
+							
+											
+							// 페이징					
+							$('.page_nation').empty(); // 버튼을 담을 div를 비워줌
+							
+							var sk = "'"+result.pvo.searchKey+"'"; 
+							var sw = "'"+result.pvo.searchWord+"'";
+							
+							let nowPageMinerOne = nowPage-1; 
+							nowPageMinerOne = "'"+nowPageMinerOne+"'";
+											
+							let nextBtn = parseInt(nowPage);
+							let plusOne = parseInt("1");
+							let nowPagePlusOne = parseInt(nextBtn + plusOne);				
+							
+							
+							if(nowPage>1){
+								$('.page_nation').append('<a class="arrow pprev" href="javascript:listSelect(1,'+sk+','+sw+')"></a>');
+								$('.page_nation').append('<a class="arrow prev" href="javascript:listSelect('+nowPageMinerOne+','+sk+','+sw+')"></a>');					
+								
+							}else if(nowPage==1){
+								$('.page_nation').append('<a class="arrow pprev" href="javascript:listSelect(1,'+sk+','+sw+')"></a>');
+								$('.page_nation').append('<a class="arrow prev" href="javascript:listSelect(1,'+sk+','+sw+')"></a>');
+													
+							}				
+							for (var j = result.pvo.startPage; j <=result.pvo.startPage+result.pvo.onePageViewNum-1; j++) {						
+								var sk = "'"+result.pvo.searchKey+"'";
+								var sw = "'"+result.pvo.searchWord+"'";
+								if(j<=result.pvo.totalPage){
+									if(j==nowPage){
+										$('.page_nation').append('<a class="active" href="javascript:listSelect('+j+','+sk+','+sw+')">'+j+'</a>');
+									}else if(j!=nowPage){
+										$('.page_nation').append('<a href="javascript:listSelect('+j+','+sk+','+sw+')">'+j+'</a>');						
+									}
+								}
+							}
+							if(nowPage==result.pvo.totalPage){
+								$('.page_nation').append('<a class="arrow next" href="javascript:listSelect('+result.pvo.totalPage+','+sk+','+sw+')"></a>');					
+							}else{
+								$('.page_nation').append('<a class="arrow next" href="javascript:listSelect('+nowPagePlusOne+','+sk+','+sw+')"></a>');
+							}
+							$('.page_nation').append('<a class="arrow nnext" href="javascript:listSelect('+result.pvo.totalPage+','+sk+','+sw+')"></a>');
+					
+						}					
+						
+					},error:function(){
+						console.log("검색 불러오기 실패");
+						return false;
+					}		
+				});
+	
+			}// 검색 엔터키 눌렀을 때
+		});// 검색 클릭이벤트
+
+		
+		////////////////////////////////
+		$(document).on('click','input[name=regi-select]',function(){
+			let selectEmpNum = $(this).parent().next().text();
+			
+			$('#openReply').click(function(){
+				
+				function openReplyGo(oq_num){
+					let openForm = document.createElement('form');
+					openForm.setAttribute('method','post');
+					openForm.setAttribute('action','/myapp/openReplyView');					
+					
+					let openValue = document.createElement('input');
+					openValue.setAttribute('type','hidden');
+					openValue.setAttribute('name','oq_num');
+					openValue.setAttribute('value',oq_num);
+					
+					openForm.appendChild(openValue);
+					document.body.appendChild(openForm);
+					openForm.submit();
+				}
+				openReplyGo(selectEmpNum);
+			});
+		});
+			
+	});		
+
+</script>
 <style>
 	/* 사원 컨테이너 */
 	.emplistCon{height:650px; overflow:scroll;}
@@ -22,7 +233,7 @@
 	#empImg{height:100px; width:300px; display: inline-block; margin-left:220px; margin-top:10px;}
 	#empImgWord{font-size:1.4em; display:inline-block; position:relative; top:-20px; left:30px;}	
 	#searchForm{display: inline-block; width: 730px; height: 60px; position: relative; top: -24px;}
-	select[name="searchEmpSelect"]{height:50px; width:100px; font-size:1em;}
+	select[name="searchKey"]{height:50px; width:100px; font-size:1em;}
 	input[name="searchWord"]{height:50px; width:500px; font-size:1em;}
 	input[value="search"]{height:50px; width:100px; box-sizing: border-box; font-size:1em;}
 	
@@ -33,15 +244,17 @@
 	input[name='replyStateView']{width:16px; height:16px; display:inline-block; margin:40px 0 0 1230px;}
 	
 	/* 사원리스트 top */
-	#emp-list-container{width:1400px; height:800px; margin:50px auto 0 auto;}
-	#emp-list-top{overflow:auto; text-align:center; padding:0; background-color:#ddd; height:50px; font-size:1.13em; line-height:45px;}
-	#emp-list-top>li{float:left; width:10%; border-top:3px solid black;}
-	#emp-list-top>li:nth-child(6n+3){width:50%;}
+	#open-list-container{width:1400px; height:1000px; margin:50px auto 0 auto;}
+	#open-list-top{overflow:auto; text-align:center; padding:0; background-color:#ddd; height:50px; font-size:1.13em; line-height:45px;}
+	#open-list-top>li{float:left; width:10%; border-top:3px solid black;}
+	#open-list-top>li:nth-child(6n+3){width:40%;}
+	#open-list-top>li:nth-child(6n+5){width:20%;}
 	
 	/*사원 리스트*/
-	#emp-list{overflow:auto; text-align:center; padding:0;}
-	#emp-list>li{float:left; width:10%; border-bottom: 1px solid black; height:50px; font-size:1.1em; line-height:50px;}
-	#emp-list>li:nth-child(6n+3){width:50%; text-align:left; text-align:center;}
+	#open-list{overflow:auto; text-align:center; padding:0;}
+	#open-list>li{float:left; width:10%; border-bottom: 1px solid black; height:50px; font-size:1.1em; line-height:50px;white-space:nowrap; text-overflow:ellopsis; overflow:hidden;}
+	#open-list>li:nth-child(6n+3){width:40%; text-align:center;}
+	#open-list>li:nth-child(6n+5){width:20%; text-align:center;}
 	
 	
 	/* 페이징 번호*/
@@ -72,9 +285,9 @@
 	   <div class="tbn-menu1"><a href="<%=request.getContextPath()%>/openQuestionPage">창업문의목록</a></div>	   	   	   
 	</nav>
 	<!-- 메인부 -->
-<form method="POST" action="<%=request.getContextPath()%>/openReplyView">	
+<%-- <form method="POST" action="<%=request.getContextPath()%>/openReplyView"> --%>	
 	<main>
-		<div id="emp-list-container">
+		<div id="open-list-container">
 			<div class="page-main-notice">
 				<h3>창업문의</h3>
 				<p>LEAF커피 창업문의 내용을 보실 수 있습니다.</p>
@@ -83,9 +296,9 @@
 			<div class="emptopCon">
 				<span id="empImg"><img src="img/empimg.png"><span id="empImgWord">문의검색</span></span>
 				<div id="searchForm">
-					<select name="searchEmpSelect">
-						<option value="empno">작성자</option>
-						<option value="empname">제목</option>						
+					<select name="searchKey" id="searchKey">
+						<option value="username">작성자</option>
+						<option value="content">내용</option>						
 					</select>
 					<input type="text" name="searchWord" id="searchWord"/>
 					<input type="button" value="search"/>
@@ -97,7 +310,7 @@
 			</div>
 			<!-- 사원 리스트 -->
 			<div id="emplistCon">								
-				<ul id="emp-list-top">
+				<ul id="open-list-top">
 					<li>선택</li>				
 					<li>NO</li>
 					<li>제목</li>
@@ -105,41 +318,13 @@
 					<li>등록일</li>
 					<li>답변상태</li>					
 				</ul>
-				<ul id="emp-list">	
-					<li><input type="radio" id="emp-select" name="emp-select"/></li>
+				<ul id="open-list">	
+					<li><input type="radio" id="regi-select" name="regi-select"/></li>
 					<li>1</li>
 					<li><a href="#">구미에서 점포를 내고 싶은데</a></li>
 					<li>이형화</li>
 					<li>2021-09-02</li>
-					<li>답변완료</li>					
-					<!--  -->
-					<li><input type="radio" id="emp-select" name="emp-select"/></li>
-					<li>1</li>
-					<li>구미에서 점포를 내고 싶은데</li>
-					<li>이형화</li>
-					<li>2021-09-02</li>
-					<li>답변완료</li>					
-					<!--  -->
-					<li><input type="radio" id="emp-select" name="emp-select"/></li>
-					<li>1</li>
-					<li>구미에서 점포를 내고 싶은데</li>
-					<li>이형화</li>
-					<li>2021-09-02</li>
-					<li>답변완료</li>					
-					<!--  -->
-					<li><input type="radio" id="emp-select" name="emp-select"/></li>
-					<li>1</li>
-					<li>구미에서 점포를 내고 싶은데</li>
-					<li>이형화</li>
-					<li>2021-09-02</li>
-					<li>답변완료</li>					
-					<!--  -->
-					<li><input type="radio" id="emp-select" name="emp-select"/></li>
-					<li>1</li>
-					<li>구미에서 점포를 내고 싶은데</li>
-					<li>이형화</li>
-					<li>2021-09-02</li>
-					<li>답변완료</li>					
+					<li>답변완료</li>									
 					<!--  -->
 					
 				</ul>
@@ -152,23 +337,10 @@
 					<input type="submit" value="답변하기" name="openReply" id="openReply"/>					
 				</div>
 				<div class="page_nation">
-					<a class="arrow pprev" href="#"></a>
-					<a class="arrow prev" href="#"></a>
-					<a class="active" href="#">1</a> 
-					<a href="#">2</a>
-					<a href="#">3</a>
-					<a href="#">4</a>
-					<a href="#">5</a>
-					<a class="arrow next" href="#"></a>
-					<a class="arrow nnext" href="#"></a>
 				</div>
 			</div>	
 		</div>
 	</main>
-</form>	
-<script>
-	$(()=>{
-		$('.headerText').html('OPEN');
-	});	
-</script>	
+<!-- </form> -->
+	
 <%@ include file="/inc/bottom3.jspf" %>

@@ -100,7 +100,7 @@
 		listSelect(1, '', '');
 	
 		
-		$('#searchEmpBtn').on('click focus keydown',function(){
+		$('#searchEmpBtn').on('click',function(){
 			let searchKey = $('#searchKey').val();
 			let searchWord = $('#searchWord').val();
 			
@@ -133,63 +133,71 @@
 				success:function(result){
 					let empvo = $(result.empvo);
 					
-					let empNumList = '';					
-					empvo.each(function(idx,vo){
-						empNumList +='<li><input type="radio" name="emp-select"/></li>'+
-									'<li>'+vo.emp_num+'</li>'+
-									'<li>'+vo.username+'</li>'+
-									'<li>'+vo.dept_name+'</li>'+
-									'<li>'+vo.emp_posi+'</li>'+
-									'<li>'+vo.tel+'</li>'+
-									'<li>'+vo.email+'</li>'+
-									'<li>'+vo.emp_regdate+'</li>'+
-									'<li>'+vo.emp_status+'</li>';						
-					}); // empvo.each문
-					
-					$('#emp-list').html(empNumList);
-					
-									
-					// 페이징					
-					$('.page_nation').empty(); // 버튼을 담을 div를 비워줌
-					
-					var sk = "'"+result.pvo.searchKey+"'"; //스크립트 메소드의 매개변수 String값을 셋팅시 값으로 인식시켜주기 위함
-					var sw = "'"+result.pvo.searchWord+"'";
-					
-					let nowPageMinerOne = nowPage-1;  // 현재페이지-1
-					nowPageMinerOne = "'"+nowPageMinerOne+"'";
-									
-					let nextBtn = parseInt(nowPage);
-					let plusOne = parseInt("1");
-					let nowPagePlusOne = parseInt(nextBtn + plusOne);				
-					
-					////////////////////////////////////
-					if(nowPage>1){
-						$('.page_nation').append('<a class="arrow pprev" href="javascript:listSelect(1,'+sk+','+sw+')"></a>');
-						$('.page_nation').append('<a class="arrow prev" href="javascript:listSelect('+nowPageMinerOne+','+sk+','+sw+')"></a>');					
+					if(empvo.length==0){
+						let notSearch = '<li>'+searchWord+'에 대해 0건이 발견되었습니다.</li>';					
+						$('#emp-list').html(notSearch);
 						
-					}else if(nowPage==1){
-						$('.page_nation').append('<a class="arrow pprev" href="javascript:listSelect(1,'+sk+','+sw+')"></a>');
-						$('.page_nation').append('<a class="arrow prev" href="javascript:listSelect(1,'+sk+','+sw+')"></a>');
-											
-					}				
-					for (var j = result.pvo.startPage; j <=result.pvo.startPage+result.pvo.onePageViewNum-1; j++) {						
-						var sk = "'"+result.pvo.searchKey+"'";
+					}else{
+						let empNumList = '';					
+						empvo.each(function(idx,vo){
+							empNumList +='<li><input type="radio" name="emp-select"/></li>'+
+										'<li>'+vo.emp_num+'</li>'+
+										'<li>'+vo.username+'</li>'+
+										'<li>'+vo.dept_name+'</li>'+
+										'<li>'+vo.emp_posi+'</li>'+
+										'<li>'+vo.tel+'</li>'+
+										'<li>'+vo.email+'</li>'+
+										'<li>'+vo.emp_regdate+'</li>'+
+										'<li>'+vo.emp_status+'</li>';						
+						}); // empvo.each문
+						
+						$('#emp-list').html(empNumList);
+						
+										
+						// 페이징					
+						$('.page_nation').empty(); // 버튼을 담을 div를 비워줌
+						
+						var sk = "'"+result.pvo.searchKey+"'"; //스크립트 메소드의 매개변수 String값을 셋팅시 값으로 인식시켜주기 위함
 						var sw = "'"+result.pvo.searchWord+"'";
-						if(j<=result.pvo.totalPage){
-							if(j==nowPage){
-								$('.page_nation').append('<a class="active" href="javascript:listSelect('+j+','+sk+','+sw+')">'+j+'</a>');
-							}else if(j!=nowPage){
-								$('.page_nation').append('<a href="javascript:listSelect('+j+','+sk+','+sw+')">'+j+'</a>');						
+						
+						let nowPageMinerOne = nowPage-1;  // 현재페이지-1
+						nowPageMinerOne = "'"+nowPageMinerOne+"'";
+										
+						let nextBtn = parseInt(nowPage);
+						let plusOne = parseInt("1");
+						let nowPagePlusOne = parseInt(nextBtn + plusOne);				
+						
+						////////////////////////////////////
+						if(nowPage>1){
+							$('.page_nation').append('<a class="arrow pprev" href="javascript:listSelect(1,'+sk+','+sw+')"></a>');
+							$('.page_nation').append('<a class="arrow prev" href="javascript:listSelect('+nowPageMinerOne+','+sk+','+sw+')"></a>');					
+							
+						}else if(nowPage==1){
+							$('.page_nation').append('<a class="arrow pprev" href="javascript:listSelect(1,'+sk+','+sw+')"></a>');
+							$('.page_nation').append('<a class="arrow prev" href="javascript:listSelect(1,'+sk+','+sw+')"></a>');
+												
+						}				
+						for (var j = result.pvo.startPage; j <=result.pvo.startPage+result.pvo.onePageViewNum-1; j++) {						
+							var sk = "'"+result.pvo.searchKey+"'";
+							var sw = "'"+result.pvo.searchWord+"'";
+							if(j<=result.pvo.totalPage){
+								if(j==nowPage){
+									$('.page_nation').append('<a class="active" href="javascript:listSelect('+j+','+sk+','+sw+')">'+j+'</a>');
+								}else if(j!=nowPage){
+									$('.page_nation').append('<a href="javascript:listSelect('+j+','+sk+','+sw+')">'+j+'</a>');						
+								}
 							}
 						}
+						if(nowPage==result.pvo.totalPage){
+							$('.page_nation').append('<a class="arrow next" href="javascript:listSelect('+result.pvo.totalPage+','+sk+','+sw+')"></a>');					
+						}else{
+							$('.page_nation').append('<a class="arrow next" href="javascript:listSelect('+nowPagePlusOne+','+sk+','+sw+')"></a>');
+						}
+						$('.page_nation').append('<a class="arrow nnext" href="javascript:listSelect('+result.pvo.totalPage+','+sk+','+sw+')"></a>');
+					
+						
 					}
-					if(nowPage==result.pvo.totalPage){
-						$('.page_nation').append('<a class="arrow next" href="javascript:listSelect('+result.pvo.totalPage+','+sk+','+sw+')"></a>');					
-					}else{
-						$('.page_nation').append('<a class="arrow next" href="javascript:listSelect('+nowPagePlusOne+','+sk+','+sw+')"></a>');
-					}
-					$('.page_nation').append('<a class="arrow nnext" href="javascript:listSelect('+result.pvo.totalPage+','+sk+','+sw+')"></a>');
-				
+					
 										
 					
 				},error:function(){

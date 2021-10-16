@@ -20,18 +20,18 @@
 	</select> 
 	<select id="searchEmployeeList" resultType="com.leaf.myapp.vo.EmployeeVO" parameterType="com.leaf.myapp.vo.PageVO">		
 		select * from
-		(select * from
-	   		(select emp.emp_num, regi.username, dept.dept_name, emp.emp_posi, regi.tel, regi.email, to_char(emp.emp_regdate,'YYYY-MM-DD') emp_regdate , emp.emp_status
-			from registers regi join employee2 emp
-			    on regi.userid = emp.userid
-			join department2 dept
-			    on emp.dept_num = dept.dept_num	
-			<if test='searchWord!="" and searchKey!=""'>    		
-			where ${searchKey} like '%${searchWord}%'			
-			</if>			
-			order by emp_num desc)			
-			where rownum<![CDATA[<=]]>	${rnChange} order by emp_num asc) 
-			where rownum<![CDATA[<=]]>	${onePageRecord} order by emp_num desc						
+			(select * from
+		   		(select emp.emp_num, regi.username, dept.dept_name, emp.emp_posi, regi.tel, regi.email, to_char(emp.emp_regdate,'YYYY-MM-DD') emp_regdate , emp.emp_status
+				from registers regi join employee2 emp
+				    on regi.userid = emp.userid
+				join department2 dept
+				    on emp.dept_num = dept.dept_num	
+				<if test='searchWord!="" and searchKey!=""'>    		
+				where ${searchKey} like '%${searchWord}%'			
+				</if>			
+				order by emp_num desc)			
+				where rownum<![CDATA[<=]]>	${rnChange} order by emp_num asc) 
+		where rownum<![CDATA[<=]]>	${onePageRecord} order by emp_num desc						
 	</select>	
  	<insert id="employeeRegiInsert" parameterType="com.leaf.myapp.vo.EmployeeVO">
 		insert into employee2(emp_num,dept_num,emp_posi,emp_regdate,userid,emp_status)

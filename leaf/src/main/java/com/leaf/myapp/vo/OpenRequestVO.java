@@ -4,7 +4,7 @@ public class OpenRequestVO {
 	private String userid;
 	private String username;
 	
-	private String tel;
+	private String openhopetel; // 오픈 희망연락처
 	private String tel1;
 	private String tel2;
 	private String tel3;
@@ -13,11 +13,14 @@ public class OpenRequestVO {
 	private String emailid;
 	private String domain;
 	
-	private String openhopeaddr;
-	private String sido;
-	private String gugun;
+	private String openhopeaddr; // 오픈희망지역
+	private String sido; // 	시/도
+	private String gugun; // 	구/군
 	
-	private String content;
+	private int oq_num; // 게시번호
+	private String content; // 문의내용
+	private String writedate; // 게시글 작성일
+	private String oq_status; // 답변상태 (답변대기/답변완료)
 	
 	
 	
@@ -38,15 +41,15 @@ public class OpenRequestVO {
 		this.username = username;
 	}
 
-	public String getTel() {
-		tel = tel1+"-"+tel2+"-"+tel3;
-		return tel;
+	public String getOpenhopetel() {
+		openhopetel = tel1+"-"+tel2+"-"+tel3;
+		return openhopetel;
 	}
 
-	public void setTel(String tel) {		
-		this.tel = tel;
+	public void setOpenhopetel(String openhopetel) {		
+		this.openhopetel = openhopetel;
 		
-		String[] AllTel = tel.split("-");
+		String[] AllTel = openhopetel.split("-");
 		this.tel1 = AllTel[0];
 		this.tel2 = AllTel[1];
 		this.tel3 = AllTel[2];
@@ -142,6 +145,14 @@ public class OpenRequestVO {
 	public void setGugun(String gugun) {
 		this.gugun = gugun;
 	}
+	
+	public int getOq_num() {
+		return oq_num;
+	}
+
+	public void setOq_num(int oq_num) {
+		this.oq_num = oq_num;
+	}
 
 	public String getContent() {
 		return content;
@@ -150,5 +161,23 @@ public class OpenRequestVO {
 	public void setContent(String content) {
 		this.content = content;
 	}
+
+	public String getWritedate() {
+		return writedate;
+	}
+
+	public void setWritedate(String writedate) {
+		this.writedate = writedate;
+	}
+
+	public String getOq_status() {
+		return oq_status;
+	}
+
+	public void setOq_status(String oq_status) {
+		this.oq_status = oq_status;
+	}
+	
+	
 	
 }

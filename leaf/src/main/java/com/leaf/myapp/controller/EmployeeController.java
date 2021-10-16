@@ -23,7 +23,7 @@ public class EmployeeController {
 	
 	//직원검색 메인페이지
 	@RequestMapping("/employeeManagePage")
-	public ModelAndView employeemain(PageVO pVo) {
+	public ModelAndView employeemain() {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("employee/employeemain");
 		return mav;
@@ -74,8 +74,7 @@ public class EmployeeController {
 		  PageVO ppVo = employeeService.page(pVo.getSearchKey(),pVo.getSearchWord());
 		  ppVo.setSearchKey(pVo.getSearchKey());
 		  ppVo.setSearchWord(pVo.getSearchWord());
-		  ppVo.setNowPage(pVo.getNowPage());
-		  
+		  ppVo.setNowPage(pVo.getNowPage());			
 		  
 		  int lastPageRecode = ppVo.getTotalRecord()%pVo.getOnePageRecord(); // 마지막페이지 레코드 수
 		  		  
