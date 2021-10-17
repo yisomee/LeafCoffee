@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="/inc/adminTop.jspf"%>
+<%@ include file="/inc/top.jspf"%>
 <style>
 body {
 	margin: 0;
@@ -140,7 +140,7 @@ nav>div {
 	width: 460px;
 }
 
-.mfi-inputbox #part_code, #part_num {
+.mfi-inputbox #part_code, #part_num, #hq_name1, #hq_name, #part_company {
 	width: 530px;
 	display: inline-block;
 	height: 40px;
@@ -156,7 +156,7 @@ nav>div {
 .regiForm-submit #part-regi {
 	width: 530px;
 	padding: 10px;
-	background: rgb(0, 192, 239);
+	background: rgb(30, 57, 50);
 	border: 1px solid white;
 	color: white;
 
@@ -181,28 +181,24 @@ nav>div {
 	});
 	
 	$(function(){
-		console.log("폼", $(".form"));
-		$(".m_code").change(function(){
-			var selectedCtg = $(".m_code:selected").val();
-			if(selectedCtg == "coffee") {
-				$(".s_code .coffee").css('display','block');
-				$(".s_code :not(.coffee)").css('display','none');
-			}else if(selectedCtg == "beverage"){
-				$(".s_code .beverage").css('display','block');
-				$(".s_code :not(.beverage)").css('display','none');
-			}else if(selectedCtg == "food"){
-				$(".s_code .food").css('display','block');
-				$(".s_code :not(.food)").css('display','none');
-			}else if(selectedCtg == "product"){
-				$(".s_code .product").css('display','block');
-				$(".s_code :not(.product)").css('display','none');
+		$(".group").change(function(){
+			var selectedCtg = $(".group:selected").val();
+			if(selectedCtg == "beans") {
+				$(".group_s .code1").css('display','block');
+				$(".group_s :not(.code1)").css('display','none');
+			}else if(selectedCtg == "materials"){
+				$(".group_s .code2").css('display','block');
+				$(".group_s :not(.code2)").css('display','none');
+			}else if(selectedCtg == "equipment"){
+				$(".group_s .code3").css('display','block');
+				$(".group_s :not(.code3)").css('display','none');
+			}else if(selectedCtg == "etc"){
+				$(".group_s .code4").css('display','block');
+				$(".group_s :not(.code4)").css('display','none');
 			}	
 	
 		});
 
-		$("#headerText").animate({
-		       top: "-160px", opacity:1
-		       }, 1200,);
 	});
 	
 </script>
@@ -227,31 +223,62 @@ nav>div {
 				</div>
 				<div class="mfi-inputbox">
 					<strong>업체명 <span>(필수)</span>
-					</strong> <select name="part_num" id="part_num">
-						<option value="1">서준물산</option>
-						<option value="2">수영물산</option>
-						<option value="3">이솜나라
-						</option>
+					</strong> <select name="part_num" id="part_num" >
+						<option value="29">서준물산</option>
+						<option value="30">수영물산</option>
+						<option value="31">이솜나라</option>
+						<option value="32">(주)동현</option>
+						<option value="33">영화세상</option>
 						<option value=""></option>
 					</select>
 				</div>
 				<div class="mfi-inputbox">
-					<strong>등록일</strong> <input type="text" name="ware_date" id="part_regdate" readonly />
-				</div>
-				<div class="mfi-inputbox">
 					<strong>제품명 <span>(필수)</span>
-					</strong> <input type="text" name="hq_name" id="part_company" placeholder="제품명" />
+					</strong>
+					<select id="hq_name1" class="group" >
+						<option value="">분류</option>
+						<option value="beans" class="group code1">원두</option>
+						<option value="materials" class="group code2">원료</option>
+						<option value="equipment" class="group code3">비품</option>
+						<option value="etc" class="group code4">기타</option>
+					</select>
+					<select name="hq_name" id="hq_name" class="group_s">
+						<option value="LEAF시그니처블랜드(200g)" class="code1">LEAF시그니처블랜드(200g)</option>
+						<option value="콜롬비아(200g)" class="code1">콜롬비아(200g)</option>
+						<option value="과테말라(200g)" class="code1">과테말라(200g)</option>
+						<option value="브라질(200g)" class="code1">브라질(200g)</option>
+						<option value="바닐라파우더" class="code2">바닐라파우더</option>
+						<option value="헤이즐넛파우더" class="code2">헤이즐넛파우더</option>
+						<option value="모카파우더" class="code2">모카파우더</option>
+						<option value="초코파우더" class="code2">초코파우더</option>
+						<option value="딸기시럽" class="code2">딸기시럽</option>
+						<option value="빨대" class="code3">빨대</option>
+						<option value="플라스틱컵" class="code3">플라스틱컵</option>
+						<option value="종이컵" class="code3">종이컵</option>
+						<option value="영수증용지" class="code3">영수증용지</option>
+						<option value="냅킨" class="code3">냅킨</option>
+						<option value="물티슈" class="code3">물티슈</option>
+					</select>
 				</div>
 				<div class="mfi-inputbox">
 					<strong>입고수량 <span>(필수)</span>
-					</strong> <input type="text" name="ware_cnt" id="part_company" placeholder="입고수량" />
+					</strong>
+					<select name="ware_cnt" id="part_company">
+						<option value="">입고수량</option>
+						<option value="100">100</option>
+						<option value="200">200</option>
+						<option value="300">300</option>
+						<option value="400">400</option>
+						<option value="500">500</option>
+						<option value="1000">1000</option>
+					</select>
 				</div>
 				<div class="mfi-inputbox">
 					<strong>입고가격 <span>(필수)</span>
 					</strong> <input type="text" name="ware_price" id="part_company" placeholder="입고가격" />
 				</div>
-			<div class="regiForm-submit">					
-					<input type="submit" id="part-regi" value="등록하기"/>
+				<div class="regiForm-submit">					
+						<input type="submit" id="part-regi" value="등록하기"/>
 				</div>
 			</section>
 		</div>
