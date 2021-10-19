@@ -164,58 +164,42 @@ nav>div {
 }
 </style>
 <script>
-$(()=>{
-
-	$("#headerText").animate({
-	       top: "-160px", opacity:1
-	       }, 1200,);
-   
-});
-
+	
+	$(() => {
+	
+		  $("#headerText").animate({
+		       top: "-160px", opacity:1
+		       }, 1200,);
+	});
+	
 </script>
 <header>
 	<div id="head_img"></div>
-	<div id="headerText">Warehousing Register</div>
+	<div id="headerText">상품등록</div>
 </header>
 <div class="container">
-<form method="post" action="/myapp/warehousing_RegisterOk">
+<form method="post" action="/myapp/items_RegisterOk">
 		<div class="main-form-Con">
 			<section class="mf-inputCon">
 				<div class="mfi-img"></div>
-				<p class="mfi-title">입고된정보를 입력해주세요.</p>
+				<p class="mfi-title">새로등록할 제품정보를 입력해주세요.</p>
 				<div class="mfi-inputbox">
-					<strong> <span>분류명(필수)</span>
-					</strong> <select name="" id="part_code">
-						<option value="bipum">비품</option>
-						<option value="food">식자재</option>
-						<option value="transit">운송</option>
-						<option value="equipment">설비</option>
-					</select>
+					<strong>상품명 <span>(필수)</span>
+					</strong> <input type="text" name="hq_name" id="hq_name" placeholder="상품명" />
 				</div>
 				<div class="mfi-inputbox">
-					
+					<strong>가격 <span>(필수)</span>
+					</strong> <input type="text" name="ware_price" id="ware_price" placeholder="가격" />
 				</div>
 				<div class="mfi-inputbox">
-					<strong>제품명 <span>(필수)</span>
-					</strong>
-					<select name="hq_num" id="hq_name" class="group_s">
-					<c:forEach var="ProductVO" items="${items}">
-						<option value="${ProductVO.hq_num }" class="code1">${ProductVO.hq_name }</option>
+					<strong> <span>거래처(필수)</span>
+					</strong> <select name="part_num" id="part_num">
+					<c:forEach var="ProductVO" items="${selectPartner}">
+						<option value="${ProductVO.part_num }" class="code1">${ProductVO.part_company }</option>
 					</c:forEach>
-					</select>
-				
-				</div>
-				<div class="mfi-inputbox">
-					<strong>입고수량 <span>(필수)</span>
-					</strong>
-					<select name="ware_cnt" id="part_company">
-						<option value="">입고수량</option>
-						<option value="1000">1000</option>
-						<option value="2000">2000</option>
-						<option value="3000">3000</option>
-						<option value="4000">4000</option>
-						<option value="5000">5000</option>
-						<option value="10000">10000</option>
+					
+						
+						
 					</select>
 				</div>
 				<div class="regiForm-submit">					

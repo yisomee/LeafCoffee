@@ -1,14 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="/inc/franTop.jspf" %>
+<%@ include file="/inc/adminTop.jspf" %>
 <style>
-	.container{ 
-		max-width: 1400px;
-		background-color:rgb(242, 242, 242);
-		box-shadow: 0px 1px 2px 1px lightslategrey;
+	.container{
+      background-color: rgb(245, 240, 233);
+      max-width: 1480px;
+      height:1000px;
+   }
+   .table-active{
+		color:white;
 	}
 	.purchase_ok{
 		width: 100%;
-		height:600px;
+		height:800px;
 		display:flex;
 		margin-left:10px; 
 		margin-top:5px;
@@ -23,11 +26,7 @@
     	height: 0px;
     	text-align:center;
 	}
-	.table td, .table th {
-	    padding: .25rem;
-	    vertical-align: top;
-	    border-top: 1px solid #dee2e6;
-	}
+
 	#name{
 		font-size:1.5em;
 		font-weight:bold;
@@ -46,11 +45,13 @@
 		margin: 10px;
 	}
 	.confirmBtn{
-		background-color: rgb(30, 57, 50);
-	    width: 56px;
-    	height: 30px;
-	    border-radius: 3px;
+		height: 40px;
+	    border: none;
+	    background-color: rgb(210, 205, 200);
+	    width: 100%;
 	    color: white;
+	    display: flex;
+	  	justify-content: space-evenly;
 	}
 	textarea{
 		resize:none;
@@ -64,7 +65,6 @@
    		top:-100px;
    		font-size:3em;
    		color:white;
-   		z-index:100;
    		opacity:0.5;
    		text-align:center;
    		position: relative;

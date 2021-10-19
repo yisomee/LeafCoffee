@@ -1,11 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/inc/franTop.jspf" %>
 <style>
+
+	body{
+		background-color: rgb(245, 240, 233);
+	}
 	.main{ 
 		max-width: 1400px;
 		margin:0 auto;
 		overflow:auto;
-		
+		height:1500px;
 	}
 	.search{
 		width:400px;
@@ -15,8 +19,7 @@
 		overflow: auto;
 		box-shadow: 0px 1px 2px 1px lightslategrey;
 		border-radius: 5px;
-		height: 850px;
-		background-color:rgb(242, 242, 242);
+		height: 959px;
 	}
 	.partner{
 		width: 463px;
@@ -24,7 +27,6 @@
 		margin-right:10px;
 		box-shadow: 0px 1px 2px 1px lightslategrey;
 		border-radius: 5px;
-		background-color:rgb(242, 242, 242);
 	}
 	.purchase{
 		width: 490px;
@@ -35,20 +37,17 @@
 		flex-direction: column;
     	box-shadow: 0px 1px 2px 1px lightslategrey;
 		border-radius: 5px;
-		background-color:rgb(242, 242, 242);
-	
 	}
 
 	.purchase_ok{
 		width: 965px;
-		height:557px;
+		height:300px;
 		display:flex;
 		margin:10px; 
 		box-shadow: 0px 1px 2px 1px lightslategrey;
 		border-radius: 5px;
-		background-color:rgb(242, 242, 242);
-		
-	}
+		overflow:auto;
+		}
 	.text{
 		width:100px;
 	}
@@ -76,14 +75,13 @@
 	}
 	#name2{
 		margin-left:424px;
-		color:white;
+		color:rgb(242, 242, 242);
 	}
 	#pc_cnt{
-		width: 150px;
+		width: 100px;
 		display: inline-block;
 		height: 30px;
-
-	background-color: rgb(236, 236, 236);
+		background-color: rgb(245, 240, 233);
 	}
 	#delBtn{
 		background-color: rgb(30, 57, 50);
@@ -149,10 +147,7 @@
     line-height: 2;
     margin: 8px;
 }
-	
-	#status {
-		
-	}
+
 		input{
 		border:none;
 		border-right:0px; 
@@ -170,14 +165,10 @@
 	    top: 5px;
 	}
 
-	.purchaseTable td{
-	background-color:rgb(30, 57, 50);
-	color:white;
-	}
 </style>
 <script>
-
-$(document).ready(function() {
+/*
+ $(document).ready(function() {
 
 	console.log($(".status").text());
     $('.form').submit(function() {
@@ -189,6 +180,22 @@ $(document).ready(function() {
         alert('발주취소실패');
         return false;
     }); 
+});* 
+ 
+ */
+
+$(document).ready(function() {
+
+    $('.form').submit(function() {
+    	
+        console.log(document.getElementById('status').innerText);
+        if(document.getElementById('status').innerText == "대기"){
+        	alert('발주취소성공');
+            return true;
+        }
+        alert('발주취소실패');
+        return false;
+        });
 });
 
 </script>
@@ -240,14 +247,7 @@ $(()=>{
 	               tag += "<div>" + vo.hq_num + "</div>"
 	               tag += "<div>" + vo.hq_name + "</div>"
 	               tag += "<div>" + (vo.ware_price + 2000) + "원</div>"
-	               tag += "<select name='pc_cnt' id='pc_cnt'>"
-	               tag += "<option value=''>수량선택</option>"
-	               tag += "<option value='100'>100</option>"
-	               tag += "<option value='200'>200</option>"
-	               tag += "<option value='300'>300</option>"
-	               tag += "<option value='400'>400</option>"
-	               tag += "<option value='500'>500</option>"
-	               tag += "<option value='1000'>1000</option> </select>"
+	               tag += "<input type='text' name='pc_cnt' id='pc_cnt' required/>개"
 	               tag += "<div><input id='hq_num' name='hq_num' value='"+ vo.hq_num  +"' type='hidden' /></div>"
 	               tag += "<div><input type='submit' class='btn3' value='발주' /></div></form>";
 	               $("#purchase").html(tag);
@@ -271,7 +271,7 @@ $(()=>{
 		<input type='text' id='myinput' placeholder='원하시는 상품을 검색하세요.' class='form-control'/>
 		<table class='table table-hover'>
 			<thead>
-			<tr class="purchaseTable">
+			<tr class="table-active">
 				<td>상품번호</td>
 				<td>제품명</td>
 			</tr>
@@ -290,27 +290,27 @@ $(()=>{
 		<table class='table'>
 			<tr>
 				<td><b>거래처명</b></td>
-				<td id="view1"></td>
+				<td id="view1">수영물산</td>
 			</tr>
 			<tr>
 				<td><b>분류</b></td>
-				<td id="view2"></td>
+				<td id="view2">식자재</td>
 			</tr>
 			<tr>
 				<td><b>거래처번호</b></td>
-				<td id="view3"></td>
+				<td id="view3">5</td>
 			</tr>
 			<tr>
 				<td><b>담당자</b></td>
-				<td id="view4"></td>
+				<td id="view4">수영</td>
 			</tr>
 			<tr>
 				<td><b>연락처</b></td>
-				<td id="view5"></td>
+				<td id="view5">010-1234-5678</td>
 			</tr>
 			<tr>
 				<td><b>이메일</b></td>
-				<td id="view6"></td>
+				<td id="view6">abc@naver.com</td>
 			</tr>
 		</table>
 	</div>
@@ -324,19 +324,28 @@ $(()=>{
    	   		<div><b>발주수량</b></div>
    	   		
    	   	</div>
-   	   	<div id="purchase"></div>
+   	   	<div id="purchase">
+   	   	<form id='frm' method='post' action='/myapp/Purchase_RegisterOk'>
+	    <div>12</div>
+	    <div>원두</div>
+	    <div>5000원</div>
+	    <input type="text" name='pc_cnt' id='pc_cnt'/>개
+		   
+	    <div><input type='submit' class='btn3' value='발주' /></div></form>
+   	   	</div>
+   	   	
    	   	</div>
   	   	
 	</div>
 	<form method="post" class="form" name="delsubmit" action="/myapp/purchaseDel">
-	<div class="name">발주내역확인</div>
+	<div class="name">발주요청내역</div>
 		<input type="submit" id="delBtn" value="발주취소">
 		<span id="delBtnText">화면의 발주상태가 대기일때만 취소가 가능합니다.</span>
 		<div class="purchase_ok">
 			 <table class="table table-hover">
 			  
 	      	<thead>
-	            <tr class="purchaseTable">
+	            <tr class="table-active">
 	            	<td>선택</td>
 	            	<td>발주번호</td>
 	                <td>상품번호</td>
@@ -351,6 +360,7 @@ $(()=>{
 	           
 	            <tbody>
 	            	<c:forEach var="ProductVO" items="${purchaseList}">
+	            	<c:if test="${ProductVO.order_status == 1}">
 		             <tr>
 		             	<td><input type="checkbox" id="purchaseDel" name="purchaseDel" value="${ProductVO.pc_num }"/></td>
 		             	<td>${ProductVO.pc_num}</td>
@@ -360,10 +370,48 @@ $(()=>{
 		                <td>${ProductVO.pc_cnt}</td>
 		                <td>${ProductVO.ware_price*ProductVO.pc_cnt}</td>
 	               	    <td>${ProductVO.pc_date}</td>
-	               	    <td class="status" name="status"><c:if test="${ProductVO.order_status == 1}">대기</c:if>
+	               	    <td id="status" name="status"><c:if test="${ProductVO.order_status == 1}">대기</c:if>
 		               	    <c:if test="${ProductVO.order_status == 2}">완료</c:if>
 		               	</td>
 		            </tr>
+		            </c:if>
+		            </c:forEach>
+	         </tbody>
+	      </table>
+		</div>
+		<div class="name">발주완료내역</div>
+		<div class="purchase_ok">
+			 <table class="table table-hover">
+			  
+	      	<thead>
+	            <tr class="table-active">
+	            	<td>발주번호</td>
+	                <td>상품번호</td>
+	                <td>제품명</td>
+	                <td>발주가격</td>
+	                <td>발주수량</td>
+	                <td>합계금액</td>
+	                <td>발주날짜</td>
+	                <td>발주상태</td>
+	            </tr>
+	            </thead>
+	           
+	            <tbody>
+	            	<c:forEach var="ProductVO" items="${purchaseList}">
+	            	<c:if test="${ProductVO.order_status == 2}">
+		             <tr>
+		             	<td>${ProductVO.pc_num}</td>
+		               	<td>${ProductVO.hq_num}</td>
+		                <td>${ProductVO.hq_name}</td>
+		                <td>${ProductVO.ware_price}</td>
+		                <td>${ProductVO.pc_cnt}</td>
+		                <td>${ProductVO.ware_price*ProductVO.pc_cnt}</td>
+	               	    <td>${ProductVO.pc_date}</td>
+	               	    <td><c:if test="${ProductVO.order_status == 1}">대기</c:if>
+		               	    <c:if test="${ProductVO.order_status == 2}">완료</c:if>
+		               	</td>
+		            </tr>
+		            </c:if>
 		            </c:forEach>
 	         </tbody>
 	      </table>

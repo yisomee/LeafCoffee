@@ -80,6 +80,55 @@ public class ProductServiceImp implements ProductService{
 	}
 
 
+	@Override
+	public int purchaseConfirmCnt(ProductVO vo) {
+		// TODO Auto-generated method stub
+		return productDAO.purchaseConfirmCnt(vo);
+	}
+
+
+	@Override
+	public List<ProductVO> inventory() {
+		// TODO Auto-generated method stub
+		return productDAO.inventory();
+	}
+
+
+	@Override
+	public List<ProductVO> selectItems() {
+		// TODO Auto-generated method stub
+		return productDAO.selectItems();
+	}
+
+
+	@Override
+	public int items_RegisterOk(ProductVO vo) {
+		// TODO Auto-generated method stub
+		return productDAO.items_RegisterOk(vo);
+	}
+
+
+	@Override
+	public List<ProductVO> selectPartner() {
+		// TODO Auto-generated method stub
+		return productDAO.selectPartner();
+	}
+
+
+	@Override
+	public ProductVO ware_cntAll(int hq_num) {
+		// TODO Auto-generated method stub
+		return productDAO.ware_cntAll(hq_num);
+	}
+
+
+	@Override
+	public ProductVO pc_cntAll(int hq_num) {
+		// TODO Auto-generated method stub
+		return productDAO.pc_cntAll(hq_num);
+	}
+
+
 
 
 
