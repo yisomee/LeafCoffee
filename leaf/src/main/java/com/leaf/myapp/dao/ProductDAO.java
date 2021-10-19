@@ -15,7 +15,13 @@ public interface ProductDAO {
 	
 	//입고페이지
 	public List<ProductVO> WarehousingList();//본사에서 보는 입고리스트
+	public List<ProductVO> inventory();//재고리스트
 	public int Warehousing_RegisterOk(ProductVO vo);//입고등록
+	public int items_RegisterOk(ProductVO vo);//제품등록
 	public int purchaseConfirm(ProductVO vo);//본사에서 확인버튼 0->1
-
+	public int purchaseConfirmCnt(ProductVO vo);//본사에서 확인버튼-> 입고수량 줄어드는거
+	public List<ProductVO> selectItems();//  아이템가져오기
+	public List<ProductVO> selectPartner();//  파트너가져오기
+	public ProductVO ware_cntAll(int hq_num);
+	public ProductVO pc_cntAll(int hq_num);
 }

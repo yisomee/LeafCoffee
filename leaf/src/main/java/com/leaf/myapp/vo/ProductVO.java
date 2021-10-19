@@ -3,13 +3,14 @@ package com.leaf.myapp.vo;
 import java.util.List;
 
 public class ProductVO {
-	//제품 vo
+	//입고 vo
 	private int hq_num;
 	private String hq_name;
 	private int ware_price;
 	private String ware_date;
 	private int ware_cnt;
 	private int emp_num;
+	private int ware_num;
 	//파트너 vo
 	private int part_num;
 	private String part_company;
@@ -41,8 +42,38 @@ public class ProductVO {
 	//여러개의 본사재고상품 번호 담을 변수
 	private List<Integer> warehousingDel;
 	
-	
+	//재고 수량
+	private int inventory;
+	private int ware_cntAll;
+	private int pc_cntAll;
 
+	public int getWare_cntAll() {
+		return ware_cntAll;
+	}
+	public void setWare_cntAll(int ware_cntAll) {
+		this.ware_cntAll = ware_cntAll;
+	}
+	public int getPc_cntAll() {
+		return pc_cntAll;
+	}
+	public void setPc_cntAll(int pc_cntAll) {
+		
+		this.pc_cntAll = pc_cntAll;
+		inventory = ware_cntAll - pc_cntAll;
+	}
+	public int getWare_num() {
+		return ware_num;
+	}
+	public void setWare_num(int ware_num) {
+		this.ware_num = ware_num;
+	}
+	public int getInventory() {
+		return inventory;
+		
+	}
+	public void setInventory(int inventory) {
+		this.inventory = inventory;
+	}
 	public List<Integer> getWarehousingDel() {
 		return warehousingDel;
 	}

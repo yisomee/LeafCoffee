@@ -186,8 +186,12 @@
 </dependency>
 
 
-
-              
+<!-- transaction -->
+<dependency>
+	<groupId>org.springframework</groupId>
+	<artifactId>spring-tx</artifactId>
+	<version>5.1.1.RELEASE</version>
+</dependency>              
 	</dependencies>
     <build>
         <plugins>
