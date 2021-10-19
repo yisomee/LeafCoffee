@@ -29,8 +29,9 @@
 			let empvo = $(result.empvo);
 			
 			if(empvo.length==0){
-				let notSearch = '<li>'+searchWord+'에 대해 0건이 발견되었습니다.</li>';					
+				let notSearch = '<div>'+searchWord+'에 대해 0건이 발견되었습니다.</div>';					
 				$('#emp-list').html(notSearch);
+				$('.page_nation').empty();
 			}else{
 				let empNumList = '';
 				
@@ -134,9 +135,9 @@
 					let empvo = $(result.empvo);
 					
 					if(empvo.length==0){
-						let notSearch = '<li>'+searchWord+'에 대해 0건이 발견되었습니다.</li>';					
+						let notSearch = '<div>'+searchWord+'에 대해 0건이 발견되었습니다.</div>';					
 						$('#emp-list').html(notSearch);
-						
+						$('.page_nation').empty();
 					}else{
 						let empNumList = '';					
 						empvo.each(function(idx,vo){

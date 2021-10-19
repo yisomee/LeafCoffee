@@ -9,6 +9,7 @@ public class OpenRequestVO {
 	private String tel2;
 	private String tel3;
 	
+	private String openhopeemail; // 희망이메일
 	private String email;
 	private String emailid;
 	private String domain;
@@ -22,7 +23,7 @@ public class OpenRequestVO {
 	private String writedate; // 게시글 작성일
 	private String oq_status; // 답변상태 (답변대기/답변완료)
 	
-	
+	private int replyexist=0; // 답글존재여부
 	
 
 	public String getUserid() {
@@ -77,6 +78,21 @@ public class OpenRequestVO {
 
 	public void setTel3(String tel3) {
 		this.tel3 = tel3;
+	}	
+	
+	public String getOpenhopeemail() {
+		openhopeemail = emailid+"@"+domain;
+		return openhopeemail;
+	}
+
+	public void setOpenhopeemail(String openhopeemail) {
+		this.openhopeemail = openhopeemail;
+		
+		if(openhopeemail!=null) {
+			String[] mail = openhopeemail.split("@");
+			this.emailid = mail[0];
+			this.domain = mail[1];
+		}
 	}
 
 	public String getEmail() {
@@ -95,18 +111,11 @@ public class OpenRequestVO {
 	}
 
 	public String getEmailid() {
-		email = emailid+"@"+domain;
 		return emailid;
 	}
 
 	public void setEmailid(String emailid) {
 		this.emailid = emailid;
-		
-		if(email!=null) {
-			String[] mail = email.split("@");
-			this.emailid = mail[0];
-			this.domain = mail[1];
-		}
 	}
 
 	public String getDomain() {
@@ -176,6 +185,14 @@ public class OpenRequestVO {
 
 	public void setOq_status(String oq_status) {
 		this.oq_status = oq_status;
+	}
+
+	public int getReplyexist() {
+		return replyexist;
+	}
+
+	public void setReplyexist(int replyexist) {
+		this.replyexist = replyexist;
 	}
 	
 	

@@ -74,7 +74,8 @@ public class EmployeeController {
 		  PageVO ppVo = employeeService.page(pVo.getSearchKey(),pVo.getSearchWord());
 		  ppVo.setSearchKey(pVo.getSearchKey());
 		  ppVo.setSearchWord(pVo.getSearchWord());
-		  ppVo.setNowPage(pVo.getNowPage());			
+		  ppVo.setNowPage(pVo.getNowPage());
+		  
 		  
 		  int lastPageRecode = ppVo.getTotalRecord()%pVo.getOnePageRecord(); // 마지막페이지 레코드 수
 		  		  

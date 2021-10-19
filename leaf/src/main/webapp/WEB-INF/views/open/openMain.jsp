@@ -8,9 +8,10 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>	
 	const regExpUserName = /^[가-힣]{1,10}$/;
-	
-	function listSelect(i,searchKey,searchWord){
-											
+ 	let oq_status = 0; // 답변대기 체크박스 클릭
+	 
+	function listSelect(i,searchKey,searchWord,oq_status){
+		console.log(oq_status);									
 		let nowPage = i;
 			
 		//ajax로 검색한 리스트 출력.(라디오버튼,사원번호,사원명,직급,연락처,이메일,입사일,재직여부)
@@ -18,13 +19,15 @@
 		url: "/myapp/openQuestionSearch",
 		data : "searchKey="+searchKey+"&"+
 				"searchWord="+searchWord+"&"+
-				"nowPage="+nowPage,	
+				"nowPage="+nowPage+"&"+
+				"oq_status="+oq_status,
 		success:function(result){
 			let openvo = $(result.openvo);
 			
 			if(openvo.length==0){
-				let notSearch = '<li>'+searchWord+'에 대해 0건이 발견되었습니다.</li>';					
+				let notSearch = '<div>'+searchWord+'에 대해 0건이 발견되었습니다.</div>';					
 				$('#open-list').html(notSearch);
+				$('.page_nation').empty();
 			}else{
 				let openList = '';
 				
@@ -39,10 +42,12 @@
 				$('#open-list').html(openList);
 				
 				// 페이징					
-				$('.page_nation').empty(); // 버튼을 담을 div를 비워줌
+				$('.page_nation').empty();
 				
-				var sk = "'"+result.pvo.searchKey+"'"; //스크립트 메소드의 매개변수 String값을 셋팅시 값으로 인식시켜주기 위함
-				var sw = "'"+result.pvo.searchWord+"'";
+				
+				let sk1 = "'"+result.pvo.searchKey+"'"; 
+				let sw1 = "'"+result.pvo.searchWord+"'";
+				let st1 = "'"+result.pvo.oq_status+"'";
 				
 				let nowPageMinerOne = nowPage-1;  // 현재페이지-1
 				nowPageMinerOne = "'"+nowPageMinerOne+"'";
@@ -53,34 +58,41 @@
 				
 				////////////////////////////////////
 				if(nowPage>1){
-					$('.page_nation').append('<a class="arrow pprev" href="javascript:listSelect(1,'+sk+','+sw+')"></a>');
-					$('.page_nation').append('<a class="arrow prev" href="javascript:listSelect('+nowPageMinerOne+','+sk+','+sw+')"></a>');					
+					$('.page_nation').append('<a class="arrow pprev" href="javascript:listSelect(1,'+sk1+','+sw1+','+st1+')"></a>');
+					$('.page_nation').append('<a class="arrow prev" href="javascript:listSelect('+nowPageMinerOne+','+sk1+','+sw1+','+st1+')"></a>');
+
 					
 				}else if(nowPage==1){
-					$('.page_nation').append('<a class="arrow pprev" href="javascript:listSelect(1,'+sk+','+sw+')"></a>');
-					$('.page_nation').append('<a class="arrow prev" href="javascript:listSelect(1,'+sk+','+sw+')"></a>');
+					$('.page_nation').append('<a class="arrow pprev" href="javascript:listSelect(1,'+sk1+','+sw1+','+st1+')"></a>');
+					$('.page_nation').append('<a class="arrow prev" href="javascript:listSelect(1,'+sk1+','+sw1+','+st1+')"></a>');
+
 										
 				}				
 				for (var j = result.pvo.startPage; j <=result.pvo.startPage+result.pvo.onePageViewNum-1; j++) {						
-					var sk = "'"+result.pvo.searchKey+"'";
-					var sw = "'"+result.pvo.searchWord+"'";
+					let sk2 = "'"+result.pvo.searchKey+"'";
+					let sw2 = "'"+result.pvo.searchWord+"'";
+					let st2 = "'"+result.pvo.oq_status+"'";
+					
 					
 					if(j<=result.pvo.totalPage){
 						if(j==nowPage){
-							$('.page_nation').append('<a class="active" href="javascript:listSelect('+j+','+sk+','+sw+')">'+j+'</a>');
-							
+							$('.page_nation').append('<a class="active" href="javascript:listSelect('+j+','+sk2+','+sw2+','+st2+')">'+j+'</a>');
+
 						}else if(j!=nowPage){
-							$('.page_nation').append('<a href="javascript:listSelect('+j+','+sk+','+sw+')">'+j+'</a>');
-							
+							$('.page_nation').append('<a href="javascript:listSelect('+j+','+sk2+','+sw2+','+st2+')">'+j+'</a>');
+
 						}
 					}
 				}
 				if(nowPage==result.pvo.totalPage){
-					$('.page_nation').append('<a class="arrow next" href="javascript:listSelect('+result.pvo.totalPage+','+sk+','+sw+')"></a>');					
+					$('.page_nation').append('<a class="arrow next" href="javascript:listSelect('+result.pvo.totalPage+','+sk1+','+sw1+','+st1+')"></a>');
+
 				}else{
-					$('.page_nation').append('<a class="arrow next" href="javascript:listSelect('+nowPagePlusOne+','+sk+','+sw+')"></a>');
+					$('.page_nation').append('<a class="arrow next" href="javascript:listSelect('+nowPagePlusOne+','+sk1+','+sw1+','+st1+')"></a>');
+
 				}
-				$('.page_nation').append('<a class="arrow nnext" href="javascript:listSelect('+result.pvo.totalPage+','+sk+','+sw+')"></a>');
+				$('.page_nation').append('<a class="arrow nnext" href="javascript:listSelect('+result.pvo.totalPage+','+sk1+','+sw1+','+st1+')"></a>');
+
 			}
 		}, error:function(){	
 			console.log("실패");
@@ -90,19 +102,35 @@
 	}// 자바스크립트 함수
 	
 	$(()=>{
-		// 처음 화면 로그인시
-		listSelect(1, '', '');	
+		let searchKey='';
+		let searchWord='';
+		let oq_status=0;
+		$('#ck').change(function(){
+			if($('#ck').is(':checked')){
+				console.log("체크박스 체크O");
+				oq_status=1;
+				listSelect(1,searchKey,searchWord,oq_status);
+			}else{
+				console.log("체크박스 체크X");
+				oq_status=0;
+				listSelect(1, searchKey,searchWord,oq_status);	
+			}
+		});
+		
+		
+		listSelect(1, searchKey,searchWord,oq_status);	
 		
 		$('#searchWord').on('keyup',function(e){
 			
 			if(e.keyCode ===13){ // 검색창에서 엔터눌렀을 때			
 			
-				let searchKey = $('#searchKey').val();
-				let searchWord = $('#searchWord').val();
+				searchKey = $('#searchKey').val();
+				searchWord = $('#searchWord').val();
 				
 				if(searchWord===null || searchWord==""){
-					alert("검색어를 입력해주세요.");
+					alert("검색어를 입력해주세요.");					
 					return false;
+					
 				}else if(searchKey==="username"){
 					if(!regExpUserName.test(searchWord)){
 						alert("올바른 회원명을 입력해주세요");
@@ -116,13 +144,15 @@
 					url: "/myapp/openQuestionSearch",
 					data : "searchKey="+searchKey+"&"+
 							"searchWord="+searchWord+"&"+
-							"nowPage="+nowPage,
+							"nowPage="+nowPage+"&"+
+							"oq_status="+oq_status,
 					success:function(result){
 						let openvo = $(result.openvo);
 						
 						if(openvo.length==0){
-							let notSearch = '<li>'+searchWord+'에 대해 0건이 발견되었습니다.</li>';					
+							let notSearch = '<div>'+searchWord+'에 대해 0건이 발견되었습니다.</div>';					
 							$('#open-list').html(notSearch);
+							$('.page_nation').empty();
 						}else{
 						
 							let openList = '';					
@@ -138,10 +168,12 @@
 							
 											
 							// 페이징					
-							$('.page_nation').empty(); // 버튼을 담을 div를 비워줌
+							$('.page_nation').empty(); 
 							
 							var sk = "'"+result.pvo.searchKey+"'"; 
 							var sw = "'"+result.pvo.searchWord+"'";
+							var st = "'"+result.pvo.oq_status+"'";
+
 							
 							let nowPageMinerOne = nowPage-1; 
 							nowPageMinerOne = "'"+nowPageMinerOne+"'";
@@ -152,31 +184,31 @@
 							
 							
 							if(nowPage>1){
-								$('.page_nation').append('<a class="arrow pprev" href="javascript:listSelect(1,'+sk+','+sw+')"></a>');
-								$('.page_nation').append('<a class="arrow prev" href="javascript:listSelect('+nowPageMinerOne+','+sk+','+sw+')"></a>');					
+								$('.page_nation').append('<a class="arrow pprev" href="javascript:listSelect(1,'+sk+','+sw+','+st+')"></a>');
+								$('.page_nation').append('<a class="arrow prev" href="javascript:listSelect('+nowPageMinerOne+','+sk+','+sw+','+st+')"></a>');					
 								
 							}else if(nowPage==1){
-								$('.page_nation').append('<a class="arrow pprev" href="javascript:listSelect(1,'+sk+','+sw+')"></a>');
-								$('.page_nation').append('<a class="arrow prev" href="javascript:listSelect(1,'+sk+','+sw+')"></a>');
+								$('.page_nation').append('<a class="arrow pprev" href="javascript:listSelect(1,'+sk+','+sw+','+st+')"></a>');
+								$('.page_nation').append('<a class="arrow prev" href="javascript:listSelect(1,'+sk+','+sw+','+st+')"></a>');
 													
 							}				
-							for (var j = result.pvo.startPage; j <=result.pvo.startPage+result.pvo.onePageViewNum-1; j++) {						
-								var sk = "'"+result.pvo.searchKey+"'";
-								var sw = "'"+result.pvo.searchWord+"'";
+							for (var j = result.pvo.startPage; j <=result.pvo.startPage+result.pvo.onePageViewNum-1; j++) {
+
 								if(j<=result.pvo.totalPage){
+									console.log("토탈페이지=>"+result.pvo.totalPage);
 									if(j==nowPage){
-										$('.page_nation').append('<a class="active" href="javascript:listSelect('+j+','+sk+','+sw+')">'+j+'</a>');
+										$('.page_nation').append('<a class="active" href="javascript:listSelect('+j+','+sk+','+sw+','+st+')">'+j+'</a>');
 									}else if(j!=nowPage){
-										$('.page_nation').append('<a href="javascript:listSelect('+j+','+sk+','+sw+')">'+j+'</a>');						
+										$('.page_nation').append('<a href="javascript:listSelect('+j+','+sk+','+sw+','+st+')">'+j+'</a>');						
 									}
 								}
 							}
 							if(nowPage==result.pvo.totalPage){
-								$('.page_nation').append('<a class="arrow next" href="javascript:listSelect('+result.pvo.totalPage+','+sk+','+sw+')"></a>');					
+								$('.page_nation').append('<a class="arrow next" href="javascript:listSelect('+result.pvo.totalPage+','+sk+','+sw+','+st+')"></a>');					
 							}else{
-								$('.page_nation').append('<a class="arrow next" href="javascript:listSelect('+nowPagePlusOne+','+sk+','+sw+')"></a>');
+								$('.page_nation').append('<a class="arrow next" href="javascript:listSelect('+nowPagePlusOne+','+sk+','+sw+','+st+')"></a>');
 							}
-							$('.page_nation').append('<a class="arrow nnext" href="javascript:listSelect('+result.pvo.totalPage+','+sk+','+sw+')"></a>');
+							$('.page_nation').append('<a class="arrow nnext" href="javascript:listSelect('+result.pvo.totalPage+','+sk+','+sw+','+st+')"></a>');
 					
 						}					
 						
@@ -189,10 +221,9 @@
 			}// 검색 엔터키 눌렀을 때
 		});// 검색 클릭이벤트
 
-		
-		////////////////////////////////
+
 		$(document).on('click','input[name=regi-select]',function(){
-			let selectEmpNum = $(this).parent().next().text();
+			let selectRecordNum = $(this).parent().next().text();
 			
 			$('#openReply').click(function(){
 				
@@ -210,11 +241,19 @@
 					document.body.appendChild(openForm);
 					openForm.submit();
 				}
-				openReplyGo(selectEmpNum);
+				openReplyGo(selectRecordNum);
 			});
 		});
 			
-	});		
+	});
+	
+	function replyClick(){
+		let recordSelect = $('input[name=regi-select]');
+		if(!recordSelect.is(':checked')){
+			alert("답변할 게시글을 선택해주세요.");
+			return false;
+		}
+	}
 
 </script>
 <style>
@@ -285,7 +324,7 @@
 	   <div class="tbn-menu1"><a href="<%=request.getContextPath()%>/openQuestionPage">창업문의목록</a></div>	   	   	   
 	</nav>
 	<!-- 메인부 -->
-<%-- <form method="POST" action="<%=request.getContextPath()%>/openReplyView"> --%>	
+ 	
 	<main>
 		<div id="open-list-container">
 			<div class="page-main-notice">
@@ -306,7 +345,7 @@
 			</div>
 			<div class="array_button">
 				<!-- 리스트 출력방식 CheckBox -->				
-				<input type="checkbox" name="replyStateView" value="replyNo" id="ck"/><label for="ck">답변대기만 보기</label>													
+				<input type="checkbox" name="oq_status" value="1" id="ck"/><label for="ck">답변대기만 보기</label>													
 			</div>
 			<!-- 사원 리스트 -->
 			<div id="emplistCon">								
@@ -325,22 +364,20 @@
 					<li>이형화</li>
 					<li>2021-09-02</li>
 					<li>답변완료</li>									
-					<!--  -->
-					
-				</ul>
-				
+					<!--  -->					
+				</ul>				
 			</div>
 			<!-- 페이징 버튼 -->
 			<div class="page_wrap">
 				<!-- 사원등록 -->
 				<div class="emp-button">
-					<input type="submit" value="답변하기" name="openReply" id="openReply"/>					
+					<input type="submit" value="자세히보기" name="openReply" id="openReply" onclick="replyClick()"/>					
 				</div>
 				<div class="page_nation">
 				</div>
 			</div>	
 		</div>
 	</main>
-<!-- </form> -->
+
 	
 <%@ include file="/inc/bottom3.jspf" %>
