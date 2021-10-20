@@ -62,6 +62,46 @@ public class RegisterController {
 	   
 	      return mv;
 	}
+
+	//마이페이지 수정폼
+	@RequestMapping("/mypage")
+	public ModelAndView mypage(HttpSession ses) {
+		
+		
+		String id=(String)ses.getAttribute("logid");
+		RegisterVO vo=registerService.mypage(id);
+	
+		
+		ModelAndView mv = new ModelAndView();
+		
+		mv.addObject("vo",vo);
+		System.out.println("아이디"+vo.getUserid());
+		System.out.println("주소"+vo.getAddr1());
+		System.out.println("이름"+vo.getUsername());
+		System.out.println("연락처"+vo.getTel());
+		mv.setViewName("register/mypageEdit");
+	   return mv;
+	}
+	
+	//마이페이지 수정확인 버튼 눌렀을때
+	@RequestMapping(value="/mypageOk", method=RequestMethod.POST)
+	public ModelAndView mypageOk(HttpSession ses,RegisterVO rgVo) {
+		ModelAndView mv = new ModelAndView();
+			rgVo.setUserid((String)ses.getAttribute("logid"));
+			int result=registerService.mypageOk(rgVo);
+	 
+	    	 if(result>0) {//수정성공
+	    		 mv.setViewName("redirect:login");
+	    	 }else { //수정실패
+	    		 mv.setViewName("redirect:mypage");
+	    	 }
+	    	
+	    	 return mv;
+	    	
+	    	 
+	     }
+	
+	
 	
 	//id중복체크
 	@RequestMapping("/idCheck")
@@ -124,6 +164,11 @@ public class RegisterController {
 	   return "register/pwd";
 	}
 	
+	//카카오
+	@RequestMapping("/kakao")
+	public String kakao() {
+		   return "register/kakao";
+		}
 	
 
 // mailSending 코드

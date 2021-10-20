@@ -15,4 +15,10 @@ public interface RegisterDAO {
 	public String emailAddress(String tel);//전화번호로 이메일 주소 가져오기
 	public int passwordUpdate(String tel,String email,String userpwd);//비밀번호가 업데이트
 	
+	//회원정보 수정 시 기존정보 선택 
+     public RegisterVO mypage(String id);
+     //회원수정정보 update
+     public int mypageOk(RegisterVO rgVo);
+     
+
 }

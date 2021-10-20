@@ -12,7 +12,9 @@ public interface NoticeDAO {
 	public int noticeWrite(NoticeVO vo);
 	public int noticeEdit(NoticeVO vo);
 	public int noticeDel(int no, String userid);
+	
 	public int delChk(int[] delCheck);
+	
 	public int totalRecordCount(NoticePagingVO pVo);
 	public List<NoticeVO> noticePageSelect(NoticePagingVO pVo);
 

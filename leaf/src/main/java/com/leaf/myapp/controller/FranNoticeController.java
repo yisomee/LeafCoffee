@@ -1,11 +1,14 @@
 package com.leaf.myapp.controller;
 
+import java.lang.reflect.Array;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.leaf.myapp.service.FranNoticeService;
@@ -115,6 +118,17 @@ public ModelAndView franNoticeDelete(int no) {
 	}
 	return mv;
 	}
+
+//선택항목 삭제
+
+@RequestMapping(value="/frandeleteCheck",method=RequestMethod.POST)
+public ModelAndView deleteCheck(FranNoticeVO vo) {
+	ModelAndView mav = new ModelAndView();
+	int result=frannoticeservice.delChk(vo.getDelCheck());
+	System.out.println("삭제된레코드수 :"+result);
+	mav.setViewName("redirect:franNotice");
+	return mav;
+}
 }
 
 

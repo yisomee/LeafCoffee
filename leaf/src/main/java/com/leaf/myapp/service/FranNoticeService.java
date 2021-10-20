@@ -18,4 +18,6 @@ public interface FranNoticeService {
 	
 	public int totalRecordCount(FranPageVO pVo);
 	
+	public int delChk(int[]delCheck);
+	
 }

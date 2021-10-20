@@ -33,4 +33,16 @@
 	update registers set userpwd=#{param3} where email=#{param2} and tel=#{param1}
 	
 	</update>
+	<!-- 수정폼 선택 -->
+		<select id="mypage" resultType="com.leaf.myapp.vo.RegisterVO">
+		select userid, userpwd, username, birth, tel, addr,addr1 from registers where userid=#{param1}
+		</select>
+		
+	<!-- 수정update -->	
+	<update id="mypageOk">
+		update registers set userpwd=#{userpwd},birth=#{birth},tel=#{tel},addr=#{addr},email=#{email} 
+		where userid=#{userid}
+		
+	</update>
+	
 </mapper>

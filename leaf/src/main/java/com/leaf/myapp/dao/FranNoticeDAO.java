@@ -17,5 +17,6 @@ public interface FranNoticeDAO {
 	public int franNoticeDelete(int no);//글삭제
 	
 	public int totalRecordCount(FranPageVO pVo);//총레코드수
+	public int delChk(int[]delCheck);//체크삭제
 	
 }
