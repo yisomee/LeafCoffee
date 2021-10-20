@@ -31,14 +31,14 @@
    #searchKeyword{height:30px;width:250px;padding:4px;margin-right:2px;border:none;}
    #searchIcon{font-size:1.2em; padding:6px 6px 4px 6px;border:none;}
    .boardList{overflow:auto;}
+   #list1>li{float:left;border-bottom:1px solid gray; height:40px; line-height:40px;}
+   #list1>li:nth-child(6n+1){width:7.5%;padding-left:10px}
+   #list1>li:nth-child(6n+2){width:11%;color:#62605F}
+   #list1>li:nth-child(6n+3){width:50%;color:#62605F}
+   #list1>li:nth-child(6n+4){width:10%;color:#62605F}
+   #list1>li:nth-child(6n+5){width:15%;color:#62605F}
+   #list1>li:nth-child(6n+6){width:6.5%;color:#62605F}
    .boardList>li{float:left;border-bottom:1px solid gray; height:40px; line-height:40px;}
-   .boardList>li:nth-child(6n+1){width:7.5%;padding-left:10px}
-   .boardList>li:nth-child(6n+2){width:11%;color:#62605F}
-   .boardList>li:nth-child(6n+3){width:50%;color:#62605F}
-   .boardList>li:nth-child(6n+4){width:10%;color:#62605F}
-   .boardList>li:nth-child(6n+5){width:15%;color:#62605F}
-   .boardList>li:nth-child(6n+6){width:6.5%;color:#62605F}
-   
    .boardList>li:nth-child(1){width:7.5%;}
    .boardList>li:nth-child(2){width:28%;font-weight:bold;color:#382E2C}
    .boardList>li:nth-child(3){width:34%;font-weight:bold;color:#382E2C}
@@ -67,12 +67,30 @@ $(()=>{
       $(".boardList input").prop("checked", $(this).prop("checked"));   
    });
    $("#delBtn").click(function(){
-      $("#listform").attr("action","/myapp/deleteCheck");
-      $("#listform").submit();   
+      $("#list1").attr("action","/myapp/frandeleteCheck");
+      $("#list1").submit();   
    });
 
-
 });
+/*댓글 
+$(function(){
+	
+	$('#searchKeyword').keyup(function(){
+		var search=$('#searchKeyword').val();
+		console.log(search);
+		
+	}
+    $.ajax({
+   		type:"get",
+       url:"/myapp/franNotice",
+       data:{ keyword : $(this).val() },
+       success:function(result){
+   
+       }
+    });
+ });
+*/
+
 </script>
 </head>
 <body>
@@ -91,12 +109,14 @@ $(()=>{
             <button id="delBtn"><i class="fas fa-trash-alt"></i> 삭제</button>
             <button><a href="/myapp/frannoticeWrite"><i class="fas fa-pencil-alt"></i> 글쓰기</a></button>            
          </div>
-  		 <form method="post" action="/myapp/noticeList" id="listform">
+  		 <form method="post" id="listform">
          <div>         
             <input type="text" id="searchKeyword" name="searchKeyword" placeholder="검색어를 입력해 주세요."/><button id="searchIcon"><i class="fas fa-search"></i></button>         
          </div> 
-         </form>       
+            
       </div>
+      </form>
+      
       <ul class="boardList">
          <li><input type="checkbox" id="allCheck" name="delCheck"/></li>
          <li>NO</li>
@@ -104,6 +124,7 @@ $(()=>{
          <li>글쓴이</li>
          <li>등록일</li>
          <li>조회수</li>         
+      <form method="post" id="list1">
          <c:forEach var="franNoticeVo" items="${list}"> 
             <li><input type="checkbox" name="delCheck" value="${franNoticeVo.no}"/></li>
             <li>${franNoticeVo.no }</li>
@@ -113,10 +134,11 @@ $(()=>{
             <li>${franNoticeVo.hit }</li>
          </c:forEach>
       </ul> 
+      </form>
       <ul class="paging">
       <!-- prev 버튼  1이면 이전 버튼이 없어짐-->
          <c:if test="${pVo.nowPage>1}"> 
-            <li><a href="/myapp/franNotice?nowPage=${pVo.nowPage-1}"><i class="fas fa-angle-left"></i></a></li>
+            <li><a href="/myapp/franNotice?nowPage=${pVo.nowPage-1}><c:if test="${searchKeyword != null and searchKeyword !=''}">&searchKeyword=${pVo.searchKeyword}</c:if>"><i class="fas fa-angle-left"></i></a></li>
          </c:if>
       <!-- 시작페이지부터 5개의 페이지를 출력한다. -->
          <!-- 6,7,8,9,10 -->
@@ -129,12 +151,12 @@ $(()=>{
 	            <c:if test="${i!=pVo.nowPage }">
 	               <li>
 	            </c:if>
-	            <a href="/myapp/franNotice?nowPage=${i}">${i}</a>
+	            <a href="/myapp/franNotice?nowPage=${i}<c:if test="${searchKeyword != null and searchKeyword !=''}">&searchKeyword=${pVo.searchKeyword}</c:if>">${i}</a>
 	         </c:if>
          </c:forEach>
          <!-- next 버튼  totalpage이면 다음 버튼이 없어짐-->
          <c:if test="${pVo.nowPage<pVo.totalPage}">
-            <li class='page-item'><a href="/myapp/franNotice?nowPage=${pVo.nowPage+1 }"><i class="fas fa-angle-right"></i></a></li>
+            <li class='page-item'><a href="/myapp/franNotice?nowPage=${pVo.nowPage+1 }<c:if test="${searchKeyword != null and searchKeyword !=''}">&searchKeyword=${pVo.searchKeyword}</c:if>"><i class="fas fa-angle-right"></i></a></li>
          </c:if>   
       </ul> 
 

@@ -7,7 +7,9 @@
   	<select id="noticeAllSelect" parameterType="com.leaf.myapp.vo.FranPageVO" resultType="com.leaf.myapp.vo.FranNoticeVO">
   	select * from 
 		(select * from
-    		(select no, title, to_char(writedate, 'YY-MM-DD') writedate, hit, userid from frannotice order by no desc)
+    		(select no, title, to_char(writedate, 'YY-MM-DD') writedate, hit, userid from frannotice 
+    		where title like '%${searchKeyword}%' or
+    		content like '%${searchKeyword}%' order by no desc)
      where rownum<![CDATA[<=]]>#{nowPage}*#{OnePageRecord} order by no asc)
      where rownum<![CDATA[<=]]>#{lastPage} order by no desc
   	</select>
@@ -31,8 +33,18 @@
      
      <select id="totalRecordCount" parameterType="com.leaf.myapp.vo.FranPageVO" resultType="int">
      select count(no) from frannotice
+     	<if test="searchKeyword !=null and searchKeyword !=''">
+     		where title like ('%${searchKeyword}%') or
+     		content like ('%${searchKeyword}%')
+	</if>
   
      </select>
-     
-     
+     <!-- 배열로 삭제 일단안됌  array가 어쩌고 저쩌고 ~-->
+      <delete id="delChk">
+     	delete from frannotice where no in
+     	<foreach item="item" index="index" collection="array"
+     	 open="(" separator="," close=")">
+        #{item}
+  		</foreach>
+     </delete>    
   	</mapper>

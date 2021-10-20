@@ -11,7 +11,15 @@ public class FranPageVO {
 	private int startPage=1;//한 화면에 보이는 첫번째 페이지 버튼 숫자.  
 	private int lastPage=5;
 	
+	private String searchKeyword; //검색어
 	
+	
+	public String getSearchKeyword() {
+		return searchKeyword;
+	}
+	public void setSearchKeyword(String searchKeyword) {
+		this.searchKeyword = searchKeyword;
+	}
 	public int getTotalRecord() {
 		
 		return totalRecord;

@@ -106,12 +106,18 @@ public class RegisterVO {
 
 	// ����ó
 	public String getTel() {
-		
+		if(tel!=null) {
+			tel1 = tel.substring(0,3);
+			tel2 = tel.substring(3,7);
+			tel3 = tel.substring(7);
+		}else {
 			tel = tel1+tel2+tel3;
-		
+		}
+			System.out.println("get");
 		return tel;
 	}
 	public void setTel(String tel) {
+		System.out.println("set");
 		this.tel = tel;
 		
 			}
@@ -141,11 +147,17 @@ public class RegisterVO {
 	}
 	
 	public String getAddr() {
-		addr = addr1+addr2+addr3+addr4;
+		addr = addr1+"/"+addr2+"/"+addr3+"/"+addr4;
 		return addr;
 	}
 	public void setAddr(String addr) {
 		this.addr = addr;
+		
+		String a[]=addr.split("/");
+		addr1=a[0];
+		addr2=a[1];
+		addr3=a[2];
+		addr4=a[3];
 	}
 	public String getAddr1() {
 		return addr1;
@@ -171,8 +183,5 @@ public class RegisterVO {
 	public void setAddr4(String addr4) {
 		this.addr4 = addr4;
 	}
-
-	
-	
 
 }

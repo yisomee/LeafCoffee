@@ -56,4 +56,12 @@ public class FranNoticeServiceImp implements FranNoticeService {
 		return frannoticedao.totalRecordCount(pVo);
 	}
 
+	@Override
+	public int delChk(int[] delCheck) {
+		
+		return frannoticedao.delChk(delCheck);
+	}
+
+
+
 }
