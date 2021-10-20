@@ -1,0 +1,175 @@
+-- 기존테이블 삭제
+drop table rpbo purge;
+drop table fdbo purge;
+
+-- 창업문의 게시판 시퀀스 생성
+create sequence opensq
+start with 1
+increment by 1;
+
+--답변번호 시퀀스생성
+create sequence rpsq
+start with 1
+increment by 1;
+
+-- 게시판 번호 시퀀스메모리 제거
+alter sequence opensq nocache;
+alter sequence rpsq nocache;
+
+-- 게시판, 답변테이블 생성
+CREATE TABLE openQuestion (
+	oq_num NUMBER(6) NOT NULL, /* 게시번호 */
+	openhopeaddr VARCHAR2(50) NOT NULL, /* 희망지역 */
+	content VARCHAR2(500) NOT NULL, /* 문의내용 */
+	writedate DATE DEFAULT sysdate NOT NULL, /* 작성일 */
+	userid VARCHAR2(20) NOT NULL, /* 아이디 */
+	oq_status VARCHAR2(20) DEFAULT '답변대기' NOT NULL, /* 답변상태 */
+	openhopetel VARCHAR2(20) NOT NULL, /* 연락처 */
+	openhopeemail VARCHAR2(50) NOT NULL /* 이메일 */
+);
+
+ALTER TABLE openQuestion
+	ADD
+		CONSTRAINT PK_openQuestion
+		PRIMARY KEY (
+			oq_num
+		);
+
+/* 가맹문의 답변 */
+CREATE TABLE openReply (
+	rp_num NUMBER(6) NOT NULL, /* 답변번호 */
+	oq_num NUMBER(6) NOT NULL, /* 게시번호 */
+	rpdate DATE DEFAULT sysdate NOT NULL, /* 답변작성일 */
+	rpldate DATE DEFAULT sysdate NOT NULL, /* 최종수정일 */
+	rpcon VARCHAR2(1000) NOT NULL, /* 답변내용 */
+	userid VARCHAR2(20) /* 아이디 */
+);
+
+ALTER TABLE openReply
+	ADD
+		CONSTRAINT PK_openReply
+		PRIMARY KEY (
+			rp_num
+		);
+
+ALTER TABLE openQuestion
+	ADD
+		CONSTRAINT FK_registers_TO_openQuestion
+		FOREIGN KEY (
+			userid
+		)
+		REFERENCES registers (
+			userid
+		);
+
+ALTER TABLE openReply
+	ADD
+		CONSTRAINT FK_openQuestion_TO_openReply
+		FOREIGN KEY (
+			oq_num
+		)
+		REFERENCES openQuestion (
+			oq_num
+		);
+
+ALTER TABLE openReply
+	ADD
+		CONSTRAINT FK_registers_TO_openReply
+		FOREIGN KEY (
+			userid
+		)
+		REFERENCES registers (
+			userid
+		);
+
+insert into registers(userid,userpwd,username,birth,tel,email,membership,regdate,addr,auth)
+values('wow1','12345','김서준','19880628','011-3163-3102','rkdghehd212@nate.com','3',sysdate,'강원도 춘천시','회원');
+insert into registers(userid,userpwd,username,birth,tel,email,membership,regdate,addr,auth)
+values('wow2','12345','이하준','19950511','010-2153-6122','dbwotjr3223@naver.com','3','2020-12-05','서울시 강남구','회원');
+insert into registers(userid,userpwd,username,birth,tel,email,membership,regdate,addr,auth)
+values('wow3','12345','도윤','19790922','010-4267-4532','rladudgks3212@nate.com','3',sysdate,'서울시 강동구','회원');
+insert into registers(userid,userpwd,username,birth,tel,email,membership,regdate,addr,auth)
+values('wow4','12345','박시우','19601225','010-3163-3102','rladuddn5654@nate.com','3',sysdate,'서울시 마포구','회원');
+insert into registers(userid,userpwd,username,birth,tel,email,membership,regdate,addr,auth)
+values('wow5','12345','차은우','19951224','017-3635-4325','rlacksgh5451@nate.com','3',sysdate,'서울시 은평구','회원');
+insert into registers(userid,userpwd,username,birth,tel,email,membership,regdate,addr,auth)
+values('wow6','12345','이지호','19900401','016-1234-1235','dlwndud0948@nate.com','3',sysdate,'서울시 종로구','회원');
+insert into registers(userid,userpwd,username,birth,tel,email,membership,regdate,addr,auth)
+values('wow7','12345','이예준','19730510','011-4348-6785','dhwnstjr3232@nate.com','3',sysdate,'서울시 노원구','회원');
+insert into registers(userid,userpwd,username,birth,tel,email,membership,regdate,addr,auth)
+values('wow8','12345','강민준','19711221','017-3482-5951','wnwodud1231@nate.com','3',sysdate,'서울시 용산구','회원');
+insert into registers(userid,userpwd,username,birth,tel,email,membership,regdate,addr,auth)
+values('wow9','12345','하유준','19950523','019-8690-5709','dhalsdnr7664@nate.com','3',sysdate,'서울시 중구','회원');
+insert into registers(userid,userpwd,username,birth,tel,email,membership,regdate,addr,auth)
+values('wow10','12345','이주원','19901229','017-5679-4389','ghkddpckd5423@nate.com','3',sysdate,'서울시 성동구','회원');
+insert into registers(userid,userpwd,username,birth,tel,email,membership,regdate,addr,auth)
+values('wow11','12345','김이준','19700321','010-2163-2701','rlaghlrhs2313@nate.com','3',sysdate,'서울시 서초구','회원');
+insert into registers(userid,userpwd,username,birth,tel,email,membership,regdate,addr,auth)
+values('wow12','12345','신우진','19700521','010-4163-6109','dldpfla7651@nate.com','3',sysdate,'서울시 중랑구','회원');
+insert into registers(userid,userpwd,username,birth,tel,email,membership,regdate,addr,auth)
+values('wow13','12345','양지한','19700121','010-9111-1107','tlswpcjf3231@nate.com','3',sysdate,'서울시 영등포구','회원');
+insert into registers(userid,userpwd,username,birth,tel,email,membership,regdate,addr,auth)
+values('wow14','12345','강정우','19700222','010-3163-6105','rlagnstjq3281@nate.com','3',sysdate,'서울시 강서구','회원');
+insert into registers(userid,userpwd,username,birth,tel,email,membership,regdate,addr,auth)
+values('wow15','12345','황유찬','19710810','010-3983-2104','ghdtnqls9713@nate.com','3',sysdate,'서울시 도봉구','회원');
+insert into registers(userid,userpwd,username,birth,tel,email,membership,regdate,addr,auth)
+values('wow16','12345','김승우','19800727','010-9163-9001','rlawjdgh3217@nate.com','3',sysdate,'서울시 서대문구','회원');
+insert into registers(userid,userpwd,username,birth,tel,email,membership,regdate,addr,auth)
+values('wow17','12345','조시안','19930608','010-8863-8809','qkrdmdtj5413@nate.com','3',sysdate,'인천시 서구','회원');
+insert into registers(userid,userpwd,username,birth,tel,email,membership,regdate,addr,auth)
+values('wow18','12345','박민재','19770108','011-4173-5304','rkddntjr4311@nate.com','3',sysdate,'과천시 과천동','회원');
+insert into registers(userid,userpwd,username,birth,tel,email,membership,regdate,addr,auth)
+values('wow19','12345','한은호','199400323','010-2123-5122','thsehdrms7621@nate.com','3',sysdate,'과천시 중앙동','회원');
+insert into registers(userid,userpwd,username,birth,tel,email,membership,regdate,addr,auth)
+values('wow20','12345','이다온','19971027','010-6533-5804','qkrrnrghks3218@naver.com','3',sysdate,'과천시 별암동','회원');
+insert into registers(userid,userpwd,username,birth,tel,email,membership,regdate,addr,auth)
+values('doyouknowbts1','12345','유하린','199400323','010-2123-5122','thsehdrms7621@nate.com','3',sysdate,'강원도 원주시','회원');
+insert into registers(userid,userpwd,username,birth,tel,email,membership,regdate,addr,auth)
+values('doyouknowbts2','12345','서수아','19971027','010-6533-5804','qkrrnrghks3218@naver.com','3',sysdate,'서울시 마포구','회원');
+
+
+-- 창업문의 게시글 데이터
+insert into openQuestion(oq_num,openhopeaddr,content,writedate,userid,openhopetel,openhopeemail)
+values(opensq.nextval,'서울시/서대문구','서대문구에서 창업하고 싶습니다.',sysdate,'wow1','010-2321-2545','dkken123@naver.com');
+insert into openQuestion(oq_num,openhopeaddr,content,writedate,userid,openhopetel,openhopeemail)
+values(opensq.nextval,'서울시/마포구','마포구에서 창업하고 싶습니다.',sysdate,'wow2','010-2534-6235','cnakdkio32@naver.com');
+insert into openQuestion(oq_num,openhopeaddr,content,writedate,userid,openhopetel,openhopeemail)
+values(opensq.nextval,'서울시/은평구','은평구에서 창업하고 싶습니다.',sysdate,'wow3','010-5245-3231','adcknkew6712@naver.com');
+insert into openQuestion(oq_num,openhopeaddr,content,writedate,userid,openhopetel,openhopeemail)
+values(opensq.nextval,'서울시/종로구','종로구에 창업을 희망합니다. 창업에 대해 자세히 알고 싶어서 문의드립니다.',sysdate,'wow4','010-5651-4334','dkneicn12@naver.com');
+insert into openQuestion(oq_num,openhopeaddr,content,writedate,userid,openhopetel,openhopeemail)
+values(opensq.nextval,'서울시/성북구','성북구에 살고있습니다. 이 부근에서 창업을 하고 싶습니다. 연락부탁드립니다!!',sysdate,'wow5','010-2321-2545','adkne4k631@naver.com');
+insert into openQuestion(oq_num,openhopeaddr,content,writedate,userid,openhopetel,openhopeemail)
+values(opensq.nextval,'서울시/강북구','강북구에서 창업을 하고싶습니다. 입력한 연락처로 연락 부탁드려용',sysdate,'doyouknowbts1','010-2321-2545','adfk3kn3@naver.com');
+insert into openQuestion(oq_num,openhopeaddr,content,writedate,userid,openhopetel,openhopeemail)
+values(opensq.nextval,'서울시/도봉구','창업문의를 드립니다. 창업에 관련된 자세항 사항을 알고싶습니다.',sysdate,'doyouknowbts2','010-2321-2545','cadnkdfwn23@naver.com');
+insert into openQuestion(oq_num,openhopeaddr,content,writedate,userid,openhopetel,openhopeemail)
+values(opensq.nextval,'서울시/노원구','창업에 필요한 것이 뭐가 있을까요?',sysdate,'wow6','010-2321-2545','sfvgdmol32@naver.com');
+insert into openQuestion(oq_num,openhopeaddr,content,writedate,userid,openhopetel,openhopeemail)
+values(opensq.nextval,'서울시/중랑구','중랑구에서 창업을 하려고 하는데 관련된 사항을 알려주세요.',sysdate,'wow7','010-6541-2343','afcdkn32@naver.com');
+insert into openQuestion(oq_num,openhopeaddr,content,writedate,userid,openhopetel,openhopeemail)
+values(opensq.nextval,'서울시/동대문구','동대문구에서 창업을 하고싶습니다.',sysdate,'wow8','010-4321-2545','asfvdnik31@naver.com');
+insert into openQuestion(oq_num,openhopeaddr,content,writedate,userid,openhopetel,openhopeemail)
+values(opensq.nextval,'서울시/중구','중구에 같은 가맹점이 있을까요? 한번 차려보고 싶네요.',sysdate,'wow9','010-5321-2545','vferanikr321@naver.com');
+insert into openQuestion(oq_num,openhopeaddr,content,writedate,userid,openhopetel,openhopeemail)
+values(opensq.nextval,'서울시/용산구','예전에 창업한 경험이 있습니다. 용산에 차려서 성공하고싶네요...',sysdate,'wow10','010-6321-2545','vfknri392@naver.com');
+insert into openQuestion(oq_num,openhopeaddr,content,writedate,userid,openhopetel,openhopeemail)
+values(opensq.nextval,'서울시/성동구','창업에 대해 알고싶어요.. 처음이라 자세한 내용을 듣고싶어요!',sysdate,'wow11','010-7321-6545','dcmnkldenk321@naver.com');
+insert into openQuestion(oq_num,openhopeaddr,content,writedate,userid,openhopetel,openhopeemail)
+values(opensq.nextval,'서울시/광진구','광진구에 커피숍이 많이 있는데 창업해도 성공할 수 있나요? 여기서 대박나고 싶은 마음이 굴뚝이에요~',sysdate,'wow12','010-8321-5545','fvknri982@naver.com');
+insert into openQuestion(oq_num,openhopeaddr,content,writedate,userid,openhopetel,openhopeemail)
+values(opensq.nextval,'서울시/강서구','강서구는 커피숍이 별로 없어요. 그래서 얼른 차려서 돈을 긁어 모으고 싶네요~',sysdate,'wow13','010-9321-4545','vfinkdn371@naver.com');
+insert into openQuestion(oq_num,openhopeaddr,content,writedate,userid,openhopetel,openhopeemail)
+values(opensq.nextval,'서울시/양천구','주변에 스타벅스하고 백다방이 있습니다. 과연 제가 사는 곳에 창업을 하면 이길 수 있을까요?',sysdate,'wow14','010-4311-3545','fvknfkn361@naver.com');
+insert into openQuestion(oq_num,openhopeaddr,content,writedate,userid,openhopetel,openhopeemail)
+values(opensq.nextval,'서울시/구로구','창업이 처음입니다. 우연히 커피를 마시다 딱 필이 꽂혔는데 그 커피숍이 바로 LEAF였습니다. 그래서 가볍게 문의한번 드립니다.',sysdate,'wow15','010-3412-2245','fvonmrfk8987@naver.com');
+insert into openQuestion(oq_num,openhopeaddr,content,writedate,userid,openhopetel,openhopeemail)
+values(opensq.nextval,'서울시/영등포구','영등포에서 창업하고싶고 그게 아니라면 주변 동작구쪽이나 창업을 생각하고 있어요. 연락부탁드려요~!!',sysdate,'wow16','010-2321-2545','dknfdkni098@naver.com');
+insert into openQuestion(oq_num,openhopeaddr,content,writedate,userid,openhopetel,openhopeemail)
+values(opensq.nextval,'서울시/동작구','예전에 커피숍을 차렸다가 폭삭 망한 적이 있어요. 반복하고 싶지 않아서 프렌차이즈에 도전합니다. 리프에서 많이 도와주시는거죠?',sysdate,'wow17','010-2321-2545','fv0newkn@naver.com');
+insert into openQuestion(oq_num,openhopeaddr,content,writedate,userid,openhopetel,openhopeemail)
+values(opensq.nextval,'서울시/금천구','자본금 5천만원 가지고 있습니다. 5천으로 창업을 할 수 있을까요? 이 외에는 가진게 하나 없네요ㅜㅜ',sysdate,'wow18','010-4334-7676','dkncdi93@naver.com');
+insert into openQuestion(oq_num,openhopeaddr,content,writedate,userid,openhopetel,openhopeemail)
+values(opensq.nextval,'서울시/관악구','창업에 필요한 금액이 어느정도 인가요? 저는 1억9천을 생각하고 있는데 이 이상이면 부담스러워요..',sysdate,'wow19','010-2012-5423','dckniop230@naver.com');
+insert into openQuestion(oq_num,openhopeaddr,content,writedate,userid,openhopetel,openhopeemail)
+values(opensq.nextval,'서울시/서초구','창업에 지원되는 부분이 어떤것들이 있나요? 자세히 알고싶어서 문의드려욧',sysdate,'wow20','010-2321-2545','cknasdkh971@naver.com');
