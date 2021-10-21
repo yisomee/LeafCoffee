@@ -83,10 +83,6 @@ $(()=>{
 </nav>
 <div class="container">
       <div class="delete_search">
-         <div>
-            <button id="delBtn"><i class="fas fa-trash-alt"></i> 삭제</button>
-            <button><a href="/myapp/noticeWrite"><i class="fas fa-pencil-alt"></i> 글쓰기</a></button>            
-         </div>
   		 <form method="post" action="/myapp/noticeList" id="listform">
          <div>         
             <input type="text" id="searchKeyword" name="searchKeyword" placeholder="검색어를 입력해 주세요."/><button id="searchIcon"><i class="fas fa-search"></i></button>         
@@ -95,7 +91,6 @@ $(()=>{
       </div>
      <form id="selectDel" action="/myapp/deleteCheck" method="post">
       <ul class="boardList">
-         <li><input type="checkbox" id="allCheck" name="delCheck"/></li>
          <li>NO</li>
          <li>제목</li>
          <li>등록일</li>
