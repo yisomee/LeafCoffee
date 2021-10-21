@@ -2,17 +2,21 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/inc/adminTop.jspf"%>
 <style>
-body {
-	margin: 0;
-}
-
-.container {
-	max-width: 1400px;
-	display: flex;
-	justify-content: center;
-	margin: 0 auto;
-	background-color: rgb(245, 240, 233);
-}
+body{
+		margin: 0;
+		background-color:rgb(242, 242, 242);
+	}
+	.container{
+		max-width: 1000px;
+		display: flex;
+	    justify-content: center;
+	    margin:0 auto;
+	    box-shadow: 0px 1px 2px 1px lightslategrey;
+	    background-color:white;
+	    margin-top:100px;
+	    margin-bottom:200px;
+	    
+	}
 
 
 /*head 이미지*/
@@ -87,7 +91,6 @@ nav>div {
 	border-bottom: 1px solid #ddd;
 	padding: 20px 20px;
 	position: relative;
-	background-color: rgb(245, 240, 233);
 }
 
 .mfi-title {
@@ -99,7 +102,6 @@ nav>div {
 	text-align: center;
 	padding: 30px 20px 30px;
 	margin: 0;
-	background-color: rgb(245, 240, 233);
 }
 
 .mfi-inputbox input {
@@ -109,7 +111,6 @@ nav>div {
 	display: inline-block;
 	width: 530px;
 	padding: 10px;
-	background-color: rgb(245, 240, 233);
 }
 
 .mfi-inputbox strong {
@@ -140,12 +141,12 @@ nav>div {
 	width: 460px;
 }
 
-.mfi-inputbox #part_code, #part_num {
+.mfi-inputbox #part_code, #part_num, #hq_name1, #hq_name, #part_company {
 	width: 530px;
 	display: inline-block;
 	height: 40px;
 	margin-right: 20px;
-	background-color: rgb(245, 240, 233);
+	
 }
 
 .regiForm-submit {
@@ -156,55 +157,21 @@ nav>div {
 .regiForm-submit #part-regi {
 	width: 530px;
 	padding: 10px;
-	background: rgb(0, 192, 239);
+	background: rgb(30, 57, 50);
 	border: 1px solid white;
 	color: white;
 
 }
 </style>
 <script>
-	
-	$(() => {
-		$("input[type='file']").change(function(event){
-			var imageFile = event.target.files[0];
-			console.log(imageFile.name);
-			var reader = new FileReader();
-			reader.onload = (e) => {
-				$("#fileimg").children().attr("src", e.target.result);
-				$("#uploaded").html(imageFile.name);
-			};
-			reader.readAsDataURL(imageFile);
-		});
-		  $("#headerText").animate({
-		       top: "-160px", opacity:1
-		       }, 1200,);
-	});
-	
-	$(function(){
-		console.log("폼", $(".form"));
-		$(".m_code").change(function(){
-			var selectedCtg = $(".m_code:selected").val();
-			if(selectedCtg == "coffee") {
-				$(".s_code .coffee").css('display','block');
-				$(".s_code :not(.coffee)").css('display','none');
-			}else if(selectedCtg == "beverage"){
-				$(".s_code .beverage").css('display','block');
-				$(".s_code :not(.beverage)").css('display','none');
-			}else if(selectedCtg == "food"){
-				$(".s_code .food").css('display','block');
-				$(".s_code :not(.food)").css('display','none');
-			}else if(selectedCtg == "product"){
-				$(".s_code .product").css('display','block');
-				$(".s_code :not(.product)").css('display','none');
-			}	
-	
-		});
+$(()=>{
 
-		$("#headerText").animate({
-		       top: "-160px", opacity:1
-		       }, 1200,);
-	});
-	
+	$("#headerText").animate({
+	       top: "-160px", opacity:1
+	       }, 1200,);
+   
+});
+
 </script>
 <header>
 	<div id="head_img"></div>
@@ -226,32 +193,33 @@ nav>div {
 					</select>
 				</div>
 				<div class="mfi-inputbox">
-					<strong>업체명 <span>(필수)</span>
-					</strong> <select name="part_num" id="part_num">
-						<option value="1">서준물산</option>
-						<option value="2">수영물산</option>
-						<option value="3">이솜나라
-						</option>
-						<option value=""></option>
-					</select>
-				</div>
-				<div class="mfi-inputbox">
-					<strong>등록일</strong> <input type="text" name="ware_date" id="part_regdate" readonly />
+					
 				</div>
 				<div class="mfi-inputbox">
 					<strong>제품명 <span>(필수)</span>
-					</strong> <input type="text" name="hq_name" id="part_company" placeholder="제품명" />
+					</strong>
+					<select name="hq_num" id="hq_name" class="group_s">
+					<c:forEach var="ProductVO" items="${items}">
+						<option value="${ProductVO.hq_num }" class="code1">${ProductVO.hq_name }</option>
+					</c:forEach>
+					</select>
+				
 				</div>
 				<div class="mfi-inputbox">
 					<strong>입고수량 <span>(필수)</span>
-					</strong> <input type="text" name="ware_cnt" id="part_company" placeholder="입고수량" />
+					</strong>
+					<select name="ware_cnt" id="part_company">
+						<option value="">입고수량</option>
+						<option value="1000">1000</option>
+						<option value="2000">2000</option>
+						<option value="3000">3000</option>
+						<option value="4000">4000</option>
+						<option value="5000">5000</option>
+						<option value="10000">10000</option>
+					</select>
 				</div>
-				<div class="mfi-inputbox">
-					<strong>입고가격 <span>(필수)</span>
-					</strong> <input type="text" name="ware_price" id="part_company" placeholder="입고가격" />
-				</div>
-			<div class="regiForm-submit">					
-					<input type="submit" id="part-regi" value="등록하기"/>
+				<div class="regiForm-submit">					
+						<input type="submit" id="part-regi" value="등록하기"/>
 				</div>
 			</section>
 		</div>

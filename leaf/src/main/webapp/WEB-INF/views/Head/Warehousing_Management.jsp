@@ -2,14 +2,17 @@
 <%@ include file="/inc/adminTop.jspf" %>
 
 <style>
-   .container{
+	.container{
       background-color: rgb(245, 240, 233);
-      max-width: 1400px;
+      max-width: 1480px;
       height:855px;
    }
+   .table-active{
+		color:white;
+	}
    .purchase_ok{
       width: 100%;
-      height:500px;
+      height:800px;
       display:flex;
       margin-left:10px; 
       margin-top:5px;
@@ -26,31 +29,9 @@
    #myinput{
       width: 300px;
       margin: 10px;
+      float: left;
    }
 
-	input[type=button]{
-		background-color:white;
-		width: 100px;
-		height:50px;
-		border-radius: 10px;
-		transition-duration: 0.3s;
-		border:1px solid rgb(0, 163, 239);
-		font-size: 1.3em;
-		color:rgb(0, 163, 239);
-		opacity: 0.8;
-		
-	}
-	
-	.btnclass{
-		
-    display: flex;
-    justify-content: center;
-	}
-	
-	.ok{
-		
-		margin: 20px 20px 0 0;
-	}
 	/*head 이미지*/
 	header {
 		height: 270px;
@@ -109,13 +90,13 @@ $(()=>{
 <body>
 <header>
 	<div id="head_img"></div>
-	<div id="headerText">Warehousing List</div>
+	<div id="headerText">입고관리</div>
 </header>
 <div class="container">
    <div class="search"><br/>
       <input type='text' id='myinput' placeholder='검색하기' class='form-control'/>
       <div class="purchase_ok">
-          <table class="table table-hover table-active">
+          <table class="table table-hover">
             <thead>
                <tr class="table-active">
                   <td>번호</td>
@@ -127,12 +108,13 @@ $(()=>{
                    <td>담당자</td>
                    <td>거래처번호</td>
                    <td>연락처</td>
+                   <td>입고날짜</td>
                </tr>
                </thead>
                <tbody id='searchList'>   
                   <c:forEach var="ProductVO" items="${WarehousingList}">
 				  	<tr>
-                      <td>${ProductVO.hq_num }</td>
+                      <td>${ProductVO.ware_num }</td>
                       <td>${ProductVO.part_code_name }</td>
                       <td>${ProductVO.hq_name}</td>
                       <td>${ProductVO.ware_price}</td>
@@ -141,13 +123,11 @@ $(()=>{
                       <td>${ProductVO.part_name}</td>
                       <td>${ProductVO.part_tel}</td>
                       <td>${ProductVO.part_email}</td>
+                      <td>${ProductVO.ware_date}</td>
                   	</tr>
 				  </c:forEach>
             </tbody>
          </table>
       </div>
    </div>
-   <div class="btnclass">
-   		<div class="ok"><input type="button" id="ok" value="삭제"/></div>
-	</div>
 </div>

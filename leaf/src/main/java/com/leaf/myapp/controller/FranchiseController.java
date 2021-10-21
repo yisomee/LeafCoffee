@@ -1,11 +1,14 @@
-package com.leaf.myapp.franchise;
+package com.leaf.myapp.controller;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.leaf.myapp.service.FranchiseService;
+import com.leaf.myapp.vo.OpenRequestVO;
 
 
 @Controller
@@ -24,11 +27,8 @@ FranchiseService franchiseService;
 	@RequestMapping("/franchiseInfo")
 	public String franchiseInfo() {
 		return "franchise/franchiseInfo";
-	}
-	@RequestMapping("/franchiseRequest")
-	public String franchiseRequest() {
-		return "franchise/franchiseRequest";
-	}
+	}	
+
 	@RequestMapping("/franchiseQuestion")
 	public String franchiseQuestion() {
 		return "franchise/franchiseQuestion";

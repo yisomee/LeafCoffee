@@ -78,4 +78,18 @@ public int passwordUpdate(String tel, String email, String userpwd) {
 	
 	return registerdao.passwordUpdate(tel,email,userpwd);
 }
+
+
+  @Override public RegisterVO mypage(String id) {
+	  return registerdao.mypage(id);
+  }
+
+@Override
+public int mypageOk(RegisterVO rgVo) {
+	
+	return registerdao.mypageOk(rgVo);
+}
+ 
+
+
 }

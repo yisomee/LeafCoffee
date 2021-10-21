@@ -156,7 +156,8 @@ height: 46px;
 			<c:if test="${logname==null}"><li><a href="/myapp/login">LOGIN</a></li></c:if>
 			<c:if test="${logname!=null}"><li><a href="/myapp/logout">LOGOUT</a></li></c:if>
 			${logname}
-			<li><a href="/myapp/register">JOIN</a></li>	
+			<li><a href="/myapp/register">JOIN</a></li>
+			<li><a href="/myapp/register">마이페이지</a></li>		
 		</ul>
 	</div>
 	<!-- <a href="/leaf"><div class="logoimg"><img src="img/leaflogo-removebg-preview.png"/></div></a> -->
@@ -184,9 +185,9 @@ height: 46px;
 				</ul>					
 			</li>
 <!--------------------------------------------->
-			<li class="select-li"><div><a href="/myapp/noticeList">WHAT`S UP</a></div>
+			<li class="select-li"><div><a href="/myapp/franNotice">WHAT`S UP</a></div>
 				<ul class="ulclass">
-					<li><a href="/myapp/noticeList">NOTICE</a></li>
+					<li><a href="/myapp/franNotice">NOTICE</a></li>
 					<li><a href="/myapp/social">SOCIAL</a></li>
 				</ul>				
 			</li>

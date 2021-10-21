@@ -9,9 +9,11 @@ public class RegisterVO {
 	private int membership;
 	private String regdate;
 	
-	private String addr;//우편번호
-	private String addr1;//주소
-	private String addr2;//상세주소
+	private String addr; //통합 주소
+	private String addr1;//우편번호
+	private String addr2;//주소
+	private String addr3;//상세주소
+	private String addr4;//참고항목
 	
 	
 	private String auth;
@@ -67,13 +69,6 @@ public class RegisterVO {
 	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
-	public String getAddr() {
-	
-		return addr;
-	}
-	public void setAddr(String addr) {
-		this.addr = addr;
-	}
 	public String getAuth() {
 		return auth;
 	}
@@ -111,12 +106,18 @@ public class RegisterVO {
 
 	// ����ó
 	public String getTel() {
-		
+		if(tel!=null) {
+			tel1 = tel.substring(0,3);
+			tel2 = tel.substring(3,7);
+			tel3 = tel.substring(7);
+		}else {
 			tel = tel1+tel2+tel3;
-		
+		}
+			System.out.println("get");
 		return tel;
 	}
 	public void setTel(String tel) {
+		System.out.println("set");
 		this.tel = tel;
 		
 			}
@@ -144,6 +145,20 @@ public class RegisterVO {
 	public void setPubleYear(String publeYear) {
 		this.publeYear = publeYear;
 	}
+	
+	public String getAddr() {
+		addr = addr1+"/"+addr2+"/"+addr3+"/"+addr4;
+		return addr;
+	}
+	public void setAddr(String addr) {
+		this.addr = addr;
+		
+		String a[]=addr.split("/");
+		addr1=a[0];
+		addr2=a[1];
+		addr3=a[2];
+		addr4=a[3];
+	}
 	public String getAddr1() {
 		return addr1;
 	}
@@ -156,8 +171,17 @@ public class RegisterVO {
 	public void setAddr2(String addr2) {
 		this.addr2 = addr2;
 	}
-
-	
-	
+	public String getAddr3() {
+		return addr3;
+	}
+	public void setAddr3(String addr3) {
+		this.addr3 = addr3;
+	}
+	public String getAddr4() {
+		return addr4;
+	}
+	public void setAddr4(String addr4) {
+		this.addr4 = addr4;
+	}
 
 }

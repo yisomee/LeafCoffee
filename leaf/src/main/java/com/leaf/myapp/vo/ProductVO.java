@@ -1,13 +1,16 @@
 package com.leaf.myapp.vo;
 
+import java.util.List;
+
 public class ProductVO {
-	//제품 vo
+	//입고 vo
 	private int hq_num;
 	private String hq_name;
 	private int ware_price;
 	private String ware_date;
 	private int ware_cnt;
 	private int emp_num;
+	private int ware_num;
 	//파트너 vo
 	private int part_num;
 	private String part_company;
@@ -16,20 +19,73 @@ public class ProductVO {
 	private String part_email;
 	private String part_code_name;
 	private String part_regdate;
-	private int order_status;
 	
 	//발주 vo
 	private int pc_num;
 	private int pc_cnt;
 	private String pc_date;
-	private int fc_num;
+	private int order_status;
 
 	//가맹점 vo
-	// 나중에 넣자..........
+	private int fc_num;
+	private String fc_name;
+	private String fc_tel;
+	private String fc_boss;
+	private String fc_hours;
+	private String fc_transport;
+	private String fc_addr;
+	private String userid;
 
+	//여러개의 발주 번호 담을 변수
+	private List<Integer> purchaseDel;
 	
+	//여러개의 본사재고상품 번호 담을 변수
+	private List<Integer> warehousingDel;
 	
-	
+	//재고 수량
+	private int inventory;
+	private int ware_cntAll;
+	private int pc_cntAll;
+
+	public int getWare_cntAll() {
+		return ware_cntAll;
+	}
+	public void setWare_cntAll(int ware_cntAll) {
+		this.ware_cntAll = ware_cntAll;
+	}
+	public int getPc_cntAll() {
+		return pc_cntAll;
+	}
+	public void setPc_cntAll(int pc_cntAll) {
+		
+		this.pc_cntAll = pc_cntAll;
+		inventory = ware_cntAll - pc_cntAll;
+	}
+	public int getWare_num() {
+		return ware_num;
+	}
+	public void setWare_num(int ware_num) {
+		this.ware_num = ware_num;
+	}
+	public int getInventory() {
+		return inventory;
+		
+	}
+	public void setInventory(int inventory) {
+		this.inventory = inventory;
+	}
+	public List<Integer> getWarehousingDel() {
+		return warehousingDel;
+	}
+	public void setWarehousingDel(List<Integer> warehousingDel) {
+		this.warehousingDel = warehousingDel;
+	}
+	public List<Integer> getPurchaseDel() {
+		return purchaseDel;
+	}
+	public void setPurchaseDel(List<Integer> purchaseDel) {
+		this.purchaseDel = purchaseDel;
+	}
 	public int getHq_num() {
 		return hq_num;
 	}
@@ -137,6 +193,48 @@ public class ProductVO {
 	}
 	public void setOrder_status(int order_status) {
 		this.order_status = order_status;
+	}
+	public String getFc_name() {
+		return fc_name;
+	}
+	public void setFc_name(String fc_name) {
+		this.fc_name = fc_name;
+	}
+	public String getFc_tel() {
+		return fc_tel;
+	}
+	public void setFc_tel(String fc_tel) {
+		this.fc_tel = fc_tel;
+	}
+	public String getFc_boss() {
+		return fc_boss;
+	}
+	public void setFc_boss(String fc_boss) {
+		this.fc_boss = fc_boss;
+	}
+	public String getFc_hours() {
+		return fc_hours;
+	}
+	public void setFc_hours(String fc_hours) {
+		this.fc_hours = fc_hours;
+	}
+	public String getFc_transport() {
+		return fc_transport;
+	}
+	public void setFc_transport(String fc_transport) {
+		this.fc_transport = fc_transport;
+	}
+	public String getFc_addr() {
+		return fc_addr;
+	}
+	public void setFc_addr(String fc_addr) {
+		this.fc_addr = fc_addr;
+	}
+	public String getUserid() {
+		return userid;
+	}
+	public void setUserid(String userid) {
+		this.userid = userid;
 	}
 	
 	

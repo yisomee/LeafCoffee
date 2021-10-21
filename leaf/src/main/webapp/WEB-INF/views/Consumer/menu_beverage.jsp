@@ -24,8 +24,8 @@
 	}
 	.menu_bar li{
 		margin: 0 40px;
-		line-height:50px;
-		height:50px;
+		line-height:60px;
+		height:60px;
 	    width: 120px;
 	    text-align: center;
 	}
@@ -171,8 +171,8 @@ $(function(){
 		$(".tea").css('display','none');
 	});
 	$("#headerText").animate({
-	       top: "-160px", opacity:1
-	       }, 1200,);
+	       top: "-210px", opacity:0.9
+	       }, 600,);
 	
 	
 });
@@ -217,4 +217,4 @@ $(function(){
 		</ul>
 	</div>
 </div>	
-<%@ include file="/inc/bottom.jspf" %>
+<%@ include file="/inc/bottom3.jspf" %>

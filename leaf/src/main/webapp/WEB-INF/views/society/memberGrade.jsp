@@ -10,8 +10,8 @@
 	body{margin:0;}
 	a:link, a:hover a:visited{text-decoration: none;}
 	ul,li{list-style-type: none;padding:0;margin:0;}
-	header img{width:100%;height:250px;}
-	header{height:250px;}
+	header img{width:100%;height:330px;}
+	header{height:330px;}
 	#headerText{position:relative;top:-100px;left:800px;font-size:3em;color:white;opacity:0.5}		
 	#detailMenu{display:flex;justify-content:center;width:100%;border-bottom:1px solid gray;}
 	#detailMenu>div:first-child{padding:15px 53px}
@@ -51,8 +51,8 @@
 <script>
 $(()=>{	
 	$("#headerText").animate({
-	  	  top: "-160px", opacity:1
-	  	  }, 1200,);
+	  	  top: "-210px", opacity:0.9
+	  	  }, 600,);
 	$("#menu1").click(function(){
 		$(this).css('border-bottom','4px solid rgb(0, 163, 239)');
 		$("#menu2").css('border','none');
@@ -190,5 +190,6 @@ $(()=>{
 		</div>
 	</div>
 </div>
+<%@ include file="/inc/bottom.jspf" %>
 </body>
 </html>

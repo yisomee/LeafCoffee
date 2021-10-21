@@ -51,7 +51,7 @@
 					}
 					$('.page_nation').append("<a class='arrow next' href='#'></a>");
 					$('.page_nation').append("<a class='arrow nnext' href='#'></a>");
-					console.log("나");
+					
 				}	
 	 		});
 		});

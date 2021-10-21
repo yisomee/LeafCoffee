@@ -4,8 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.leaf.myapp.dao.RegisterDAO">
 	<insert id="registerOk" parameterType="com.leaf.myapp.vo.RegisterVO">
-		insert into registers (userid, userpwd, username, birth, tel, email, addr, addr1, addr2)
-		values(#{userid},#{userpwd},#{username},#{birth},#{tel},#{email},#{addr},#{addr1},#{addr2})
+		insert into registers (userid, userpwd, username, birth, tel, email, addr)
+		values(#{userid},#{userpwd},#{username},#{birth},#{tel},#{email},#{addr})
 	
 	</insert>
 	
@@ -33,4 +33,16 @@
 	update registers set userpwd=#{param3} where email=#{param2} and tel=#{param1}
 	
 	</update>
+	<!-- 수정폼 선택 -->
+		<select id="mypage" resultType="com.leaf.myapp.vo.RegisterVO">
+		select userid, userpwd, username, birth, tel, addr from registers where userid=#{param1}
+		</select>
+		
+	<!-- 수정update -->	
+	<update id="mypageOk">
+		update registers set userpwd=#{userpwd},birth=#{birth},tel=#{tel},addr=#{addr},email=#{email} 
+		where userid=#{userid}
+		
+	</update>
+	
 </mapper>

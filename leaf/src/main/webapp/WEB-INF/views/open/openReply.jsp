@@ -25,35 +25,278 @@
 	.open-write-ct:before{display:block; width:1400px; border-bottom:2px solid rgb(0, 128, 192); content:''; margin:80px auto 0;}
 	.open-write-ct{width:1400px; margin:0 auto;}
 	.open-write-ct h2 {margin:30px 0 0 100px;}
-	.owc{width:1200px; margin:50px auto; border-top:3px solid gray;}
+	.owc{width:1200px; margin:50px auto; border-top:3px solid gray; height:800px;}
 	.owc-ct{overflow:auto;}
-	.owc-ct>li{float:left; border-bottom:2px solid gray; width:20%; height:25px; font-size:1em;text-align:center;font-family: 'Noto Sans KR'}
+	.owc-ct li{float:left; border-bottom:1px solid gray; width:20%; height:25px; font-size:1em;text-align:center;font-family: 'Noto Sans KR';box-sizing: content-box;}
 	
-	.owc-ct>li:nth-child(2n+1){background:#FFF0F5;padding:15px;clear:both;font-weight:600;}	
-	.owc-ct>li:nth-child(2n){width:75%; padding:15px;}
-	.owc-ct>li:nth-child(11){height:200px;}
-	.owc-ct>li:nth-child(12){height:200px; position:relative}
-	.owc-ct #content{resize:none; background:#fff; width:95%; height:150px; line-height:35px; font-size:1.4em;
-					border-collapse:collapse; border:1px solid gray;
-	}
+	.owc-ct li:nth-child(2n+1){background:#FFF0F5;padding:15px;clear:both;font-weight:600;}	
+	.owc-ct li:nth-child(2n){width:75%; padding:15px;}
+	.owc-ct li:nth-child(5){height:130px;}
+	.owc-ct li:nth-child(6){height:130px;}
+	.owc-ct li:nth-child(11){height:270px;}
+	.owc-ct li:nth-child(12){height:270px; position:relative}
+	.owc-ct li:nth-child(13){height:270px;}
+	.owc-ct li:nth-child(14){height:270px; position:relative}
+	.owc-ct li input[type=text]{border:0px solid; text-align:center; width:100%; height:100%;}
+	
+	#lastdatelabel{height:25px;}
+	#lastdatevalue{height:25px;}
+	
+	
+	
+	
+	.owc-ct .rpcontent{resize:none; background:#fff; width:95%; height:220px; line-height:35px; font-size:1.2em;
+					border-collapse:collapse; border:1px solid gray; text-align:left;
+	}	
 	.owc-ct #text-count{font-size:1.3em;float:right; margin:10px 20px;font-family: 'Noto Sans KR';}
-	.owc-ct #text-count+input[type=submit]{width:150px;height:40px;position:absolute; top:180px; left:390px;box-sizing: border-box;
+	.owc-ct #replywritebtn{width:150px;height:40px;position:absolute; top:248px; left:390px;box-sizing: border-box;
     				border: 0px solid; background: rgb(0,192,239); color: #fff; font-weight: bold;}
-	
+	#rpconlabel{border:0px;}
+	input[type=button]{width:100px; height:35px;border: 0px solid; background: rgb(0,192,239); color: #fff; font-weight: bold;
+				box-sizing: border-box; position:relative; top:20px; left:966px;
+	}
+	input[value="삭제하기"], input[value="취소하기"]{margin-left:30px;}
+	input:focus{outline:none;}
+	input[type=text]{readonly:readonly;}
+	#rpcon{border:0;}
+	#content{resize: none; border:0px; width:100%; height:100%; text-align:center;}
+	#content:focus{outline:none;}
+	 				
 </style>
 <script>	
-	$(()=>{	
-		$('#content').on("keyup",function(){
-			 
-            if($(this).val().length > 500) {
+
+	$(()=>{
+		
+		function openReplyStart(){ // 처음시작
+			
+			let openOqNum = 'oq_num=${oqVo.oq_num}';			
+			$.ajax({				
+				url:'/myapp/openReplyView',
+				data:openOqNum,				
+				success:function(result){
+ 
+					let tag="";					
+						tag += "<form method='post' id='openreplyfrm'>";
+						tag += "<li>문의번호</li>";
+						tag += "<li><input type='text' name='oq_num' value='${oqVo.oq_num}'></li>";
+						tag += "<li>등록일</li>";
+						tag += "<li><input type='text' name='writedate' value='${oqVo.writedate}'/></li>";
+						tag += "<li>내용</li>";			
+						tag += "<li><textarea name='content' id='content'>${oqVo.content}</textarea></li>";
+						tag += "<li>답변상태</li>";
+						tag += "<li><input type='text' name='oq_status' value='${oqVo.oq_status}'></li>";
+						tag += "<li>답변자</li>";
+					if('${rpvo.username}'=='nousername'){ // 답글이 없는 경우
+						tag += "<li>없음</li>";
+						tag += "<li>답변하기</li>";
+						tag += "<li><textarea name='rpcon' id='rpcon' class='rpcontent' cols='50' rows='11'></textarea>";
+						tag += "<label id='text-count'>0/500글자</label>";
+						tag += "<input type='submit' value='답변하기' id='replywritebtn'/></li></form></ul>";
+					}else{ // 답글이 있는 경우
+						tag += "<li><input type='text' name='username' value='${rpvo.username}'></li>";			
+						tag += "<li id='lastdatelabel'>최종답변일</li>";
+						tag += "<li id='lastdatevalue'><input type='text' name='rpldate' value='${rpvo.rpldate}'/></li>"
+						tag += "<li>답변내용</li>";
+						
+						if('${rpvo.userid}'!='nosamereplyid'){// 로그인한 사람이 답글 작성자인 경우		
+							tag += "<li><textarea class='rpcontent' id='rpcon' name='rpcon' readonly>${rpvo.rpcon}</textarea>";
+							tag += "<label id='text-count' style='display:none';>0/500글자</label></li><ul>";
+							$('.editbtn').append("<input type='button' value='수정하기'/></form>");
+							$('.editbtn').append("<input type='button' value='삭제하기'/></form>");
+						}else{ // 로그인한 사람이 답글 작성자가 아닌경우
+							tag += "<li><textarea class='rpcontent' id='rpcon' name='rpcon' readonly>${rpvo.rpcon}</textarea></li></form></ul>";
+						}
+					}
+					$('.owc-ct').empty();
+					$('.owc-ct').html(tag);		 
+					
+				},error:function(error){
+					alert("페이지를 불러올 수 없습니다.");
+				}
+			});
+		}
+		
+		
+		
+		
+		function openReplyList(){
+			
+			let openOqNum = 'oq_num=${oqVo.oq_num}';			
+			$.ajax({				
+				url:'/myapp/openReplyViewList',
+				data:openOqNum,				
+				success:function(result){
+ 					let oqlist = result.oqlistvo;
+ 					let rplist = result.rplistvo;
+ 					console.log("답변 작성자 아이디"+rplist.userid);
+					let tag="";					
+						tag += "<form method='post' id='openreplyfrm'>";
+						tag += "<li>문의번호</li>";
+						tag += "<li><input type='text' name='oq_num' value='"+oqlist.oq_num+"'></li>";
+						tag += "<li>등록일</li>";
+						tag += "<li><input type='text' name='writedate' value='"+oqlist.writedate+"'/></li>";
+						tag += "<li>내용</li>";			
+						tag += "<li><input type='text' name='content' value='"+oqlist.content+"'></li>";
+						tag += "<li>답변상태</li>";
+						tag += "<li><input type='text' name='oq_status' value='"+oqlist.oq_status+"'></li>";
+						tag += "<li>답변자</li>";
+					if(rplist.username=='nousername'){ // 답글이 없는 경우
+						tag += "<li>없음</li>";
+						tag += "<li>답변하기</li>";
+						tag += "<li><textarea name='rpcon' id='rpcon' class='rpcontent' cols='50' rows='11'></textarea>";
+						tag += "<label id='text-count'>0/500글자</label>";
+						tag += "<input type='submit' value='답변하기' id='replywritebtn'/></li></form></ul>";
+						$('.editbtn').empty();
+					}else{ // 답글이 있는 경우
+						tag += "<li><input type='text' name='username' value='"+rplist.username+"'></li>";			
+						tag += "<li id='lastdatelabel'>최종답변일</li>";
+						tag += "<li id='lastdatevalue'><input type='text' name='rpldate' value='"+rplist.rpldate+"'/></li>"
+						tag += "<li>답변내용</li>";
+						console.log(rplist.userid!='nosamereplyid');
+						if(rplist.userid!='nosamereplyid'){// 로그인한 사람이 답글 작성자인 경우		
+							tag += "<li><textarea class='rpcontent' id='rpcon' name='rpcon' readonly>"+rplist.rpcon+"</textarea>";
+							tag += "<label id='text-count' style='display:none';>0/500글자</label></li><ul>";
+							$('.editbtn').empty();
+							$('.editbtn').append("<input type='button' value='수정하기'/></form>");
+							$('.editbtn').append("<input type='button' value='삭제하기'/></form>");
+						}else{ // 로그인한 사람이 답글 작성자가 아닌경우
+							tag += "<li><textarea class='rpcontent' id='rpcon' name='rpcon' readonly>"+rplist.rpcon+"</textarea></li></form></ul>";
+						}
+					}
+					$('.owc-ct').empty();					
+					$('.owc-ct').html(tag);		 
+					
+				},error:function(error){
+					alert("불러오기 실패");
+				}
+			});
+		}
+		
+		// 글자수 카운트 500자 제한
+		$(document).on('keyup','#rpcon',function(){
+			if($(this).val().length > 500) {
                 $(this).val($(this).val().substring(0, 500));
                 $('#test_cnt').html("글자수가 초과되었습니다.");
             }else{
 				$('#text-count').html($(this).val().length+ " / 500글자");            	
             }
-		});
+		});// 글자수 제한 메소드
 		
-	});
+		// 답변하기 클릭
+		$(document).on('click','#replywritebtn',function(){
+			let rpcontent = $('#rpcon').val(); 			
+			if(rpcontent=="" || rpcontent=="null"){
+				$('#rpcon').attr('placeholder','답변을 입력해주세요');
+				$('#rpcon').focus();
+				return false;
+			}else{
+				rpcontent = encodeURIComponent(rpcontent); // 텍스트 특수문자 인코딩
+				let replydata = $("#openreplyfrm").serialize();				
+				$.ajax({
+					type:'post',
+					url:'/myapp/openReplyWrite',
+					data: replydata,
+					success:function(result){						
+						openReplyList();
+					}											
+				});
+			}
+			return false;
+		});// 답변하기 메소드
+		
+		
+ 		// 수정클릭 메소드		
+		$(document).on('click','input[value="수정하기"]',function(){
+				
+				$('#rpcon').attr('readonly',false);
+				$('#test_cnt').css('display','block');	
+				
+				// 버튼 변경 (변경하기,취소하기)
+				$('input[value="수정하기"]').css('display','none');
+				$('input[value="삭제하기"]').css('display','none');
+				
+				$('.editbtn').append("<input type='button' value='변경하기'/>");
+				$('.editbtn').append("<input type='button' value='취소하기'/>");
+				
+
+		});// 수정메소드
+		
+		$(document).on('click','input[value="변경하기"]',function(){
+				let oqNumber = $('input[name=oq_num]').val();
+				
+				let rpcontent = $('#rpcon').val();
+				
+				$('#rpcon').change(function(e) {
+					console.log(e.target.value);
+					console.log($('#rpcon').val());
+					rpcontent = $('#rpcon').val();
+				});
+				
+				if(rpcontent=="" || rpcontent=="null"){
+					$('#rpcon').attr('placeholder','답변을 입력해주세요');
+					$('#rpcon').focus();
+					openReplyEdit=0;
+					return false;
+				}
+				
+				$.ajax({
+					type:'post',
+					url:'/myapp/openReplyEdit',
+					data: "oq_num="+oqNumber+"&"+
+						  "rpcon="+rpcontent,
+					success:function(result){														
+						if(result.replyeditresult==0){
+							alert("수정에 실패하였습니다.");								
+							return false;
+						}
+						alert("수정에 성공하였습니다.");
+						openReplyList();
+						return false;
+					},error:function(error){
+						alert("수정에 실패하였습니다.");
+						return false;
+					}
+				}); // 수정ajax			
+		});		
+
+		// 취소하기
+ 		$(document).on('click','input[value="취소하기"]',function(){			
+			openReplyList();
+ 		}); 
+								
+			
+
+	
+		// 삭제하기 버튼클릭
+		$(document).on('click','input[value="삭제하기"]',function(){
+			if(confirm("답변을 삭제하시겠습니까?") == true){
+				let oqNumber = $('input[name=oq_num]').val();
+				$.ajax({
+					type:'post',
+					url:'/myapp/openReplyDelete',
+					data:"oq_num="+oqNumber,
+					success:function(result){
+						alert("답글 삭제가 완료되었습니다.");
+						openReplyList();
+						if(result.replyDeleteResult==0){
+							alert("답글 삭제에 실패하였습니다.");
+							return false;
+						}						
+						openReplyList();
+					},error:function(error){
+						alert("답글 삭제에 실패하였습니다.");
+						return false;
+					}					
+				});
+			}else{
+				return false;
+			}			
+			
+		});// 삭제하기 버튼
+		
+		
+		openReplyStart(); // 처음 시작
+	});// jquery
 </script>
 </head>
 <body>
@@ -72,49 +315,36 @@
 					<p>창업문의자 정보</p>
 					<div class="oqi-box">
 						<strong class="oqi-title">이름</strong>
-						<label class="oqi-info" id="cli_name">이영화</label>
+						<label class="oqi-info" id="cli_name">${oqVo.username}</label>
 					</div>
 					<div class="oqi-box">
 						<strong class="oqi-title">이메일</strong>
-						<label class="oqi-info" id="cli_email">dldudghk@naver.com</label>
+						<label class="oqi-info" id="cli_email">${oqVo.openhopeemail}</label>
 					</div>
 					<div class="oqi-box">
 						<strong class="oqi-title">연락처</strong>
-						<label class="oqi-info" id="cli_tel">010-2222-3333</label>
+						<label class="oqi-info" id="cli_tel">${oqVo.openhopetel}</label>
 					</div>
 					<div class="oqi-box">
-						<strong class="oqi-title">연락 가능 시간</strong>
-						<label class="oqi-info" id="hope_date">12:19~</label>
+						<strong class="oqi-title">창업 희망 지역</strong>
+						<label class="oqi-info" id="openhopeaddr">${oqVo.openhopeaddr}</label>
 					</div>
 				</section>
 			</div>
 		</div>	
 		<div class="open-write-ct">
-			<h2>문의내용</h2>
-			<form>
+			<h2>문의내용</h2>	
 			<div class="owc">
 				<ul class="owc-ct">
-					<li>제목</li>
-					<li>구미에서 점포를 내고 싶은데</li>
-					<li>등록일</li>
-					<li>2021-09-26</li>
-					<li>내용</li>
-					<li>문의드려요. 2억5000이면 되나요?	</li>
-					<li>답변상태</li>
-					<li>답변대기</li>
-					<li>답변자</li>
-					<li>박동현</li>
-					<li>답변하기</li>
-					<li>
-						<textarea name="content" id="content" cols="50" rows="11"></textarea>
-						<label id="text-count">0/500글자</label>
-						<input type="submit" value="답변하기"/>						
-					</li>
 				</ul>
-			</div>
-			</form>			
+				<div class="editbtn">						 
+				</div>
+			</div>	
 		</div>
 	</main>
+
+	
+	
 	<%@ include file="/inc/bottom3.jspf" %>
 </body>
 </html>

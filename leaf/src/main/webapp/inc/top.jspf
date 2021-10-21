@@ -154,7 +154,9 @@ height: 46px;
 			<c:if test="${logname==null}"><li><a href="/myapp/login">LOGIN</a></li></c:if>
 			<c:if test="${logname!=null}"><li><a href="/myapp/logout">LOGOUT</a></li></c:if>
 			${logname}
-			<li><a href="/myapp/register">JOIN</a></li>	
+			<c:if test="${logname==null}"><li><a href="/myapp/register">JOIN</a></li></c:if>
+			<c:if test="${logname!=null}"><li><a href="/myapp/mypage">마이페이지</a></li></c:if>
+			
 		</ul>
 	</div>
 	<!-- <a href="/leaf"><div class="logoimg"><img src="img/leaflogo-removebg-preview.png"/></div></a> -->
@@ -194,7 +196,7 @@ height: 46px;
 				<ul class="ulclass">
 					<li><a href="/myapp/storemap">STORE</a></li>
 					<li><a href="/myapp/franchiseInfo">INFOMATION</a></li>
-					<li><a href="/myapp/franchiseRequest">REQUEST</a></li>
+					<li><a href="/myapp/openRequest">REQUEST</a></li>
 					<li><a href="/myapp/franchiseQuestion">Q&A</a></li>
 				</ul>			
 			</li>

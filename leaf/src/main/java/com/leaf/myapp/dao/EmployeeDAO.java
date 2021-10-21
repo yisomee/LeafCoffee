@@ -9,11 +9,13 @@ import com.leaf.myapp.vo.PageVO;
 
 
 public interface EmployeeDAO {
-	public List<EmployeeVO> allEmployeeList(PageVO pVo);
 
 	public List<EmployeeVO>searchEmployeeList(PageVO pVo);
 	public PageVO page(String searchKey, String searchWord);
 	public EmployeeVO checkJoinId(String userid);
 	public int employeeRegiInsert(EmployeeVO empVo);
+	
+	public EmployeeVO employeeChangeInfo(int emp_num);
+	public int employeeChangeResult(EmployeeVO empvo);
 	
 }

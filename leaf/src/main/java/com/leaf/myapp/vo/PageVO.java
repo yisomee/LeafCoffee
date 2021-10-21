@@ -14,12 +14,20 @@ public class PageVO {
 	
 	private int rnChange; // 현재페이지 * 한페이지당 레코드 수
 	
+	private String arrayOption; // 정렬 기준
 	
 	
 	
-	// 현재페이지 * 한페이지당 레코드 수
-	// 한페이지당 레코드수
+	////////////
+	public String getArrayOption() {
+		return arrayOption;
+	}
+	public void setArrayOption(String arrayOption) {
+		this.arrayOption = arrayOption;
+	}
 	
+	
+	/////////
 	public int getRnChange() {
 		return rnChange;
 	}

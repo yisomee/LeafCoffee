@@ -3,21 +3,24 @@
 <style>
 	body{
 		margin: 0;
+		background-color:rgb(242, 242, 242);
 	}
 	.container{
-		max-width: 1400px;
+		max-width: 1000px;
 		display: flex;
 	    justify-content: center;
 	    margin:0 auto;
-	    background-color:rgb(245, 240, 233);
+	    box-shadow: 0px 1px 5px 2px lightslategrey;
+	    background-color:white;
+	    margin-top:100px;
+	    margin-bottom:200px;
+	    border-radius:10px;
+	    
 	}
 	#memo{
 		width: 542px;
 		height:150px;
-		background-color: rgb(245, 240, 233);
-	}
-	.form{
-		background-color:rgb(245, 240, 233);
+		
 	}
 	
 	.row{
@@ -49,7 +52,7 @@
 		text-align:center;
 		font-size:2em;
 		color:rgb(30, 57, 50);
-		
+		font-weight:bold;
 	}
 	.nutname{
 		width:100px;
@@ -134,6 +137,24 @@
 		width:100%;
 		height:330px;
 	}
+	#submit>input{
+	  background-color:rgb(30, 57, 50);
+      width: 100px;
+      height: 40px;
+      font-size: .5em;
+      color:white;
+      border-radius: 15px;
+    
+	}
+	select, textarea{
+	border-radius: 6px;
+    line-height: 1;
+    width: 100px;
+    height: 30px;
+    border:1px solid rgb(42, 73, 65);
+    }
+    
+    
 </style>
 <script>
 	
@@ -186,16 +207,16 @@
 	<form method="post" action="/myapp/menu_RegisterOk" >
 		<div class="container">
 			<div class="inputbox">
-				<!-- <div id="reg">등록하기</div><br/><br/> -->
+				<div id="reg">MENU REGISTER</div><br/><br/><hr/>
 				<div class="row">분  류</div>
-				    <select class="form m_code"  name="m_code">
+				    <select class="form m_code" required name="m_code">
 					    <option value="">메뉴선택</option>
 					    <option value="coffee" class="m_code coffee">coffee</option>
 					    <option value="beverage" class="m_code beverage">beverage</option>
 					    <option value="food" class="m_code food">food</option>
 					    <option value="product" class="m_code product">product</option>
 				    </select>
-				    <select class="form s_code"  name="s_code">
+				    <select class="form s_code" required name="s_code">
 					    <option value="" >상세분류</option>
 					    <option value="shot" class="coffee">shot</option>
 					    <option value="latte" class="coffee">latte</option>
@@ -211,11 +232,11 @@
 				    </select><br/><br/>
 		
 				<div class="row">제품명</div>
-					<input type="text" class="form" name="p_name"/><br/>
+					<input type="text" class="form" name="p_name" required/><br/>
 				<div class="row">제품명(영어)</div>	
-					<input type="text" class="form" name="p_ename"/><br/>
+					<input type="text" class="form" name="p_ename" required/><br/>
 				<div class="row">가격</div>	
-					<input type="text" class="form"/><br/><br/>
+					<input type="text" class="form" required/><br/><br/>
 				<div class="row">new/best</div>	
 					<select class="form" name="new_best">
 					    <option value="">없음</option>
@@ -225,16 +246,17 @@
 					<div><br/>
 					<div class="row">영양정보</div>
 						<div class="Nutrition">
-							<div class="nutname">제공량(ml)</div><input type="text" class="form" name="p_info1"/><br/>
-							<div class="nutname">열 량(kcal)</div><input type="text" class="form"  name="p_info2"/><br/>
-							<div class="nutname">당 류(g) </div><input type="text" class="form"  name="p_info3"/><br/>
-							<div class="nutname">나트륨(mg) </div><input type="text" class="form"  name="p_info4"/><br/>
-							<div class="nutname">단백질(g) </div><input type="text" class="form"  name="p_info5"/><br/>
-							<div class="nutname">포화지방(g) </div><input type="text" class="form"  name="p_info6"/><br/>
-							<div class="nutname">카페인(mg) </div><input type="text" class="form"  name="p_info7"/><br/><br/>
+							<div class="nutname">제공량(ml)</div><input type="text" class="form" name="p_info1" required/><br/>
+							<div class="nutname">열 량(kcal)</div><input type="text" class="form"  name="p_info2" required/><br/>
+							<div class="nutname">당 류(g) </div><input type="text" class="form"  name="p_info3" required/><br/>
+							<div class="nutname">나트륨(mg) </div><input type="text" class="form"  name="p_info4" required/><br/>
+							<div class="nutname">단백질(g) </div><input type="text" class="form"  name="p_info5" required/><br/>
+							<div class="nutname">포화지방(g) </div><input type="text" class="form"  name="p_info6" required/><br/>
+							<div class="nutname">카페인(mg) </div><input type="text" class="form"  name="p_info7" required/><br/><br/>
 						</div>	
+						<hr/>
 				<div class="row will-be-moved">제품설명</div>
-					<textarea id="memo" placeholder="글내용을 입력하는 곳" name="p_desc"></textarea><br/>
+					<textarea id="memo" placeholder="글내용을 입력하는 곳" name="p_desc" required></textarea><br/>
 				</div><br/>
 				<div id="submit"><input type="submit" value="등록하기"/></div>
 				<div id="fileimg"><img src="img/menuregister.png"/>

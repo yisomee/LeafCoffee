@@ -13,6 +13,12 @@ public interface RegisterService {
 
 
 	public int passwordUpdate(String tel,String email,String userpwd);
+//	
+	public RegisterVO mypage(String id);
+	//회원정보 update
+	public int mypageOk(RegisterVO rgVo);
+	
+
 	
 
 }

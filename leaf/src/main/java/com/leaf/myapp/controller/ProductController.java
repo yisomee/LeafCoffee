@@ -1,11 +1,11 @@
 package com.leaf.myapp.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.reflection.SystemMetaObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,6 +20,10 @@ import com.leaf.myapp.vo.ProductVO;
 public class ProductController {
 	@Inject
 	ProductService productService;
+	
+//////////////////////////////////////////////가맹점 //////////////////////////////////////////////////////		
+	
+	
 	//발주페이지에 목록클릭시 파트너, 발주창 띄우기 ajax
 	@RequestMapping(value="/purchasePartner")
 	@ResponseBody
@@ -29,43 +33,44 @@ public class ProductController {
 		return list;
 	}
 	
-//발주하기
-@RequestMapping(value="/Purchase_RegisterOk", method = RequestMethod.POST)
-public ModelAndView Purchase_RegisterOk(ProductVO vo) {
-	ModelAndView mav = new ModelAndView();  
-	productService.Purchase_RegisterOk(vo);
-	mav.addObject(vo);
-	mav.setViewName("redirect:purchase");
-	System.out.println(vo.getHq_num());
-	System.out.println(vo.getPc_cnt());
-	//System.out.println(hq_num);
-	//System.out.println(hq_name);
-	//System.out.println(ware_price);
-	//System.out.println(pc_cnt);
-	return mav;
-}
-	//발주페이지에 목록보여주기 
-	// 발주페이지에 발주 클릭시 발주 창 보여주기
+	//발주하기
+	@RequestMapping(value="/Purchase_RegisterOk", method = RequestMethod.POST)
+	public ModelAndView Purchase_RegisterOk(ProductVO vo) {
+		ModelAndView mav = new ModelAndView();  
+		productService.Purchase_RegisterOk(vo);
+		mav.addObject(vo);
+		mav.setViewName("redirect:purchase");
+		return mav;
+	}
+		 
+	// 발주페이지에 발주 클릭시 발주 창 보여주기,발주페이지에 목록보여주기
 	@RequestMapping("/purchase")
 	 public ModelAndView purchaseList() {
 	      ModelAndView mav = new ModelAndView();
-	     // List<ProductVO> vo = productService.purchaseList();
 	      mav.addObject("ProductList", productService.ProductList());
 	      mav.addObject("purchaseList", productService.purchaseList());
 	      mav.setViewName("Store/purchase");
 	      return mav;
 	}
-	
+	 //여러레코드 배열로 삭제하기 (발주삭제)
+	@RequestMapping(value="/purchaseDel",method=RequestMethod.POST)
+	   public ModelAndView purchaseDel(ProductVO vo) {
+		ModelAndView mav = new ModelAndView();
+	      
+	      productService.purchaseDel(vo.getPurchaseDel());
+	      mav.setViewName("redirect:purchase");   
+	      return mav;
+	   }
 	
 	@RequestMapping("/purchase_Modify")
 		public String PurchaseModify() {
 			return "Store/purchase_Modify";
 	}
 	
-	@RequestMapping("/purchase_Confirm")
-	public String PurchaseConfirm() {
-		return "Head/purchase_Confirm";
-	}
+//////////////////////////////////////////////본사 //////////////////////////////////////////////////////	
+	
+	
+	
 	//입고리스트
 	@RequestMapping("/Warehousing_Management")
 	 public ModelAndView WarehousingList() {
@@ -76,12 +81,39 @@ public ModelAndView Purchase_RegisterOk(ProductVO vo) {
 	      mav.setViewName("Head/Warehousing_Management");
 	      return mav;
 	}
-	 
-	@RequestMapping("/Warehousing_Register")
-	public String Warehousing_Register() {
-		return "Head/Warehousing_Register";
+	// 본사가 보는 전체가맹점 발주리스트(본사페이지) 
+	@RequestMapping("/purchase_Confirm")
+	 public ModelAndView purchaseListAll() {
+	      ModelAndView mav = new ModelAndView();
+	      mav.addObject("purchaseListAll", productService.purchaseListAll());
+	      mav.setViewName("Head/purchase_Confirm");
+	      return mav;
 	}
-	
+	//재고리스트
+		@RequestMapping("/inventory")
+		 public ModelAndView inventoryList() {
+		      ModelAndView mav = new ModelAndView();
+		      List<ProductVO> vo = productService.inventory();
+		      for (int i = 0; i<vo.size(); i++) {
+		    	  ProductVO pVo = vo.get(i);
+		    	  int hq_num = pVo.getHq_num();
+		    	  int inventory = productService.ware_cntAll(hq_num).getWare_cntAll() - productService.pc_cntAll(hq_num).getPc_cntAll();
+		    	  System.out.println(inventory);
+		    	vo.get(i).setInventory(inventory);
+		      }
+		      
+		      mav.addObject("inventory", vo);
+		      mav.setViewName("Head/inventory");
+		      return mav;
+		}
+	@RequestMapping("/Warehousing_Register")
+	public ModelAndView Warehousing_Register() {
+		ModelAndView mav = new ModelAndView();
+	      mav.addObject("items", productService.selectItems());
+	      mav.setViewName("Head/Warehousing_Register");
+	      return mav;
+		
+	}	
 	//입고등록하기
 	@RequestMapping(value="/warehousing_RegisterOk", method=RequestMethod.POST)
 	public ModelAndView Warehousing_RegisterOk(ProductVO vo, HttpSession ses) {
@@ -91,4 +123,32 @@ public ModelAndView Purchase_RegisterOk(ProductVO vo) {
 		mav.setViewName("redirect:Warehousing_Management");
 		return mav;
 	}
+	//제품등록하기
+	@RequestMapping(value="/items_RegisterOk", method=RequestMethod.POST)
+	public ModelAndView items_RegisterOk(ProductVO vo, HttpSession ses) {
+		ModelAndView mav = new ModelAndView();
+	      mav.addObject("selectPartner", productService.items_RegisterOk(vo));
+	      mav.setViewName("redirect:Warehousing_Management");
+	      return mav;
+	}
+	/////////////////////////////////////////////////////////////////////////
+	@RequestMapping(value="/items_Register")
+	public ModelAndView items_Register() {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("selectPartner", productService.selectPartner());
+	      mav.setViewName("Head/items_Register");
+	      return mav;
+	}
+	//발주확인 페이지에서 확인버튼 누르면 대기-> 완료로 변경
+	@RequestMapping(value="/purchaseConfirm", method=RequestMethod.POST)
+	public ModelAndView purchaseConfirm(ProductVO vo, HttpSession ses) {
+	
+		productService.purchaseConfirm(vo);
+		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName("redirect:purchase_Confirm");
+		mav.addObject("no", vo.getPc_num());
+		return mav;
+	}
+
 }
