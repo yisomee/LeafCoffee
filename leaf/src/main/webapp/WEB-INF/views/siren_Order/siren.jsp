@@ -467,12 +467,12 @@
         IMP.init('imp54411040');
         var money = $('#totalPrice').text();
         var userName = '${regVo.username}';
-        var userAddr = '${regVo.addr}';
+        
         var userid =  '${regVo.userid}';
         var p_num = $('.selecPnum').text();
         var od_cnt = $('#menuCnt').text();
         var selectName = $('#selectName').text();
-        console.log(money,userName, userAddr, p_num);
+        
         IMP.request_pay({
             pg: 'pg',
             pay_method:'card',
@@ -480,7 +480,7 @@
             name: selectName,
             amount: money,
             buyer_name: userName,
-            buyer_addr: userAddr,
+            
             buyer_postcode:'113-343',
             
         }, function (rsp) {

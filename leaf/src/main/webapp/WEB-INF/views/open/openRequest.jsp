@@ -178,7 +178,7 @@ form[name=frmInquiry] input[type=radio]:nth-of-type(2n) {margin-left:30px;}
 	<ul>
 		<li>leaf x</li>
 		<li>leaf의 운영시간은 평일 9:00 ~ 18:00 <br/>(주말, 공휴일 제외) 입니다.</li>
-			<iframe id="chatBody" src="http://127.0.0.1:10077/leafChat"><input type="button" value="새 문의하기" onclick="javascript:chat()"/></iframe>
+			<iframe id="chatBody" src="http://192.168.0.29:10077/leafChat"><input type="button" value="새 문의하기" onclick="javascript:chat()"/></iframe>
 	</ul>
 </div>
 	<div class="container">

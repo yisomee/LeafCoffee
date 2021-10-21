@@ -279,7 +279,7 @@ $(function(){/*메뉴바 전체가 나오는거*/
 <div id="chatTab">
 	<ul>
 		<li>leaf x</li>
-		<iframe id="chatBody" src="http://127.0.0.1:10077/leafAdmin"><input type="button" value="새 문의하기" onclick="javascript:chat()"/></iframe>
+		<iframe id="chatBody" src="http://192.168.0.29:10077/leafAdmin"><input type="button" value="새 문의하기" onclick="javascript:chat()"/></iframe>
 			
 	
 	
@@ -294,7 +294,7 @@ $(function(){/*메뉴바 전체가 나오는거*/
 		<ul>
 			<li><a href="/myapp/adminHome">본사</a></li>
 			<li><a href="/myapp/franHome">가맹점</a></li>
-			<li><a href="/myapp/loginOk">LOGIN</a></li>
+			<li><a href="/myapp/login">LOGIN</a></li>
 			<li><a href="/myapp/register">JOIN</a></li>	
 		</ul>
 	</div>

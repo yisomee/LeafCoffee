@@ -64,8 +64,9 @@ ul,li{list-style:none;
 .inputBox{
 		width: 100%;
 		height:40px;
-		border:none;border-right:0px; border-top:0px; border-left:0px; border-bottom:1px solid;
+		border:none;border-right:0px; border-top:0px; border-left:0px; border-bottom:1px solid #ddd;
 		outline:none;
+		
 	}
 	
 #joinbtn{
