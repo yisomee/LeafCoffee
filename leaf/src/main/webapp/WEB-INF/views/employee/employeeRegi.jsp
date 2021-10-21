@@ -47,7 +47,24 @@
    #deptName-error{display:none;}
    #empRegdate-error{display:none;}
    
-   
+      #head_img{
+      background-image:url(https://www.baristapaulbassett.co.kr/images/menu/subVisual_new.jpg);
+      z-index:-1;
+      width:100%;
+      height:330px;
+   }	
+   #headerText{
+         top:-100px;
+         font-size:3em;
+         color:white;
+         opacity:0.5;
+         text-align:center;
+         position: relative;
+         }
+   header{
+	   height:330px;
+	   position:relative;
+   }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
@@ -165,6 +182,10 @@
 </head>
 <body>
 	<%@ include file="/inc/adminTop.jspf" %>	
+	<header>
+   <div id="head_img"></div>
+   <div id="headerText">Employee</div>
+</header>
 	<nav class="top-banner-nav">
 	   <div class="tbn-menu1"><a href="<%=request.getContextPath()%>/employeeManagePage">사원검색</a></div>
 	   <div class="tbn-menu2"><a href="<%=request.getContextPath()%>/employeeRegiPage">사원등록</a></div>	   	   

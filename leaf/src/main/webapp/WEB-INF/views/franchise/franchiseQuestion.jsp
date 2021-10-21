@@ -41,13 +41,35 @@ b {
 	color: rgb(0, 163, 239);
 }
 
-.top {
-	background-image:
-		url(https://www.starbucks.co.kr/common/img/coffee/coffee_choice_wrap_bg.jpg);
-	background-size: cover;
-	width: 100%;
-	height: 300px;
+	header img{width:100%;}
+	header{height:330px;overflow:hidden;}
+	#headerText{position:relative;top:-100px;left:740px;font-size:3em;color:white;opacity:0.5}
+#detailMenu{display:flex;justify-content:center;width:100%;border-bottom:1px solid gray;}
+	#detailMenu>div{padding:15px 40px;}
+	#menu4{border-bottom:4px solid rgb(0, 163, 239);}
+	nav a{color:#62605F;}
+	.custom-shape-divider-bottom-1634710677 {
+    position: absolute;
+    top: 352px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
 }
+
+.custom-shape-divider-bottom-1634710677 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 98px;
+    transform: rotateY(180deg);
+}
+
+.custom-shape-divider-bottom-1634710677 .shape-fill {
+    fill: #FFFFFF;
+}
+COPY HTMLCOPY C
 </style>
 <script>
 	$(()=>{
@@ -57,12 +79,31 @@ b {
 		
 		
 	});
-
+	$(()=>{	
+		$("#headerText").animate({
+	  	  top: "-277px", opacity:1
+	  	  }, 1200,);
+	});
 </script>
 
 <body>
 <%@ include file="/inc/top.jspf" %>
-<div class="top"></div>
+<header>
+	<img src="https://www.starbucks.co.kr/common/img/coffee/coffee_choice_wrap_bg.jpg"/>
+	<span id="headerText">QUESTION & ANSWER</span>
+</header>
+<div class="custom-shape-divider-bottom-1634710677">
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+    </svg>
+</div>
+<nav id="detailMenu">
+	<div id="menu1"><a href="/myapp/storemap">STORE</a></div>
+	<div id="menu2"><a href="/myapp/franchiseInfo">INFORMATION</a></div>
+	<div id="menu3"><a href="/myapp/openRequest">REQUEST</a></div>
+	<div id="menu4"><a href="/myapp/franchiseQuestion">Q&A</a></div>
+</nav>
+<div></div>
 	<div class="fna-lists toggleWrap">
 		<ul>
 			<li class="toggleEach" item-data="17">
@@ -70,10 +111,10 @@ b {
 					<b>Q1. </b>식자재 공급은 어떻게 이루어지나요?
 				</div>
 				<div class="toggle-box toggleBox">
-					더본코리아 본부 및 본부에서 지정한 업체에서 공급하고 있습니다.<br />점포에 대한 표준화를 위해 거래업체를 지정하여
+					LEAF코리아 본부 및 본부에서 지정한 업체에서 공급하고 있습니다.<br />점포에 대한 표준화를 위해 거래업체를 지정하여
 					운영하는 만큼 지정업체는 반드시 해당업체와 거래하여야 하는 것이 가맹계약의 필수 조건입니다.<br />
 					<br />또한 통합물류시스템을 활용하고 있으며, 외식브랜드는 주3회 배송 (월·수·금 혹은 화·목·토)입니다. (도서
-					산간 지역 제외) 빽다방은 주 6회 배송입니다. (도서 산간 지역 제외)
+					산간 지역 제외) 
 				</div>
 			</li>
 			<li class="toggleEach" item-data="16">
@@ -131,8 +172,8 @@ b {
 					<b>Q7. </b>오픈 가능한 평수 또는 층수에 제한이 있나요?
 				</div>
 				<div class="toggle-box toggleBox">
-					브랜드별로 차이가 있습니다. 브랜드의 컨셉과 상권에 따라 최소 평수와 층수가 달라집니다.<br />
-					<br />예를 들어, 롤링파스타는 1층, 2층 출점이 가능하며 최소 평수는 30평 이상입니다. 빽다방의 경우는 1층만
+					컨셉과 상권에 따라 최소 평수와 층수가 달라집니다.<br />
+					<br />예를 들어, 기본 점포는 1층, 2층 출점이 가능하며 최소 평수는 30평 이상입니다. 소형 점포의 경우는 1층만
 					가능하며 최소 평수는 8평입니다.<br />
 					<br />자세한 내용은 창업문의를 남겨주시면 각 브랜드 담당자를 통해 상담받으실 수 있습니다.
 				</div>

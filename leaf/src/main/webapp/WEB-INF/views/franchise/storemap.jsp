@@ -16,28 +16,30 @@ ul,li{
  
 }
 #map {
-	width: 90%;
-	height: 700px;
-	border: 1px solid gray;
-	position: absolute;
-	left:5%;
-	top:14%
+	width: 81%;
+    height: 700px;
+    border: 1px solid gray;
+    left: 18%;
+    top: 14%;
+    margin: 100px 0px;
 }
 #mapList{
 	position: absolute;
-	left:8%;
-	top:20%;
-	background: white;
-	border-radius: 3%;
-	width:300px;
-	height: 580px;
-	opacity: 0.8;
-	font-family: 'Do Hyeon'
+    left: 43px;
+    top: 220px;
+    background: white;
+    border-radius: 2px;
+    width: 300px;
+    border: 1px solid #ddd;
+    height: 701px;
+    opacity: 0.8;
+        font-size: 0.8rem;
 }
 .searchstore{
-	background: rgb(0,163,239);
-	font-size: 1.8rem;
-	color: white;
+	height: 60px;
+    line-height: 40px;
+	font-size: 1.5rem;
+	
 	text-align: center;
 	padding-top:10px;
 }
@@ -52,9 +54,21 @@ input[type="text"]{
     border: none;
     border-radius: 2%;
 }
+.searchInput{
+	height: 60px;
+    border: 1px solid gray;
+    line-height: 55px;
+    font-size: 0.9rem;
+
+}
 .searchResult{
 	font-size: 1em;
 }
+.searchInput img{
+position: absolute;
+    top: 60px;
+    right: 0px;
+    }
 </style>
 <script async defer
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJSzwXGvvtIypU1a6qlp-Vw0hY-4ZQ_I0&callback=initMap">
@@ -89,8 +103,8 @@ input[type="text"]{
 </div>
 <div id='mapList'>
 	<ul>
-		<li class="searchstore">매장찾기</li>
-		<li class="searchstore"><input type="text" placeholder="매장명 또는 주소"></li>
+		<li class="searchstore">매장 찾기</li>
+		<li class="searchInput"><input type="text" placeholder="매장명 또는 주소 입력"><img src="img/searchBtn.png"></li>
 		<li class="searchstore searchResult">(검색 결과 5개)</li>
 		<li>
 			<ul id="searched">
@@ -106,5 +120,6 @@ input[type="text"]{
 		</li>
 	</ul>
 </div>
+<%@ include file="/inc/bottom3.jspf" %>
 </body>
 </html>

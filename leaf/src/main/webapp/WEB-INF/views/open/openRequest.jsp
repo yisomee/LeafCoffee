@@ -48,6 +48,42 @@ form[name=frmInquiry] input[type=radio]:nth-of-type(2n) {margin-left:30px;}
 #tel1{width:100px;}
 .telinput{width:143px;border: none; border-bottom: 1px solid black;}
 .errorMessage{color:red; display:none; font-weight: bold;}
+#chat{
+	width: 200px;
+	height: 100px;
+	position: fixed;
+	right: 0px;
+	top: 500px;
+	background: white;
+    z-index: 20;
+    border: 1px solid gray;
+
+}
+#chatTab{
+	width: 397px;
+    height: 510px;
+	position: fixed;
+	right: 20px;
+	bottom: 20px;
+	background: white;
+	z-index: 20;
+	border: 1px solid #ddd;
+	border-radius: 30px;
+	padding:20px;
+	display: none;
+}
+#chatBody{
+	    height: 400px;
+    width: 355px;
+    border: none;
+    background: lightblue;
+    	border-radius: 15px;
+    
+
+}
+#chatBody::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+}
 </style>
 <script>
 	$(()=>{
@@ -126,9 +162,25 @@ form[name=frmInquiry] input[type=radio]:nth-of-type(2n) {margin-left:30px;}
 		
 	}
 </script>
+<script>
+	$(()=>{
+		$('#chat').click(function(){
+			$("#chatTab").css('display','block');
+		});
+		
+	});
+</script>
 </head>
 <body>
 <%@ include file="/inc/top.jspf" %>
+<div id="chat">상담하기</div>
+<div id="chatTab">
+	<ul>
+		<li>leaf x</li>
+		<li>leaf의 운영시간은 평일 9:00 ~ 18:00 <br/>(주말, 공휴일 제외) 입니다.</li>
+			<iframe id="chatBody" src="http://127.0.0.1:10077/leafChat"><input type="button" value="새 문의하기" onclick="javascript:chat()"/></iframe>
+	</ul>
+</div>
 	<div class="container">
 		<div class="leftSide">
 		</div>

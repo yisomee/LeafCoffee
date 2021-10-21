@@ -15,9 +15,9 @@
    a{color:gray}
    a:link, a:hover a:visited{text-decoration: none;}
    button{background-color:white;cursor:pointer;}
-   header img{width:100%;height:330px;}
-   header{height:330px;position:relative;}
-   #headerText{position:relative;top:-100px;left:820px;font-size:3em;color:white;opacity:0.5}
+   header img{width:100%;height:250px;}
+   header{height:250px;position:relative;}
+   #headerText{position:relative;top:-100px;left:790px;font-size:3em;color:white;opacity:0.5}
    #detailMenu{display:flex;justify-content:center;width:100%;border-bottom:1px solid gray;}
    #detailMenu>div{padding:15px 40px;}
    #menu1{border-bottom:4px solid rgb(0, 163, 239);}
@@ -49,8 +49,8 @@
 <script>
 $(()=>{   
    $("#headerText").animate({
-       top: "-205px", opacity:0.9
-       }, 600,);
+       top: "-160px", opacity:1
+       }, 1200,);
    $("#menu1").click(function(){
       $(this).css('border-bottom','4px solid rgb(0, 163, 239)');
       $("#menu2").css('border','none');
@@ -74,7 +74,7 @@ $(()=>{
 <body>
 <%@ include file="/inc/top.jspf" %>
 <header>
-   <img src="https://www.starbucks.co.kr/common/img/coffee/coffee_espresso_wrap_bg.jpg"/>
+   <img src="https://www.baristapaulbassett.co.kr/images/menu/subVisual_coffee.jpg"/>
    <div id="headerText">WHAT'S NEW</div>
 </header>
 <nav id="detailMenu"> 
@@ -83,10 +83,6 @@ $(()=>{
 </nav>
 <div class="container">
       <div class="delete_search">
-         <div>
-            <button id="delBtn"><i class="fas fa-trash-alt"></i> 삭제</button>
-            <button><a href="/myapp/noticeWrite"><i class="fas fa-pencil-alt"></i> 글쓰기</a></button>            
-         </div>
   		 <form method="post" action="/myapp/noticeList" id="listform">
          <div>         
             <input type="text" id="searchKeyword" name="searchKeyword" placeholder="검색어를 입력해 주세요."/><button id="searchIcon"><i class="fas fa-search"></i></button>         
@@ -95,7 +91,6 @@ $(()=>{
       </div>
      <form id="selectDel" action="/myapp/deleteCheck" method="post">
       <ul class="boardList">
-         <li><input type="checkbox" id="allCheck" name="delCheck"/></li>
          <li>NO</li>
          <li>제목</li>
          <li>등록일</li>
@@ -133,6 +128,5 @@ $(()=>{
       </ul>
     
 </div>
-<%@ include file="/inc/bottom.jspf" %>
 </body>
 </html>

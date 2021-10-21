@@ -52,10 +52,13 @@ h2 {
 }
 
 section {
-	height: 700px;
+	height: 900px;
 	width: 100%;
 	position: relative;
 	font-size: 1rem;
+}
+.sectionLast{
+	height: 961px;
 }
 
 .text {
@@ -79,7 +82,7 @@ p {
 	height: 285px;
 	margin: 0 6px 12px;
 	padding: 0px 12px;
-	width: calc(19% - 24px);
+	width: calc(20% - 12px);
 	float: left;
 }
 
@@ -91,7 +94,7 @@ p {
 
 dt {
 	margin-bottom: 1.3rem;
-	font-size: 1.25rem;
+	font-size: 1.15rem;
 	font-weight: 500;
 	color: rgb(0, 163, 239);
 	font-family: 'gothic';
@@ -122,12 +125,12 @@ dd {
 	font-weight: 600;
 }
 .condition>li{ 
-	height:50px;
+	height:120px;
 	width:30%;
 	border-bottom: solid 1px rgb(0, 163, 239);
 	margin:0px;
 	padding: 20px 12px;
-    line-height: 50px;
+    
 }
 .condition>li:nth-child(2n){width:60%;
     font-weight: 600;} 
@@ -136,27 +139,71 @@ dd {
 	color: rgb(0, 163, 239);
 	font-family: 'Do Hyeon';
     text-align: center;
+    line-height: 80px;
 	} 
+	header img{width:100%;}
+	header{height:330px;overflow:hidden;}
+	#headerText{position:relative;top:-100px;left:755px;font-size:3em;color:white;opacity:0.5}
+#detailMenu{display:flex;justify-content:center;width:100%;border-bottom:1px solid gray;}
+	#detailMenu>div{padding:15px 40px;}
+	#menu2{border-bottom:4px solid rgb(0, 163, 239);}
+	nav a{color:#62605F;}
+	.title{font-size:2.5em;color:#382E2C;text-align:center;padding:40px 0 20px 0;border-bottom:1px solid lightgray; padding-top: 130px;
+}
+.custom-shape-divider-bottom-1634711106 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-bottom-1634711106 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 84px;
+}
+
+.custom-shape-divider-bottom-1634711106 .shape-fill {
+    fill: #FFFFFF;
+}
+
 </style>
+<script>
+$(()=>{	
+	$("#headerText").animate({
+  	  top: "-418px", opacity:1
+  	  }, 1200,);
+});
+</script>
 </head>
 <body>
 <%@ include file="/inc/top.jspf" %>
-	<div class="top">
-		<div class="text">
-			가맹점 창업안내
-			<h1>
-				LEAF 가맹점은 <br />좋은 품질의 원두를 <br />합리적인 가격으로 <br />제공 받습니다.
-			</h1>
-		</div>
-	</div>
+<header>
+	<img src="	https://www.baristapaulbassett.co.kr/images/whatsnew/classInfoVisual.jpg"/>
+	<span id="headerText">Franchise Infomation</span>
+</header>
+<div class="custom-shape-divider-bottom-1634711106">
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
+    </svg>
+</div>
+<nav id="detailMenu">
+	<div id="menu1"><a href="/myapp/storemap">STORE</a></div>
+	<div id="menu2"><a href="/myapp/franchiseInfo">INFORMATION</a></div>
+	<div id="menu3"><a href="/myapp/openRequest">REQUEST</a></div>
+	<div id="menu4"><a href="/myapp/franchiseQuestion">Q&A</a></div>
+</nav>
 	<div class="container">
 		<section>
-			<h2>창업절차</h2>
+			<div class="title">창업 순서</div>
 			<ul>
 				<li><p>1</p>
 					<dl>
 						<dt>창업설명회</dt>
-						<dd>가맹지원서 및 상권조사표 작성</dd>
+						<dd>가맹지원서 및 상권조사표 <br/>작성</dd>
 					</dl></li>
 				<li><p>2</p>
 					<dl>
@@ -234,10 +281,10 @@ dd {
 				본인이 반드시 교육을 이수해야 함</p>
 			<p></p>
 		</div>
-		<section>
-			<h2>창업조건</h2>
+		<section class="sectionLast">
+			<div class="title">창업 조건</div>
 			<ul class="condition">
-				<li style="line-height: 100px;height: 100px;">브랜드 컨셉</li><li style="line-height: 25px;height: 100px;">좋은 품질의 원두커피를 합리적인 가격으로 판매<br/>고품질/합리적인 가격, 고회전<br/>젊은 층에 어필할 수 있는 빽다방 고유의 메뉴<br/>타 브랜드에 비교하여 10% 이상의 대용량 제공</li>
+				<li style="line-height: 150px;height: 150px;">브랜드 컨셉</li><li style="line-height: 25px;height: 150px;">좋은 품질의 원두커피를 합리적인 가격으로 판매<br/>고품질/합리적인 가격, 고회전<br/>젊은 층에 어필할 수 있는 빽다방 고유의 메뉴<br/>타 브랜드에 비교하여 10% 이상의 대용량 제공</li>
 				<li>타겟 고객층</li><li>남녀노소 구분 없이 다양함</li>
 				<li>타겟 입지</li><li>역세권/대학가/Office 등 배후지 및 유동인구가 풍부한 입지 (버스정류장, 횡단보도, 퇴근 동선 가정)</li>
 				<li>필요 면적(전용)</li><li>1층, 8평 이상(전용), 식자재 저장 등을 감안한 추가 면적 필요</li>
@@ -247,5 +294,6 @@ dd {
 			
 		</section>
 	</div>
+	<%@ include file="/inc/bottom3.jspf" %>
 </body>
 </html>

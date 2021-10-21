@@ -9,9 +9,9 @@
 <style>
 	body{margin:0;}
 	ul,li{list-style-type: none;padding:0;margin:0;}
-	header img{width:100%;height:250px;}
-	header{height:250px;}
-	#headerText{position:relative;top:-100px;left:800px;font-size:3em;color:white;opacity:0.5}	
+	header img{width:100%;}
+	header{height:330px;overflow:hidden;}
+	#headerText{position:relative;top:-100px;left:865px;font-size:3em;opacity:0.5}	
 	nav a{color:#62605F;}
 	a:link, a:hover a:visited{text-decoration: none;}
 	#detailMenu{display:flex;justify-content:center;width:100%;border-bottom:1px solid gray;}
@@ -34,7 +34,7 @@
 <script>
 $(()=>{	
 	$("#headerText").animate({
-  	  top: "-160px", opacity:1
+  	  top: "-291px", opacity:0.9
   	  }, 1200,);
 });
 </script>
@@ -42,7 +42,7 @@ $(()=>{
 <body>
 <%@ include file="/inc/top.jspf" %>
 <header>
-	<img src="https://image.istarbucks.co.kr/common/img/menu/menu_bimg1.jpg"/>
+	<img src="	https://www.starbucks.co.kr/common/img/responsibility/responsibility04.jpg"/>
 	<span id="headerText">SOCIAL</span>
 </header>
 <nav id="detailMenu">

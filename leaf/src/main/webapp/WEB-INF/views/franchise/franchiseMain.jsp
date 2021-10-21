@@ -99,11 +99,13 @@ font-family: 'Do Hyeon'
 </head>
 <body>
 <%@ include file="/inc/top.jspf" %>
+
 <section class="section1">
 <img alt="" src="img/Lovepik_com-401492477-paper-map-icon-free-vector-illustration-material.png">
 <div class="text bn1"><span class="txthead">나의 일상이 되는 또 다른 공간</span><br/>커피 한 잔의 여유를 만나는 LEAF 매장<br/>이제 전국 어디에서나 만날 수 있는 LEAF 매장을<br/>지역별, 타입별, 서비스별 등의 설정을 통해 <br/>더욱 쉽고 빠르게 찾아보세요<br/><button type="button" onclick="location.href='storemap'">매장찾기</button></div></section>
 <section class="section2"><img alt="" src="img/cafe.png"><div class="text bn2"><span class="txthead">LEAF의 가족이 되시겠습니까?</span><br/>다년간의 경영 노하우를 통해<br/>함께 성장해가는 LEAF입니다.<br/>가맹점 창업을 위한 절차를 확인하세요<button type="button" onclick="location.href='franchiseInfo'">창업안내</button></div></section>
 <section class="section3"><div class="text bn3"><span class="txthead">직접 운영하는 새로운 LEAF</span><br/>창업 전문가들의 오랜 노하우<br/>창업시스템과 함께<br/>성공적인 카페 비지니스를 시작하세요!<br/><button type="button" onclick="location.href='franchiseRequest'">창업신청</button></div></section>
 <section class="section4"><div class="text bn4"><span class="txthead">예상 매출과 수익률이 궁금하신가요?</span><br/>오픈 후 관리는 어떻게 이뤄지나요?<br/>점포 입지선정은 어떻게 하나요?<br/>Q&A에서 그 답을 찾아보세요!<br/><button type="button" onclick="location.href='franchiseQuestion'">Q&A</button></div></section>
+
 </body>
 </html>

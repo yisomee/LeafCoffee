@@ -403,7 +403,7 @@ const config = {
                    $(".id1").attr("style","color:red").css("margin-left","120px").css("margin-top","-20px");
                }
             });
-         });
+         }); 
          
 
          

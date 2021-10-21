@@ -111,6 +111,10 @@ public class NoticeController {
 	//선택항목 삭제
 	@RequestMapping(value="/deleteCheck",method=RequestMethod.POST)
 	public ModelAndView deleteCheck(NoticeVO vo) {
+		for(int i=0;i<vo.getDelCheck().length;i++) {
+			int[] num = vo.getDelCheck();
+			System.out.println(num[i]);
+		}
 		ModelAndView mav = new ModelAndView();
 		int result=noticeService.delChk(vo.getDelCheck());
 		mav.setViewName("redirect:noticeList");

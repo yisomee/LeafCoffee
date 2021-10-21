@@ -24,8 +24,8 @@
 	}
 	.menu_bar li{
 		margin: 0 40px;
-		line-height:50px;
-		height:50px;
+		line-height:60px;
+		height:60px;
 	    width: 120px;
 	    text-align: center;
 	}
@@ -162,8 +162,8 @@ $(function(){
 		$(".bakery").css('display','none');
 	});
 	$("#headerText").animate({
-	       top: "-160px", opacity:1
-	       }, 1200,);
+	       top: "-205px", opacity:0.9
+	       }, 600,);
 	
 	
 });

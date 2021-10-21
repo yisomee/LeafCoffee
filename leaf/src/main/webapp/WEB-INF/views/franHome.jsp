@@ -320,28 +320,28 @@ body{
     <a class="card" href="#">
       <div class="card__background" style="background-image: url(https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[106509]_20210430111852870.jpg)"></div>
       <div class="card__content">
-        <p class="card__category">Category</p>
+        <p class="card__category">공지사항</p>
         <h3 class="card__heading">위생점검</h3>
       </div>
     </a>
     <a class="card" href="#">
       <div class="card__background" style="background-image: url(https://image.istarbucks.co.kr/upload/store/skuimg/2021/09/[9200000003490]_20210930200337147.jpg)"></div>
       <div class="card__content">
-        <p class="card__category">Category</p>
+        <p class="card__category">NEW OPEN</p>
         <h3 class="card__heading">마포점입점</h3>
       </div>
     </a>
     <a class="card" href="#">
       <div class="card__background" style="background-image: url(https://image.istarbucks.co.kr/upload/store/skuimg/2021/03/[9200000003511]_20210322093158370.jpg)"></div>
       <div class="card__content">
-        <p class="card__category">Category</p>
-        <h3 class="card__heading">서강점폐점</h3>
+        <p class="card__category">EVENT</p>
+        <h3 class="card__heading">할로윈이벤트</h3>
       </div>
     </li>
     <a class="card" href="#">
       <div class="card__background" style="background-image: url(https://image.istarbucks.co.kr/upload/store/skuimg/2021/02/[9200000001086]_20210225090838931.jpg)"></div>
       <div class="card__content">
-        <p class="card__category">Category</p>
+        <p class="card__category">공지사항</p>
         <h3 class="card__heading">교육일정</h3>
       </div>
     </a>
