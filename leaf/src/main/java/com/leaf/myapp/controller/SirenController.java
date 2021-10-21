@@ -21,6 +21,10 @@ public class SirenController {
 	public ModelAndView sirenList(HttpSession ses) {
 		ModelAndView mav = new ModelAndView();
 		String logname = (String)ses.getAttribute("logname");
+		if(logname==null) {
+			mav.setViewName("register/login");
+			return mav;
+		}else {
 //		System.out.println(logname);
 		mav.addObject("menuVo", sirenService.setSirenList());
 		mav.addObject("regVo", sirenService.sirenRegData(logname));
@@ -28,7 +32,7 @@ public class SirenController {
 	//	System.out.println(vo.getUserid());
 	//	System.out.println(vo.getUsername());
 		mav.setViewName("siren_Order/siren");
-		return mav;
+		return mav;}
 	}
 	@RequestMapping("/order")
 	@ResponseBody
