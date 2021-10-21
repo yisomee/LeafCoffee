@@ -75,34 +75,41 @@ public class OpenQuestionController {
 			return mav;
 		}
 		
-		int authResult = openService.authOpenAccess(authid);// 7300번(가맹관리부)만 접근가능		
-		if(authResult==7300) {
+		int authResult = openService.authOpenAccess(authid);// 7200번(가맹관리부)만 접근가능		
+		if(authResult==7200) {
 			mav.setViewName("open/openMain");
 			return mav;
 		}else {			
 			mav.setViewName("open/openAccessRefuse");
 			return mav;
-		}		
+		}
+		
+		
 	}	
 	
 	// 창업문의 검색(작성자,내용)
 	@RequestMapping("/openQuestionSearch")
 	@ResponseBody
 	public Map<String,Object> searchOpenQuestionList(OpenPageVO pVo){	
-		System.out.println(pVo.getOq_status());
-		int totalRecord = openService.openListpage(pVo.getSearchKey(),pVo.getSearchWord(), pVo.getOq_status());		
 		
+		int totalRecord = openService.openListpage(pVo.getSearchKey(),pVo.getSearchWord(), pVo.getOq_status());		
+
 		pVo.setTotalRecord(totalRecord);
+
+		
 
 		int lastPageRecode = pVo.getTotalRecord()%pVo.getOnePageRecord();
 		  
 		  if(pVo.getTotalPage()==pVo.getNowPage() && lastPageRecode!=0) {
-		  pVo.setOnePageRecord(lastPageRecode); }else {
-		  pVo.setOnePageRecord(pVo.getOnePageRecord()); }
-		  
-		  Map<String,Object> openMap = new HashMap<String,Object>(); openMap.put("pvo",(OpenPageVO)pVo);
-		  openMap.put("openvo", openService.searchOpenQuestionList(pVo));
-		 
+			  pVo.setOnePageRecord(lastPageRecode); 
+		  }else {
+			  pVo.setOnePageRecord(pVo.getOnePageRecord()); 
+		  }
+
+		  Map<String,Object> openMap = new HashMap<String,Object>(); 
+		  openMap.put("pvo",pVo);
+		  openMap.put("openvo",openService.searchOpenQuestionList(pVo));
+
 		return openMap;
 	}
 		
@@ -220,8 +227,7 @@ public class OpenQuestionController {
 	@RequestMapping(value="/openReplyEdit",method=RequestMethod.POST)
 	@ResponseBody
 	public OpenRequestReplyVO openReplyEdit(int oq_num, String rpcon) {		
-		OpenRequestReplyVO orvo = new OpenRequestReplyVO();
-		System.out.println(rpcon);
+		OpenRequestReplyVO orvo = new OpenRequestReplyVO();		
 				
 		int rp_num = openService.openReplyEditNum(oq_num);// oq_num으로 rp_num 가져오기	
 		

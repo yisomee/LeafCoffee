@@ -17,8 +17,7 @@
 	.mfi-inputbox #tel2{width:30%; margin-right:20px;}
 	.mfi-inputbox #tel3{width:30%;}
 	/* 부서파트 */
-	.mfi-inputbox #dept_name{width:460px;}
-	.mfi-inputbox #dept_img{width:48px; height:48px; float:right; background-image:url(img/empimg.png); background-size:cover;box-sizing: border-box; border: 1px solid gray;}
+	.mfi-inputbox #dept_name{width:530px; display:inline-block; height:47px; margin-right:20px;}	
 	.mfi-inputbox #emp_posi{width:530px; display:inline-block; height:47px; margin-right:20px;}
 	.regiForm-submit{width: 530px; margin: 0 auto 30px; padding:20px 20px;}
 	.regiForm-submit #emp-regi{width:530px; padding:15px;background: rgb(0,192,239); border: 1px solid white; color: white; font-size: 1.1em}
@@ -37,14 +36,18 @@
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
-	function deptPopOpen(){		
-		window.open("<%=request.getContextPath()%>/deptlist","dept_list","width=680,height=560");	
-	}
-	function goFocus(inputbox){
-		if(inputbox.value.length==4){
-			frm.tel3.focus();
-		}
-	} 
+	$(()=>{
+		$(document).on('change','#dept_name',function(){
+			switch($(this).val()){
+			case "인사부" : $('#dept_num').val(7000); break;
+			case "품질관리부" : $('#dept_num').val(7100); break;
+			case "가맹관리부" : $('#dept_num').val(7200); break;
+			case "시설부" : $('#dept_num').val(7300); break;
+			case "경영부" : $('#dept_num').val(8000);
+			}
+		});
+	});
+
 	
 </script>
 </head>
@@ -96,9 +99,20 @@
 						<div class="mfi-inputbox">
 							<strong>부서명
 								<span>(필수)</span>
-							</strong>	
-							<input type="text" name="dept_name" id="dept_name" placeholder="부서명"  value="${empvo.dept_name}" readonly/>
-							<button type="button" id="dept_img" onclick="deptPopOpen()"></button>
+							</strong>
+							<select name="dept_name" id="dept_name">
+								<script>
+									let deptnum = ['품질관리부','인사부','시설부','가맹관리부','경영부'];
+									let deptname = '${empvo.dept_name}';
+									for(var b=0;b<deptnum.length;b++){
+										document.write("<option value='"+deptnum[b]+"'");
+										if(deptname==deptnum[b]){
+											document.write("selected");
+										}
+										document.write(">"+deptnum[b]+"</option>");
+									}
+								</script>
+							</select>						
 						</div>
 						<div class="mfi-inputbox">
 							<strong>직급

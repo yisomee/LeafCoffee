@@ -36,9 +36,9 @@
         		<if test= 'oq_status == 1'>
 					and oq_status='답변대기'
 				</if>
-        		order by writedate desc)
-    			where rownum<![CDATA[<=]]> ${rnChange} order by writedate asc)
-			where rownum<![CDATA[<=]]> ${onePageRecord} order by writedate desc
+        		order by oq_num desc)
+    			where rownum<![CDATA[<=]]> ${rnChange} order by oq_num asc)
+			where rownum<![CDATA[<=]]> ${onePageRecord} order by oq_num desc
 	</select>		
 	<select id="openReplyExist" resultType="com.leaf.myapp.vo.OpenRequestReplyVO">
 		select nvl(max(userid),'nouserid') userid, nvl(max(rpcon),'norpcon') rpcon from openreply where oq_num = #{param1}

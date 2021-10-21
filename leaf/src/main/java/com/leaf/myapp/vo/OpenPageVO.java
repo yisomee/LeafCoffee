@@ -55,7 +55,7 @@ public class OpenPageVO {
 		
 		if(nowPage!=0) {
 			this.startPage = (nowPage-1)/onePageViewNum*onePageViewNum+1;
-			this.rnChange = nowPage*onePageRecord;
+			this.rnChange = nowPage*onePageRecord;			
 		}
 	}
 	public int getTotalPage() {

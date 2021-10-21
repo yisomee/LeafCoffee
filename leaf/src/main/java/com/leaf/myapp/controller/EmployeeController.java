@@ -33,12 +33,6 @@ public class EmployeeController {
 	public String employeeRegiPage() {
 		return "employee/employeeRegi";
 	}
-	// 부서목록
-	@RequestMapping("/deptlist")
-	public String deptlist() {
-		return "employee/deptListPoP";
-	}
-	
 	// 사원 정보수정
 	@RequestMapping("/employeeChange")
 	public ModelAndView employeeChange(int emp_num) {

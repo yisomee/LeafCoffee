@@ -10,10 +10,9 @@
 	const regExpUserName = /^[가-힣]{1,10}$/;
  	let oq_status = 0; // 답변대기 체크박스 클릭
 	 
-	function listSelect(i,searchKey,searchWord,oq_status){
-		console.log(oq_status);									
+	function listSelect(i,searchKey,searchWord,oq_status){									
 		let nowPage = i;
-			
+
 		//ajax로 검색한 리스트 출력.(라디오버튼,사원번호,사원명,직급,연락처,이메일,입사일,재직여부)
 		$.ajax({			
 		url: "/myapp/openQuestionSearch",
@@ -22,7 +21,9 @@
 				"nowPage="+nowPage+"&"+
 				"oq_status="+oq_status,
 		success:function(result){
+			console.log(result);
 			let openvo = $(result.openvo);
+			console.log(openvo);
 			
 			if(openvo.length==0){
 				let notSearch = '<div>'+searchWord+'에 대해 0건이 발견되었습니다.</div>';					
@@ -106,12 +107,10 @@
 		let searchWord='';
 		let oq_status=0;
 		$('#ck').change(function(){
-			if($('#ck').is(':checked')){
-				console.log("체크박스 체크O");
+			if($('#ck').is(':checked')){				
 				oq_status=1;
 				listSelect(1,searchKey,searchWord,oq_status);
-			}else{
-				console.log("체크박스 체크X");
+			}else{				
 				oq_status=0;
 				listSelect(1, searchKey,searchWord,oq_status);	
 			}
@@ -260,36 +259,36 @@
 	/* 사원 컨테이너 */
 	.emplistCon{height:650px; overflow:scroll;}
 	/* ------------------ */
-	/* 페이지 타이틀 */
+	/* 창업문의 타이틀 */
 	.page-main-notice{text-align:center;}
 	.page-main-notice>h3{font-size:2em; color:#333; font-weight:700; margin-bottom:20px;}
 	.page-main-notice>p{font-size:1em;}
 	.page-main-notice>p:after{display:block; width:35px; border-bottom:2px solid rgb(0, 128, 192); content:''; margin:20px auto 0;}
 	
 	
-	/*사원 검색폼*/
+	/*창업문의  검색폼*/
 	.emptopCon{height:100px; background:#ddd; margin-top:50px;}
-	#empImg{height:100px; width:300px; display: inline-block; margin-left:220px; margin-top:10px;}
-	#empImgWord{font-size:1.4em; display:inline-block; position:relative; top:-20px; left:30px;}	
-	#searchForm{display: inline-block; width: 730px; height: 60px; position: relative; top: -24px;}
+	#openImg{height:100px; width:300px; display: inline-block; margin-left:220px; margin-top:10px;}
+	#openImgWord{font-size:1.4em; display:inline-block; position:relative; top:6px; left:35px;}	
+	#searchForm{display: inline-block; width: 730px; height: 60px; position:relative;}
 	select[name="searchKey"]{height:50px; width:100px; font-size:1em;}
 	input[name="searchWord"]{height:50px; width:500px; font-size:1em;}
 	input[value="search"]{height:50px; width:100px; box-sizing: border-box; font-size:1em;}
+	input[name=oq_status]{margin:30px 0px 0px 1237px;}
 	
-	
-	/* 사원 리스트 정렬 select박스 */
+	/* 창업문의 리스트 정렬 select박스 */
 	.array_button{width:1400px; height:80px;}
 	.array_button>label{font-size:1.2em; margin-left:10px;}
 	input[name='replyStateView']{width:16px; height:16px; display:inline-block; margin:40px 0 0 1230px;}
 	
-	/* 사원리스트 top */
+	/* 창업문의 리스트 top */
 	#open-list-container{width:1400px; height:1000px; margin:50px auto 0 auto;}
 	#open-list-top{overflow:auto; text-align:center; padding:0; background-color:#ddd; height:50px; font-size:1.13em; line-height:45px;}
 	#open-list-top>li{float:left; width:10%; border-top:3px solid black;}
 	#open-list-top>li:nth-child(6n+3){width:40%;}
 	#open-list-top>li:nth-child(6n+5){width:20%;}
 	
-	/*사원 리스트*/
+	/*창업문의 리스트*/
 	#open-list{overflow:auto; text-align:center; padding:0;}
 	#open-list>li{float:left; width:10%; border-bottom: 1px solid black; height:50px; font-size:1.1em; line-height:50px;white-space:nowrap; text-overflow:ellopsis; overflow:hidden;}
 	#open-list>li:nth-child(6n+3){width:40%; text-align:center;}
@@ -333,7 +332,7 @@
 			</div>						
 			<!-- 회원 검색폼 -->
 			<div class="emptopCon">
-				<span id="empImg"><img src="img/empimg.png"><span id="empImgWord">문의검색</span></span>
+				<span id="openImg"><img src="img/empimg.png"><span id="openImgWord">문의검색</span></span>
 				<div id="searchForm">
 					<select name="searchKey" id="searchKey">
 						<option value="username">작성자</option>
