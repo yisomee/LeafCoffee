@@ -1,0 +1,49 @@
+ --시퀀스 등록--
+create sequence menusq start with 1 increment by 1;
+create sequence product_sq start with 1 increment by 1;
+create sequence purchase_sq start with 1 increment by 1;
+create sequence partner_sq start with 1 increment by 1;
+create sequence s1 start with 1 increment by 1; 
+create sequence items_sq start with 10 increment by 10;
+create sequence adminnotice_sq start with 1 increment by 1;
+alter sequence items_sq nocache;
+
+
+===========================================================================================
+
+select * from product;
+select * from items;
+select * from purchase;
+select * from partner;
+select * from franchise;
+
+insert into franchise(fc_num, fc_name, fc_tel, fc_boss, fc_hours, fc_transport, fc_addr, userid) values(s1.nextval, '서강대점', '010-1234-5678', '서강준','09-18','??','마포구 서강대로','goguma');
+insert into franchise(fc_num, fc_name, fc_tel, fc_boss, fc_hours, fc_transport, fc_addr, userid) values(s1.nextval, '강남점', '010-5656-5678', '박보검','09-18','??','강남구 도산대로','bogum');
+select * from franchise;
+
+insert into partner(part_num, part_company, part_name, part_tel, part_email, part_code_name) values(partner_sq.nextval,'서준물산','박서준','010-1234-5678','suyeong1020@naver.com','운송');
+insert into partner(part_num, part_company, part_name, part_tel, part_email, part_code_name) values(partner_sq.nextval,'수영물산','장수영','010-2222-3333','suyeong@naver.com','식자재');
+insert into partner(part_num, part_company, part_name, part_tel, part_email, part_code_name) values(partner_sq.nextval,'이솜나라','신이솜','010-3543-2642','aaaa@naver.com','식자재');
+insert into partner(part_num, part_company, part_name, part_tel, part_email, part_code_name) values(partner_sq.nextval,'(주)동현','동현','010-1212-3434','bbbb@naver.com','식자재');
+insert into partner(part_num, part_company, part_name, part_tel, part_email, part_code_name) values(partner_sq.nextval,'영화세상','이영화','010-9999-8888','cccc@naver.com','식자재');
+
+insert into product(ware_num, hq_num,ware_cnt,emp_num)  values(product_sq.nextval,10,100,30);
+insert into product(ware_num,hq_num,ware_cnt,emp_num)  values(product_sq.nextval,20,100,30);
+insert into product(ware_num,hq_num,ware_cnt,emp_num)  values(product_sq.nextval,30,100,30);
+insert into product(ware_num,hq_num,ware_cnt,emp_num)  values(product_sq.nextval,40,100,30);
+insert into product(ware_num,hq_num,ware_cnt,emp_num)  values(product_sq.nextval,50,100,30);
+
+insert into items (hq_num, hq_name, ware_price, part_num) values(items_sq.nextval, '빨대', 10000, 1);
+insert into items (hq_num, hq_name, ware_price, part_num) values(items_sq.nextval, '종이컵', 20000, 2);
+insert into items (hq_num, hq_name, ware_price, part_num) values(items_sq.nextval, '딸기시럽', 30000, 3);
+insert into items (hq_num, hq_name, ware_price, part_num) values(items_sq.nextval, '바닐라파우더', 40000, 4);
+insert into items (hq_num, hq_name, ware_price, part_num) values(items_sq.nextval, '원두', 50000, 5);
+
+insert into menu (p_num, m_code, s_code, p_name, p_ename, p_price, p_desc, p_info, new_best, p_img) values(menusq.nextval, 'beverage', 'ade','제주한라봉에이드','jejuhallabongade',6000,'깨끗한 제주 자연의 맛을 느낄 수 있는 달콤한 에이드','200/10/10/10/10/10/10','new','JejuHallabongAde.png');
+insert into menu (p_num, m_code, s_code, p_name, p_ename, p_price, p_desc, p_info, new_best, p_img) values(menusq.nextval, 'food', 'bakery','우유크림빵','Milk Cream Bread',8000,'하얗고 쫀득한 빵 속에 고소한 우유크림이 가득 담긴 우유크림빵','200/10/10/10/10/10/10','best','MilkCreamBread.png');
+insert into menu (p_num, m_code, s_code, p_name, p_ename, p_price, p_desc, p_info, new_best, p_img) values(menusq.nextval, 'coffee', 'latte','아이스크림라떼','Icecream Latte',6000,'에스프레소로 만든 고소한 라떼 위에 우유 본연의 풍미가 매력적인 아이스크림라떼','300/50/10/10/10/10/10','best','icecreamlatte.png');
+insert into menu (p_num, m_code, s_code, p_name, p_ename, p_price, p_desc, p_info, new_best, p_img) values(menusq.nextval, 'coffee', 'shot','아메리카노','Americano',4300,' 시그니처 블렌드로 추출한 에스프레소로 만든 부드럽고 깔끔한 가장 대중적인 커피 메뉴입니다.','360/10/5/0/0/0/160','','americano.png');
+insert into menu (p_num, m_code, s_code, p_name, p_ename, p_price, p_desc, p_info, new_best, p_img) values(menusq.nextval, 'beverage', 'tea','아이스얼그레이','Fauchon Earl Grey',4000,'130년의 프랑스 프리미엄티 포숑의 베르가못 감귤류향이 항긋한 홍차입니다.','460/0/0/0/0/0/85','new','IceEarlGrey.png');
+
+insert into adminnotice(admin_no, userid, admin_title, admin_content, img, section)values(adminnotice_sq.nextval, 'apple','오트 밀크 퍼스널 옵션 선택', '오트 밀크 퍼스널 옵션 선택','notice02.png', 'LEAF와문화' );
+insert into adminnotice(admin_no, userid, admin_title, admin_content, img, section)values(adminnotice_sq.nextval, 'apple','올리비아와 leaf의 콜라보레이션 상품', '올리비아와 leaf의 콜라보레이션 상품','notice01.png', '상품출시' );
