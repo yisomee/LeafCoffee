@@ -11,9 +11,9 @@
 	body{margin:0;}
 	a:link, a:hover a:visited{text-decoration: none;}
 	ul,li{list-style-type: none;padding:0;margin:0;}
-	header{height:250px;}
-	header img{height:250px;width:100%}
-		#headerText{position:relative;top:-100px;left:800px;font-size:3em;color:white;opacity:0.5}	
+	header{height:330px;}
+	header img{height:330px;width:100%}
+		#headerText{position:relative;top:-100px;left:860px;font-size:3em;color:white;opacity:0.5}	
 	#detailMenu{display:flex;justify-content:center;width:100%;border-bottom:1px solid gray;}
 	#detailMenu>div:first-child{padding:15px 53px}
 	#detailMenu>div:last-child{padding:15px 28px}
@@ -51,8 +51,8 @@
 <script>
 $(()=>{	
 	$("#headerText").animate({
-	  	  top: "-160px", opacity:1
-	  	  }, 1200,);
+	  	  top: "-205px", opacity:0.9
+	  	  }, 600,);
 	$("#menu1").click(function(){
 		$(this).css('color','rgb(0, 163, 239)').css('border-bottom','4px solid rgb(0, 163, 239)');
 		$("#menu2").css('border','none');

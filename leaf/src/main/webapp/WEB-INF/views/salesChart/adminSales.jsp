@@ -19,11 +19,11 @@
       function drawChartpie() {
         var datapie = google.visualization.arrayToDataTable([
           ['Good', 'good'],
-          ['아메리카노', 11],
-          ['Eat',      2],
-          ['Commute',  2],
-          ['Watch TV', 2],
-          ['Sleep',    7]
+          ['카페 아메리카노', 11],
+          ['카라멜 마티아또',      2],
+          ['카푸치노',  2],
+          ['바닐라 빈 라떼', 2],
+          ['에스프레소',    7]
         ]);
         
         var optionspie = {
@@ -46,11 +46,11 @@
       function drawChartbar() {
           var databar = google.visualization.arrayToDataTable([
             ["Element", "천", { role: "style" } ],
-            ["1호점", 32122, "#3399ff"],
-            ["2호점", 30979, "#66b2ff"],
-            ["3호점", 28898, "cce5ff"],
-            ["4호점", 30529, "#99ccff"],
-            ["5호점", 32511, "#0088ff"]
+            ["서강대점", 32122, "#3399ff"],
+            ["강남점", 30979, "#66b2ff"],
+            ["마포점", 28898, "cce5ff"],
+            ["신촌점", 30529, "#99ccff"],
+            ["홍대점", 32511, "#0088ff"]
           ]);
 
           var viewbar = new google.visualization.DataView(databar);

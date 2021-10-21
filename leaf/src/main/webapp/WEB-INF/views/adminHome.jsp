@@ -221,6 +221,42 @@ video { width: 100%; position:absolute; top:-111px;}
 .main-bn > .slider > .page-btns > .page-no > span {display:inline-block; color:black; font-size:18px;}	
 #leaf-left-btn{width:80px; height:60px; transform:scaleX(-1);}
 #leaf-right-btn{width:80px;	height:60px;}	
+
+#chat{
+	width: 200px;
+	height: 100px;
+	position: fixed;
+	right: 0px;
+	top: 500px;
+	background: white;
+    z-index: 20;
+    border: 1px solid gray;
+
+}
+#chatTab{
+	width:350px;
+	height: 500px;
+	position: fixed;
+	right: 20px;
+	bottom: 20px;
+	background: white;
+	z-index: 20;
+	border: 1px solid #ddd;
+	border-radius: 30px;
+	padding:20px;
+	display: none;
+}
+#chatBody{
+    height: 480px;
+    width: 350px;
+        border: none;
+	background: lightblue;
+	border-radius: 15px;
+
+}
+#chatBody::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+}
 </style>
 </head>
 <script>
@@ -239,6 +275,16 @@ $(function(){/*메뉴바 전체가 나오는거*/
 	
 </script>
 <body>
+<div id="chat">상담하기</div>
+<div id="chatTab">
+	<ul>
+		<li>leaf x</li>
+		<iframe id="chatBody" src="http://127.0.0.1:10077/leafAdmin"><input type="button" value="새 문의하기" onclick="javascript:chat()"/></iframe>
+			
+	
+	
+	</ul>
+</div>
 	<!-- 상단부 -->
 	<div class="whitebg"></div>
 	
@@ -592,5 +638,19 @@ function updateCurrentPageNumber(){
 };
 updateCurrentPageNumber();
 
+</script>
+<script>
+	$(()=>{
+		$('#chat').click(function(){
+			$("#chatTab").css('display','block');
+			$('#chatBody').attr('');
+		});
+		
+		function chat(){
+			console.log('dd');
+			
+			
+		}
+	});
 </script>
 	<%@ include file="/inc/bottom3.jspf" %>

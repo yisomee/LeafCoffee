@@ -15,9 +15,9 @@
    a{color:gray}
    a:link, a:hover a:visited{text-decoration: none;}
    button{background-color:white;cursor:pointer;}
-   header img{width:100%;height:250px;}
-   header{height:250px;position:relative;}
-   #headerText{position:relative;top:-100px;left:790px;font-size:3em;color:white;opacity:0.5}
+   header img{width:100%;height:330px;}
+   header{height:330px;position:relative;}
+   #headerText{position:relative;top:-100px;left:820px;font-size:3em;color:white;opacity:0.5}
    #detailMenu{display:flex;justify-content:center;width:100%;border-bottom:1px solid gray;}
    #detailMenu>div{padding:15px 40px;}
    #menu1{border-bottom:4px solid rgb(0, 163, 239);}
@@ -50,8 +50,8 @@
 <script>
 $(()=>{   
    $("#headerText").animate({
-       top: "-160px", opacity:1
-       }, 1200,);
+       top: "-205px", opacity:0.9
+       }, 600,);
    $("#menu1").click(function(){
       $(this).css('border-bottom','4px solid rgb(0, 163, 239)');
       $("#menu2").css('border','none');

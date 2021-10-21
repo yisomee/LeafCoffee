@@ -30,8 +30,8 @@ ul, li {
 
 .menu_bar li {
 	margin: 0 40px;
-	line-height: 50px;
-	height: 50px;
+	line-height: 60px;
+	height: 60px;
 	width: 120px;
 	text-align: center;
 }
@@ -163,7 +163,7 @@ nav>div {
 
 #head_img {
 	background-image:
-		url(https://www.baristapaulbassett.co.kr/images/menu/subVisual_food.jpg);
+		url(https://www.baristapaulbassett.co.kr/images/menu/subVisual_product.jpg);
 	z-index: -1;
 	width: 100%;
 	height: 330px;
@@ -194,8 +194,8 @@ $(function(){
 		$(".Tumbler").css('display','none');
 	});
 	$("#headerText").animate({
-	       top: "-160px", opacity:1
-	       }, 1200,);
+	       top: "-195px", opacity:0.9
+	       }, 600,);
 	
 	
 });

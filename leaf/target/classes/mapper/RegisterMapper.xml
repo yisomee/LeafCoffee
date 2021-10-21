@@ -35,7 +35,7 @@
 	</update>
 	<!-- 수정폼 선택 -->
 		<select id="mypage" resultType="com.leaf.myapp.vo.RegisterVO">
-		select userid, userpwd, username, birth, tel, addr,addr1 from registers where userid=#{param1}
+		select userid, userpwd, username, birth, tel, addr from registers where userid=#{param1}
 		</select>
 		
 	<!-- 수정update -->	
