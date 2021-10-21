@@ -326,7 +326,7 @@ $(function(){/*메뉴바 전체가 나오는거*/
 <!--------------------------------------------->
 			<li class="select-li"><div><a href="/myapp/noticeList">WHAT`S UP</a></div>
 				<ul class="ulclass">
-					<li><a href="/myapp/noticeList">NOTICE</a></li>
+					<li><a href="/myapp/adminnoticeMain">NOTICE</a></li>
 				</ul>				
 			</li>
 <!--------------------------------------------->			

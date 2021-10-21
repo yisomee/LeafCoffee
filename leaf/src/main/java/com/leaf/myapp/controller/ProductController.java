@@ -71,84 +71,84 @@ public class ProductController {
 	
 	
 	
-	//입고리스트
-	@RequestMapping("/Warehousing_Management")
-	 public ModelAndView WarehousingList() {
-	      ModelAndView mav = new ModelAndView();
-	      List<ProductVO> vo = productService.WarehousingList();
-	    
-	      mav.addObject("WarehousingList", productService.WarehousingList());
-	      mav.setViewName("Head/Warehousing_Management");
-	      return mav;
-	}
-	// 본사가 보는 전체가맹점 발주리스트(본사페이지) 
-	@RequestMapping("/purchase_Confirm")
-	 public ModelAndView purchaseListAll() {
-	      ModelAndView mav = new ModelAndView();
-	      mav.addObject("purchaseListAll", productService.purchaseListAll());
-	      mav.setViewName("Head/purchase_Confirm");
-	      return mav;
-	}
-	//재고리스트
-		@RequestMapping("/inventory")
-		 public ModelAndView inventoryList() {
+		//입고리스트
+		@RequestMapping("/Warehousing_Management")
+		 public ModelAndView WarehousingList() {
 		      ModelAndView mav = new ModelAndView();
-		      List<ProductVO> vo = productService.inventory();
-		      for (int i = 0; i<vo.size(); i++) {
-		    	  ProductVO pVo = vo.get(i);
-		    	  int hq_num = pVo.getHq_num();
-		    	  int inventory = productService.ware_cntAll(hq_num).getWare_cntAll() - productService.pc_cntAll(hq_num).getPc_cntAll();
-		    	  System.out.println(inventory);
-		    	vo.get(i).setInventory(inventory);
-		      }
-		      
-		      mav.addObject("inventory", vo);
-		      mav.setViewName("Head/inventory");
+		      List<ProductVO> vo = productService.WarehousingList();
+		    
+		      mav.addObject("WarehousingList", productService.WarehousingList());
+		      mav.setViewName("Head/Warehousing_Management");
 		      return mav;
 		}
-	@RequestMapping("/Warehousing_Register")
-	public ModelAndView Warehousing_Register() {
-		ModelAndView mav = new ModelAndView();
-	      mav.addObject("items", productService.selectItems());
-	      mav.setViewName("Head/Warehousing_Register");
-	      return mav;
+		// 본사가 보는 전체가맹점 발주리스트(본사페이지) 
+		@RequestMapping("/purchase_Confirm")
+		 public ModelAndView purchaseListAll() {
+		      ModelAndView mav = new ModelAndView();
+		      mav.addObject("purchaseListAll", productService.purchaseListAll());
+		      mav.setViewName("Head/purchase_Confirm");
+		      return mav;
+		}
+		//재고리스트
+			@RequestMapping("/inventory")
+			 public ModelAndView inventoryList() {
+			      ModelAndView mav = new ModelAndView();
+			      List<ProductVO> vo = productService.inventory();
+			      for (int i = 0; i<vo.size(); i++) {
+			    	  ProductVO pVo = vo.get(i);
+			    	  int hq_num = pVo.getHq_num();
+			    	  int inventory = productService.ware_cntAll(hq_num).getWare_cntAll() - productService.pc_cntAll(hq_num).getPc_cntAll();
+			    	  System.out.println(inventory);
+			    	vo.get(i).setInventory(inventory);
+			      }
+			      
+			      mav.addObject("inventory", vo);
+			      mav.setViewName("Head/inventory");
+			      return mav;
+			}
+		@RequestMapping("/Warehousing_Register")
+		public ModelAndView Warehousing_Register() {
+			ModelAndView mav = new ModelAndView();
+		      mav.addObject("items", productService.selectItems());
+		      mav.setViewName("Head/Warehousing_Register");
+		      return mav;
+			
+		}	
+		//입고등록하기
+		@RequestMapping(value="/warehousing_RegisterOk", method=RequestMethod.POST)
+		public ModelAndView Warehousing_RegisterOk(ProductVO vo, HttpSession ses) {
+			ModelAndView mav = new ModelAndView();  
+			productService.Warehousing_RegisterOk(vo);
+			mav.addObject(vo);
+			mav.setViewName("redirect:Warehousing_Management");
+			return mav;
+		}
+		//제품등록하기
+		@RequestMapping(value="/items_RegisterOk", method=RequestMethod.POST)
+		public ModelAndView items_RegisterOk(ProductVO vo, HttpSession ses) {
+			ModelAndView mav = new ModelAndView();
+		      mav.addObject("selectPartner", productService.items_RegisterOk(vo));
+		      mav.setViewName("redirect:inventory");
+		      return mav;
+		}
+		/////////////////////////////////////////////////////////////////////////
+		@RequestMapping(value="/items_Register")
+		public ModelAndView items_Register() {
+			ModelAndView mav = new ModelAndView();
+			mav.addObject("selectPartner", productService.selectPartner());
+		      mav.setViewName("Head/items_Register");
+		      return mav;
+		}
+		//발주확인 페이지에서 확인버튼 누르면 대기-> 완료로 변경
+		@RequestMapping(value="/purchaseConfirm", method=RequestMethod.POST)
+		public ModelAndView purchaseConfirm(ProductVO vo, HttpSession ses) {
 		
-	}	
-	//입고등록하기
-	@RequestMapping(value="/warehousing_RegisterOk", method=RequestMethod.POST)
-	public ModelAndView Warehousing_RegisterOk(ProductVO vo, HttpSession ses) {
-		ModelAndView mav = new ModelAndView();  
-		productService.Warehousing_RegisterOk(vo);
-		mav.addObject(vo);
-		mav.setViewName("redirect:Warehousing_Management");
-		return mav;
-	}
-	//제품등록하기
-	@RequestMapping(value="/items_RegisterOk", method=RequestMethod.POST)
-	public ModelAndView items_RegisterOk(ProductVO vo, HttpSession ses) {
-		ModelAndView mav = new ModelAndView();
-	      mav.addObject("selectPartner", productService.items_RegisterOk(vo));
-	      mav.setViewName("redirect:Warehousing_Management");
-	      return mav;
-	}
-	/////////////////////////////////////////////////////////////////////////
-	@RequestMapping(value="/items_Register")
-	public ModelAndView items_Register() {
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("selectPartner", productService.selectPartner());
-	      mav.setViewName("Head/items_Register");
-	      return mav;
-	}
-	//발주확인 페이지에서 확인버튼 누르면 대기-> 완료로 변경
-	@RequestMapping(value="/purchaseConfirm", method=RequestMethod.POST)
-	public ModelAndView purchaseConfirm(ProductVO vo, HttpSession ses) {
+			productService.purchaseConfirm(vo);
+			ModelAndView mav = new ModelAndView();
+			
+			mav.setViewName("redirect:purchase_Confirm");
+			mav.addObject("no", vo.getPc_num());
+			return mav;
+		}
 	
-		productService.purchaseConfirm(vo);
-		ModelAndView mav = new ModelAndView();
-		
-		mav.setViewName("redirect:purchase_Confirm");
-		mav.addObject("no", vo.getPc_num());
-		return mav;
 	}
-
-}

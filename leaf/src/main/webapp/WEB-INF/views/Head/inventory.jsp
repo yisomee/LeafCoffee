@@ -9,7 +9,7 @@
    }
    .purchase_ok{
       width: 100%;
-      height:500px;
+      height:800px;
       display:flex;
       margin-left:10px; 
       margin-top:5px;
