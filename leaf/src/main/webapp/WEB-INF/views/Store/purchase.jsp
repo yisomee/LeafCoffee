@@ -3,7 +3,7 @@
 <style>
 
 	body{
-		background-color: rgb(245, 240, 233);
+		background-color: rgb(243, 244, 248);
 	}
 	.main{ 
 		max-width: 1400px;
@@ -19,7 +19,8 @@
 		overflow: auto;
 		box-shadow: 0px 1px 2px 1px lightslategrey;
 		border-radius: 5px;
-		height: 959px;
+		height: 931px;
+		background-color: rgb(249, 247, 244);
 	}
 	.partner{
 		width: 463px;
@@ -27,6 +28,7 @@
 		margin-right:10px;
 		box-shadow: 0px 1px 2px 1px lightslategrey;
 		border-radius: 5px;
+		background-color: rgb(249, 247, 244);
 	}
 	.purchase{
 		width: 490px;
@@ -37,6 +39,7 @@
 		flex-direction: column;
     	box-shadow: 0px 1px 2px 1px lightslategrey;
 		border-radius: 5px;
+		background-color: rgb(249, 247, 244);
 	}
 
 	.purchase_ok{
@@ -47,6 +50,7 @@
 		box-shadow: 0px 1px 2px 1px lightslategrey;
 		border-radius: 5px;
 		overflow:auto;
+		background-color: rgb(249, 247, 244);
 		}
 	.text{
 		width:100px;
@@ -64,7 +68,7 @@
 	    border-top: 1px solid #dee2e6;
 	}
 	.name, #name2{
-		font-size:1.5em;
+		font-size:1.2em;
 		font-weight:bold;
 		margin:10px;
 		
@@ -75,37 +79,42 @@
 	}
 	#name2{
 		margin-left:424px;
-		color:rgb(242, 242, 242);
+		color:rgb(243, 244, 248);
 	}
 	#pc_cnt{
 		width: 100px;
 		display: inline-block;
 		height: 30px;
-		background-color: rgb(245, 240, 233);
+		background-color:rgb(249, 247, 244);
 	}
 	#delBtn{
-		background-color: rgb(30, 57, 50);
-	    width: 80px;
-	    height: 35px;
+		background-color: rgb(210, 205, 200);
 	    border-radius: 3px;
 	    font-size: 0.6em;
-	    color: white;
-	    margin-left:722px;
+	    margin-left:1230px;
 	    font-size:1em;
+	    width: 150px;
+	    color: white;
+	    display: flex;
+	  	justify-content: space-evenly;
+	  	height: 40px;
 	}
 	.btn3{
-		background-color: rgb(30, 57, 50);
-	    width: 80px;
-	    height: 35px;
-	    border-radius: 3px;
 	    font-size: 0.6em;
-	    color: white;
 	    position: relative;
 	    top: 20px;
 	    left: -58px;
 	    font-size:1em;
+	    height: 40px;
+	    border: none;
+	    background-color: rgb(210, 205, 200);
+	    width: 150px;
+	    color: white;
+	    display: flex;
+	  	justify-content: space-evenly;
 }
-	}
+	
+	
 	textarea{
 		resize:none;
 	}
@@ -157,13 +166,7 @@
 		outline:none;
 		background-color:rgb(236, 236, 236);
 	}
-	#delBtnText{
-		font-size:0.5em;
-		color:gray;
-		position: relative;
-	    left: 572px;
-	    top: 5px;
-	}
+
 
 </style>
 <script>
@@ -265,7 +268,7 @@ $(()=>{
    <div id="headerText">PURCHASE</div>
 </header>
 <div class="main">
-	<div class="name">LIST</div> <div id="name2">거래처</div>
+	<div class="name">품목</div> <div id="name2">거래처</div>
 				<hr/>
 	<div class="search">
 		<input type='text' id='myinput' placeholder='원하시는 상품을 검색하세요.' class='form-control'/>
@@ -338,9 +341,8 @@ $(()=>{
   	   	
 	</div>
 	<form method="post" class="form" name="delsubmit" action="/myapp/purchaseDel">
-	<div class="name">발주요청내역</div>
+	<div class="name">요청내역</div>
 		<input type="submit" id="delBtn" value="발주취소">
-		<span id="delBtnText">화면의 발주상태가 대기일때만 취소가 가능합니다.</span>
 		<div class="purchase_ok">
 			 <table class="table table-hover">
 			  
@@ -366,9 +368,9 @@ $(()=>{
 		             	<td>${ProductVO.pc_num}</td>
 		               	<td>${ProductVO.hq_num}</td>
 		                <td>${ProductVO.hq_name}</td>
-		                <td>${ProductVO.ware_price}</td>
+		                <td>${ProductVO.ware_price + 2000}</td>
 		                <td>${ProductVO.pc_cnt}</td>
-		                <td>${ProductVO.ware_price*ProductVO.pc_cnt}</td>
+		                <td>${(ProductVO.ware_price + 2000)*ProductVO.pc_cnt}</td>
 	               	    <td>${ProductVO.pc_date}</td>
 	               	    <td id="status" name="status"><c:if test="${ProductVO.order_status == 1}">대기</c:if>
 		               	    <c:if test="${ProductVO.order_status == 2}">완료</c:if>
@@ -379,10 +381,9 @@ $(()=>{
 	         </tbody>
 	      </table>
 		</div>
-		<div class="name">발주완료내역</div>
+		<div class="name">완료내역</div>
 		<div class="purchase_ok">
 			 <table class="table table-hover">
-			  
 	      	<thead>
 	            <tr class="table-active">
 	            	<td>발주번호</td>
@@ -403,9 +404,9 @@ $(()=>{
 		             	<td>${ProductVO.pc_num}</td>
 		               	<td>${ProductVO.hq_num}</td>
 		                <td>${ProductVO.hq_name}</td>
-		                <td>${ProductVO.ware_price}</td>
+		                <td>${ProductVO.ware_price + 2000}</td>
 		                <td>${ProductVO.pc_cnt}</td>
-		                <td>${ProductVO.ware_price*ProductVO.pc_cnt}</td>
+		                <td>${(ProductVO.ware_price + 2000)*ProductVO.pc_cnt}</td>
 	               	    <td>${ProductVO.pc_date}</td>
 	               	    <td><c:if test="${ProductVO.order_status == 1}">대기</c:if>
 		               	    <c:if test="${ProductVO.order_status == 2}">완료</c:if>

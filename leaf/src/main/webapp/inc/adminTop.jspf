@@ -179,16 +179,16 @@ height: 46px;
 <!----------------------------------  -->	
 			<li class="select-li"><div><a href="/myapp/purchase_Confirm">PRODUCT</a></div>
 				<ul class="ulclass">
-					<li><a href="/myapp/purchase_Confirm">발주확인(본사)</a></li>
+					<li><a href="/myapp/purchase_Confirm">발주확인</a></li>
 					<li><a href="/myapp/Warehousing_Register">입고등록</a></li>
 					<li><a href="/myapp/Warehousing_Management">입고관리</a></li>
 					<li><a href="/myapp/inventory">재고관리</a></li>
 				</ul>			
 			</li>
 <!--------------------------------------------->
-			<li class="select-li"><div><a href="/myapp/noticeList">WHAT`S UP</a></div>
+			<li class="select-li"><div><a href=/myapp/adminnoticeMain>WHAT`S UP</a></div>
 				<ul class="ulclass">
-					<li><a href="/myapp/noticeList">NOTICE</a></li>
+					<li><a href="/myapp/adminnoticeMain">NOTICE</a></li>
 				</ul>				
 			</li>
 <!--------------------------------------------->			

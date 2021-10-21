@@ -7,7 +7,7 @@
 <mapper namespace="com.leaf.myapp.dao.ProductDAO">
 	<!-- 발주페이지 제품리스트 -->
 	<select id="ProductList"  resultType="com.leaf.myapp.vo.ProductVO">
-		  select hq_num, hq_name from items
+		select DISTINCT i.hq_num, i.hq_name from items i join product h on i.hq_num = h.hq_num order by hq_num
 	</select>
 	<!-- 발주시 제품클릭하면 파트너, 발주창 ajax-->	
 	<select id="ProductPartner" parameterType="int" resultType="com.leaf.myapp.vo.ProductVO">
