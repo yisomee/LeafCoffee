@@ -31,7 +31,6 @@
       font-weight:bold;
       margin-left: 0;
       margin-bottom: 3px;
-          font-size: 1rem;
    }
    .Nutrition{
       position: relative;

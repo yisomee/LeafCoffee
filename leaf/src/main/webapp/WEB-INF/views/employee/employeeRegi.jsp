@@ -6,8 +6,7 @@
 <title>사원 등록</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.2.0/css/all.min.css" integrity="sha512-6c4nX2tn5KbzeBJo9Ywpa0Gkt+mzCzJBrE1RB6fmpcsoN+b/w/euwIMuQKNyUoU/nToKN3a8SgNOtPrbW12fug==" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-<style>
-	/*.main-Form-bg{background-image: url(img/regibg1.jpg); background-size: cover; background-attachment: fixed;}*/
+<style>	
 	.main-form-Con{max-width: 570px; margin: 0 auto; padding: 70px 0 50px;}
 	.main-form-Con>strong{display: block;font-size: 30px;font-weight: normal;text-align: center; padding:30px;}
 	.mf-inputCon{border: 1px solid #ddd; border-bottom:0px solid gray; border-radius: 3px; box-sizing: border-box; max-width: 570px; margin: 0 auto 30px; position: relative;}
@@ -22,9 +21,8 @@
 	.mfi-inputbox #userid{width:400px; float:left;}
 	.mfi-inputbox #joinCheck{width:122px; background:rgb(0,163,239); color:#fff; border:0px solid; margin-left:6px; box-sizing:border-box;}
 	/* 부서파트 */
-	.mfi-inputbox #dept_name{width:460px;}
-	.mfi-inputbox #dept_img{width:48px; height:48px; float:right; background-image:url(img/empimg.png); background-size:cover;box-sizing: border-box; border: 1px solid gray;}
-	.mfi-inputbox #emp_posi{width:530px; display:inline-block; height:47px; margin-right:20px;}
+	.mfi-inputbox #dept_num{width:530px; display:inline-block; height:47px; margin-right:20px;}	
+	.mfi-inputbox #emp_posi{width:530px; display:inline-block; height:47px; margin-right:20px;}	
 	.regiForm-submit{width: 530px; margin: 0 auto; padding:20px 20px 40px;}
 	.regiForm-submit #emp-regi{width:530px; padding:15px;background: rgb(0,192,239); border: 1px solid white; color: white; font-size: 1.1em}
 	
@@ -72,14 +70,10 @@
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
 <script src="https://npmcdn.com/flatpickr/dist/l10n/ko.js"></script>
-<script>
-	function deptPopOpen(){		
-		window.open("<%=request.getContextPath()%>/deptlist","dept_list","width=680,height=560");	
-	}
-	
+<script>	
 	function goFocus(inputbox){
 		if(inputbox.value.length==4){
-			frm.tel3.focus();
+			$('#tel3').focus();
 		}
 	}
 	$(()=>{
@@ -174,10 +168,6 @@
 				$('#idcheck-error').focus();
 				return false;
 			}
-			if($('#dept_name').val()==='' || $('#dept_name').val()==null){
-				$('#deptName-error').css('display','block');
-				return false;
-			}
 			if($('#emp_regdate').val()==='' || $('#emp_regdate').val()==null){
 				$('#empRegdate-error').css('display','block');
 				return false;
@@ -239,10 +229,14 @@
 						<div class="mfi-inputbox">
 							<strong>부서명
 								<span>(필수)</span>
-							</strong>	
-							<input type="text" name="dept_name" id="dept_name" placeholder="부서명" readonly/>
-							<button type="button" id="dept_img" onclick="deptPopOpen()"></button>
-							<span id="deptName-error" class="error-Message">부서명을 입력해주세요!</span>
+							</strong>
+							<select name="dept_num" id="dept_num">
+								<option value="7100">품질관리부</option>
+								<option value="7000">인사부</option>
+								<option value="7300">시설부</option>
+								<option value="7200">가맹관리부</option>
+								<option value="8000">경영부</option>
+							</select>							
 						</div>
 						<div class="mfi-inputbox">
 							<strong>직급
@@ -263,8 +257,7 @@
 							<span id="empRegdate-error" class="error-Message">입사일을 선택해주세요!</span>							
 						</div>						
 					</section>
-				<div class="regiForm-submit">
-					<input type="hidden" name="dept_num" id="dept_num"/>										
+				<div class="regiForm-submit">															
 					<input type="submit" id="emp-regi" value="등록하기"/>
 				</div>
 				</div>

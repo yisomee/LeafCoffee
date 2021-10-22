@@ -246,8 +246,8 @@
 	/*사원 검색폼*/
 	.emptopCon{height:100px; background:#ddd;}
 	.searchWord-titleImg{height:100px; width:300px; display: inline-block; margin-left:220px; margin-top:15px;}
-	.searchWord-title{font-size:1.4em; display:inline-block; position:relative; top:-24px; left:35px;}	
-	#searchForm{display: inline-block; width: 730px; height: 60px; top: -29px;position:relative;}
+	.searchWord-title{font-size:1.4em; display:inline-block; position:relative; top:6px; left:35px;}	
+	#searchForm{display: inline-block; width: 730px; height: 60px; position:relative;}
 	select[name=searchKey]{height:50px; width:100px; font-size:1em;}
 	input[name="searchWord"]{height:50px; width:500px; font-size:1em;}
 	input[value="검색하기"]{height:50px; width:100px; box-sizing: border-box; font-size:1em;}
