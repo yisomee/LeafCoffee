@@ -47,9 +47,16 @@
 		width:150px;
 		background-color:rgb(244, 244, 242);
 	}
+	.content{
+		 margin-left: 110px;
+	}
 </style>
 <script>
-
+	function delCheck(admin_no){
+		if(confirm("삭제할까요?")){
+			location.href='/myapp/adminnoticeDel?admin_no='+admin_no;
+		}
+	};
 </script>
 <div class="container">
 	<h3><b>공지사항</b></h3>
@@ -57,8 +64,9 @@
 	<img src="img/${adminnoticeVo.img}" class="img"/>
 	<div class="content">${adminnoticeVo.admin_content }</div>
 	<div class="button">
-		<input type="button" value="글수정" class="btn" onClick="location.href='adminnoticeWrite'">
 		<input type="button" value="목록" class="btn" onClick="location.href='adminnoticeMain'">
+		<input type="button" value="수정하기"class="btn" onclick="location.href='/myapp/adminnoticeEdit?no=${adminnoticeVo.admin_no}'">
+		<input type="button" value="삭제하기"class="btn" onclick="location.href='javascript:delCheck(${adminnoticeVo.admin_no})'">
 	</div>
 	<div class="bottom_bar">
 		<b>윗글</b>

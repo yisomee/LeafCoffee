@@ -74,7 +74,7 @@
 	
 	<!-- 입고등록-->
 	<insert id="Warehousing_RegisterOk" parameterType="com.leaf.myapp.vo.ProductVO">	
-		insert into product(ware_num, hq_num,ware_cnt,emp_num) values(product_sq.nextval, #{hq_num}, #{ware_cnt}, #{emp_num})
+		insert into product(ware_num, hq_num,ware_cnt) values(product_sq.nextval, #{hq_num}, #{ware_cnt})
 	</insert> 
 	<!-- 상품등록 -->
 	<insert id="items_RegisterOk" parameterType="com.leaf.myapp.vo.ProductVO">	

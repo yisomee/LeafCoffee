@@ -180,7 +180,6 @@ $(function(){
 	
 });
 </script>
-
 	<header>
 		<div id="head_img"></div>
 		   <div id="headerText">COFFEE</div>

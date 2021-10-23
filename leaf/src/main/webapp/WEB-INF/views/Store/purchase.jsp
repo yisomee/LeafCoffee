@@ -9,7 +9,7 @@
 		max-width: 1400px;
 		margin:0 auto;
 		overflow:auto;
-		height:1500px;
+		height:1300px;
 	}
 	.search{
 		width:400px;
@@ -19,27 +19,27 @@
 		overflow: auto;
 		box-shadow: 0px 1px 2px 1px lightslategrey;
 		border-radius: 5px;
-		height: 931px;
+		height: 795px;
 		background-color: rgb(249, 247, 244);
 	}
 	.partner{
-		width: 463px;
+		width: 400px;
 		float:left;
-		margin-right:10px;
+		margin:10px;
 		box-shadow: 0px 1px 2px 1px lightslategrey;
 		border-radius: 5px;
-		background-color: rgb(249, 247, 244);
+		background-color: lavenderblush;
 	}
 	.purchase{
-		width: 490px;
+		width: 975px;
 		display:flex;
 		margin:10px; 
 		overflow: auto;
-		height: 214px;
+		height: 300px;
 		flex-direction: column;
     	box-shadow: 0px 1px 2px 1px lightslategrey;
 		border-radius: 5px;
-		background-color: rgb(249, 247, 244);
+		background-color:rgb(239, 239, 249);
 	}
 
 	.purchase_ok{
@@ -79,39 +79,42 @@
 	}
 	#name2{
 		margin-left:424px;
-		color:rgb(243, 244, 248);
+
 	}
 	#pc_cnt{
 		width: 100px;
 		display: inline-block;
 		height: 30px;
-		background-color:rgb(249, 247, 244);
+		background-color:rgb(239, 239, 249);
+		
 	}
 	#delBtn{
-		background-color: rgb(210, 205, 200);
+		background-color: rgb(30, 57, 50);
 	    border-radius: 3px;
 	    font-size: 0.6em;
-	    margin-left:1230px;
 	    font-size:1em;
-	    width: 150px;
+	    width: 120px;
 	    color: white;
 	    display: flex;
 	  	justify-content: space-evenly;
 	  	height: 40px;
+	  	margin-left: 826px;
+	  	border-radius:5px;
 	}
 	.btn3{
 	    font-size: 0.6em;
 	    position: relative;
-	    top: 20px;
-	    left: -58px;
+	    top: 30px;
+	    
 	    font-size:1em;
 	    height: 40px;
 	    border: none;
-	    background-color: rgb(210, 205, 200);
-	    width: 150px;
+	    background-color: indianred;
+	    width: 120px;
 	    color: white;
 	    display: flex;
 	  	justify-content: space-evenly;
+	  	border-radius:5px;
 }
 	
 	
@@ -125,6 +128,7 @@
 	 header{
    		height:250px;
    		position:relative;
+   		margin-bottom: 50px;
    		}
    #headerText{
    		top:-100px;
@@ -166,8 +170,32 @@
 		outline:none;
 		background-color:rgb(236, 236, 236);
 	}
+	.searchPartner{
+		width:420px;
+	}
 
+.form{
+	    display: flow-root;
+}
 
+#span{
+	font-size:0.6em;
+	margin:3px;
+}
+.fa-envira{
+	color:rgb(30, 57, 50);
+}
+.textarea{
+	width=200px;
+	height=70px;
+	border:2px solid;
+	font-weight:bold;
+	font-size:0.8em;
+	margin:10px;
+	padding:10px;
+	margin-bottom: 30px;
+	
+	}
 </style>
 <script>
 /*
@@ -268,8 +296,9 @@ $(()=>{
    <div id="headerText">PURCHASE</div>
 </header>
 <div class="main">
-	<div class="name">품목</div> <div id="name2">거래처</div>
+	<div class="name"><i class="fab fa-envira"></i> 품목</div> <div id="name2">발주요청</div>
 				<hr/>
+	<div class="searchPartner">			
 	<div class="search">
 		<input type='text' id='myinput' placeholder='원하시는 상품을 검색하세요.' class='form-control'/>
 		<table class='table table-hover'>
@@ -292,7 +321,7 @@ $(()=>{
 	<div class="partner">
 		<table class='table'>
 			<tr>
-				<td><b>거래처명</b></td>
+				<td><b>제조사</b></td>
 				<td id="view1">수영물산</td>
 			</tr>
 			<tr>
@@ -317,14 +346,16 @@ $(()=>{
 			</tr>
 		</table>
 	</div>
-
+</div>
 	<div class="purchase">
+<div class="name">발 주 서<hr/></div>
+
    	   	<div class="items">
    	   	<div>
-   	   		<div><b>상품번호</b></div>
-   	   		<div><b>제품명</b></div>
-   	   		<div><b>발주가격</b></div>
-   	   		<div><b>발주수량</b></div>
+   	   		<div><b><i class="fab fa-envira"></i> 상품번호 </b></div>
+   	   		<div><b><i class="fab fa-envira"></i> 제 품 명 </b></div>
+   	   		<div><b><i class="fab fa-envira"></i> 발주가격 </b></div>
+   	   		<div><b><i class="fab fa-envira"></i> 발주수량 </b></div>
    	   		
    	   	</div>
    	   	<div id="purchase">
@@ -333,16 +364,25 @@ $(()=>{
 	    <div>원두</div>
 	    <div>5000원</div>
 	    <input type="text" name='pc_cnt' id='pc_cnt'/>개
+	    
+	    
 		   
 	    <div><input type='submit' class='btn3' value='발주' /></div></form>
    	   	</div>
-   	   	
+   	   	<div class="textarea">
+	    	◎ 담당자 외에는 발주서 신청이 불가합니다.<br/>
+	    	◎ 본사 담당자가 발주를 확인 한 후 완료처리 될 예정입니다.<br/> 
+	    	◎ 발주가 완료되면 취소가 불가합니다.<br/>
+	    	◎ 발주상태가 대기중일시 취소가 가능합니다.
+	    	-LEAF-
+	    </div>
    	   	</div>
   	   	
 	</div>
 	<form method="post" class="form" name="delsubmit" action="/myapp/purchaseDel">
-	<div class="name">요청내역</div>
-		<input type="submit" id="delBtn" value="발주취소">
+	<div class="name">발주내역
+	</div>
+	<input type="submit" id="delBtn" value="발주취소">
 		<div class="purchase_ok">
 			 <table class="table table-hover">
 			  
@@ -368,9 +408,9 @@ $(()=>{
 		             	<td>${ProductVO.pc_num}</td>
 		               	<td>${ProductVO.hq_num}</td>
 		                <td>${ProductVO.hq_name}</td>
-		                <td>${ProductVO.ware_price + 2000}</td>
+		                <td>${ProductVO.ware_price + 2000}원</td>
 		                <td>${ProductVO.pc_cnt}</td>
-		                <td>${(ProductVO.ware_price + 2000)*ProductVO.pc_cnt}</td>
+		                <td>${(ProductVO.ware_price + 2000)*ProductVO.pc_cnt}원</td>
 	               	    <td>${ProductVO.pc_date}</td>
 	               	    <td id="status" name="status"><c:if test="${ProductVO.order_status == 1}">대기</c:if>
 		               	    <c:if test="${ProductVO.order_status == 2}">완료</c:if>
@@ -381,7 +421,7 @@ $(()=>{
 	         </tbody>
 	      </table>
 		</div>
-		<div class="name">완료내역</div>
+		<div class="name">발주완료</div>
 		<div class="purchase_ok">
 			 <table class="table table-hover">
 	      	<thead>
@@ -404,9 +444,9 @@ $(()=>{
 		             	<td>${ProductVO.pc_num}</td>
 		               	<td>${ProductVO.hq_num}</td>
 		                <td>${ProductVO.hq_name}</td>
-		                <td>${ProductVO.ware_price + 2000}</td>
+		                <td>${ProductVO.ware_price + 2000}원</td>
 		                <td>${ProductVO.pc_cnt}</td>
-		                <td>${(ProductVO.ware_price + 2000)*ProductVO.pc_cnt}</td>
+		                <td>${(ProductVO.ware_price + 2000)*ProductVO.pc_cnt}원</td>
 	               	    <td>${ProductVO.pc_date}</td>
 	               	    <td><c:if test="${ProductVO.order_status == 1}">대기</c:if>
 		               	    <c:if test="${ProductVO.order_status == 2}">완료</c:if>

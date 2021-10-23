@@ -33,7 +33,7 @@ public class NoticeController {
 		mav.setViewName("notice/noticeList");
 		return mav;      
    }
-   
+
 	//게시글 리스트
 /*	@RequestMapping("/noticeList")
 	public ModelAndView noticeList(NoticePagingVO pVo) {

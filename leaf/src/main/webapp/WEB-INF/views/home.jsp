@@ -408,16 +408,16 @@ position: absolute;
 		
 $(()=>{ /*맨처음 글자 날라오는 애니메이션*/
             $('.one').animate({marginLeft:"0px",marginRight:"0px",opacity:1,fontSize:"9rem"},500)
-            .delay(1000).animate({marginLeft:"150px",marginRight:"150px" ,opacity:0,fontSize:"14rem"},300);
+            .delay(500).animate({marginLeft:"150px",marginRight:"150px" ,opacity:0,fontSize:"14rem"},300);
             $('.two').animate({marginLeft:"0px",marginRight:"0px",opacity:1,fontSize:"9rem"},500)
-            .delay(1000).animate({marginLeft:"150px",marginRight:"150px" ,opacity:0,fontSize:"14rem"},300);
+            .delay(500).animate({marginLeft:"150px",marginRight:"150px" ,opacity:0,fontSize:"14rem"},300);
             $('.three').animate({marginLeft:"0px",marginRight:"0px",opacity:1,fontSize:"9rem"},500)
-            .delay(1000).animate({marginLeft:"150px",marginRight:"150px" ,opacity:0,fontSize:"14rem"},300);
+            .delay(500).animate({marginLeft:"150px",marginRight:"150px" ,opacity:0,fontSize:"14rem"},300);
             $('.four').animate({marginLeft:"0px",marginRight:"0px",opacity:1,fontSize:"9rem"},500)
-            .delay(1000).animate({marginLeft:"150px",marginRight:"150px" ,opacity:0,fontSize:"14rem"},300);
+            .delay(500).animate({marginLeft:"150px",marginRight:"150px" ,opacity:0,fontSize:"14rem"},300);
             
             $('.main')
-            .delay(2300)
+            .delay(1300)
             .queue(function (next) { 
             	$(this).css('display', 'block'); 
             });
