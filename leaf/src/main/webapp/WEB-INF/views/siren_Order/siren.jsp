@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -8,6 +7,7 @@
 <title>Insert title here</title>
   <!-- iamport.payment.js -->
  <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+ <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
 	integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
@@ -18,36 +18,57 @@
 <style>
 	a:link, a:hover, a:visited {text-decoration:none;color:black;}
 	ul, li {margin:0;padding:0;list-style-type:none;}
-	#totalCon{width:1300px;margin:0 auto}
+	body{background-color:#F5F0E9;}
+	.headCon{position:relative;top:-380px;color:white;width:500px;margin:0 auto;}
+	.head1{width:200px;margin:0 auto;padding-bottom:20px}
+	.head2>div{text-align:center;font-size:0.9rem}
+	#headerImg{width:1902px;}
+	.sirenInfo{display:flex;flex-direction:column;align-items:center;position:relative;top:-313px;left:415px;background-color:white;width:1100px}
+	#backCon{background-color:#F5F0E9;height:400px}
+	.sirenStep{display:flex;align-items:center;justify-content:space-evenly;width:800px;}
+	.sirenStep>ul{display: flex;flex-direction: column;text-align: center;}
+	#headerLogo{text-align:center;font-size:4rem;}
+	#pageTitle{text-align:center;font-size:1.8em;border-top:1px solid;}
+	#infoText{font-size:2.5rem;padding:30px 0;color:#382E2C;}
+	.stepIcon{font-size:3.5rem;color:#382E2C;}
+	.step{font-size:1.3rem;padding:10px;color:#7B3C07}
+	#lastText{display:flex;padding:50px 0 20px 0;font-size:0.9rem}
+	#goOd{padding-bottom:30px}
+	#goOd2{background-color:#9F8362;color:white;border:1px solid #9F8362;}
+	#safe{padding-right:15px;color:#664e49;font-weight:600}
+	.flexCon{display:flex;justify-content:center}
+	.sectCon{width:70%}
+	#stickyCon{position:sticky;top:100px;}
+	.section3{width:20%}
+	#orderBtn{background-color:#9F8362;color:white}
 	#mapCon{display:flex;}
 	
 	/*section2*/
 	.menu_title_container{display:flex;justify-content:space-evenly;border-bottom:1px solid gray;font-size:1.2rem}/*메뉴탑*/
-	.menu_title_container>li:hover{border-bottom:3px solid rgb(0, 163, 239);cursor:pointer}
+	.menu_title_container>li:hover{border-bottom:3px solid #7B3C07;cursor:pointer}
 	.menu_title_container>li{padding:15px}
-	#menuCon{display:flex;align-items:center}
+	#menuCon{display:flex;align-items:center;margin-bottom:150px}
 	.menu{width:40%}
 	#menuList{width:60%}
-	#menuSelect{font-size:1.8rem;padding:20px 0 20px 15px}
+	#menuSelect{font-size:1.8rem;padding:20px 0;font-weight:600}
 	#selMenuList{display:flex;flex-direction:column;align-items:center}
 	#selMenuList>li{padding:10px 0}
-	#totalPrice{margin-left:200px}
+	#totalPrice{margin-left:280px;color:#7B3C07;font-size:1.3rem;font-weight:700;}
 	#menuCntBtn>input[type='button']{width:50px;}
 	#menuCnt,#shotCnt,#syrupNum{padding:0 20px}
 	#shotPrice{padding:0 38px}
 	#syrupPrice{padding:0 32px}
 	#shotPlus,#shotMinus,#syrupPlus,#syrupMinus{width:50px}
 	/*메뉴리스트*/
-	.clicked{background-color:rgb(0, 163, 239) !important;color:white !important}
-	.imgwrap{width:110px;height:110px;display:flex;justify-content:center;border-radius: 100%;margin:30px;}
-	.imgwrap:hover{border:3px solid rgb(0, 163, 239)}
+	.clicked{background-color:#9F8362 !important; color:white !important}
+	.imgwrap{width:110px;height:110px;display:flex;justify-content:center;border-radius:100%;margin:30px;}
 	#img{width:110px;height:110px;border-radius:100%;}
 	.menuList{display:flex;justify-content:center;flex-wrap:wrap;margin-top:50px;}
 	.menuList>li{display:flex;flex-direction:column;align-items:center;}
 	.imgtext{text-align:center;}
 	.menuname{margin-left:80px;}
 	.menuname>li{padding:7px 0}
-	.p_ename {font-size:0.8em;color: rgb(0, 163, 239)}
+	.p_ename {font-size:0.8em;color:#9F8362;;}
 	.p_price, .p_num, .s_code, .selecPnum, .seleccartPnum{display:none}
 	#shotPrice, #syrupPrice{visibility: hidden;}
 	#img:hover {
@@ -75,19 +96,21 @@
 		transition: all 0.3s ease-in-out;
 	}		
 	#menuDetail{font-size:1.8em;padding:0 0 50px 106px;}			
-	.searchstore {background: rgb(0, 163, 239);font-size: 1.5rem;color: white;text-align: center;padding-top: 10px;}	
+	.searchstore {background:#9F8362;font-size:1.3rem;color:white;text-align:center;padding-top:10px;}	
 	#searched>li {height: 80px;padding: 5px;border-bottom: 1px solid #ddd;}	
-	input[type="button"]{width:190px;font-size:1.1rem;height:40px;border:1px solid rgb(0, 163, 239);border-radius:5px;color:rgb(0, 163, 239);background:white;}	
+	input[type="button"]{width:190px;height:40px;border:1px solid #9F8362;;color:#9F8362;;background:white;}	
+	#store{font-size: 1.8rem;padding: 20px 0;font-weight: 600;}
 	.store li {width:550px;height:20px;}	
 	#cart{font-size:1.8em;padding:40px 0}
 	.cartName{margin-left:10px;font-size:1.1rem}
 	.option{font-size:0.8rem}
 	.cartMenu{display:flex;justify-content:space-between}
-	.cartList{background-color:#F5F0E9;width:80%;margin:0 auto;border-radius:4%;padding:30px;}
+	.cartList{background-color:#F5F0E9;margin-top:30px;padding:25px}
 	.price{text-align:right;font-size:1.1em;font-weight:600;}
-	#cartPrice{width:80%;text-align:end;font-size:1.7rem;margin:0 auto;font-weight:bold;color:red;padding:20px}
-	#payBtn{text-align:center;margin:50px 0}
-	#addMenu>ul{margin:20px 0}
+	#cartPrice{text-align:end;font-size:1.3rem;font-weight:bold;color:#7B3C07;}
+	#payBtn{text-align:center;width:380px;height:45px;background-color:#9F8362;color:white;border:1px solid #9F8362;}
+	#addMenu>ul{margin-top:20px}
+	#cartTit{text-align:center;font-size:1.4rem;font-weight:600;color:#382E2C}
 /*	#mapList {position: absolute;left: 1%;top: 11%;background: white;border-radius:3%;width:300px;height:300px;opacity:0.8;}	
 	.detail{position: relative;left: 65%;top: 15%;height: 645px;}*/
 	
@@ -279,20 +302,21 @@
 		//장바구니 담기 버튼 클릭시
 		$("#addCartBtn").click(function(){
 			if(cup != null && size != null && hot_ice != null){
-				var cartMenu = "<ul class='cartMenu'>";
-					cartMenu += "<li><input type='checkbox'><span class='cartName'>"+ $("#selectName").text() +"</span><br/><span class='option'>"+cup+"/"+size+"/"+hot_ice;
-					if(parseInt($("#shotCnt").text())>0){
-						cartMenu += "/샷추가"+$("#shotCnt").text()+"회(+"+$("#shotPrice").text()+")";
-					}
-					if(parseInt($("#syrupNum").text())>0){
-						cartMenu += "/시럽추가"+$("#syrupNum").text()+"회(+"+500+")";
-					}
-					cartMenu += "</span></li>";
-					cartMenu += "<li>"+$("#menuCnt").text()+"</li>";
+				var cartMenu = "<div class='addTotal'>";
+					cartMenu += "<ul class='cartMenu'>";
+					cartMenu += "<li><input type='checkbox'><span class='cartName'>"+ $("#selectName").text() +"</span></li>";
+					cartMenu += "<li id='cartCnt'>"+$("#menuCnt").text()+"</li>";
 					cartMenu += "<li class='price'>"+$("#totalPrice").text()+"</li>";
 					cartMenu += "<li class='seleccartPnum'>"+$(".selecPnum").text()+"</li></ul>";
-					console.log($(".selecPnum").text());
+					cartMenu += "<div class='option'>"+cup+"/"+size+"/"+hot_ice;
+					if(parseInt($("#shotCnt").text())>0){
+						cartMenu += "/샷추가"+$("#shotCnt").text()+"회(+"+$("#shotPrice").text()+")<div>";
+					}
+					if(parseInt($("#syrupNum").text())>0){
+						cartMenu += "/시럽추가"+$("#syrupNum").text()+"회(+"+500+")</div>";
+					}
 				$("#addMenu").append(cartMenu);			
+					console.log($(".selecPnum").text());
 				menuInit();
 			}else if(cup==null){
 				alert("컵을 선택해주세요.");
@@ -306,7 +330,7 @@
 	});
 </script>
 <!-- 지도 api -->
-<!--<script>
+<script>
 	// https://cloud.google.com/maps-platform/
 	// https://maps.googlepis.com/
 	//위도, 경도
@@ -327,136 +351,188 @@
 				mapProperty);
 
 	}	
-</script>-->
+</script>
 </head>
 <body>
 <%@ include file="/inc/top.jspf" %>
-<div id="totalCon">
-	<section class="section1">
-		<div id="store">매장 선택</div>
-		<div id="mapCon">
-			<div id="map" class="list"></div>
-			<div id='mapList'>
-				<ul>
-					<li class="searchstore">매장찾기</li>
-					<li class="searchstore"><input type="text"
-						placeholder="매장명 또는 주소"></li>
-					<li>
-						<ul id="searched">
-							<li>무교로<br /> 서울특별시 중구 무교로 15(무교동)<br /> 1522-3232
-							</li>
-							<li>한국 프레스 센터<br />서울특별시 중구 세종대로 124(태평로1가)<br />1522-3232
+<header><img src=https://www.baristapaulbassett.co.kr/images/society/introductionVisual.jpg id="headerImg"></header>
+<div id="backCon">
+	<div class="headCon">
+		<div class="head1">
+			<div id="headerLogo">leaf</div>
+			<div id="pageTitle">SIREN ORDER</div>
+		</div>
+		<div class="head2">
+			<div>leaf가 브랜드 회원만을 위해 새롭게 선보이는 주문 서비스 입니다.</div>
+			<div>매장 방문 하기 전 미리 주문하고 leaf를 맘껏 누려보세요.</div>
+		</div>
+	</div>
+	<section class="sirenInfo">
+		<div id="infoText"><strong>"내 손안의 매장"</strong>을 이용해 보세요.</div>
+		<div class="sirenStep">
+			<ul>
+				<li class="stepIcon"><i class="fas fa-user-check"></i></li>
+				<li class="step">STEP1</li>
+				<li>로그인</li>
+			</ul>
+			<div><img src="img/next.png"/></div>
+			<ul>
+				<li class="stepIcon"><i class="fas fa-coffee"></i></li>
+				<li class="step">STEP2</li>
+				<li>메뉴선택</li>
+			</ul>
+			<div><img src="img/next.png"/></div>
+			<ul>
+				<li class="stepIcon"><i class="fas fa-map-marker-alt"></i></li>
+				<li class="step">STEP3</li>
+				<li>지점선택</li>
+			</ul>
+			<div><img src="img/next.png"/></div>
+			<ul>
+				<li class="stepIcon"><i class="fas fa-credit-card"></i></li>
+				<li class="step">STEP4</li>
+				<li>결제하기</li>
+			</ul>
+		</div>
+		<div id="lastText">
+			<div id="safe">유의사항</div>
+			<div>-사이렌 오더 운영시간 : 08:00 ~ 21:30<br/>
+			-결제 및 주문은 매장 2km 이내에서 가능합니다.</div>
+		</div>
+		<div id="goOd"><a href="#menuSelect"><input type="button" value="주문하러가기" id="goOd2"/></a></div>
+	</section>
+</div>
+<!-- 주문컨테이너 -->
+<div class=flexCon>
+	<div class="sectCon">
+		<section class="section2">
+		<div id="menuSelect">메뉴 선택</div>
+		<div id="menuCon">
+			<div id="menuList">
+				<ul class="menu_title_container">
+					<li id="All">All</li>
+					<li id="Coffee">Coffee</li>
+					<li id="Beverage">Beverage</li>
+					<li id="Food">Food</li>
+				</ul>		
+				<ul class="menuList">
+					<c:forEach var="menuVo" items="${menuVo}">
+					<li class="siren___menu ${menuVo.s_code}">
+						<div class="imgwrap">
+							<img src="img/americano.png" id="img"/>
+						</div>
+						<div class="imgtext">
+							<div class="p_name">${menuVo.p_name}</div>
+							<div class="p_ename">${menuVo.p_ename}</div>
+							<div class="p_price">${menuVo.p_price}</div>
+							<div class="s_code">${menuVo.s_code}</div>
+							<div class="p_num">${menuVo.p_num }</div>
+						</div>
+					</li>
+					</c:forEach>
+				</ul>
+			</div>
+			<div class="detail menu">
+				<div id="menuDetail">메뉴 상세</div>
+				<ul id="selMenuList">
+					<li style="display:flex;">
+						<img src="img/americano.png" id="img"style="width: 150px; height: 150px;" /> 
+						<ul class="menuname">
+							<li id="selectName">아메리카노</li>
+							<li id="selectEname" class="p_ename">Americano</li>
+							<li id="selectPrice">4,300원</li>
+							<li class="selecPnum"></li>
+							<li id="menuCntBtn">
+								<input id="menuMinus" class="cntBtn" type="button" value="-"> 
+								<span id="menuCnt"> 1 </span> <input id="menuPlus" class="cntBtn" type="button" value="+">
 							</li>
 						</ul>
 					</li>
+					<li id="cup">
+						<input type="button" value="일회용컵" class="selectCup">
+						<input type="button" value="매장컵" class="selectCup">
+					</li>
+					<li id="size">
+						<input type="button" value="TALL" class="selectSize">
+						<input type="button" value="GRANDE" class="selectSize">
+					</li>
+					<li id="hot_ice">
+						<input type="button" value="HOT" class="selectHI">
+						<input type="button" value="ICE" class="selectHI">
+					</li>
+					<li>
+						샷추가 
+						<span id="shotPrice">0</span>
+						<input id="shotMinus" class="cntBtn" type="button" value="-"> 
+						<span id="shotCnt"> 0 </span>
+						<input id="shotPlus" class="cntBtn" type="button" value="+">
+					</li>
+					<li>
+						시럽추가 
+						<span id="syrupPrice">0</span>
+						<input id="syrupMinus" class="cntBtn" type="button" value="-"> 
+						<span id="syrupNum"> 0 </span>
+						<input id="syrupPlus" class="cntBtn" type="button" value="+">
+					</li>
+					<li id="totalPrice">4300원</li>
+					<li>
+						<input type="button" value="장바구니 담기" id="addCartBtn">
+						<input type="button" value="주문하기" id="orderBtn">
+					</li>
 				</ul>
 			</div>
-			<ul class="detail store">
-				<li style="height: 369px"><img
-					src="img/15066662951506666295_kospi007.jpg"></li>
-				<li>문정하비오점</li>
-				<li>서울시 송파구 송파대로 111(문정동 23-2)</li>
-				<li>-사이렌 오더 운영시간 : 07:00 ~ 21:30</li>
-				<li>-결제 및 주문은 매장 2km 이내에서 가능합니다.</li>
-			</ul>
 		</div>
-	</section>
-	<section class="section2">
-	<div id="menuSelect">메뉴 선택</div>
-	<div id="menuCon">
-		<div id="menuList">
-			<ul class="menu_title_container">
-				<li id="All">All</li>
-				<li id="Coffee">Coffee</li>
-				<li id="Beverage">Beverage</li>
-				<li id="Food">Food</li>
-			</ul>		
-			<ul class="menuList">
-				<c:forEach var="menuVo" items="${menuVo}">
-				<li class="siren___menu ${menuVo.s_code}">
-					<div class="imgwrap">
-						<img src="img/americano.png" id="img"/>
-					</div>
-					<div class="imgtext">
-						<div class="p_name">${menuVo.p_name}</div>
-						<div class="p_ename">${menuVo.p_ename}</div>
-						<div class="p_price">${menuVo.p_price}</div>
-						<div class="s_code">${menuVo.s_code}</div>
-						<div class="p_num">${menuVo.p_num }</div>
-					</div>
-				</li>
-				</c:forEach>
-			</ul>
-		</div>
-		<div class="detail menu">
-			<div id="menuDetail">메뉴 상세</div>
-			<ul id="selMenuList">
-				<li style="display:flex;">
-					<img src="img/americano.png" id="img"style="width: 150px; height: 150px;" /> 
-					<ul class="menuname">
-						<li id="selectName">아메리카노</li>
-						<li id="selectEname" class="p_ename">Americano</li>
-						<li id="selectPrice">4,300원</li>
-						<li class="selecPnum"></li>
-						<li id="menuCntBtn">
-							<input id="menuMinus" class="cntBtn" type="button" value="-"> 
-							<span id="menuCnt"> 1 </span> <input id="menuPlus" class="cntBtn" type="button" value="+">
+		</section>
+		<section class="section1">
+			<div id="store">매장 선택</div>
+			<div id="mapCon">
+				<div id="map" class="list"></div>
+				<div id='mapList'>
+					<ul>
+						<li class="searchstore">매장찾기</li>
+						<li class="searchstore"><input type="text"
+							placeholder="매장명 또는 주소"></li>
+						<li>
+							<ul id="searched">
+								<li>무교로<br /> 서울특별시 중구 무교로 15(무교동)<br /> 1522-3232
+								</li>
+								<li>한국 프레스 센터<br />서울특별시 중구 세종대로 124(태평로1가)<br />1522-3232
+								</li>
+							</ul>
 						</li>
 					</ul>
-				</li>
-				<li id="cup">
-					<input type="button" value="일회용컵" class="selectCup">
-					<input type="button" value="매장컵" class="selectCup">
-				</li>
-				<li id="size">
-					<input type="button" value="TALL" class="selectSize">
-					<input type="button" value="GRANDE" class="selectSize">
-				</li>
-				<li id="hot_ice">
-					<input type="button" value="HOT" class="selectHI">
-					<input type="button" value="ICE" class="selectHI">
-				</li>
-				<li>
-					샷추가 
-					<span id="shotPrice">0</span>
-					<input id="shotMinus" class="cntBtn" type="button" value="-"> 
-					<span id="shotCnt"> 0 </span>
-					<input id="shotPlus" class="cntBtn" type="button" value="+">
-				</li>
-				<li>
-					시럽추가 
-					<span id="syrupPrice">0</span>
-					<input id="syrupMinus" class="cntBtn" type="button" value="-"> 
-					<span id="syrupNum"> 0 </span>
-					<input id="syrupPlus" class="cntBtn" type="button" value="+">
-				</li>
-				<li id="totalPrice">4300원</li>
-				<li>
-					<input type="button" value="장바구니 담기" id="addCartBtn">
-					<input type="button" value="주문하기" id="orderBtn">
-				</li>
-			</ul>
-		</div>
-	</div>
-	</section>
-	<section class="section3">
-	<div id="cart">장바구니</div>
-	<form>
-		<ul class="cartList">
-			<li><input type="checkbox"><span>상품명</span><span>수량</span><span>금액</span></li>
-			<hr/>					
-			<li id="addMenu">
-				<ul class="cartMenu">
-					<li><input type="checkbox"><span class="cartName">아메리카노</span><br/><span class="option">ICE/Tall/매장컵</span></li>
-					<li id="cartCnt">1</li>
-					<li class="price">4,300원</li>
-					<li class="seleccartPnum"></li>
+				</div>
+				<ul class="detail store">
+					<li style="height: 369px"><img
+						src="img/15066662951506666295_kospi007.jpg"></li>
+					<li>문정하비오점</li>
+					<li>서울시 송파구 송파대로 111(문정동 23-2)</li>
+					<li>-사이렌 오더 운영시간 : 07:00 ~ 21:30</li>
+					<li>-결제 및 주문은 매장 2km 이내에서 가능합니다.</li>
 				</ul>
+			</div>
+		</section>
+	</div>
+	<section class="section3">
+	<form id="stickyCon">
+		<ul class="cartList">
+			<li id="cartTit">장바구니</li>
+			<li><hr/></li>					
+			<li id="addMenu">
+				<div class="addTotal">
+					<ul class="cartMenu">
+						<li><input type="checkbox"><span class="cartName">아메리카노</span></li>
+						<li id="cartCnt">1</li>
+						<li class="price">4,300원</li>
+						<li class="seleccartPnum"></li>
+					</ul>
+					<div class="option">ICE/Tall/매장컵</div>
+				</div>
 			</li>
 			<li><hr/></li>
-		</ul>					
-		<div id="cartPrice">총 8,500원</div>
-		<div id="payBtn"><input type="button" value="주문결제하기"/></div>
+			<li id="cartPrice">총 8,500원</li>
+		</ul>							
+		<div><input type="button" value="주문결제하기" id="payBtn"/></div>
 	</form>
 	</section>
 </div>
@@ -467,12 +543,10 @@
         IMP.init('imp54411040');
         var money = $('#totalPrice').text();
         var userName = '${regVo.username}';
-        var userAddr = '${regVo.addr}';
         var userid =  '${regVo.userid}';
         var p_num = $('.selecPnum').text();
         var od_cnt = $('#menuCnt').text();
         var selectName = $('#selectName').text();
-        console.log(money,userName, userAddr, p_num);
         IMP.request_pay({
             pg: 'pg',
             pay_method:'card',
@@ -480,7 +554,6 @@
             name: selectName,
             amount: money,
             buyer_name: userName,
-            buyer_addr: userAddr,
             buyer_postcode:'113-343',
             
         }, function (rsp) {

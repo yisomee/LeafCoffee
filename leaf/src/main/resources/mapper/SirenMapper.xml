@@ -7,7 +7,7 @@
   		select * from menu order by p_num desc
   	</select>
   	<select id="sirenRegData" parameterType="String" resultType="com.leaf.myapp.vo.RegisterVO">
-  		select * from registers where username=#{logname}
+  		select userid, username from registers where username=#{logname}
   	</select>
   	<insert id="addOrderTbl" parameterType="com.leaf.myapp.vo.SirenCartVO" >
   		insert into order1(od_num,p_num,od_cnt,fc_num,userid) 
