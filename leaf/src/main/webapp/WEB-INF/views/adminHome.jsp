@@ -1,12 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"	rel="stylesheet">
-<title>LEAF 관리자 페이지</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"	rel="stylesheet">
+<script src="https://kit.fontawesome.com/a688454d8e.js"crossorigin="anonymous"></script>
+<title>LEAF 관리자 페이지</title>
+
 <style>
 *{
   font-family: 'Noto Sans KR', sans-serif;
@@ -257,6 +262,11 @@ video { width: 100%; position:absolute; top:-111px;}
 #chatBody::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera*/
 }
+
+.logname{
+   padding-top:10px;
+}
+
 </style>
 </head>
 <script>
@@ -290,14 +300,22 @@ $(function(){/*메뉴바 전체가 나오는거*/
 	
 
 <div class="header">
-	<div class="login">
-		<ul>
-			<li><a href="/myapp/adminHome">본사</a></li>
-			<li><a href="/myapp/franHome">가맹점</a></li>
-			<li><a href="/myapp/login">LOGIN</a></li>
-			<li><a href="/myapp/register">JOIN</a></li>	
-		</ul>
-	</div>
+ <div class="login">
+      <ul>
+         <li><a href="/myapp/adminHome">본사</a></li>
+         <li><a href="/myapp/franHome">가맹점</a></li>
+         <c:if test="${logname==null}"><li><a href="/myapp/login">LOGIN</a></li></c:if>
+         <c:if test="${logname!=null}"><li><a href="/myapp/logout">LOGOUT</a></li></c:if>
+         <div class="logname">${logname}
+         <c:if test="${membership==1}">Silver <i class="fab fa-envira" style="color:gray;"></i></c:if>
+         <c:if test="${membership==2}">Gold <i class="fab fa-envira" style="color:gold;"></i></c:if>
+         <c:if test="${membership==3}">Platinum <i class="fab fa-envira"style="color:blue;"></i></c:if></div>
+       
+         <c:if test="${logname==null}"><li><a href="/myapp/register">JOIN</a></li></c:if>
+         <c:if test="${logname!=null}"><li><a href="/myapp/mypage">마이페이지</a></li></c:if>
+         
+      </ul>
+   </div>
 	<!-- <a href="/leaf"><div class="logoimg"><img src="img/leaflogo-removebg-preview.png"/></div></a> -->
 	<div class="logoimg"><img src="img/leaflogo-removebg-preview.png" onclick="location.href='/myapp/'"/></div>
 	

@@ -93,6 +93,63 @@ position: absolute;
 		};
 		//지도를 표시할 곳	
 		var map = new google.maps.Map(document.getElementById("map"), mapProperty);
+		//마커표시
+		 var geocoder = new google.maps.Geocoder();
+ 
+            // submit 버튼 클릭 이벤트 실행
+           
+                console.log('submit 버튼 클릭 이벤트 실행');
+ 
+                // 여기서 실행
+                geocodeAddress(geocoder, map);
+           
+ 
+            /**
+             * geocodeAddress
+             * 
+             * 입력한 주소로 맵의 좌표를 바꾼다.
+             */
+            function geocodeAddress(geocoder, resultMap) {
+                console.log('geocodeAddress 함수 실행');
+ 
+                // 주소 설정
+//                 var address = document.getElementById('address').value;
+                var address = '서울특별시 강남구 역삼로 310 (역삼동)1522-3232';
+ 
+                /**
+                 * 입력받은 주소로 좌표에 맵 마커를 찍는다.
+                 * 1번째 파라미터 : 주소 등 여러가지. 
+                 *      ㄴ 참고 : https://developers.google.com/maps/documentation/javascript/geocoding#GeocodingRequests
+                 * 
+                 * 2번째 파라미터의 함수
+                 *      ㄴ result : 결과값
+                 *      ㄴ status : 상태. OK가 나오면 정상.
+                 */
+                geocoder.geocode({'address': address}, function(result, status) {
+                    console.log(result);
+                    console.log(status);
+ 
+                    if (status === 'OK') {
+                        // 맵의 중심 좌표를 설정한다.
+                        resultMap.setCenter(result[0].geometry.location);
+                        // 맵의 확대 정도를 설정한다.
+                        resultMap.setZoom(18);
+                        // 맵 마커
+                        var marker = new google.maps.Marker({
+                            map: resultMap,
+                            position: result[0].geometry.location
+                        });
+ 
+                        // 위도
+                        console.log('위도(latitude) : ' + marker.position.lat());
+                        // 경도
+                        console.log('경도(longitude) : ' + marker.position.lng());
+                    } else {
+                        alert('지오코드가 다음의 이유로 성공하지 못했습니다 : ' + status);
+                    }
+                });
+            }
+
 
 	}
 </script>
