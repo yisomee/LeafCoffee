@@ -138,6 +138,7 @@ public class RegisterController {
 		}else { //로그인성공
 			ses.setAttribute("logid", resultVO.getUserid());
 			ses.setAttribute("logname", resultVO.getUsername());
+			ses.setAttribute("membership", resultVO.getMembership());
 			mv.setViewName("redirect:/");
 		}
 		

@@ -260,30 +260,7 @@ $(function(){
 	</div>
 	<div>
 		<ul class="menuList">
-			<li class="Bean"><div class="imgwrap">
-					<a href="/suyeong/leaf/leaf_menu_detail.jsp"><img
-						src="img/Croiffle.png" id="img" /></a>
-				</div>
-				<div class="imgtext">
-					크로플<br />
-					<span class="imgtext2">Croiffle</span>
-				</div></li>
-			<li class="Tumbler"><div class="imgwrap">
-					<a href="/suyeong/leaf/leaf_menu_detail.jsp"><img
-						src="img/Croiffle.png" id="img" /></a>
-				</div>
-				<div class="imgtext">
-					크로플<br />
-					<span class="imgtext2">Croiffle</span>
-				</div></li>
-			<li class="Mug"><div class="imgwrap">
-					<a href="/suyeong/leaf/leaf_menu_detail.jsp"><img
-						src="img/Croiffle.png" id="img" /></a>
-				</div>
-				<div class="imgtext">
-					크로플<br />
-					<span class="imgtext2">Croiffle</span>
-				</div></li>
+		
 			<c:forEach var="MenuVO" items="${MenuList}"> 
 				<li class="${MenuVO.s_code}"><div class="imgwrap"><a href="/myapp/menu_detail?p_num=${MenuVO.p_num}"><img src="img/${MenuVO.p_img}" id="img"/></a></div>
 					<div class="imgtext">${MenuVO.p_name}<br/><span class="imgtext2">${MenuVO.p_ename}</span></div>
