@@ -67,6 +67,7 @@ ul,li{
 	padding-left: 20px;
 	
 }
+#section3{position:relative;height: 584px;}
 #section1{position:relative;height: 800px;}
 #section2{position:relative;background: rgb(245, 240, 233);}
 .logoimg>img{
@@ -155,22 +156,27 @@ height: 46px;
 video { width: 100%; position:absolute; top:-111px;}
 
 /* 중단 가맹점현황, 총임직원, 함께하는 회원*/
-.amount{top:-66px; display: flex; min-width:1500px; width:100%; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); margin: auto;}
+.amount{
+position: absolute;
+    z-index: 2;
+   top: 380px;
+    left: 350px;
+    display: flex;
+    width: 1200px;
+    margin: auto;}
 .amount > li {flex: 1; height: 180px;}
 .amount > li > div {text-align: center; margin-top:55px; height:57px;}
 .amount > li:not(:last-child) > div{border-right:1px solid #E1E1E1;}
 .contents1{font-size: 20px; font-weight: lighter;}
-.result{font-size: 24px; display:inline-block; font-size:2em;}
-#sales-container{margin:0 auto;width:800px;}
-#sales-count{background:white; display:inline-block; width:800px; height:100px; border:1px solid black; text-align:center; margin-top: 50px; padding-top: 10px;}
+.result{margin-bottom:20px;font-weight:600; display:inline-block; font-size:4em;color:rgb(0, 163, 239);}
+#sales-container{position:absolute;left: 163px; margin:0 auto;width:800px;top: 60px;}
+#sales-count{display:inline-block; width:800px; height:100px; text-align:center; margin-top: 50px; padding-top: 10px;}
 #sales-count>span{font-size:2em;}
-.shadow_eff{position:relative; color:#002F2F; height: 162px; }
-.shadow_eff:before,.shadow_eff:after{content:""; position:absolute; z-index:-1; width:300px; left:5px; top:80%; bottom:15px; background: #000; box-shadow: 0 20px 15px #000; transform: rotate(-5deg);}
-.shadow_eff:after{transform: rotate(5deg); right: 5px; left: auto;}
+
 /*-------------*/
 
 /* 중단 카드슬라이드 */
-.container{position: relative; display: flex; margin: auto;width: 1500px; justify-content: space-between;}
+.container{    top: 200px;position: relative; display: flex; margin: auto;width: 1500px; justify-content: space-between;}
 .container .card{position: relative; cursor: pointer; text-align:center;}
 .container .card .face{width: 300px; height: 200px; transition: 0.5s;}
 .container .card .face.face1{position: relative; display: flex; justify-content: center; align-items: center; z-index: 1; transform: translateY(100px);}
@@ -182,8 +188,21 @@ video { width: 100%; position:absolute; top:-111px;}
 .container .card .face.face2{position: relative; display: flex;background: #fff; padding: 20px; justify-content: center; align-items: center; box-sizing: border-box; box-shadow: 10px 15px 18px rgb(192,192,192); transform: translateY(-100px);}
 .container .card:hover .face.face2{transform: translateY(0);}
 .container .card .face.face2 .content p{margin: 0; padding: 0;}
-.container .card .face.face2 .content a{display: inline-block; margin: 35px 0 0; padding: 5px; text-decoration: none; font-weight: 900; color: #333; border: 1px solid #333;}
-.container .card .face.face2 .content a:hover{background: #333; color: #fff;}
+.container .card .face.face2 .content a{    display: inline-block;
+    margin: 35px 0 0;
+    padding: 5px;
+    text-decoration: none;
+    font-weight: 900;
+    color: rgb(0, 163, 239);
+    border: 1px solid rgb(0, 163, 239);
+    width: 110px;
+    height: 35px;
+    line-height: 35px;
+    border-radius: 2px;
+    transition: 0.4s;}
+.container .card .face.face2 .content a:hover{box-shadow: inset 8em 0 0 0 rgb(0, 163, 239);
+	color: white;
+	border-color: rgb(0, 163, 239);}
 .face-bg1{background-image:url('img/springimg.jpg');}
 .face-bg2{background-image:url('img/summerimg.jpg');}
 .face-bg3{background-image:url('img/autumnimg.jpg');}
@@ -223,19 +242,23 @@ video { width: 100%; position:absolute; top:-111px;}
 #leaf-right-btn{width:80px;	height:60px;}	
 
 #chat{
-	width: 200px;
-	height: 100px;
-	position: fixed;
-	right: 0px;
-	top: 500px;
-	background: white;
+	width: 170px;
+    height: 80px;
+    position: fixed;
+    right: 20px;
+    top: 785px;
+    background: white;
     z-index: 20;
-    border: 1px solid gray;
-
+    box-shadow: 1px 1px 1px 1px #ddd;
+    border-radius: 60px;
+    text-align: center;
+    line-height: 80px;
+    font-size: 1.2rem;
+    font-weight: 600;
 }
 #chatTab{
 	width:350px;
-	height: 500px;
+	height: 520px;
 	position: fixed;
 	right: 20px;
 	bottom: 20px;
@@ -243,7 +266,7 @@ video { width: 100%; position:absolute; top:-111px;}
 	z-index: 20;
 	border: 1px solid #ddd;
 	border-radius: 30px;
-	padding:20px;
+	padding:5px 20px;
 	display: none;
 }
 #chatBody{
@@ -256,6 +279,65 @@ video { width: 100%; position:absolute; top:-111px;}
 }
 #chatBody::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera*/
+}
+#section3{
+background: 	url(img/1i62q22343whvmtlu1C77.jpg);background-position-y: -337px;
+height: 818px;
+}
+
+.count{
+    position: absolute;
+    top: 373px;
+    left: 350px;
+    background: white;
+    z-index: 2;
+    opacity: 0.8;
+    border-radius: 26px;
+    height: 260px;
+    width: 1200px;
+    box-shadow: 1px 1px 1px 1px #ddd;
+}
+span{
+	display: inline-block;
+	margin: 0 -.075em;
+	animation: loading 1.2s infinite alternate;
+	color: white;
+    font-size: 2rem;
+    margin-right: 13px;
+}
+
+.loading span:nth-child(2) {
+	animation-delay: .1s;
+}
+
+.loading span:nth-child(3) {
+	animation-delay: .2s;
+}
+
+.loading span:nth-child(4) {
+	animation-delay: .2s;
+}
+
+.loading span:nth-child(5) {
+	animation-delay: .2s;
+}
+
+.loading span:nth-child(6) {
+	animation-delay: .2s;
+}
+@keyframes loading { 
+0% {transform: scale(1);}
+100%{transform:scale(0.9);}
+}
+.chatTitle{
+	
+    font-size: 1.3rem;
+    padding: 0px 8px 5px 7px;
+    font-weight: 600;
+}
+.chatTitle>div{
+	float:right;
+	color: rgb(0, 163, 239);
 }
 </style>
 </head>
@@ -278,7 +360,7 @@ $(function(){/*메뉴바 전체가 나오는거*/
 <div id="chat">상담하기</div>
 <div id="chatTab">
 	<ul>
-		<li>leaf x</li>
+		<li class="chatTitle">leaf <div id ="chatClose"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="InnerIconstyled__Icon-sc-197h5bb-0 jdUMxO FullHeaderstyled__ThemeCloseIcon-sc-1aljhke-10 drXuSo" defaultOpacity="0.6" hoveredOpacity="1" margintop="0" marginright="0" marginbottom="0" marginleft="0"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M16.4818 4.69668L15.3033 3.51817L10 8.82147L4.69671 3.51817L3.5182 4.69668L8.8215 9.99998L3.51819 15.3033L4.6967 16.4818L10 11.1785L15.3033 16.4818L16.4818 15.3033L11.1785 9.99998L16.4818 4.69668Z"></path></svg></div></li>
 		<iframe id="chatBody" src="http://192.168.0.29:10077/leafAdmin"><input type="button" value="새 문의하기" onclick="javascript:chat()"/></iframe>
 			
 	
@@ -343,44 +425,53 @@ $(function(){/*메뉴바 전체가 나오는거*/
 		</div>
 </div><!-- changeColor -->		
 </div>
-<section id='section1'> 
+
+<section id='section3'>
+
     <!-- 중앙부 -->
-    <div>
-		<ul class="amount">
+    <div class="count">
+		
+	</div>
+	<ul class="amount">
 			<li>
 				<div>
-				    <div class="contents1">가맹점 현황</div>
 				    <div class="result total-store"></div>
-			      <span>점</span>
+			
+				    <div class="contents1">가맹점 현황</div>
+			      
 			    </div>
 			</li>
 		  	<li>
 			    <div>
-			    	<div class="contents1">총 임직원</div>
 			    	<div class="result total-maneger"></div>
-			    	<span>명</span>
+			    
+			    	<div class="contents1">총 임직원</div>
+			    	
 			    </div>
 		  	</li>
 		  	<li>
 		    	<div>
-			        <div class="contents1">함께하는 회원</div>
 			        <div class="result total-member"></div>
-			        <span>명</span>
+			    
+			        <div class="contents1">함께하는 회원</div>
+			       
 		    	</div>
 		  	</li>
 		</ul>
-	</div>
 	
 	<div id="sales-container" class="shadow_eff">
 		<div id="sales-count">
-			<h2>10월 총 매출</h2>
-			<span>￦</span>
-			<div class="result total-sale"></div>
+			
+			
+			<div style="color:white; font-size:4rem;" class="result total-sale"></div>
+			<h2 style="color:white;position: absolute;
+    top: 20px;
+    left: 200px;"><span>Balance</span> <span>for</span> <span>your</span> <span>Life</span></h2>
 		</div>	
 	</div>	
-
+</section>
 	<!-- 확인 4개버튼 -->	
-
+<section id='section1'> 
  	 <div class="container">
         <div class="card">
             <div class="face face1 face-bg1">
@@ -439,8 +530,8 @@ $(function(){/*메뉴바 전체가 나오는거*/
             </div>
         </div>
     </div>
-</section>
-	
+
+</section>	
 	<section id='section2'>
 	
 	<!-- 홍보물 -->
@@ -643,9 +734,11 @@ updateCurrentPageNumber();
 	$(()=>{
 		$('#chat').click(function(){
 			$("#chatTab").css('display','block');
-			$('#chatBody').attr('');
+			
 		});
-		
+		$('#chatClose').click(function(){
+			$("#chatTab").css('display','none');
+		});
 		function chat(){
 			console.log('dd');
 			

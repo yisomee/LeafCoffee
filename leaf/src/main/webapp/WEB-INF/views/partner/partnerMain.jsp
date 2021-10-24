@@ -12,13 +12,12 @@
 	/* ------------------ */
 		
 	/*사원 검색폼*/
-	.emptopCon{height:100px; background:#ddd;}
-	#empImg{height:100px; width:300px; display: inline-block; margin-left:220px; margin-top:10px;}
-	#empImgWord{font-size:1.4em; display:inline-block; position:relative; top:-20px; left:30px;}	
-	#searchForm{display: inline-block; width: 730px; height: 60px; position: relative; top: -24px;}
-	select[name=searchEmpSelect]{height:50px; width:100px; font-size:1em;}
-	input[name="searchWord"]{height:50px; width:500px; font-size:1em;}
-	.searchButton{height:50px; width:100px; box-sizing: border-box; font-size:1em;}
+	.emptopCon{height:100px;}
+	
+	#searchForm{width: 730px; height: 60px; margin: 0 auto;}
+	select[name=searchEmpSelect]{height:50px; width:100px; font-size: 0.9rem; border:0; border-bottom:1px solid #ddd;}
+	input[name="searchWord"]{padding-left: 20px;height:50px; width:500px; font-size:1em;border:0;border-bottom: 1px solid #ddd;}
+	.searchButton{height:50px; width:100px; box-sizing: border-box; font-size:0.9em;background:white;}
 	
 	/* 사원 리스트 정렬 select박스 */
 	.array_button{width:1400px; height:80px;}
@@ -34,7 +33,7 @@
 	#emp-list-top>li:nth-child(8n+6){width:25%;}
 	#emp-list-top>li:nth-child(8n+7){width:20%;}
 	/*사원 리스트*/
-	#emp-list{overflow:auto; text-align:center; padding:0;}
+	#emp-list{overflow:auto; text-align:center; padding:0;font-size:0.9rem;}
 	#emp-list>li{float:left; width:10%; border-bottom: 1px solid black; height:50px; font-size:1.1em; line-height:50px;}
 	#emp-list>li:nth-child(8n+1){width:3%;}
 	#emp-list>li:nth-child(8n+2){width:7%;}
@@ -82,14 +81,14 @@
 		<div class="manage-list-container">
 			<!-- 협력업체 검색폼 -->
 			<div class="emptopCon">
-				<span id="empImg"><img src="img/empimg.png"><span id="empImgWord">파트너검색</span></span>
+				
 				<div id="searchForm">
 					<select name="searchEmpSelect">
 						<option value="empno">업체명</option>
 						<option value="empname">담당자</option>						
 					</select>
 					<input type="text" name="searchWord" id="searchWord"/>
-					<button type="button" class="searchButton">search</button>
+					<button type="button" class="searchButton">검색하기</button>
 				</div>
 			</div>
 			
