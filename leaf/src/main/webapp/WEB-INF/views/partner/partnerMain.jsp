@@ -5,7 +5,236 @@
 <head>
 <meta charset="UTF-8">
 <title>파트너관리</title>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+	const regExpEmpNum = /^[0-9]{1,4}$/;
+	const regExpDeptName = /^[가-힣]{1,10}$/;
+	
+	function listSelect(i,searchKey,searchWord){
+											
+		let nowPage = i;
+			
+		//ajax로 검색한 리스트 출력.(라디오버튼,사원번호,사원명,직급,연락처,이메일,입사일,재직여부)
+		$.ajax({
+		url: "/myapp/empSearch",
+		data : "searchKey="+searchKey+"&"+
+				"searchWord="+searchWord+"&"+
+				"nowPage="+nowPage,	
+		success:function(result){ // List<EmployeeVO>
+			let empvo = $(result.empvo);
+			
+			if(empvo.length==0){
+				let notSearch = '<div>'+searchWord+'에 대해 0건이 발견되었습니다.</div>';					
+				$('#emp-list').html(notSearch);
+				$('.page_nation').empty();
+			}else{
+				let empNumList = '';
+				
+				empvo.each(function(idx,vo){
+					empNumList +='<li><input type="radio" name="emp-select"/></li>'+
+								'<li>'+vo.emp_num+'</li>'+
+								'<li>'+vo.username+'</li>'+
+								'<li>'+vo.dept_name+'</li>'+
+								'<li>'+vo.emp_posi+'</li>'+
+								'<li>'+vo.tel+'</li>'+
+								'<li>'+vo.email+'</li>'+
+								'<li>'+vo.emp_regdate+'</li>'+
+								'<li>'+vo.emp_status+'</li>';
+				});				
+				$('#emp-list').html(empNumList);
+				
+				// 페이징					
+				$('.page_nation').empty(); // 버튼을 담을 div를 비워줌
+				
+				var sk = "'"+result.pvo.searchKey+"'"; //스크립트 메소드의 매개변수 String값을 셋팅시 값으로 인식시켜주기 위함
+				var sw = "'"+result.pvo.searchWord+"'";
+				
+				let nowPageMinerOne = nowPage-1;  // 현재페이지-1
+				nowPageMinerOne = "'"+nowPageMinerOne+"'";
+								
+				let nextBtn = parseInt(nowPage);
+				let plusOne = parseInt("1");
+				let nowPagePlusOne = parseInt(nextBtn + plusOne);				
+				
+				////////////////////////////////////
+				if(nowPage>1){
+					$('.page_nation').append('<a class="arrow pprev" href="javascript:listSelect(1,'+sk+','+sw+')"></a>');
+					$('.page_nation').append('<a class="arrow prev" href="javascript:listSelect('+nowPageMinerOne+','+sk+','+sw+')"></a>');					
+					
+				}else if(nowPage==1){
+					$('.page_nation').append('<a class="arrow pprev" href="javascript:listSelect(1,'+sk+','+sw+')"></a>');
+					$('.page_nation').append('<a class="arrow prev" href="javascript:listSelect(1,'+sk+','+sw+')"></a>');
+										
+				}				
+				for (var j = result.pvo.startPage; j <=result.pvo.startPage+result.pvo.onePageViewNum-1; j++) {						
+					var sk = "'"+result.pvo.searchKey+"'";
+					var sw = "'"+result.pvo.searchWord+"'";
+					if(j<=result.pvo.totalPage){
+						if(j==nowPage){
+							$('.page_nation').append('<a class="active" href="javascript:listSelect('+j+','+sk+','+sw+')">'+j+'</a>');
+						}else if(j!=nowPage){
+							$('.page_nation').append('<a href="javascript:listSelect('+j+','+sk+','+sw+')">'+j+'</a>');						
+						}
+					}
+				}
+				if(nowPage==result.pvo.totalPage){
+					$('.page_nation').append('<a class="arrow next" href="javascript:listSelect('+result.pvo.totalPage+','+sk+','+sw+')"></a>');					
+				}else{
+					$('.page_nation').append('<a class="arrow next" href="javascript:listSelect('+nowPagePlusOne+','+sk+','+sw+')"></a>');
+				}
+				$('.page_nation').append('<a class="arrow nnext" href="javascript:listSelect('+result.pvo.totalPage+','+sk+','+sw+')"></a>');
+			}
+		}, error:function(){	
+			console.log("실패");
+			return false;
+			}
+		}); 			
+	}// 자바스크립트 함수
+	
+	$(()=>{
+		// 처음 화면 로그인시
+		listSelect(1, '', '');
+	
+		
+		$('#searchEmpBtn').on('click',function(){
+			let searchKey = $('#searchKey').val();
+			let searchWord = $('#searchWord').val();
+			
+			if(searchWord===null || searchWord==""){
+				alert("검색어를 입력해주세요.");
+				return false;
+			}else if(searchKey==='emp_num'){
+				if(!regExpEmpNum.test(searchWord)){
+					alert("사원번호는 4자리 숫자만 입력가능합니다.");
+					return false;
+				}
+			}else if(searchKey==="username"){
+				if(!regExpDeptName.test(searchWord)){
+					alert("올바른 사원명을 입력해주세요");
+					return false;
+				}
+			}else if(searchKey==="dept_name"){
+				if(!regExpDeptName.test(searchWord)){
+					alert("올바른 부서명을 입력해주세요");
+					return false;
+				}
+			}			
+			let nowPage=1;
+			
+			$.ajax({
+				url: "/myapp/empSearch",
+				data : "searchKey="+searchKey+"&"+
+						"searchWord="+searchWord+"&"+
+						"nowPage="+nowPage,
+				success:function(result){
+					let empvo = $(result.empvo);
+					
+					if(empvo.length==0){
+						let notSearch = '<div>'+searchWord+'에 대해 0건이 발견되었습니다.</div>';					
+						$('#emp-list').html(notSearch);
+						$('.page_nation').empty();
+					}else{
+						let empNumList = '';					
+						empvo.each(function(idx,vo){
+							empNumList +='<li><input type="radio" name="emp-select"/></li>'+
+										'<li>'+vo.emp_num+'</li>'+
+										'<li>'+vo.username+'</li>'+
+										'<li>'+vo.dept_name+'</li>'+
+										'<li>'+vo.emp_posi+'</li>'+
+										'<li>'+vo.tel+'</li>'+
+										'<li>'+vo.email+'</li>'+
+										'<li>'+vo.emp_regdate+'</li>'+
+										'<li>'+vo.emp_status+'</li>';						
+						}); // empvo.each문
+						
+						$('#emp-list').html(empNumList);
+						
+										
+						// 페이징					
+						$('.page_nation').empty(); // 버튼을 담을 div를 비워줌
+						
+						var sk = "'"+result.pvo.searchKey+"'"; //스크립트 메소드의 매개변수 String값을 셋팅시 값으로 인식시켜주기 위함
+						var sw = "'"+result.pvo.searchWord+"'";
+						
+						let nowPageMinerOne = nowPage-1;  // 현재페이지-1
+						nowPageMinerOne = "'"+nowPageMinerOne+"'";
+										
+						let nextBtn = parseInt(nowPage);
+						let plusOne = parseInt("1");
+						let nowPagePlusOne = parseInt(nextBtn + plusOne);				
+						
+						////////////////////////////////////
+						if(nowPage>1){
+							$('.page_nation').append('<a class="arrow pprev" href="javascript:listSelect(1,'+sk+','+sw+')"></a>');
+							$('.page_nation').append('<a class="arrow prev" href="javascript:listSelect('+nowPageMinerOne+','+sk+','+sw+')"></a>');					
+							
+						}else if(nowPage==1){
+							$('.page_nation').append('<a class="arrow pprev" href="javascript:listSelect(1,'+sk+','+sw+')"></a>');
+							$('.page_nation').append('<a class="arrow prev" href="javascript:listSelect(1,'+sk+','+sw+')"></a>');
+												
+						}				
+						for (var j = result.pvo.startPage; j <=result.pvo.startPage+result.pvo.onePageViewNum-1; j++) {						
+							var sk = "'"+result.pvo.searchKey+"'";
+							var sw = "'"+result.pvo.searchWord+"'";
+							if(j<=result.pvo.totalPage){
+								if(j==nowPage){
+									$('.page_nation').append('<a class="active" href="javascript:listSelect('+j+','+sk+','+sw+')">'+j+'</a>');
+								}else if(j!=nowPage){
+									$('.page_nation').append('<a href="javascript:listSelect('+j+','+sk+','+sw+')">'+j+'</a>');						
+								}
+							}
+						}
+						if(nowPage==result.pvo.totalPage){
+							$('.page_nation').append('<a class="arrow next" href="javascript:listSelect('+result.pvo.totalPage+','+sk+','+sw+')"></a>');					
+						}else{
+							$('.page_nation').append('<a class="arrow next" href="javascript:listSelect('+nowPagePlusOne+','+sk+','+sw+')"></a>');
+						}
+						$('.page_nation').append('<a class="arrow nnext" href="javascript:listSelect('+result.pvo.totalPage+','+sk+','+sw+')"></a>');
+					
+						
+					}
+					
+										
+					
+				},error:function(){
+					console.log("검색 불러오기 실패");
+					return false;
+				}		
+			});
+
+		});// 검색 클릭이벤트
+
+		
+		////////////////////////////////
+		$(document).on('click','input[name=emp-select]',function(){
+			let selectEmpNum = $(this).parent().next().text();
+			
+			$('#empChange').click(function(){
+				
+				function empChangeGo(emp_num){
+					let empForm = document.createElement('form');
+					empForm.setAttribute('method','post');
+					empForm.setAttribute('action','/myapp/employeeChange');
+					
+					let empValue;
+					empValue = document.createElement('input');
+					empValue.setAttribute('type','hidden');
+					empValue.setAttribute('name','emp_num');
+					empValue.setAttribute('value',emp_num);
+					
+					empForm.appendChild(empValue);
+					document.body.appendChild(empForm);
+					empForm.submit();
+				}
+				empChangeGo(selectEmpNum);
+			});
+		});
+			
+	});		
+
+</script>
 <style>
 	/* 사원 컨테이너 */
 	.manage-listCon{overflow:auto; text-align:center; padding:0;}
@@ -87,7 +316,6 @@
 		<div class="tbn-menu2"><a href="<%=request.getContextPath()%>/partnerManageRegi">파트너등록</a></div>	   
 	</nav>
 	<!-- 메인부 -->
-<form method="GET" action="<%=request.getContextPath()%>/partnerChange">	
 	<main>
 		<div class="notice-con">
 			<div class="page-main-notice">
@@ -108,15 +336,6 @@
 					<button type="button" class="searchButton">검색하기</button>
 				</div>
 			</div>
-			
-			<div class="array_button">
-				<!-- 협력업체 선택 -->				
-				<select name="empArraySelect">
-					<option value="" selected>--정렬--</option>
-					<option value="arrayEmpNo">업체명</option>
-					<option value="arrayEmpName">담당자</option>					
-				</select>					
-			</div>
 			<!-- 협력헙체 리스트 -->
 			<div class="manage-listCon">								
 				<ul id="emp-list-top">
@@ -130,51 +349,6 @@
 					<li>등록일</li>
 				</ul>
 				<ul id="emp-list">	
-					<li><input type="radio" id="emp-select" name="emp-select"/></li>
-					<li>9900</li>
-					<li>인테리어</li>
-					<li>삼성전자</li>
-					<li>박동현</li>
-					<li>010-3232-3212</li>
-					<li>bakdohy@naver.com</li>
-					<li>2021-09-25</li>
-					<!--  -->
-					<li><input type="radio" id="emp-select" name="emp-select"/></li>
-					<li>9900</li>
-					<li>인테리어</li>
-					<li>삼성전자</li>
-					<li>박동현</li>
-					<li>010-3232-3212</li>
-					<li>bakdohy@naver.com</li>
-					<li>2021-09-25</li>
-					<!--  -->
-					<li><input type="radio" id="emp-select" name="emp-select"/></li>
-					<li>9900</li>
-					<li>인테리어</li>
-					<li>삼성전자</li>
-					<li>박동현</li>
-					<li>010-3232-3212</li>
-					<li>bakdohy@naver.com</li>
-					<li>2021-09-25</li>
-					<!--  -->
-					<li><input type="radio" id="emp-select" name="emp-select"/></li>
-					<li>9900</li>
-					<li>인테리어</li>
-					<li>삼성전자</li>
-					<li>박동현</li>
-					<li>010-3232-3212</li>
-					<li>bakdohy@naver.com</li>
-					<li>2021-09-25</li>
-					<!--  -->
-					<li><input type="radio" id="emp-select" name="emp-select"/></li>
-					<li>9900</li>
-					<li>인테리어</li>
-					<li>삼성전자</li>
-					<li>박동현</li>
-					<li>010-3232-3212</li>
-					<li>bakdohy@naver.com</li>
-					<li>2021-09-25</li>
-					<!--  -->
 					
 				</ul>
 				
@@ -183,27 +357,14 @@
 			<div class="page_wrap">
 				<!-- 사원등록 -->
 				<div class="emp-button">					
-					<input type="submit" value="수정하기" name="partnerChange" id="partnerChange"/>
+					<input type="button" value="사원수정" name="partnerChange" id="partnerChange"/>
 				</div>
 				<div class="page_nation">
-					<a class="arrow pprev" href="#"></a>
-					<a class="arrow prev" href="#"></a>
-					<a class="active" href="#">1</a> 
-					<a href="#">2</a>
-					<a href="#">3</a>
-					<a href="#">4</a>
-					<a href="#">5</a>
-					<a class="arrow next" href="#"></a>
-					<a class="arrow nnext" href="#"></a>
+					
 				</div>
 			</div>	
 		</div>
 	</main>
-</form>	
-<script>
-	$(()=>{
-		$('.headerText').html('PARTNER');
-	});
-</script>
+
 	
 	<%@ include file="/inc/bottom3.jspf" %>

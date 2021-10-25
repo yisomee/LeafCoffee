@@ -14,7 +14,7 @@ public interface EmployeeService {
 	public int employeeRegiInsert(EmployeeVO empVo); 
 	
 	
-	// »ç¿øÁ¤º¸ ¼öÁ¤	
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½	
 	public EmployeeVO employeeChangeInfo(int emp_num);
 	public int employeeChangeResult(EmployeeVO empvo);
 }

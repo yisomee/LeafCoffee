@@ -2,21 +2,22 @@ package com.leaf.myapp.vo;
 
 public class PartnerVO {
 	
-	private int prat_num;  // ÆÄÆ®³Ê¹øÈ£
-	private String part_company; // ÆÄÆ®³Ê ¾÷Ã¼¸í
-	private String part_name; // ÆÄÆ®³Ê´ã´çÀÚ¸í
+	private int part_num;  // ï¿½ï¿½Æ®ï¿½Ê¹ï¿½È£
+	private String part_company; // ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½
+	private String part_name; // ï¿½ï¿½Æ®ï¿½Ê´ï¿½ï¿½ï¿½Ú¸ï¿½
 	private String part_tel;
 	private String part_email;
-	private String part_code_name; // ÆÄÆ®³ÊºÐ·ù¸í
-	private String part_regdate; // ÆÄÆ®³Ê µî·ÏÀÏ
+	private String part_code_name; // ï¿½ï¿½Æ®ï¿½ÊºÐ·ï¿½ï¿½ï¿½
+	private String part_regdate; // ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
 	
 	
 	
-	public int getPrat_num() {
-		return prat_num;
+	
+	public int getPart_num() {
+		return part_num;
 	}
-	public void setPrat_num(int prat_num) {
-		this.prat_num = prat_num;
+	public void setPart_num(int part_num) {
+		this.part_num = part_num;
 	}
 	public String getPart_company() {
 		return part_company;

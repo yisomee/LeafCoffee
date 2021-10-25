@@ -143,16 +143,16 @@ input[type="text"] {
 		        var marker = new google.maps.Marker({
                       map: resultedMap,
                       position: {lat:lat,lng:lon},
-                      title:e[i].fc_name,
+                      title:e[i].fc_name
                 });
 //                 var marker = new google.maps.Marker({
 //                        map: resultMap,
 //                        position: darwin,
 //                        title:e[i].fc_name,
 //                 });
-		        marker.addListener("click", () => {
+		        marker.addListener("click", (event) => {
 		        	resultedMap.setZoom(15);
-		        	resultedMap.setCenter(this.getPosition());
+		        	resultedMap.setCenter(event.latLng);
 		        });
 					tag += "<li>"+e[i].fc_name+"<br /> "+e[i].fc_addr+"<br /></li> ";
 	            };
