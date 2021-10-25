@@ -21,12 +21,12 @@
 	
 	/* 사원 리스트 정렬 select박스 */
 	.array_button{width:1400px; height:80px;}
-	select[name=empArraySelect]{font-size:1.1em; display:inline-block; width:100px; height:40px; position:relative; left:1300px; top:20px;}
+	select[name=empArraySelect]{font-size:0.9rem; display:inline-block; width:100px; height:40px; position:relative; left:1300px; top:20px;}
 	
 	/* 사원리스트 top */
 	.manage-list-container{width:1400px; height:800px; margin:50px auto 0 auto;}
-	#emp-list-top{overflow:auto; text-align:center; padding:0; background-color:#ddd; height:50px; font-size:1.13em; line-height:45px;}
-	#emp-list-top>li{float:left; width:10%; border-top:3px solid black;}
+	#emp-list-top{border-bottom: 2px solid lightblue; overflow:auto; text-align:center; padding:0; height:50px; font-size:0.9rem; line-height:45px;}
+	#emp-list-top>li{font-size:0.9rem; float:left; width:10%; border-top:3px solid black;}
 	#emp-list-top>li:nth-child(8n+1){width:3%;}
 	#emp-list-top>li:nth-child(8n+2){width:7%;}
 	#emp-list-top>li:nth-child(8n+5){width:15%;}	
@@ -34,7 +34,7 @@
 	#emp-list-top>li:nth-child(8n+7){width:20%;}
 	/*사원 리스트*/
 	#emp-list{overflow:auto; text-align:center; padding:0;font-size:0.9rem;}
-	#emp-list>li{float:left; width:10%; border-bottom: 1px solid black; height:50px; font-size:1.1em; line-height:50px;}
+	#emp-list>li{float:left; width:10%; border-bottom: 1px solid black; height:50px; font-size:0.9rem; line-height:50px;}
 	#emp-list>li:nth-child(8n+1){width:3%;}
 	#emp-list>li:nth-child(8n+2){width:7%;}
 	#emp-list>li:nth-child(8n+5){width:15%;}
@@ -56,7 +56,24 @@
 	
 	/* 파트너 등록, 수정버튼 */
 	.emp-button{display:inline-block; position:absolute; left:1280px;}	
-	#partnerChange{width:120px; height:30px; font-size:15px;border:0px solid; color:#fff; background:rgb(0,163,239); cursor:pointer;}
+	#partnerChange{line-height: 33px;
+    text-align: center;
+      background-color: white;
+	    width: 110px;
+	    height: 35px;
+	    border-radius: 2px;
+	    border: 1px solid rgb(0, 163, 239);
+	    font-size: 0.9rem;
+	    color: rgb(0, 163, 239);
+	    margin-left: 7px;
+	    transition: 0.4s;
+	    padding-left: 0px;}
+ #partnerChange:hover{
+    cursor: pointer;
+    box-shadow: inset 30em 0 0 0 rgb(0, 163, 239);
+	color: white;
+	border-color: rgb(0, 163, 239);
+  }
 	
 	/* 네비바 파트너검색 선택된 파란색 밑줄 */
    .top-banner-nav>.tbn-menu1{border-bottom:4px solid rgb(0, 163, 239);}	
