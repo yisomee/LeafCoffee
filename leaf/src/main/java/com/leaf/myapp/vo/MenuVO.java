@@ -62,7 +62,7 @@ public class MenuVO {
 		this.p_info = p_info;
 		
 		//영양정보 / 로 분류하여 1234567에 대입한다.
-		
+		/*
 		String p[]=p_info.split("/");
 		p_info1 = p[0];
 		p_info2 = p[1];
@@ -72,7 +72,7 @@ public class MenuVO {
 		p_info6 = p[5];
 		p_info7 = p[6];
 		
-		
+		*/
 		
 		
 	}

@@ -10,7 +10,9 @@
   		select userid, username from registers where username=#{logname}
   	</select>
   	<insert id="addOrderTbl" parameterType="com.leaf.myapp.vo.SirenCartVO" >
-  		insert into order1(od_num,p_num,od_cnt,fc_num,userid) 
-  		values(ordersq.nextval(), #{P_num},#{od_cnt},#{fc_num},#{userid})
+  		insert into order1(od_num,p_num,od_cnt,fc_num,userid,od_price) values(ordersq.nextval,#{p_num},#{od_cnt},#{fc_num},#{userid},#{od_price})
   	</insert>
+  	<select id="fcList" resultType="com.leaf.myapp.vo.FranVO">
+  		select fc_num,fc_name,fc_addr from franchise order by fc_num desc
+  	</select>
   </mapper>

@@ -23,7 +23,7 @@
 	.head1{width:200px;margin:0 auto;padding-bottom:20px}
 	.head2>div{text-align:center;font-size:0.9rem}
 	#headerImg{width:1902px;}
-	.sirenInfo{display:flex;flex-direction:column;align-items:center;position:relative;top:-313px;left:415px;background-color:white;width:1100px}
+	.sirenInfo{display:flex;flex-direction:column;align-items:center;position:relative;top:-318px;left:415px;background-color:white;width:1100px}
 	#backCon{background-color:#F5F0E9;height:400px}
 	.sirenStep{display:flex;align-items:center;justify-content:space-evenly;width:800px;}
 	.sirenStep>ul{display: flex;flex-direction: column;text-align: center;}
@@ -42,18 +42,25 @@
 	.section3{width:20%}
 	#orderBtn{background-color:#9F8362;color:white}
 	#mapCon{display:flex;}
-	
+	#map{width:610px;height:560px;position:relative}
+	.section1{margin-bottom:200px}
+	.fcImg{width:330px}
+	.selectStore{margin-left:50px;display:flex;flex-direction:column;}
+	#findFc{width:306px;height:560px;overflow:auto;}
+	.searched{padding:6px;background-color:#F5F0E9}
+	.seleFcname{font-size:1.5rem;font-weight:600;color:#7B3C07;padding:20px 0}
+	#detailStore{font-size:1.4rem;color:#382E2C;font-weight:500;padding-bottom:20px}
 	/*section2*/
 	.menu_title_container{display:flex;justify-content:space-evenly;border-bottom:1px solid gray;font-size:1.2rem}/*메뉴탑*/
 	.menu_title_container>li:hover{border-bottom:3px solid #7B3C07;cursor:pointer}
 	.menu_title_container>li{padding:15px}
-	#menuCon{display:flex;align-items:center;margin-bottom:150px}
+	#menuCon{display:flex;align-items:center;margin-bottom:120px}
 	.menu{width:40%}
 	#menuList{width:60%}
 	#menuSelect{font-size:1.8rem;padding:20px 0;font-weight:600}
 	#selMenuList{display:flex;flex-direction:column;align-items:center}
 	#selMenuList>li{padding:10px 0}
-	#totalPrice{margin-left:280px;color:#7B3C07;font-size:1.3rem;font-weight:700;}
+	#totalPriceSt{margin-left:280px;color:#7B3C07;font-size:1.3rem;font-weight:700;}
 	#menuCntBtn>input[type='button']{width:50px;}
 	#menuCnt,#shotCnt,#syrupNum{padding:0 20px}
 	#shotPrice{padding:0 38px}
@@ -97,23 +104,21 @@
 	}		
 	#menuDetail{font-size:1.8em;padding:0 0 50px 106px;}			
 	.searchstore {background:#9F8362;font-size:1.3rem;color:white;text-align:center;padding-top:10px;}	
-	#searched>li {height: 80px;padding: 5px;border-bottom: 1px solid #ddd;}	
+
 	input[type="button"]{width:190px;height:40px;border:1px solid #9F8362;;color:#9F8362;;background:white;}	
-	#store{font-size: 1.8rem;padding: 20px 0;font-weight: 600;}
-	.store li {width:550px;height:20px;}	
+	#store{font-size: 1.8rem;padding:40px 0;font-weight: 600;}	
 	#cart{font-size:1.8em;padding:40px 0}
 	.cartName{margin-left:10px;font-size:1.1rem}
 	.option{font-size:0.8rem}
 	.cartMenu{display:flex;justify-content:space-between}
 	.cartList{background-color:#F5F0E9;margin-top:30px;padding:25px}
-	.price{text-align:right;font-size:1.1em;font-weight:600;}
+	#cartPriSt{font-size:1.1em;font-weight:600;}
 	#cartPrice{text-align:end;font-size:1.3rem;font-weight:bold;color:#7B3C07;}
 	#payBtn{text-align:center;width:380px;height:45px;background-color:#9F8362;color:white;border:1px solid #9F8362;}
 	#addMenu>ul{margin-top:20px}
-	#cartTit{text-align:center;font-size:1.4rem;font-weight:600;color:#382E2C}
-/*	#mapList {position: absolute;left: 1%;top: 11%;background: white;border-radius:3%;width:300px;height:300px;opacity:0.8;}	
-	.detail{position: relative;left: 65%;top: 15%;height: 645px;}*/
-	
+	#cartTit{text-align:center;font-size:1.4rem;font-weight:600;color:#382E2C}	
+	.addTotal{padding:20px 0}
+	#seleInfo{color:gray;padding-left:20px}
 </style>
 
 <script>
@@ -177,8 +182,8 @@
 			menuInit();
 			$("#selectName").html($(this).children(".imgtext").children(".p_name").text());
 			$("#selectEname").html($(this).children(".imgtext").children(".p_ename").text());
-			$("#selectPrice").html($(this).children(".imgtext").children(".p_price").text()+"원");
-			$("#totalPrice").html($(this).children(".imgtext").children(".p_price").text()+"원");
+			$("#selectPrice").html($(this).children(".imgtext").children(".p_price").text());
+			$("#totalPrice").html($(this).children(".imgtext").children(".p_price").text());
 			$(".selecPnum").html($(this).children(".imgtext").children(".p_num").text())
 			price = $(this).children(".imgtext").children(".p_price").text();
 		});		
@@ -202,8 +207,7 @@
 		//컵/사이즈/핫/아이스 옵션 버튼클릭 이벤트
 		var selectCup = document.getElementsByClassName("selectCup");
 		var selectSize = document.getElementsByClassName("selectSize");
-		var selectHI = document.getElementsByClassName("selectHI");
-		
+		var selectHI = document.getElementsByClassName("selectHI");		
         function handleClick(event) {
             console.log(event.target.value);
             cup = event.target.value;
@@ -237,7 +241,6 @@
             for (var i = 0; i < selectHI.length; i++) {
             	selectHI[i].classList.remove("clicked");
             }
-
             event.target.classList.add("clicked");
             }
         }
@@ -306,15 +309,17 @@
 					cartMenu += "<ul class='cartMenu'>";
 					cartMenu += "<li><input type='checkbox'><span class='cartName'>"+ $("#selectName").text() +"</span></li>";
 					cartMenu += "<li id='cartCnt'>"+$("#menuCnt").text()+"</li>";
-					cartMenu += "<li class='price'>"+$("#totalPrice").text()+"</li>";
+					cartMenu += "<li id='cartPriSt'><span class='price'>"+$("#totalPrice").text()+"</span>원</li>";
 					cartMenu += "<li class='seleccartPnum'>"+$(".selecPnum").text()+"</li></ul>";
 					cartMenu += "<div class='option'>"+cup+"/"+size+"/"+hot_ice;
 					if(parseInt($("#shotCnt").text())>0){
-						cartMenu += "/샷추가"+$("#shotCnt").text()+"회(+"+$("#shotPrice").text()+")<div>";
+						cartMenu += "<br/>샷추가"+$("#shotCnt").text()+"회(+"+$("#shotPrice").text()+")";
 					}
 					if(parseInt($("#syrupNum").text())>0){
-						cartMenu += "/시럽추가"+$("#syrupNum").text()+"회(+"+500+")</div>";
+						cartMenu += "/시럽추가"+$("#syrupNum").text()+"회(+"+500+")";
 					}
+					cartMenu += "</div>";
+				$("#seleInfo").css('display','none');
 				$("#addMenu").append(cartMenu);			
 					console.log($(".selecPnum").text());
 				menuInit();
@@ -326,7 +331,9 @@
 				alert("HOT/ICE를 선택해주세요.");
 			}
 		});
-
+		$(".searched").children().click(function(){
+			console.log($(this).text());
+		});
 	});
 </script>
 <!-- 지도 api -->
@@ -349,7 +356,6 @@
 		//지도를 표시할 곳	
 		var map = new google.maps.Map(document.getElementById("map"),
 				mapProperty);
-
 	}	
 </script>
 </head>
@@ -440,7 +446,7 @@
 						<ul class="menuname">
 							<li id="selectName">아메리카노</li>
 							<li id="selectEname" class="p_ename">Americano</li>
-							<li id="selectPrice">4,300원</li>
+							<li ><span id="selectPrice">4,300</span>원</li>
 							<li class="selecPnum"></li>
 							<li id="menuCntBtn">
 								<input id="menuMinus" class="cntBtn" type="button" value="-"> 
@@ -474,7 +480,7 @@
 						<span id="syrupNum"> 0 </span>
 						<input id="syrupPlus" class="cntBtn" type="button" value="+">
 					</li>
-					<li id="totalPrice">4300원</li>
+					<li id="totalPriceSt"><span id="totalPrice">4300</span>원</li>
 					<li>
 						<input type="button" value="장바구니 담기" id="addCartBtn">
 						<input type="button" value="주문하기" id="orderBtn">
@@ -486,29 +492,26 @@
 		<section class="section1">
 			<div id="store">매장 선택</div>
 			<div id="mapCon">
+				<ul id="findFc">
+					<li class="searchstore">매장찾기</li>
+					<li class="searchstore"><input type="text" placeholder="매장명 또는 주소"></li>
+					<li id='mapList'>
+						<c:forEach var="franVo" items="${franVo}">
+						<ul class="searched">
+							<li>${franVo.fc_name}</li>
+							<li>${franVo.fc_addr}</li>
+							<li>${fc_num}</li>
+						</ul>
+						</c:forEach>
+					</li>
+				</ul>
 				<div id="map" class="list"></div>
-				<div id='mapList'>
-					<ul>
-						<li class="searchstore">매장찾기</li>
-						<li class="searchstore"><input type="text"
-							placeholder="매장명 또는 주소"></li>
-						<li>
-							<ul id="searched">
-								<li>무교로<br /> 서울특별시 중구 무교로 15(무교동)<br /> 1522-3232
-								</li>
-								<li>한국 프레스 센터<br />서울특별시 중구 세종대로 124(태평로1가)<br />1522-3232
-								</li>
-							</ul>
-						</li>
-					</ul>
-				</div>
-				<ul class="detail store">
-					<li style="height: 369px"><img
-						src="img/15066662951506666295_kospi007.jpg"></li>
-					<li>문정하비오점</li>
-					<li>서울시 송파구 송파대로 111(문정동 23-2)</li>
-					<li>-사이렌 오더 운영시간 : 07:00 ~ 21:30</li>
-					<li>-결제 및 주문은 매장 2km 이내에서 가능합니다.</li>
+				<ul class="selectStore">
+					<li id="detailStore">매장 상세</li>
+					<li><img src="img/15066662951506666295_kospi007.jpg" class="fcImg"></li>
+					<li class="seleFcname">역삼아레나빌딩</li>
+					<li class="seleFcnum" style="display:none"></li>
+					<li>-사이렌 오더 운영시간:08:00~21:30</li>
 				</ul>
 			</div>
 		</section>
@@ -519,18 +522,10 @@
 			<li id="cartTit">장바구니</li>
 			<li><hr/></li>					
 			<li id="addMenu">
-				<div class="addTotal">
-					<ul class="cartMenu">
-						<li><input type="checkbox"><span class="cartName">아메리카노</span></li>
-						<li id="cartCnt">1</li>
-						<li class="price">4,300원</li>
-						<li class="seleccartPnum"></li>
-					</ul>
-					<div class="option">ICE/Tall/매장컵</div>
-				</div>
+				<span id="seleInfo">메뉴를 선택해주세요.</span>
 			</li>
 			<li><hr/></li>
-			<li id="cartPrice">총 8,500원</li>
+			<li id="cartPrice">총 <span class="cartMon">0</span>원</li>
 		</ul>							
 		<div><input type="button" value="주문결제하기" id="payBtn"/></div>
 	</form>
@@ -538,7 +533,6 @@
 </div>
 <script>
     $('#orderBtn').click(function () {
-
         var IMP = window.IMP;
         IMP.init('imp54411040');
         var money = $('#totalPrice').text();
@@ -547,15 +541,15 @@
         var p_num = $('.selecPnum').text();
         var od_cnt = $('#menuCnt').text();
         var selectName = $('#selectName').text();
+        console.log(p_num);
         IMP.request_pay({
             pg: 'pg',
             pay_method:'card',
             merchant_uid: 'merchant_' + new Date().getTime(),
             name: selectName,
-            amount: money,
+            amount: 100,//money로 바꾸기
             buyer_name: userName,
-            buyer_postcode:'113-343',
-            
+            buyer_postcode:'113-343',            
         }, function (rsp) {
             console.log(rsp);
             if (rsp.success) {
@@ -566,12 +560,12 @@
                 msg += '카드 승인번호 : ' + rsp.apply_num;
                 $.ajax({
                     type: "GET",
-                    url: "/leaf/myapp/order", //충전 금액값을 보낼 url 설정
+                    url: "/myapp/order", //충전 금액값을 보낼 url 설정
                     data: {
-                        "od_price": money,   
+                        "od_price": money,
                         "p_num": p_num,
                         "od_cnt": od_cnt,
-                        "fc_num": 1,
+                        "fc_num": 3,
                         "userid": userid                  
                     },
                 });

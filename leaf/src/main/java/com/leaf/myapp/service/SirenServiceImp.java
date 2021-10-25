@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.leaf.myapp.dao.SirenDAO;
+import com.leaf.myapp.vo.FranVO;
 import com.leaf.myapp.vo.MenuVO;
 import com.leaf.myapp.vo.RegisterVO;
 import com.leaf.myapp.vo.SirenCartVO;
@@ -28,6 +29,11 @@ public class SirenServiceImp implements SirenService {
 	@Override
 	public int addOrderTbl(SirenCartVO cVo) {
 		return sirenDAO.addOrderTbl(cVo);
+	}
+
+	@Override
+	public List<FranVO> fcList() {
+		return sirenDAO.fcList();
 	}
 
 

@@ -7,6 +7,7 @@ public class SirenCartVO {
     private int fc_num;
     private String userid;
     
+    
 	public long getOd_price() {
 		return od_price;
 	}
