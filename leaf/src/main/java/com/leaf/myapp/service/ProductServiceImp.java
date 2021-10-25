@@ -129,4 +129,11 @@ public class ProductServiceImp implements ProductService{
 		return productDAO.pc_cntAll(hq_num);
 	}
 
+
+	@Override
+	public List<ProductVO> NoProductList() {
+		// TODO Auto-generated method stub
+		return productDAO.NoProductList();
+	}
+
 }

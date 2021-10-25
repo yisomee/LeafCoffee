@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/inc/franTop.jspf" %>
 <style>
-body {
-	background-color: rgb(243, 244, 248);
-}
-
 .main {
 	max-width: 1400px;
 	margin: 0 auto;
@@ -19,8 +15,8 @@ body {
 	margin-right: 10px;
 	overflow: auto;
 	box-shadow: 0px 1px 2px 1px lightslategrey;
-	border-radius: 5px;
-	height: 955px;
+	border-radius: 3px;
+	height: 910px;
 	background-color: rgb(249, 247, 244);
 	cursor: pointer;
 }
@@ -28,7 +24,7 @@ body {
 .partner {
 	margin-right: 10px;
 	box-shadow: 0px 1px 2px 1px lightslategrey;
-	border-radius: 5px;
+	border-radius: 3px;
 	background-color: rgb(249, 247, 244);
 	display: flex;
 }
@@ -39,7 +35,7 @@ body {
 	margin: 10px;
 	flex-direction: column;
 	box-shadow: 0px 1px 2px 1px lightslategrey;
-	border-radius: 5px;
+	border-radius: 3px;
 	background-color: rgb(249, 247, 244);
 }
 
@@ -50,18 +46,17 @@ body {
 	margin-left: 0;
 	flex-direction: column;
 	box-shadow: 0px 1px 2px 1px lightslategrey;
-	border-radius: 5px;
+	border-radius: 3px;
 	background-color: rgb(249, 247, 244);
 	padding: 14px;
 }
 
 .purchase_ok {
-	width: 965px;
+	width: 970px;
 	height: 300px;
 	display: flex;
-	margin: 10px;
 	box-shadow: 0px 1px 2px 1px lightslategrey;
-	border-radius: 5px;
+	border-radius: 3px;
 	overflow: auto;
 	background-color: rgb(249, 247, 244);
 }
@@ -113,41 +108,47 @@ table, td {
 }
 
 #delBtn {
-	background-color: rgb(210, 205, 200);
-	border-radius: 5px;
-	font-size: 0.6em;
-	font-size: 1em;
-	width: 120px;
-	color: white;
+	line-height: 33px;
+	text-align: center; background-color : lightblue; width : 110px; height :35px; border-radius : 2px;
+	left: 40px;
+	border: 1px solid rgb(0, 163, 239);
+	font-size: 0.9em;
+	transition: 0.4s;
+	padding-left: 0px;
+	position: relative;
 	display: flex;
 	justify-content: space-evenly;
-	height: 35px;
-	margin: 10px;
-	margin-left: 820px;
-	transition: 0.4s;
+	top: 10px;
+    margin-left: 820px;
 }
+
+#submit>input {
+	font-size: 0.9rem
+}
+
 
 #delBtn:hover, .btn3:hover {
 	cursor: pointer;
-	box-shadow: inset 30em 0 0 0 rgb(102, 97, 93);
+	box-shadow: inset 30em 0 0 0 rgb(0, 163, 239);
 	color: white;
-	border-color: rgb(102, 97, 93);
+	border-color: rgb(0, 163, 239);
 }
 
 .btn3 {
-	font-size: 0.6em;
-	position: relative;
-	font-size: 1em;
-	height: 35px;
-	border: none;
-	background-color: rgb(210, 205, 200);
-	width: 120px;
-	color: white;
-	display: flex;
-	justify-content: space-evenly;
-	transition: 0.4s;
-	border-radius: 5px;
-	left: 150px;
+	line-height: 33px;
+    text-align: center;
+    background-color: lightblue;
+    width: 110px;
+    height: 35px;
+    border-radius: 2px;
+    left: 150px;
+    border: 1px solid rgb(0, 163, 239);
+    font-size: 0.9em;
+    transition: 0.4s;
+    padding-left: 0px;
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 }
@@ -235,6 +236,10 @@ input {
 	left: 70px;
 }
 
+td{
+	font-size:0.9rem;
+}
+
 .franchise {
 	line-height: 2;
 }
@@ -246,9 +251,21 @@ input {
 .franchise li:nth-of-type(1){
 	width:130px;
 }
+
+.NoProductList{
+	position: relative;
+    top: 200px;
+}
+
+.borderless > tbody > tr > td,
+.borderless > tbody > tr > th,
+.borderless > tfoot > tr > td,
+.borderless > tfoot > tr > th,
+.borderless > thead > tr > td,
+.borderless > thead > tr > th {
+    border: none;
+}
 </style>
-
-
 <script>
 
 
@@ -350,14 +367,14 @@ $(()=>{
    	   	</div>
    	   	<div id="purchase">
    	   	<form id='frm' method='post' action='/myapp/Purchase_RegisterOk'>
-	    <div>12</div>
-	    <div>원두</div>
-	    <div>5000원</div>
-	    <input type="text" name='pc_cnt' id='pc_cnt'/>개
+	    <div>발주할</div>
+	    <div>상품을</div>
+	    <div>선택하세요.</div>
+		<div></div>		   
 	    
 	    
 		   
-	    <div><input type='submit' class='btn3' value='발주' /></div></form>
+	    <div><input type='submit' class='btn3' value='발주하기' /></div></form>
    	   	</div>
    	   	<div class="textarea">
 	    	● 본사 담당자가 발주를 확인 한 후 처리완료 될 예정입니다.<br/> 
@@ -393,7 +410,7 @@ $(()=>{
 		<input type='text' id='myinput' placeholder='원하시는 상품을 검색하세요.' class='form-control'/>
 		<table class='table table-hover'>
 			<thead>
-			<tr class="table-active">
+			<tr class="table">
 				<td>상품번호</td>
 				<td>제품명</td>
 			</tr>
@@ -407,9 +424,29 @@ $(()=>{
 				</c:forEach>
 			</tbody>
 		</table>
+		<table class='table table-hover NoProductList'>
+			<thead>
+			<tr class="table">
+				<td>상품번호</td>
+				<td>제품명</td>
+				<td>재고</td>
+			</tr>
+			</thead>
+			<tbody id='searchList'>	
+				<c:forEach var="ProductVO" items="${NoProductList}">
+					<tr class="product">
+						<td class="first">${ProductVO.hq_num}</td>
+						<td>${ProductVO.hq_name}</td>
+						<td style="color:red;">없음</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
 	</div>
+	
+	
 	<div class="partner">
-			<table class='table'>
+			<table class='table borderless'>
 			<tr>
 				<td><div class='name'>품 목</div></td>
 			</tr>
@@ -426,7 +463,7 @@ $(()=>{
 				<td id="view9"></td>
 			</tr>
 			</table>
-			<table class='table'>
+			<table class='table borderless'>
 			<tr>
 				<td><div class='name'>품목정보</div></td>
 			</tr>
@@ -460,7 +497,7 @@ $(()=>{
 			 <table class="table table-hover">
 			  
 	      	<thead>
-	            <tr class="table-active">
+	            <tr class="table">
 	            	<td>선택</td>
 	            	<td>발주번호</td>
 	                <td>상품번호</td>
@@ -498,7 +535,7 @@ $(()=>{
 		<div class="purchase_ok">
 			 <table class="table table-hover">
 	      	<thead>
-	            <tr class="table-active">
+	            <tr class="table">
 	            	<td>발주번호</td>
 	                <td>상품번호</td>
 	                <td>제품명</td>

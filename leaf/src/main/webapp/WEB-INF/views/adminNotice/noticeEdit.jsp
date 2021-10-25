@@ -33,12 +33,13 @@
 	<div class="content_bar">
 		<ul>
 			<li><b>구분</b></li>
-			<li><select name="section" value="${vo.section }" >
+			<li><select name="section">
 				    <option value="">구분</option>
 				    <option value="m1">상품출시</option>
 				    <option value="m2">LEAF와문화</option>
 				    <option value="m3">LEAF사회공헌</option>
 			   </select>
+			   
 			</li>
 		</ul>	
 		<hr/>
@@ -56,7 +57,7 @@
 	<div class="content_bar_text">
 		<ul>
 			<li><b>내용</b></li>
-			<li><textarea  placeholder="글내용을 입력하는 곳" name="admin_content" value="${vo.admin_content }"></textarea></li>
+			<li><textarea  placeholder="글내용을 입력하는 곳" name="admin_content">${vo.admin_content }</textarea></li>
 		</ul>
 		<hr/>	
 	</div>

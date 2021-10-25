@@ -94,10 +94,15 @@ import com.leaf.myapp.vo.NoticeVO;
 	@RequestMapping("/adminnoticeDel")
 	public ModelAndView adminnoticeDel(int admin_no, HttpSession session) {
 		String userid = "apple";
-		adminnoticeService.adminnoticeDel(admin_no, userid);
+		int result = adminnoticeService.adminnoticeDel(admin_no, userid);
 		ModelAndView mav = new ModelAndView();
+		if(result>0) {
 		mav.setViewName("redirect:adminnoticeMain");
-	
+		}else {
+			mav.addObject("admin_no",admin_no);
+			mav.setViewName("redirect:adminnoticeDetail");
+			
+		}
 		return mav;
 	}
 	

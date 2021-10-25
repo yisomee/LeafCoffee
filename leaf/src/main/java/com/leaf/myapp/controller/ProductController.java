@@ -51,6 +51,7 @@ public class ProductController {
 	      ModelAndView mav = new ModelAndView();
 	      mav.addObject("ProductList", productService.ProductList());
 	      mav.addObject("purchaseList", productService.purchaseList());
+	      mav.addObject("NoProductList", productService.NoProductList());
 	      mav.setViewName("Store/purchase");
 	      return mav;
 	}
@@ -100,7 +101,6 @@ public class ProductController {
 			    	  ProductVO pVo = vo.get(i);
 			    	  int hq_num = pVo.getHq_num();
 			    	  int inventory = productService.ware_cntAll(hq_num).getWare_cntAll() - productService.pc_cntAll(hq_num).getPc_cntAll();
-			    	  System.out.println(inventory);
 			    	vo.get(i).setInventory(inventory);
 			      }
 			      

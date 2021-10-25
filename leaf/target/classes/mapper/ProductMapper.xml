@@ -10,6 +10,11 @@
 		select DISTINCT i.hq_num, i.hq_name from items i join product h on i.hq_num = h.hq_num order by hq_num 
 		<!-- select hq_num, hq_name from items order by hq_num -->
 	</select>
+	<!-- 발주페이지 제품리스트(재고x) -->
+	<select id="NoProductList"  resultType="com.leaf.myapp.vo.ProductVO">
+		select i.hq_num, i.hq_name from items i full outer join product h on i.hq_num = h.hq_num where h.ware_num is null order by hq_num
+		<!-- select hq_num, hq_name from items order by hq_num -->
+	</select>
 	<!-- 발주시 제품클릭하면 파트너, 발주창 ajax-->	
 	<select id="ProductPartner" parameterType="int" resultType="com.leaf.myapp.vo.ProductVO">
   		select h.hq_num, i.hq_name, i.ware_price, p.part_num, p.part_company, p.part_name, p.part_tel, p.part_email, p.part_code_name from product h join items i on i.hq_num = h.hq_num join partner p on i.part_num = p.part_num where h.hq_num=#{param1}

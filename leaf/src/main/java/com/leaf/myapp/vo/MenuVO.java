@@ -53,8 +53,9 @@ public class MenuVO {
 		this.p_desc = p_desc;
 	}
 	public String getP_info() {
-		p_info = p_info1 + "/" + p_info2 + "/" + p_info3 + "/" + p_info4 + "/" + p_info5 + "/" + p_info6 + "/" + p_info7;
-		
+		if(p_info1!=null) {
+			p_info = p_info1 + "/" + p_info2 + "/" + p_info3 + "/" + p_info4 + "/" + p_info5 + "/" + p_info6 + "/" + p_info7;			
+		}
 		return p_info;
 	}
 	
@@ -62,7 +63,6 @@ public class MenuVO {
 		this.p_info = p_info;
 		
 		//영양정보 / 로 분류하여 1234567에 대입한다.
-		/*
 		String p[]=p_info.split("/");
 		p_info1 = p[0];
 		p_info2 = p[1];
@@ -71,10 +71,6 @@ public class MenuVO {
 		p_info5 = p[4];
 		p_info6 = p[5];
 		p_info7 = p[6];
-		
-		*/
-		
-		
 	}
 	public String getNew_best() {
 		return new_best;
