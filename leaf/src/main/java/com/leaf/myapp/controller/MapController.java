@@ -20,8 +20,9 @@ public class MapController {
 	
 	@RequestMapping("/map")
 	@ResponseBody
-	public List<MapVO> map(String searchMap) {
-		List<MapVO> vo = mapservice.mapAll(searchMap);
+	public List<MapVO> map(String search) {
+		System.out.println(search);
+		List<MapVO> vo = mapservice.mapAll(search);
 		//System.out.println(vo.get(0).getFc_addr());
 		return vo;
 	}

@@ -95,7 +95,7 @@ input[type="text"] {
 	//위도, 경도
 	var latitude = 37.5010689;
 	var longitude = 127.0430285;
-	var resultMap;
+	var resultedMap;
 	function initMap() {
 		var myCenter = new google.maps.LatLng(latitude, longitude);
 		// 지도를 그릴 때 필요한  기타점을 JSON형식의 데이터로 생성한다.							
@@ -118,7 +118,7 @@ input[type="text"] {
 
         function geocodeAddress(geocoder, resultMap) {
             console.log('geocodeAddress 함수 실행');
-     	resultMap= resultMap;
+     	resultedMap= resultMap;
                 // 주소 설정
 //                 var address = document.getElementById('address').value;
      	mapList();
@@ -126,10 +126,11 @@ input[type="text"] {
 	}
 		}
 	function mapList(searchMap){
+		console.log(searchMap);
 		$.ajax({
 	    	//데이터베이스에서 주소 목록을 가져온다.
 		url: '/myapp/map',
-		data: searchMap,
+		data: {search:searchMap},
 		success:function(e){
 			
 			var tag="";
@@ -138,18 +139,21 @@ input[type="text"] {
 	      		var lat = Number(e[i].lat);
 	      		var lon = Number(e[i].lon);
 	      		var darwin = new google.maps.LatLng(lat, lon);
-			
 			        // 맵 마커
-	                var marker = new google.maps.Marker({
-	                       map: resultMap,
-	                       position: darwin,
-	                       title:e[i].fc_name,
-	                 });
-			        marker.addListener("click", () => {
-			            map.setZoom(15);
-			            	            
-			            map.setCenter(this.getPosition());
-			        });
+		        var marker = new google.maps.Marker({
+                      map: resultedMap,
+                      position: {lat:lat,lng:lon},
+                      title:e[i].fc_name,
+                });
+//                 var marker = new google.maps.Marker({
+//                        map: resultMap,
+//                        position: darwin,
+//                        title:e[i].fc_name,
+//                 });
+		        marker.addListener("click", () => {
+		        	resultedMap.setZoom(15);
+		        	resultedMap.setCenter(this.getPosition());
+		        });
 					tag += "<li>"+e[i].fc_name+"<br /> "+e[i].fc_addr+"<br /></li> ";
 	            };
 				
@@ -162,15 +166,17 @@ input[type="text"] {
 }
 </script>
 <script type="text/javascript">
-$(function(){
+$(()=>{
 	
    $('#searchMap').keyup(function(){
 	   $('#searched').html("");
-	   console.log(('#searchMap').val);
-	   mapList($('#searchMap').val);
+	   var map = $('#searchMap').val();
+	   
+	   mapList($('#searchMap').val());
    
    });
 });
+
 
 </script>
 </head>
