@@ -141,25 +141,35 @@ height: 46px;
 }
 .top-banner-imgCon{background:url(https://www.baristapaulbassett.co.kr/images/whatsnew/eventSubVisual.jpg) no-repeat center; background-size:cover;
 					height:250px;position:relative; min-width:1400px; overflow:hidden;}	
+.logname{
+   padding-top:10px;
+}
+
 </style>
 
 </head>
 <body>
 
 <div class="whitebg"></div>
-	
+   
 
 <div class="header">
-	<div class="login">
-		<ul>
-			<li><a href="/myapp/adminHome">본사</a></li>
-			<li><a href="/myapp/franHome">가맹점</a></li>
-			<c:if test="${logname==null}"><li><a href="/myapp/login">LOGIN</a></li></c:if>
-			<c:if test="${logname!=null}"><li><a href="/myapp/logout">LOGOUT</a></li></c:if>
-			${logname}
-			<li><a href="/myapp/register">JOIN</a></li>	
-		</ul>
-	</div>
+   <div class="login">
+      <ul>
+         <li><a href="/myapp/adminHome">본사</a></li>
+         <li><a href="/myapp/franHome">가맹점</a></li>
+         <c:if test="${logname==null}"><li><a href="/myapp/login">LOGIN</a></li></c:if>
+         <c:if test="${logname!=null}"><li><a href="/myapp/logout">LOGOUT</a></li></c:if>
+         <div class="logname">${logname}
+         <c:if test="${membership==1}">Silver <i class="fab fa-envira" style="color:gray;"></i></c:if>
+         <c:if test="${membership==2}">Gold <i class="fab fa-envira" style="color:gold;"></i></c:if>
+         <c:if test="${membership==3}">Platinum <i class="fab fa-envira"style="color:blue;"></i></c:if></div>
+       
+         <c:if test="${logname==null}"><li><a href="/myapp/register">JOIN</a></li></c:if>
+         <c:if test="${logname!=null}"><li><a href="/myapp/mypage">마이페이지</a></li></c:if>
+         
+      </ul>
+   </div>
 	<!-- <a href="/leaf"><div class="logoimg"><img src="img/leaflogo-removebg-preview.png"/></div></a> -->
 	<div class="logoimg"><img src="img/leaflogo-removebg-preview.png" onclick="location.href='/myapp/'"/></div>
 	

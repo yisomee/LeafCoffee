@@ -74,7 +74,7 @@ $(()=>{
    .inputBox, .hasDatepicker{
       width:250px;
       height:35px;
-      border:none;border-right:0px; border-top:0px; border-left:0px; border-bottom:1px solid;
+      border:none;border-right:0px; border-top:0px; border-left:0px; border-bottom:1px solid #ddd;
    }
    .inputBoxLong{
    	width:370px;
@@ -112,7 +112,7 @@ $(()=>{
    .tel{
       width:113px;
       height:30px;
-      border:none;border-right:0px; border-top:0px; border-left:0px; border-bottom:1px solid;
+      border:none;border-right:0px; border-top:0px; border-left:0px; border-bottom:1px solid #ddd;
       outline:none;
       margin-right:11px;
    
@@ -159,7 +159,7 @@ display: flex;
 	margin-bottom: 9px;
 }
 .footer{
-	padding: 80px 0 32px;
+	padding: 120px 0 32px;
     box-sizing: border-box;
     font-size:0.7rem;
     color: gray;

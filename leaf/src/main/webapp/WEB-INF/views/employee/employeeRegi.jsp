@@ -9,22 +9,36 @@
 <style>	
 	.main-form-Con{max-width: 570px; margin: 0 auto; padding: 70px 0 50px;}
 	.main-form-Con>strong{display: block;font-size: 30px;font-weight: normal;text-align: center; padding:30px;}
-	.mf-inputCon{border: 1px solid #ddd; border-bottom:0px solid gray; border-radius: 3px; box-sizing: border-box; max-width: 570px; margin: 0 auto 30px; position: relative;}
+	.mf-inputCon{box-sizing: border-box; max-width: 570px; margin: 0 auto 30px; position: relative;}
 	.mfi-img{margin: 0 auto; text-align: center; padding: 30px 20px 0; background: url(img/empimg.png) 50% 100% no-repeat; width: 205px; height: 182px;}
-	.mfi-inputbox{background: #fff; border-bottom: 1px solid #ddd; padding: 20px 20px; position: relative;}
+	.mfi-inputbox{height: 130px;background: #fff; padding: 20px 20px; position: relative;}
 	.mfi-title{background: #fff; border-bottom: 1px solid #ddd; color: #777; font-size: 18px; line-height: 24px; text-align: center;padding: 30px 20px 30px; margin:0;}
-	.mfi-inputbox input{border: 1px solid #ddd; border-radius: 3px; box-sizing: border-box; display: inline-block; width:530px; padding:15px;}
+	.mfi-inputbox input{font-size: 0.9rem; border: 0;
+    border-bottom: 1px solid #ddd; width:530px; padding:15px;}
 	.mfi-inputbox strong{color: #222; display: block; font-size: 18px; margin-bottom: 10px;}
 	.mfi-inputbox .mfi-iB-tel #tel1{width:30%; display:inline-block; height:47px; margin-right:20px;} 
 	.mfi-inputbox .mfi-iB-tel input{width:30%; margin-right:20px;}
 	.mfi-inputbox .mfi-iB-tel input:last-of-type{width:30%; margin-right:0px;}
 	.mfi-inputbox #userid{width:400px; float:left;}
-	.mfi-inputbox #joinCheck{width:122px; background:rgb(0,163,239); color:#fff; border:0px solid; margin-left:6px; box-sizing:border-box;}
+	.mfi-inputbox #joinCheck{transition: 0.4s; width:122px; background:#fff; color:rgb(0,163,239); border:1px solid rgb(0,163,239); margin-left:6px; box-sizing:border-box;}
+	.mfi-inputbox #joinCheck:hover, #emp-regi:hover{
+      
+      box-shadow: inset 30em 0 0 0 rgb(0, 163, 239);
+	color: white !important;
+	border-color: rgb(0, 163, 239);
+   }
+   input[type=text]:focus{
+	   	border: 1px solid rgb(0, 163, 239);
+		border-bottom: 1px solid rgb(0, 163, 239);
+		border-radius: 5px;
+   }
 	/* 부서파트 */
-	.mfi-inputbox #dept_num{width:530px; display:inline-block; height:47px; margin-right:20px;}	
-	.mfi-inputbox #emp_posi{width:530px; display:inline-block; height:47px; margin-right:20px;}	
+	.mfi-inputbox #dept_num{    font-size: 0.9rem;border: 0;
+    border-bottom: 1px solid #ddd; width:530px; display:inline-block; height:47px; margin-right:20px;}	
+	.mfi-inputbox #emp_posi{    font-size: 0.9rem;border: 0;
+    border-bottom: 1px solid #ddd; width:530px; display:inline-block; height:47px; margin-right:20px;}	
 	.regiForm-submit{width: 530px; margin: 0 auto; padding:20px 20px 40px;}
-	.regiForm-submit #emp-regi{width:530px; padding:15px;background: rgb(0,192,239); border: 1px solid white; color: white; font-size: 1.1em}
+	.regiForm-submit #emp-regi{transition: 0.6s;margin-left: 45px;width:400px; padding:13px;background: white; border: 1px solid rgb(0,192,239); color: rgb(0,192,239); font-size: 1em}
 	
 	/* 상단 이미지와 네비바 */
 	a{color:gray}
@@ -43,28 +57,48 @@
    
    /* 폼 데이터 미입력시 나타나는 글씨*/
    .error-Message{display:inline-block; margin:10px 0 0 10px; color:red;}
-   #idcheck-error{display:none;}
+   #idcheck-error{display:none;font-size: 0.9rem;
+    position: absolute;
+    top: 103px;
+    left: 24px;
+    height: 20px;}
    #deptName-error{display:none;}
    #empRegdate-error{display:none;}
    
       #head_img{
-      background-image:url(https://www.baristapaulbassett.co.kr/images/menu/subVisual_new.jpg);
+      background-image:url(img/wallpaperbetter.com_1920x1080.jpg);
+      background-position-y: -120px;
       z-index:-1;
       width:100%;
       height:330px;
    }	
-   #headerText{
-         top:-100px;
-         font-size:3em;
-         color:white;
-         opacity:0.5;
-         text-align:center;
-         position: relative;
-         }
+  
    header{
 	   height:330px;
 	   position:relative;
    }
+   
+   
+.custom-shape-divider-bottom-1634814355 {
+    position: absolute;
+    top:360px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1634814355 svg {
+    position: relative;
+    display: block;
+    width: calc(131% + 1.3px);
+    height: 90px;
+}
+
+.custom-shape-divider-bottom-1634814355 .shape-fill {
+    fill: #FFFFFF;
+}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
@@ -179,25 +213,38 @@
 	});
 				
 </script>
+
 </head>
 <body>
 	<%@ include file="/inc/adminTop.jspf" %>	
 	<header>
    <div id="head_img"></div>
-   <div id="headerText">Employee</div>
+   
 </header>
+<div class="custom-shape-divider-bottom-1634814355">
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+        <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+        <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+    </svg>
+</div>
 	<nav class="top-banner-nav">
 	   <div class="tbn-menu1"><a href="<%=request.getContextPath()%>/employeeManagePage">사원검색</a></div>
 	   <div class="tbn-menu2"><a href="<%=request.getContextPath()%>/employeeRegiPage">사원등록</a></div>	   	   
 	</nav>
 	<main>
+	<div class="notice-con">
+				<div class="page-main-notice">
+					<h3>사원등록</h3>
+					<p>사원 정보를 입력해 주세요.</p>
+				</div>	
+			</div>
 		<div class="main-Form-bg">
 			<form method="post" action="<%=request.getContextPath()%>/employeeRegister" name="frm">
-				<div class="main-form-Con">
-					<strong>사원등록</strong>				
-					<section class="mf-inputCon">
-						<div class="mfi-img"></div>
-							<p class="mfi-title">사원정보를 입력해주세요.</p>
+				<div class="main-form-Con" >
+									
+					<section class="mf-inputCon" style="top: -19px; left: -325px;">
+				
 						<div class="mfi-inputbox">
 							<strong>가입 확인 절차
 								<span>(필수)</span>
@@ -225,8 +272,10 @@
 						</div>
 					</section>
 
-					<section class="mf-inputCon">
-						<div class="mfi-inputbox">
+					<section class="mf-inputCon" style="border-left:1px solid gray;position: absolute;
+    right: 380px;
+    top: 730px;">
+						<div class="mfi-inputbox" style="padding-left: 60px;">
 							<strong>부서명
 								<span>(필수)</span>
 							</strong>
@@ -238,7 +287,7 @@
 								<option value="8000">경영부</option>
 							</select>							
 						</div>
-						<div class="mfi-inputbox">
+						<div class="mfi-inputbox" style="padding-left: 60px;">
 							<strong>직급
 								<span>(필수)</span>
 							</strong>	
@@ -251,10 +300,13 @@
 								<option value="부장">부장</option>
 							</select> 						
 						</div>
-						<div class="mfi-inputbox">
+						<div class="mfi-inputbox" style="padding-left: 60px;">
 							<strong>입사일</strong>	
 							<input name="emp_regdate" id="emp_regdate" placeholder="입사일 선택하기"/>
-							<span id="empRegdate-error" class="error-Message">입사일을 선택해주세요!</span>							
+												
+						</div>
+						<div class="mfi-inputbox" style="padding-left: 60px; font-size:0.9rem;">
+						<span id="empRegdate-error" class="error-Message">입사일을 선택해주세요!</span>		
 						</div>						
 					</section>
 				<div class="regiForm-submit">															

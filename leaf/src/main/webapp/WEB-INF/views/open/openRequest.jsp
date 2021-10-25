@@ -49,19 +49,23 @@ form[name=frmInquiry] input[type=radio]:nth-of-type(2n) {margin-left:30px;}
 .telinput{width:143px;border: none; border-bottom: 1px solid black;}
 .errorMessage{color:red; display:none; font-weight: bold;}
 #chat{
-	width: 200px;
-	height: 100px;
-	position: fixed;
-	right: 0px;
-	top: 500px;
-	background: white;
+	width: 170px;
+    height: 80px;
+    position: fixed;
+    right: 20px;
+    top: 785px;
+    background: white;
     z-index: 20;
-    border: 1px solid gray;
-
+    box-shadow: 1px 1px 1px 1px #ddd;
+    border-radius: 60px;
+    text-align: center;
+    line-height: 80px;
+    font-size: 1.2rem;
+    font-weight: 600;
 }
 #chatTab{
 	width: 397px;
-    height: 510px;
+    height: 505px;
 	position: fixed;
 	right: 20px;
 	bottom: 20px;
@@ -69,7 +73,7 @@ form[name=frmInquiry] input[type=radio]:nth-of-type(2n) {margin-left:30px;}
 	z-index: 20;
 	border: 1px solid #ddd;
 	border-radius: 30px;
-	padding:20px;
+	padding: 5px 20px;
 	display: none;
 }
 #chatBody{
@@ -83,6 +87,22 @@ form[name=frmInquiry] input[type=radio]:nth-of-type(2n) {margin-left:30px;}
 }
 #chatBody::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera*/
+}
+.openTime{
+font-size: 0.9rem;
+    text-align: center;
+    padding: 5px 0px;
+
+}
+.chatTitle{
+	border-bottom: 1px solid #ddd;
+    font-size: 1.3rem;
+    padding: 0px 8px 5px 7px;
+    font-weight: 600;
+}
+.chatTitle>span{
+	float:right;
+	color: rgb(0, 163, 239);
 }
 </style>
 <script>
@@ -167,7 +187,9 @@ form[name=frmInquiry] input[type=radio]:nth-of-type(2n) {margin-left:30px;}
 		$('#chat').click(function(){
 			$("#chatTab").css('display','block');
 		});
-		
+		$('#chatClose').click(function(){
+			$("#chatTab").css('display','none');
+		});
 	});
 </script>
 </head>
@@ -176,8 +198,8 @@ form[name=frmInquiry] input[type=radio]:nth-of-type(2n) {margin-left:30px;}
 <div id="chat">상담하기</div>
 <div id="chatTab">
 	<ul>
-		<li>leaf x</li>
-		<li>leaf의 운영시간은 평일 9:00 ~ 18:00 <br/>(주말, 공휴일 제외) 입니다.</li>
+		<li class="chatTitle">leaf <span id ="chatClose"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="InnerIconstyled__Icon-sc-197h5bb-0 jdUMxO FullHeaderstyled__ThemeCloseIcon-sc-1aljhke-10 drXuSo" defaultOpacity="0.6" hoveredOpacity="1" margintop="0" marginright="0" marginbottom="0" marginleft="0"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M16.4818 4.69668L15.3033 3.51817L10 8.82147L4.69671 3.51817L3.5182 4.69668L8.8215 9.99998L3.51819 15.3033L4.6967 16.4818L10 11.1785L15.3033 16.4818L16.4818 15.3033L11.1785 9.99998L16.4818 4.69668Z"></path></svg></span></li>
+		<li class="openTime">상담하기 운영시간은 평일 9:00 ~ 18:00 <br/>(주말, 공휴일 제외) 입니다.</li>
 			<iframe id="chatBody" src="http://192.168.0.29:10077/leafChat"><input type="button" value="새 문의하기" onclick="javascript:chat()"/></iframe>
 	</ul>
 </div>
