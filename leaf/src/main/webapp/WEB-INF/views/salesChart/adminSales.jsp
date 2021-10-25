@@ -36,34 +36,36 @@
 	.area {float: left; background: #e2e2e2; width: 100%; height: 100%;}
 	@font-face {font-family: 'Titillium Web'; font-style: normal; font-weight: 300; src: local('Titillium WebLight'), local('TitilliumWeb-Light'), url(http://themes.googleusercontent.com/static/fonts/titilliumweb/v2/anMUvcNT0H1YN4FII8wpr24bNCNEoFTpS2BTjF6FB5E.woff) format('woff');}
 	
-	.sideChartWriteName{position:absolute; width:200px; font-size:1.1rem; top:200px; left:-10px; color:rgb(0,163,239); font-weight:600; text-align:center;}
-	.sideChartWriteGa{position:absolute; width:200px; font-size:1.1rem; top:200px; left:180px; font-weight:600;}
-	.sideChartWriteDocu{position:absolute; width:250px; font-size:1rem; top:230px; left:-30px;}
+	.sideChartWriteName{position:absolute; width:200px; font-size:1.1rem; top:220px; left:-10px; color:rgb(0,163,239); font-weight:600; text-align:center;}
+	.sideChartWriteGa{position:absolute; width:200px; font-size:1.1rem; top:220px; left:180px; font-weight:600;}
+	.sideChartWriteDocu{position:absolute; width:250px; font-size:1rem; top:250px; left:-30px;}
 /* ------------------------------------------------------------------------------------------ */
 	
 /*  바디부 -------------------------------------*/
 	/* 상단 알림바*/
-	.topmain{margin:40px auto; width:1500px; position:relative;}
+	.topmain{margin:40px auto; width:1600px; position:relative;}
 	.topbox{display:flex; width:900px; justify-content: space-between;}
 	.nav-box{border:1px solid; box-sizing: border-box; border-radius: 4px; height:150px; width:200px; text-align:center; padding:20px;}
-	.nav-box h1{color:rgb(0,163,239);}
+	.nav-box h2{color:rgb(0,163,239);}
 	
 	
 	/* --------------*/
 	/* 사이드 파이 차트*/
-	.sidePieChartDiv{position:absolute; border:1px solid; top:125px; left: 1140px; width:300px; height:300px;}
-	.pie-chart{position: relative; display:inline-block; width:180px; height:180px; border-radius: 50%; transition: 0.3s; left:60px; top:20px;}
-	span.sidePieChartCenter{background:#fff; display : block; position: absolute; top:50%; left:50%; width:140px; height:140px; border-radius: 50%; text-align:center; line-height:140px; font-size:30px; transform: translate(-50%, -50%);}
+	.sidePieChartDiv{position:absolute; border:1px solid; top:410px; left: 1140px; width:385px; height:345px;}
+	.pie-chart{position: relative; display:inline-block; width:200px; height:200px; border-radius: 50%; transition: 0.3s; left:95px; top:20px;}
+	span.sidePieChartCenter{background:#fff; display : block; position: absolute; top:50%; left:50%; width:160px; height:160px; border-radius: 50%; text-align:center; line-height:160px; font-size:30px; transform: translate(-50%, -50%);}
 	
 	
 	/* --------------*/
 	.datechoicelabel{display:inline-block; position: absolute; width:250px; height:100px; margin-left:123px;}
 	.datechoicelabel span{position:absolute; font-size:1.7em; top:27px; left:133px;}
 	.datechoicelabel:after{content: ''; display: inline-block;height: 100px; border-left: 2px solid #777; margin-left: 300px;}
-	.choiceDateMain{margin:0 auto; width:1500px;}
+	.choiceDateMain{margin:0 auto; width:1600px;}
 	.choiceDateDiv{border:1px solid; display:inline-block; width:900px; padding:0px 0px 30px 0px;}
 	.choiceDateDiv h4{text-align:center;}
 	
+	#sdate{ cursor:pointer;}
+	#edate{ cursor:pointer;}
 	.dateul{overflow:auto; height:50px; margin-left:155px;}	
 	.dateul li{float:left; margin-left:20px;}
 	.dateul input[type=radio]{position:absolute;z-index:-1}
@@ -72,45 +74,39 @@
 	#dateSearchBtn{margin-left: 20px; height: 30px; box-sizing: border-box; border-radius: 4px; border: 0px; width:80px;background: rgb(0,163,239); color:#fff}
 	#choiceOption{width:100px; height:30px; box-sizing: border-box; border-radius: 4px; margin-left:10px;}
 	.dateform{width:150px; text-align:center; height:20px;}
-	#dateViewBtn{width:100px; background:rgb(0,163,239); color:white; font-weight:500; height:26px; box-sizing: border-box; border:0px solid;}
+	#dateViewBtn{width:100px; background:rgb(0,163,239); color:white; font-weight:500; height:26px; box-sizing: border-box; border:0px solid; cursor:pointer;}
 	.dateChecked{display:block;width:72px;height:26px;font-size:14px;font-weight:bold;color:#fff;text-align:center;line-height:25px;text-decoration:none;cursor:pointer;background:rgb(0,163,239);}	
 	.dateUnChecked{display:block;width:72px;height:26px;font-size:14px;font-weight:bold;color:#fff;text-align:center;line-height:25px;text-decoration:none;cursor:pointer;background:#a5b0b6;}
 	
 	
-	.maindiv{width:1500px; margin:30px auto;}
-	.searchDiv{margin-top:50px; margin-left:1105px; height:40px;}
+	.maindiv{width:1600px; margin:30px auto;}
+	.searchDiv{height:40px; position:absolute; left:1080px; top:20px; z-index:1;}
+	.searchDiv input[value=search]{cursor:pointer;}
 	.searchDiv input{box-sizing: border-box; border-radius: 4px; height:35px; width:100px; border:1px solid gray;}
 	.searchDiv input[type=text]{width:240px; border:1px solid gray; text-align:center;}
-	.searchDiv input[type=button]{width:100px; border:1px solid gray; margin-left:10px;}
-	.salesDiv{width:1450px; display:inline-block; margin-top:20px; border:1px solid; border-radius: 4px;}
-	.salesList{overflow:auto; width:1300px; margin:30px auto 15px auto;}
-	.salesList>li{float:left; height:40px; line-height:40px; width:20%;}
-	.salesList>li:nth-child(1){border-bottom:1px solid gray; height:50px; line-height:50px; font-size:1.1rem;}
-	.salesList>li:nth-child(2){border-bottom:1px solid gray; height:50px; line-height:50px; font-size:1.1rem;}
-	.salesList>li:nth-child(3){border-bottom:1px solid gray; height:50px; line-height:50px; font-size:1.1rem;}
-	.salesList>li:nth-child(4){border-bottom:1px solid gray; height:50px; line-height:50px; font-size:1.1rem;}
-	.salesList>li:nth-child(5){border-bottom:1px solid gray; height:50px; line-height:50px; font-size:1.1rem;}
-	.salesList>li:nth-child(6){border-bottom:1px solid gray; height:50px; line-height:50px; font-size:1.1rem;}
-	.salesList>li:nth-child(6n+1){width:10%;}	
-	.salesList>li:nth-child(6n+4){width:15%;}
-	.salesList>li:nth-child(6n+5){width:15%;}
-	.salesList>li:nth-child(6n+6){text-align:center;}
-	.salesRankList{overflow:auto; width:1300px; margin:0 auto;}
-	.salesRankList>li{float:left; height:40px; line-height:40px; width:15%;}
-	.salesRankList>li:nth-child(6n+1){width:10%;}
-	.salesRankList>li:nth-child(6n+2){width:20%;}
-	.salesRankList>li:nth-child(6n+3){width:20%;}
-	.salesRankList>li:nth-child(6n+4){width:15%;}
-	.salesRankList>li:nth-child(6n+5){width:15%;}
-	.salesRankList>li:nth-child(6n+6){width:20%; text-align:center;}
+	.searchDiv input[type=button]{width:100px; border:1px solid gray; margin-left:10px; cursor:pointer;}
+	.salesDiv{width:600px; display:inline-block; border:1px solid; border-radius: 4px; position:absolute; left:925px; height:375px; top:0px;}
+	.salesList{overflow:auto; width:95%; margin:70px auto 3px auto;}
+	.salesList>li{float:left; width:20%; text-align:center; border-bottom:1px solid gray; height:50px; line-height:50px; font-size:1.08rem;}
+	.salesList>li:nth-child(1){width:10%;}
+	.salesList>li:nth-child(2){width:30%;}
+	.salesList>li:nth-child(4){width:40%;}
+	
+	.salesRankList{overflow:auto; width:95%; margin:0 auto 10px auto; min-height:70px;}
+	.salesRankList>li{float:left; height:40px; line-height:40px; text-align:center; font-size:1.05rem;}
+	.salesRankList>li:nth-child(4n+1){width:10%;}
+	.salesRankList>li:nth-child(4n+2){width:30%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+	.salesRankList>li:nth-child(4n+3){width:20%;}
+	.salesRankList>li:nth-child(4n+4){width:40%;}
 	
 	/* 차트*/
 	.chartbox{box-sizing: border-box; border-radius: 4px; border:1px solid; width:1100px; height:350px; display:inline-block; padding-top:20px;}
 	/* ----*/
 	
 /* 페이징 ----------------------------------------------------*/
+	
 	.page_wrap {text-align:center; font-size:0; height:30px; margin-top: 20px;}
-	.page_nation {height:32px; margin:30px 0px 30px 615px;}
+	.page_nation {width:100%; display:flex;justify-content: center;}
 	.page_nation a {display:block; margin:0 3px; float:left; border:1px solid #e6e6e6; width:28px;
 					height:28px; line-height:28px; text-align:center; background-color:#fff; font-size:13px;
 					color:#999999; text-decoration:none;}
@@ -334,9 +330,7 @@
 					
 					salesListPage.each(function(idx,vo){
 						chartList += '<li>'+vo.rank+'</li>'+
-						'<li>'+vo.p_num.toLocaleString()+'</li>'+
-						'<li>'+vo.p_name+'</li>'+
-						'<li>'+vo.p_price.toLocaleString()+'</li>'+
+						'<li>'+vo.p_name+'</li>'+						
 						'<li>'+vo.od_cnt.toLocaleString()+'</li>'+
 						'<li>'+vo.totalsales.toLocaleString()+'</li>';
 					});// each()
@@ -507,10 +501,8 @@
 	    					let chartList = '';
 	    					
 	    					salesListPage.each(function(idx,vo){
-	    						chartList += '<li>'+vo.rank+'</li>'+
-	    						'<li>'+vo.p_num.toLocaleString()+'</li>'+
+	    						chartList += '<li>'+vo.rank+'</li>'+	    						
 	    						'<li>'+vo.p_name+'</li>'+
-	    						'<li>'+vo.p_price.toLocaleString()+'</li>'+
 	    						'<li>'+vo.od_cnt.toLocaleString()+'</li>'+
 	    						'<li>'+vo.totalsales.toLocaleString()+'</li>';
 	    					});// each()
@@ -646,9 +638,7 @@
 	    					
 	    					salesListPage.each(function(idx,vo){
 	    						chartList += '<li>'+vo.rank+'</li>'+
-	    						'<li>'+vo.p_num.toLocaleString()+'</li>'+
 	    						'<li>'+vo.p_name+'</li>'+
-	    						'<li>'+vo.p_price.toLocaleString()+'</li>'+
 	    						'<li>'+vo.od_cnt.toLocaleString()+'</li>'+
 	    						'<li>'+vo.totalsales.toLocaleString()+'</li>';
 	    					});// each()
@@ -798,26 +788,45 @@
         </nav>		
 	</header>
 	<main>
+		<form id="frm">
 		<div class="topmain">			
 	    	<div class="topbox">
 	    		<div class="nav-box f1box" id="totalFran">
-	    			<h3>총 가맹점수</h3>
-	    			<h1 id="topTotalFran"></h1>	    			
+	    			<h4>총 가맹점수</h4>
+	    			<h2 id="topTotalFran"></h2>	    			
 	    		</div>
 	    		<div class="nav-box f1box" id="totalBuyCnt">
-	    			<h3>총 구매횟수</h3>
-	    			<h1 id="topTotalBuyCnt"></h1>
+	    			<h4>총 구매횟수</h4>
+	    			<h2 id="topTotalBuyCnt"></h2>
 	    		</div>
 	    		<div class="nav-box f1box" id="totalBuyUser">
-	    			<h3>총 이용고객 수</h3>
-	    			<h1 id="topTotalBuyUser"></h1>
+	    			<h4>총 이용고객 수</h4>
+	    			<h2 id="topTotalBuyUser"></h2>
 	    		</div>
 	    		<div class="nav-box f1box" id="totalSales">
-	    			<h3>총 판매액</h3>
-	    			<h1 id="topTotalSales"></h1>
+	    			<h4>총 판매액</h4>
+	    			<h2 id="topTotalSales"></h2>
 	    		</div>    		
 	    	</div>
-	    	
+    		<div class="searchDiv">
+	 			<input type="text" name="searchWord" placeholder="상품명을 입력해주세요"/>
+	 			<input type="submit" value="search"/>
+	 		</div> 		
+ 			<div class="salesDiv">
+ 				<ul class="salesList">
+ 					<!-- if -->
+ 					<li>순위</li>					
+ 					<li>상품명</li>
+ 					<li>판매수량</li>
+ 					<li>총판매액<span style="font-size:14px;">(원)</span></li>
+ 				</ul>
+	 			<ul class="salesRankList">
+ 				</ul>
+	 			<div class="page_nation">	 				
+				</div>
+					
+ 			</div>
+			    	
 	    	<!-- 사이드 파이차트 -->        
 	        <div class="sidePieChartDiv">
 	        	<div class="pie-chart sidePieChart">
@@ -828,7 +837,7 @@
 	        </div>   
         </div>
         
-	<form id="frm">     
+    
 	        <!-- 기존날짜 -->
 	        <div class="choiceDateMain">
 		 		<div class="choiceDateDiv">	 			 		
@@ -883,13 +892,13 @@
 	 				<canvas id="myChart" width="1000" height="300" style="display:inline-block; margin:10px 0px 0px 55px;" ></canvas>
 	 			</div>
 	 			
-	 			<div class="searchDiv">
+<!-- 	 			<div class="searchDiv">
 		 				<input type="text" name="searchWord" placeholder="상품명을 입력해주세요"/>
 		 				<input type="submit" value="search"/>
 		 			</div> 		
 	 			<div class="salesDiv">
 	 				<ul class="salesList">
-	 					<!-- if -->
+	 					if
 	 					<li>순위</li>
 	 					<li>상품번호</li> 					
 	 					<li>상품명</li>
@@ -897,11 +906,11 @@
 	 					<li>판매수량</li>
 	 					<li>총판매액<span style="font-size:14px;">(원)</span></li>
 	 				</ul>
-	 				<ul class="salesRankList">
+ 	 				<ul class="salesRankList">
 	 				</ul>
 		 			<div class="page_nation">	 				
 					</div>
-	 			</div>
+	 			</div> -->
 	 			<!-- 페이징 -->
 	 		</div>
 	</form>        
