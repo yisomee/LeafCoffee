@@ -5,7 +5,8 @@ import java.util.List;
 import com.leaf.myapp.vo.MenuVO;
 
 public interface MenuService {
-	public List<MenuVO> MenuList(String m_code);//¸Þ´ºº¸±â
-	public MenuVO MenuDetail(int p_num);//»ó¼¼¼³¸íÆäÀÌÁö
-	public int Menu_RegisterOk(MenuVO vo);//¸Þ´ºµî·Ï
+	public List<MenuVO> MenuList(String m_code);//ï¿½Þ´ï¿½ï¿½ï¿½ï¿½ï¿½
+	public MenuVO MenuDetail(int p_num);//ï¿½ó¼¼¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	public int Menu_RegisterOk(MenuVO vo);//ï¿½Þ´ï¿½ï¿½ï¿½ï¿½
 }
+

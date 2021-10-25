@@ -161,6 +161,7 @@ input[type=text]:focus{
 
 
 				<ul class="logins">
+				
 					<li><label class="label">이름</label></li>
 					<li><input type="text" name="username" id="username"class="inputBox" required /></li>
 					<li><label class="label">전화번호</label></li>
@@ -213,18 +214,8 @@ input[type=text]:focus{
                             'success'
                         )
                         //id 가져오기 
-                 	   $.ajax({
-                           url: "/myapp/update/phone",
-                           data: {"tel":$('#tel').val(),
-                               "username":$('#username').val()
-
-                           }, success:function(result){
-                           	   $("#id").text("아이디는"+result+"입니다.");
-                               $("#id").attr("style","color:green").css("margin-left","120px").css("margin-top","-20px");
-                           }
-              
-                	 });
-                        
+                 
+                        id();
             	        
  
                     }else{
@@ -237,6 +228,20 @@ input[type=text]:focus{
             }
         });
     });
+    function id(){
+	   $.ajax({
+           url: "/myapp/update/phone",
+           data: {"tel":$('#tel').val(),
+               "username":$('#username').val()
+
+           }, success:function(result){
+           	   $("#id").text("아이디는"+result+"입니다.");
+               $("#id").attr("style","color:green").css("margin-left","120px").css("margin-top","-20px");
+           }
+
+	 });
+    }
+
 	});
   
 </script>

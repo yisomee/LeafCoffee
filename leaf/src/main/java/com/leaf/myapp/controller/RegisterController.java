@@ -249,9 +249,9 @@ public class RegisterController {
     @RequestMapping("/update/phone")
     @ResponseBody
     public String sendNumber(String tel, String username) {
-    	//System.out.println(tel+username);
+    	System.out.println(tel+username);
     		String userid = registerService.sendNumber(tel,username);
-    		//System.out.println(userid);
+    		System.out.println(userid);
     		return userid;
     	
     	
