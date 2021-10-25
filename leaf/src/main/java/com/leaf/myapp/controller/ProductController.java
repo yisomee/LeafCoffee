@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.leaf.myapp.service.ProductService;
 import com.leaf.myapp.vo.MenuVO;
 import com.leaf.myapp.vo.ProductVO;
+import com.leaf.myapp.vo.RegisterVO;
 
 @Controller
 public class ProductController {
@@ -29,9 +30,10 @@ public class ProductController {
 	@ResponseBody
 	public List<ProductVO>ajaxPartner(int hq_num){
 		ModelAndView mav = new ModelAndView();
-		List<ProductVO> list = productService.ProductPartner(hq_num);			
+		List<ProductVO> list = productService.ProductPartner(hq_num);	
+
 		return list;
-	}
+	} 
 	
 	//발주하기
 	@RequestMapping(value="/Purchase_RegisterOk", method = RequestMethod.POST)

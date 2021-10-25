@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.leaf.myapp.vo.MenuVO;
 import com.leaf.myapp.vo.ProductVO;
+import com.leaf.myapp.vo.RegisterVO;
 
 public interface ProductService {
 	public List<ProductVO> ProductList();
@@ -22,4 +23,5 @@ public interface ProductService {
 	public List<ProductVO> selectPartner();//  파트너가져오기
 	public ProductVO ware_cntAll(int hq_num);
 	public ProductVO pc_cntAll(int hq_num);
+
 }

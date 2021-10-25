@@ -38,6 +38,7 @@ import com.leaf.myapp.vo.NoticeVO;
     	pVo.setTotalRecord(adminnoticeService.totalRecordCount(pVo));
     	mav.addObject("pVo",pVo);   
 		System.out.println("total record: " + pVo.getTotalRecord());
+		
 		mav.addObject("list", adminnoticeService.noticePageSelect(pVo));		
 		System.out.println("list" + adminnoticeService.noticePageSelect(pVo).get(0).getAdmin_no());
 		mav.setViewName("adminNotice/noticeMain");
@@ -47,12 +48,7 @@ import com.leaf.myapp.vo.NoticeVO;
 	//°Ô½Ã±Ûº¸±â
 	@RequestMapping("/adminnoticeDetail")
 	public ModelAndView noticeDetail(int no, AdminNoticeVO vo) {
-		//////////±è½Â±Ô¿ë
-		System.out.println(no);
-		System.out.println(adminnoticeService.noticeView(no).getAdmin_title());
-		System.out.println(vo.getAdmin_title());
 		vo = adminnoticeService.noticeView(no);
-		//////////
 		ModelAndView mav = new ModelAndView();
 		vo.setAdmin_hit(adminnoticeService.hitCount(vo));
 		mav.addObject("adminnoticeVo", vo);		

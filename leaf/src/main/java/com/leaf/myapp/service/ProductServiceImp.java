@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.leaf.myapp.dao.ProductDAO;
 import com.leaf.myapp.vo.MenuVO;
 import com.leaf.myapp.vo.ProductVO;
+import com.leaf.myapp.vo.RegisterVO;
 
 
 
@@ -127,11 +128,5 @@ public class ProductServiceImp implements ProductService{
 		// TODO Auto-generated method stub
 		return productDAO.pc_cntAll(hq_num);
 	}
-
-
-
-
-
-
 
 }

@@ -181,7 +181,7 @@ $(function(){
 		<c:forEach var="adminnoticeVO" items="${list}"> 
             <ul  class="${adminnoticeVO.section}">
 				<li>${adminnoticeVO.admin_no }</li>
-				<li><img src="img/${adminnoticeVO.img}" class="img"/></li>
+				<li><a href="/myapp/adminnoticeDetail?no=${adminnoticeVO.admin_no }&nowpage=${pVo.nowPage}"><img src="img/${adminnoticeVO.img}" class="img"/></a></li>
 				<li><c:if test="${adminnoticeVO.section == 'm1'}">상품출시</c:if>
 		             <c:if test="${adminnoticeVO.section == 'm2'}">LEAF와 문화</c:if>
 		              <c:if test="${adminnoticeVO.section == 'm3'}">LEAF 사회공헌</c:if>
