@@ -12,11 +12,24 @@ public class SalesVO {
 	private String m_code; // 중분류명
 	private String fc_name; // 가맹점이름
 	private String fc_addr; // 가맹점주소
+	private int p_price; // 상품가격
+	
+	// 상단 숫자
+	private int topTotalFran;
+	private int topTotalBuyCnt;
+	private int topTotalBuyUser;
+	private int topTotalSales;
 	
 	
 	// 계산
-//	private // 주문에서 상품종류 분리하기
-//	private // 주문당 총액
+	private int rank;// 순위
+	private int totalsales; // 총판매액
+	private int totalcnt; // 총판매수량
+	
+	private String searchWord; // 검색어
+	private String sdate; // 시작일
+	private String edate; // 종료일
+	
 	
 	
 	public int getOd_num() {
@@ -79,7 +92,73 @@ public class SalesVO {
 	public void setFc_addr(String fc_addr) {
 		this.fc_addr = fc_addr;
 	}
-	
+	public int getP_price() {
+		return p_price;
+	}
+	public void setP_price(int p_price) {
+		this.p_price = p_price;
+	}
+	public int getRank() {
+		return rank;
+	}
+	public void setRank(int rank) {
+		this.rank = rank;
+	}
+	public int getTotalsales() {
+		return totalsales;
+	}
+	public void setTotalsales(int totalsales) {
+		this.totalsales = totalsales;
+	}
+	public int getTotalcnt() {
+		return totalcnt;
+	}
+	public void setTotalcnt(int totalcnt) {
+		this.totalcnt = totalcnt;
+	}
+	public int getTopTotalFran() {
+		return topTotalFran;
+	}
+	public void setTopTotalFran(int topTotalFran) {
+		this.topTotalFran = topTotalFran;
+	}
+	public int getTopTotalBuyCnt() {
+		return topTotalBuyCnt;
+	}
+	public void setTopTotalBuyCnt(int topTotalBuyCnt) {
+		this.topTotalBuyCnt = topTotalBuyCnt;
+	}
+	public int getTopTotalBuyUser() {
+		return topTotalBuyUser;
+	}
+	public void setTopTotalBuyUser(int topTotalBuyUser) {
+		this.topTotalBuyUser = topTotalBuyUser;
+	}
+	public int getTopTotalSales() {
+		return topTotalSales;
+	}
+	public void setTopTotalSales(int topTotalSales) {
+		this.topTotalSales = topTotalSales;
+	}
+	public String getSearchWord() {
+		return searchWord;
+	}
+	public void setSearchWord(String searchWord) {
+		this.searchWord = searchWord;
+	}
+	public String getSdate() {
+		return sdate;
+	}
+	public void setSdate(String sdate) {
+		this.sdate = sdate;
+	}
+	public String getEdate() {
+		return edate;
+	}
+	public void setEdate(String edate) {
+		this.edate = edate;
+	}
+
 	
 	
 	

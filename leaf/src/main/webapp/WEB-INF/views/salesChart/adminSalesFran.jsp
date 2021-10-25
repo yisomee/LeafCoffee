@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>전체매출 현황</title>
+<title>가맹점별 매출현황</title>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
 <style>
 	/* 전체선택 */
@@ -36,7 +36,7 @@
 	.area {float: left; background: #e2e2e2; width: 100%; height: 100%;}
 	@font-face {font-family: 'Titillium Web'; font-style: normal; font-weight: 300; src: local('Titillium WebLight'), local('TitilliumWeb-Light'), url(http://themes.googleusercontent.com/static/fonts/titilliumweb/v2/anMUvcNT0H1YN4FII8wpr24bNCNEoFTpS2BTjF6FB5E.woff) format('woff');}
 	
-	.sideChartWriteName{position:absolute; width:200px; font-size:1.1rem; top:200px; left:-10px; color:rgb(0,163,239); font-weight:600; text-align:center;}
+	.sideChartWriteName{position:absolute; width:200px; font-size:1.1rem; top:200px; left:-10px; color:#FF9999; font-weight:600; text-align:center;}
 	.sideChartWriteGa{position:absolute; width:200px; font-size:1.1rem; top:200px; left:180px; font-weight:600;}
 	.sideChartWriteDocu{position:absolute; width:250px; font-size:1rem; top:230px; left:-30px;}
 /* ------------------------------------------------------------------------------------------ */
@@ -44,8 +44,8 @@
 /*  바디부 -------------------------------------*/
 	/* 상단 알림바*/
 	.topmain{margin:40px auto; width:1500px; position:relative;}
-	.topbox{display:flex; width:900px; justify-content: space-between;}
-	.nav-box{border:1px solid; box-sizing: border-box; border-radius: 4px; height:150px; width:200px; text-align:center; padding:20px;}
+	.topbox{display:flex; width:1100px; justify-content: space-between;}
+	.nav-box{border:1px solid; box-sizing: border-box; border-radius: 4px; height:200px; width:250px; text-align:center; padding:20px;}
 	.nav-box h1{color:rgb(0,163,239);}
 	
 	
@@ -61,14 +61,14 @@
 	.datechoicelabel span{position:absolute; font-size:1.7em; top:27px; left:133px;}
 	.datechoicelabel:after{content: ''; display: inline-block;height: 100px; border-left: 2px solid #777; margin-left: 300px;}
 	.choiceDateMain{margin:0 auto; width:1500px;}
-	.choiceDateDiv{border:1px solid; display:inline-block; width:900px; padding:0px 0px 30px 0px;}
+	.choiceDateDiv{border:1px solid; display:inline-block; width:1100px; padding:0px 0px 30px 0px;}
 	.choiceDateDiv h4{text-align:center;}
 	
-	.dateul{overflow:auto; height:50px; margin-left:155px;}	
+	.dateul{overflow:auto; height:50px; margin-left:260px;}	
 	.dateul li{float:left; margin-left:20px;}
 	.dateul input[type=radio]{position:absolute;z-index:-1}
 	.dateboxlabel{display:block;width:72px;height:26px;font-size:14px;font-weight:bold;color:#fff;text-align:center;line-height:25px;text-decoration:none;cursor:pointer;background:#a5b0b6;}
-	.dateformdiv{margin-left:265px;}
+	.dateformdiv{margin-left:370px;}
 	#dateSearchBtn{margin-left: 20px; height: 30px; box-sizing: border-box; border-radius: 4px; border: 0px; width:80px;background: rgb(0,163,239); color:#fff}
 	#choiceOption{width:100px; height:30px; box-sizing: border-box; border-radius: 4px; margin-left:10px;}
 	.dateform{width:150px; text-align:center; height:20px;}
@@ -84,25 +84,16 @@
 	.searchDiv input[type=button]{width:100px; border:1px solid gray; margin-left:10px;}
 	.salesDiv{width:1450px; display:inline-block; margin-top:20px; border:1px solid; border-radius: 4px;}
 	.salesList{overflow:auto; width:1300px; margin:30px auto 15px auto;}
-	.salesList>li{float:left; height:40px; line-height:40px; width:20%;}
-	.salesList>li:nth-child(1){border-bottom:1px solid gray; height:50px; line-height:50px; font-size:1.1rem;}
-	.salesList>li:nth-child(2){border-bottom:1px solid gray; height:50px; line-height:50px; font-size:1.1rem;}
-	.salesList>li:nth-child(3){border-bottom:1px solid gray; height:50px; line-height:50px; font-size:1.1rem;}
-	.salesList>li:nth-child(4){border-bottom:1px solid gray; height:50px; line-height:50px; font-size:1.1rem;}
-	.salesList>li:nth-child(5){border-bottom:1px solid gray; height:50px; line-height:50px; font-size:1.1rem;}
-	.salesList>li:nth-child(6){border-bottom:1px solid gray; height:50px; line-height:50px; font-size:1.1rem;}
-	.salesList>li:nth-child(6n+1){width:10%;}	
-	.salesList>li:nth-child(6n+4){width:15%;}
-	.salesList>li:nth-child(6n+5){width:15%;}
-	.salesList>li:nth-child(6n+6){text-align:center;}
+	.salesList>li{float:left; height:40px; line-height:40px; width:20%;border-bottom:1px solid gray; height:50px; line-height:50px; font-size:1.1rem; width:15%;}
+	.salesList>li:nth-child(3){width:20%;}
+	.salesList>li:nth-child(4){width:25%;}
+	.salesList>li:nth-child(5){width:25%; text-align:center;}
+
 	.salesRankList{overflow:auto; width:1300px; margin:0 auto;}
 	.salesRankList>li{float:left; height:40px; line-height:40px; width:15%;}
-	.salesRankList>li:nth-child(6n+1){width:10%;}
-	.salesRankList>li:nth-child(6n+2){width:20%;}
-	.salesRankList>li:nth-child(6n+3){width:20%;}
-	.salesRankList>li:nth-child(6n+4){width:15%;}
-	.salesRankList>li:nth-child(6n+5){width:15%;}
-	.salesRankList>li:nth-child(6n+6){width:20%; text-align:center;}
+	.salesRankList>li:nth-child(5n+3){width:20%;}
+	.salesRankList>li:nth-child(5n+4){width:25%;}	
+	.salesRankList>li:nth-child(5n+5){width:25%; text-align:center;}
 	
 	/* 차트*/
 	.chartbox{box-sizing: border-box; border-radius: 4px; border:1px solid; width:1100px; height:350px; display:inline-block; padding-top:20px;}
@@ -154,7 +145,7 @@
 	}
 	
 	function sideChartreplay(percent){
-		draw(percent, '.sidePieChart', '#00A3EF');
+		draw(percent, '.sidePieChart', '#FF9999');
 	}
 
 	function replyChart(){			
@@ -172,30 +163,30 @@
 	                        data: chartData,
 	                        backgroundColor: [
 	                            //색상
-	                            '#00A3EF',
-	                            '#00D6DA',
-	                            '#26E8B3',
-	                            '#A1F489',
-	                            '#7AFAC4',
-	                            '#7478D7',
-	                            '#E6F4F1',
-	                            '#F3FAFF',
-	                            '#E6F4F1',
-	                            '#ECFBFF'
+	                            '#FF9999',
+	                            '#F1AA9D',
+	                            '#D885A2',
+	                            '#B37CCA',
+	                            '#A777A1',
+	                            '#E52270',
+	                            '#ED0089',
+	                            '#756A92',
+	                            '#4B5A78',
+	                            '#2F4858'
 	                            
 	                        ],
 	                        borderColor: [
 	                            //경계선 색상
-	                        	'#00A3EF',
-	                            '#00D6DA',
-	                            '#26E8B3',
-	                            '#A1F489',
-	                            '#7AFAC4',
-	                            '#7478D7',
-	                            '#E6F4F1',
-	                            '#F3FAFF',
-	                            '#E6F4F1',
-	                            '#ECFBFF'
+	                        	'#FF9999',
+	                            '#F1AA9D',
+	                            '#D885A2',
+	                            '#B37CCA',
+	                            '#A777A1',
+	                            '#E52270',
+	                            '#ED0089',
+	                            '#756A92',
+	                            '#4B5A78',
+	                            '#2F4858'
 	                        ],
 	                        borderWidth: 1 //경계선 굵기
 	                    }
@@ -207,10 +198,6 @@
 	            	},
 	            	responsive: false,
 	                scales: {
-	                	xAxes:[{
-	                		barStrokeWidth : 1,
-							barPercentage:0.6
-	                	}],
 	                    yAxes: [{
 	                        gridLines:{
 	                        	borderDash:[1,5],
@@ -265,7 +252,7 @@
 		let nowPage = i;
 
 		$.ajax({
-			url:"/myapp/allTotalSales",
+			url:"/myapp/allTotalFran",
 			data:"sdate="+startdate+"&"+
 				 "edate="+enddate+"&"+
 				 "nowPage="+nowPage+"&"+
@@ -295,7 +282,7 @@
 				
 				 // 그래프에 데이터 셋팅
 				chartlist.each(function(idx,vo){
-					chartLabels.push(vo.p_name);
+					chartLabels.push(vo.fc_name);
 					chartData.push(vo.totalsales);
 					if(chartLabels.length==10 && chartData.length==10){ // 1~10위까지 출력하기 위해서 escape 설정
 						return false;
@@ -334,10 +321,9 @@
 					
 					salesListPage.each(function(idx,vo){
 						chartList += '<li>'+vo.rank+'</li>'+
-						'<li>'+vo.p_num.toLocaleString()+'</li>'+
-						'<li>'+vo.p_name+'</li>'+
-						'<li>'+vo.p_price.toLocaleString()+'</li>'+
-						'<li>'+vo.od_cnt.toLocaleString()+'</li>'+
+						'<li>'+vo.fc_num.toLocaleString()+'</li>'+
+						'<li>'+vo.fc_name+'</li>'+
+						'<li>'+vo.fc_addr+'</li>'+						
 						'<li>'+vo.totalsales.toLocaleString()+'</li>';
 					});// each()
 					$('.salesRankList').html(chartList);
@@ -454,7 +440,7 @@
 	    		return false;
 	    	}else{
 		    	$.ajax({
-		    		url:"/myapp/allTotalSales",
+		    		url:"/myapp/allTotalFran",
 	    			data:"sdate="+selectsdate+"&"+
 	    				 "edate="+selectedate+"&"+
 	    				 "nowPage="+nowPage+"&"+
@@ -472,7 +458,7 @@
 	    				
 	    				 // 그래프에 데이터 셋팅
 	    				chartlist.each(function(idx,vo){
-	    					chartLabels.push(vo.p_name);
+	    					chartLabels.push(vo.fc_name);
 	    					chartData.push(vo.totalsales);
 	    					if(chartLabels.length==10 && chartData.length==10){ // 1~10위까지 출력하기 위해서 escape 설정
 	    						return false;
@@ -508,10 +494,9 @@
 	    					
 	    					salesListPage.each(function(idx,vo){
 	    						chartList += '<li>'+vo.rank+'</li>'+
-	    						'<li>'+vo.p_num.toLocaleString()+'</li>'+
-	    						'<li>'+vo.p_name+'</li>'+
-	    						'<li>'+vo.p_price.toLocaleString()+'</li>'+
-	    						'<li>'+vo.od_cnt.toLocaleString()+'</li>'+
+	    						'<li>'+vo.fc_num.toLocaleString()+'</li>'+
+	    						'<li>'+vo.fc_name+'</li>'+
+	    						'<li>'+vo.fc_addr+'</li>'+	    						
 	    						'<li>'+vo.totalsales.toLocaleString()+'</li>';
 	    					});// each()
 	    					$('.salesRankList').html(chartList);
@@ -533,12 +518,10 @@
 	    					if(nowPage>1){
 	    						$('.page_nation').append('<a class="arrow pprev" href="javascript:startMainChart(1,'+sw+',1,'+selectsdate+','+selectedate+')"></a>');
 	    						$('.page_nation').append('<a class="arrow prev" href="javascript:startMainChart('+nowPageMinerOne+','+sw+',1,'+selectsdate+','+selectedate+')"></a>');
-	    	
 	    						
 	    					}else if(nowPage==1){
 	    						$('.page_nation').append('<a class="arrow pprev" href="javascript:startMainChart(1,'+sw+',1,'+selectsdate+','+selectedate+')"></a>');
 	    						$('.page_nation').append('<a class="arrow prev" href="javascript:startMainChart(1,'+sw+',1,'+selectsdate+','+selectedate+')"></a>');
-	    	
 	    											
 	    					}				
 	    					for (var j = result.pagesVo.startPage; j <=result.pagesVo.startPage+result.pagesVo.onePageViewNum-1; j++) {						
@@ -592,7 +575,7 @@
 	    		return false;
 	    	}else{
 	    		$.ajax({
-	    			url:"/myapp/allTotalSales",
+	    			url:"/myapp/allTotalFran",
 	    			data:"sdate="+startdate+"&"+
 	    				 "edate="+enddate+"&"+
 	    				 "nowPage="+nowPage+"&"+
@@ -611,7 +594,7 @@
 	    				
 	    				// 그래프에 데이터 셋팅
 	    				chartlist.each(function(idx,vo){
-	    					chartLabels.push(vo.p_name);
+	    					chartLabels.push(vo.fc_name);
 	    					chartData.push(vo.totalsales);
 	    					if(chartLabels.length==10 && chartData.length==10){ // 1~10위까지 출력하기 위해서 escape 설정
 	    						return false;
@@ -646,10 +629,9 @@
 	    					
 	    					salesListPage.each(function(idx,vo){
 	    						chartList += '<li>'+vo.rank+'</li>'+
-	    						'<li>'+vo.p_num.toLocaleString()+'</li>'+
-	    						'<li>'+vo.p_name+'</li>'+
-	    						'<li>'+vo.p_price.toLocaleString()+'</li>'+
-	    						'<li>'+vo.od_cnt.toLocaleString()+'</li>'+
+	    						'<li>'+vo.fc_num.toLocaleString()+'</li>'+
+	    						'<li>'+vo.fc_name+'</li>'+
+	    						'<li>'+vo.fc_addr+'</li>'+	    						
 	    						'<li>'+vo.totalsales.toLocaleString()+'</li>';
 	    					});// each()
 	    					$('.salesRankList').html(chartList);
@@ -671,7 +653,6 @@
 	    					if(nowPage>1){
 	    						$('.page_nation').append('<a class="arrow pprev" href="javascript:startMainChart(1,'+sw+',1,'+startdate+','+enddate+')"></a>');
 	    						$('.page_nation').append('<a class="arrow prev" href="javascript:startMainChart('+nowPageMinerOne+','+sw+',1,'+startdate+','+enddate+')"></a>');
-	    						console.log("검색후 맨처음버튼startdate=>"+startdate);
 	    						
 	    					}else if(nowPage==1){
 	    						$('.page_nation').append('<a class="arrow pprev" href="javascript:startMainChart(1,'+sw+',1,'+startdate+','+enddate+')"></a>');
@@ -701,7 +682,6 @@
 	    	
 	    					}
 	    					$('.page_nation').append('<a class="arrow nnext" href="javascript:startMainChart('+result.pagesVo.totalPage+','+sw+',1,'+startdate+','+enddate+')"></a>');
-							console.log("검색후 맨다음버튼startdate=>"+startdate);
 	    				
 	    				}
 	    			},error:function(request,status,error){	    				
@@ -763,7 +743,7 @@
 		<div class="area"></div><nav class="main-menu">
             <ul>
                 <li>
-                    <a href="#">
+                    <a href="/myapp/adminSalesMainPage">
                         <i class="fa fa-2x"></i>
                         <span class="nav-text">전체매출목록</span>
                     </a>                  
@@ -822,8 +802,8 @@
 	        <div class="sidePieChartDiv">
 	        	<div class="pie-chart sidePieChart">
 	        		<span class="sidePieChartCenter"></span>
-	        		<span class="sideChartWriteName"></span><span class="sideChartWriteGa">&nbsp;가</span>
-	        		<span class="sideChartWriteDocu">상위 10개 품목에서 차지하는 비율</span>
+	        		<span class="sideChartWriteName"></span><span class="sideChartWriteGa">&nbsp;이</span>
+	        		<span class="sideChartWriteDocu">상위 10곳 점포에서 차지하는 비율</span>
 	        	</div>
 	        </div>   
         </div>
@@ -884,18 +864,17 @@
 	 			</div>
 	 			
 	 			<div class="searchDiv">
-		 				<input type="text" name="searchWord" placeholder="상품명을 입력해주세요"/>
+		 				<input type="text" name="searchWord" placeholder="가맹점명을 입력해주세요"/>
 		 				<input type="submit" value="search"/>
 		 			</div> 		
 	 			<div class="salesDiv">
 	 				<ul class="salesList">
 	 					<!-- if -->
 	 					<li>순위</li>
-	 					<li>상품번호</li> 					
-	 					<li>상품명</li>
-	 					<li>상품가격<span style="font-size:14px;">(원)</span></li>
-	 					<li>판매수량</li>
-	 					<li>총판매액<span style="font-size:14px;">(원)</span></li>
+	 					<li>가맹번호</li> 					
+	 					<li>가맹점명</li>
+	 					<li>가맹점 주소</li>	 					
+	 					<li>총판매액</li>
 	 				</ul>
 	 				<ul class="salesRankList">
 	 				</ul>
