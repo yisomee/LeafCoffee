@@ -217,22 +217,6 @@ $(function(){
 	</div>
 	<div>
 		<ul class="menuList">
-			<li class="tea"><div class="imgwrap"><a href="/suyeong/leaf/leaf_menu_detail.jsp"><img src="img/IceEarlGrey.png" id="img"/></a></div>
-				<div class="imgtext">아이스 얼그레이<br/><span class="imgtext2">Ice EarlGrey</span></div>
-			</li>
-			<li class="ade"><div class="imgwrap"><img src="img/JejuHallabongAde.png" id="img"/></div>
-				<div class="imgtext">제주 한라봉 에이드<br/><span class="imgtext2">JejuHallabongAde</span></div>
-			</li>
-			<li class="ade"><div class="imgwrap"><img src="img/MojitoAde.png" id="img"/></div>
-				<div class="imgtext">모히토 에이드<br/><span class="imgtext2">Mojito Ade.png</span></div>
-				<div class="best">best</div>
-			</li>
-			<li class="ade"><div class="imgwrap"><img src="img/PeachGrapefruitAde.png" id="img"/></div>
-				<div class="imgtext">복숭아 자몽 에이드<br/><span class="imgtext2">Peach Grape Fruit Ade</span></div>
-			</li>
-			<li class="yogurt"><div class="imgwrap"><img src="img/StrawberryYogurt.png" id="img"/></div>
-				<div class="imgtext">스트로베리 요거트<br/><span class="imgtext2">Strawberry Yogurt</span></div>
-			</li>
 			<c:forEach var="MenuVO" items="${MenuList}"> 
 				<li class="${MenuVO.s_code}"><div class="imgwrap"><a href="/myapp/menu_detail?p_num=${MenuVO.p_num}"><img src="img/${MenuVO.p_img}" id="img"/></a></div>
 					<div class="imgtext">${MenuVO.p_name}<br/><span class="imgtext2">${MenuVO.p_ename}</span></div>

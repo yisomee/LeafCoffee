@@ -181,8 +181,8 @@ position: absolute;
 /*-------------*/
 
 /* 중단 카드슬라이드 */
-.container{    top: 200px;position: relative; display: flex; margin: auto;width: 1500px; justify-content: space-between;}
-.container .card{position: relative; cursor: pointer; text-align:center;}
+.container{    top: 310px;position: relative; display: flex; margin: auto;width: 1500px; justify-content: space-between;}
+.container .card{position: relative; cursor: pointer; text-align:center; border:none; margin:-135px;}
 .container .card .face{width: 300px; height: 200px; transition: 0.5s;}
 .container .card .face.face1{position: relative; display: flex; justify-content: center; align-items: center; z-index: 1; transform: translateY(100px);}
 .container .card:hover .face.face1{background: rgb(0, 163, 239); transform: translateY(0);}
@@ -201,7 +201,7 @@ position: absolute;
     color: rgb(0, 163, 239);
     border: 1px solid rgb(0, 163, 239);
     width: 110px;
-    height: 35px;
+    height: 48px;
     line-height: 35px;
     border-radius: 2px;
     transition: 0.4s;}
@@ -262,8 +262,8 @@ position: absolute;
     font-weight: 600;
 }
 #chatTab{
-	width:350px;
-	height: 520px;
+	width:391px;
+	height: 534px;
 	position: fixed;
 	right: 20px;
 	bottom: 20px;
@@ -351,7 +351,9 @@ span{
    padding-top:10px;
 }
 
-
+h4{
+	font-size: 0.9rem !important;
+}
 </style>
 </head>
 <script>

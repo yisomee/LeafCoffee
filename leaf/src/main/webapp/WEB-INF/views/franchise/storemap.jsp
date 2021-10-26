@@ -126,7 +126,6 @@ input[type="text"] {
 	}
 		}
 	function mapList(searchMap){
-		console.log(searchMap);
 		$.ajax({
 	    	//데이터베이스에서 주소 목록을 가져온다.
 		url: '/myapp/map',
@@ -145,11 +144,6 @@ input[type="text"] {
                       position: {lat:lat,lng:lon},
                       title:e[i].fc_name
                 });
-//                 var marker = new google.maps.Marker({
-//                        map: resultMap,
-//                        position: darwin,
-//                        title:e[i].fc_name,
-//                 });
 		        marker.addListener("click", (event) => {
 		        	resultedMap.setZoom(15);
 		        	resultedMap.setCenter(event.latLng);
@@ -158,6 +152,7 @@ input[type="text"] {
 	            };
 				
 				$('#searched').append(tag);
+				$('#searchResult').text("(검색 결과 "+e.length+"개)");
 			}, error:function(){
 				console.log("error");
 			}
@@ -167,13 +162,9 @@ input[type="text"] {
 </script>
 <script type="text/javascript">
 $(()=>{
-	
    $('#searchMap').keyup(function(){
 	   $('#searched').html("");
-	   var map = $('#searchMap').val();
-	   
 	   mapList($('#searchMap').val());
-   
    });
 });
 
@@ -187,7 +178,7 @@ $(()=>{
 		<ul>
 			<li class="searchstore">매장 찾기</li>
 			<li class="searchInput"><input type="text" id="searchMap" name="searchMap" placeholder="매장명 또는 주소 입력"><img src="img/searchBtn.png"></li>
-			<li class="searchstore searchResult">(검색 결과 5개)</li>
+			<li id = "searchResult" class="searchstore searchResult">(검색 결과 0개)</li>
 			<li>
 				<ul id="searched">
 					

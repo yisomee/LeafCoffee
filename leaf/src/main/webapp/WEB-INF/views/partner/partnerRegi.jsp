@@ -9,7 +9,7 @@
 	.main-form-Con>strong{display: block;font-size: 30px;font-weight: normal;margin:30px auto;text-align: center}
 	.mf-inputCon{box-sizing: border-box; max-width: 570px; margin: 0 auto 30px; position: relative;}
 	.mfi-img{margin: 0 auto; text-align: center; padding: 30px 20px 0; background: url(img/empimg.png) 50% 100% no-repeat; width: 205px; height: 182px;}
-	.mfi-inputbox{background: #fff; padding: 20px 20px; position: relative;}
+	.mfi-inputbox{height: 130px;background: #fff; padding: 20px 20px; position: relative;}
 	.mfi-title{background: #fff; border-bottom: 1px solid #ddd; color: #777; font-size: 18px; line-height: 24px; text-align: center;padding: 30px 20px 30px; margin:0;}
 	.mfi-inputbox input{font-size: 0.9rem; border: 0;
     border-bottom: 1px solid #ddd; width:530px; padding:15px;}
@@ -80,7 +80,15 @@
 	   height:330px;
 	   position:relative;
    }
-   
+   #part_code_name{
+   font-size: 0.9rem;
+    border: 0;
+    border-bottom: 1px solid #ddd;
+    width: 530px;
+    display: inline-block;
+    height: 47px;
+    margin-right: 20px;
+   }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
@@ -109,8 +117,8 @@
 					<p>파트너 정보를 입력해 주세요.</p>
 				</div>	
 			</div>
-		<div>
-			<form method="post" action="">
+		
+			<form method="post" action="<%=request.getContextPath()%>/partnerRegister" name="frm">
 				<div class="main-form-Con">
 									
 					<section class="mf-inputCon" style="top: -19px; left: -325px;">
@@ -154,7 +162,7 @@
 							<strong>
 								<span>분류명(필수)</span>
 							</strong>	
-							<select name="part_code" id="part_code">
+							<select name="part_code_name" id="part_code_name">
 								<option value="bipum">비품</option>
 								<option value="food">식자재</option>
 								<option value="transit">운송</option>
@@ -168,8 +176,7 @@
 							<input type="text" name="part_company" id="part_company" placeholder="업체명"/>							
 						</div>
 						<div class="mfi-inputbox" style="padding-left: 60px;">
-							<strong>등록일</strong>	
-							<input type="text" name="part_regdate" id="part_regdate" readonly/>							
+														
 						</div>						
 					</section>
 				<div class="regiForm-submit">					
@@ -177,11 +184,7 @@
 				</div>
 				</div>
 			</form>
-		</div>
+		
 	</main>
-<script>
-	$(()=>{
-		$('.headerText').html('PARTNER');
-	});
-</script>
+
 	<%@ include file="/inc/bottom3.jspf" %>

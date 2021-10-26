@@ -12,14 +12,15 @@
 
 	/*  창업문의자 정보 */
 	.open-question-main{width:1400px; margin:0 auto;}
-	.open-question-info{width:700px; margin:0 auto;}
+	.open-question-info{width:100%; margin:0 auto;}
 	.open-question-info>h3{margin:50px auto 50px auto; text-align:center; font-size:2em;}
-	.oqi-Con{width:560px; border:1px solid gray;border-radius: 3px; box-sizing: border-box; margin:0 auto;}
+	.oqi-Con{width:100%; height:135px; border:1px solid gray;border-radius: 3px; box-sizing: border-box; margin:0 auto;}
 	.oqi-Con .oqi-img{margin:0 auto; padding:30px 20px 0; background:url(img/empimg.png) 50% 100% no-repeat; width:200px; height:100px;}
 	.oqi-Con .oqi-img+p{text-align:center; font-size:25px;} 
-	.oqi-Con .oqi-box{background: #fff; border-bottom: 1px solid #ddd; padding: 20px 20px; position: relative;}
-	.oqi-box .oqi-title{color: #222; display: block; font-size: 18px; margin-bottom: 10px;}
-	.oqi-box .oqi-info{border: 1px solid #ddd; border-radius: 3px; box-sizing: border-box; display: inline-block; width:500px; padding:15px;}
+	.oqi-Con .oqi-box{background: #fff; padding: 20px 20px; position: relative;    width: 349px;
+    float: left;}
+	.oqi-box .oqi-title{padding-left: 5px;color: #222; display: block; font-size: 18px; margin-bottom: 10px;}
+	.oqi-box .oqi-info{font-size: 0.9rem;border-bottom: 1px solid #ddd; box-sizing: border-box; display: inline-block; width:320px; padding:12px;}
 	
 	/* 창업문의 내용 */
 	.open-write-ct:before{display:block; width:1400px; border-bottom:2px solid rgb(0, 128, 192); content:''; margin:80px auto 0;}
@@ -29,8 +30,8 @@
 	.owc-ct{overflow:auto;}
 	.owc-ct li{float:left; border-bottom:1px solid gray; width:20%; height:25px; font-size:1em;text-align:center;font-family: 'Noto Sans KR';box-sizing: content-box;}
 	
-	.owc-ct li:nth-child(2n+1){background:#FFF0F5;padding:15px;clear:both;font-weight:600;}	
-	.owc-ct li:nth-child(2n){width:75%; padding:15px;}
+	.owc-ct li:nth-child(2n+1){border-right: 1px solid #ddd;padding:15px;clear:both;font-weight:600;}	
+	.owc-ct li:nth-child(2n){width:74%; padding:15px;}
 	.owc-ct li:nth-child(5){height:130px;}
 	.owc-ct li:nth-child(6){height:130px;}
 	.owc-ct li:nth-child(11){height:270px;}
@@ -49,8 +50,25 @@
 					border-collapse:collapse; border:1px solid gray; text-align:left;
 	}	
 	.owc-ct #text-count{font-size:1.3em;float:right; margin:10px 20px;font-family: 'Noto Sans KR';}
-	.owc-ct #replywritebtn{width:150px;height:40px;position:absolute; top:248px; left:390px;box-sizing: border-box;
-    				border: 0px solid; background: rgb(0,192,239); color: #fff; font-weight: bold;}
+	.owc-ct #replywritebtn{line-height: 38px;
+    text-align: center;
+      background-color: white;
+	    width: 150px;
+	    height: 40px;
+	    border-radius: 2px;
+	    border: 1px solid rgb(0, 163, 239);
+	    font-size: 0.9rem;
+	    color: rgb(0, 163, 239);
+	    margin-left: 7px;
+	    transition: 0.4s;
+	    padding-left: 0px;}
+	#replywritebtn:hover{
+      cursor: pointer;
+      box-shadow: inset 30em 0 0 0 rgb(0, 163, 239);
+	color: white;
+	border-color: rgb(0, 163, 239);
+   }
+	
 	#rpconlabel{border:0px;}
 	input[type=button]{width:100px; height:35px;border: 0px solid; background: rgb(0,192,239); color: #fff; font-weight: bold;
 				box-sizing: border-box; position:relative; top:20px; left:966px;
@@ -61,7 +79,7 @@
 	#rpcon{border:0;}
 	#content{resize: none; border:0px; width:100%; height:100%; text-align:center;}
 	#content:focus{outline:none;}
-	 				
+	#openreplyfrm{font-size:0.9rem;}		
 </style>
 <script>	
 
@@ -310,8 +328,7 @@
 			<h3>창업문의 답변</h3>
 			<div class="oqi-Con">
 				<section>
-					<div class="oqi-img"></div>
-					<p>창업문의자 정보</p>
+					
 					<div class="oqi-box">
 						<strong class="oqi-title">이름</strong>
 						<label class="oqi-info" id="cli_name">${oqVo.username}</label>

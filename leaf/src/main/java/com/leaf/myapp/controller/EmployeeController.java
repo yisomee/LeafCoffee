@@ -21,19 +21,19 @@ public class EmployeeController {
 	@Inject
 	EmployeeService employeeService;	
 	
-	//Á÷¿ø°Ë»ö ¸ÞÀÎÆäÀÌÁö
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ë»ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping("/employeeManagePage")
 	public ModelAndView employeemain() {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("employee/employeemain");
 		return mav;
 	}
-	// Á÷¿øµî·Ï
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping("/employeeRegiPage")
 	public String employeeRegiPage() {
 		return "employee/employeeRegi";
 	}
-	// »ç¿ø Á¤º¸¼öÁ¤
+	// ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping("/employeeChange")
 	public ModelAndView employeeChange(int emp_num) {
 		ModelAndView mav = new ModelAndView();		
@@ -43,7 +43,7 @@ public class EmployeeController {
 		return mav;
 	}
 	
-	// »ç¿ø¼öÁ¤¿¡ ´ëÇÑ °á°ú
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 	@RequestMapping(value="/employeeChangeResult", method=RequestMethod.POST)
 	public ModelAndView employeeChangeResult(EmployeeVO empvo) {
 		ModelAndView mav = new ModelAndView();		
@@ -61,7 +61,7 @@ public class EmployeeController {
 	}
 	
 	
-	// Á÷¿ø°Ë»ö(»ç¿ø¹øÈ£,»ç¿ø¸í,ºÎ¼­¸í)	
+	// ï¿½ï¿½ï¿½ï¿½ï¿½Ë»ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½È£,ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½Î¼ï¿½ï¿½ï¿½)	
 	  @RequestMapping("/empSearch")	  
 	  @ResponseBody 
 	  public Map<String,Object> searchEmployeeList(PageVO pVo){
@@ -71,7 +71,7 @@ public class EmployeeController {
 		  ppVo.setNowPage(pVo.getNowPage());
 		  
 		  
-		  int lastPageRecode = ppVo.getTotalRecord()%pVo.getOnePageRecord(); // ¸¶Áö¸·ÆäÀÌÁö ·¹ÄÚµå ¼ö
+		  int lastPageRecode = ppVo.getTotalRecord()%pVo.getOnePageRecord(); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Úµï¿½ ï¿½ï¿½
 		  		  
 		  if(ppVo.getTotalPage()==pVo.getNowPage() && lastPageRecode!=0) {
 			  ppVo.setOnePageRecord(lastPageRecode);
@@ -87,21 +87,21 @@ public class EmployeeController {
 		  return empMap; 
 	  }
 	  
-	  // ÆäÀÌÂ¡¿ë
+	  // ï¿½ï¿½ï¿½ï¿½Â¡ï¿½ï¿½
 	  @RequestMapping("/totalPage")
 	  @ResponseBody
 	  public PageVO totalPage(PageVO pVo) {
 		  return employeeService.page(pVo.getSearchKey(), pVo.getSearchWord());
 	  }
 	
-	// »ç¿øµî·Ï Æû¿¡¼­ °¡ÀÔÇÑ ¾ÆÀÌµðÀÎÁö È®ÀÎ
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 	@RequestMapping("/employeeJoinChecking")
 	@ResponseBody
-	public EmployeeVO employeeJoinCheck(String userid) {		
+	public EmployeeVO employeeJoinCheck(String userid) {
 		return employeeService.checkJoinId(userid);
 	}
 		
-	// »ç¿øµî·Ï
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping(value="/employeeRegister", method=RequestMethod.POST)
 	public ModelAndView employeeRegister(EmployeeVO empVo) { // httpSession
 		ModelAndView mav = new ModelAndView();

@@ -27,7 +27,7 @@ public class PartnerController {
 	public String partnerMain() {
 		return "partner/partnerMain";
 	}
-	@RequestMapping("/partnerManageRegi")
+	@RequestMapping("/partnerRegiPage")
 	public String partnerManageRegi() {
 		return "partner/partnerRegi";
 	}
@@ -41,11 +41,11 @@ public class PartnerController {
 	@RequestMapping(value="/partnerChangeResult", method=RequestMethod.POST)
 	public ModelAndView partnerChangeResult(PartnerVO partvo) {
 		ModelAndView mav = new ModelAndView();		
-		
+		System.out.println(partvo.getPart_email());
 		int cnt = partnerService.partnerChangeResult(partvo);		
 		if(cnt>0) {
 			mav.addObject("result",1);
-			mav.addObject("emp_num",partvo.getPart_num());						
+			mav.addObject("part_num",partvo.getPart_num());						
 		}else {
 			mav.addObject("result",2);
 		}
@@ -58,7 +58,7 @@ public class PartnerController {
 	// �����˻�(�����ȣ,�����,�μ���)	
 	  @RequestMapping("/partSearch")	  
 	  @ResponseBody 
-	  public Map<String,Object> searchpartnerList(PageVO pVo){
+	  public Map<String,Object> searchPartnerList(PageVO pVo){
 		  PageVO ppVo = partnerService.page(pVo.getSearchKey(),pVo.getSearchWord());
 		  ppVo.setSearchKey(pVo.getSearchKey());
 		  ppVo.setSearchWord(pVo.getSearchWord());
@@ -74,11 +74,11 @@ public class PartnerController {
 		  }
 
 		  List<PartnerVO> partvo = partnerService.searchPartnerList(ppVo);		  
-		  Map<String,Object> empMap = new HashMap<String,Object>();
-		  empMap.put("pvo", (PageVO)ppVo);
-		  empMap.put("partvo", (List<PartnerVO>)partvo);		  
+		  Map<String,Object> partMap = new HashMap<String,Object>();
+		  partMap.put("pvo", (PageVO)ppVo);
+		  partMap.put("partvo", (List<PartnerVO>)partvo);		  
 		  
-		  return empMap; 
+		  return partMap; 
 	  }
 	  
 	  // ����¡��
