@@ -202,6 +202,7 @@
 		});		
 		
 		//음료추가
+		price = $("#selectPrice").text();
 		$("#menuPlus").click(function(){
 			$("#menuCnt").html(parseInt($("#menuCnt").text())+1);
 			//메뉴를 선택하면  밑의 실행문 사용selectprice
@@ -472,7 +473,7 @@
 						<ul class="menuname">
 							<li id="selectName">아메리카노</li>
 							<li id="selectEname" class="p_ename">Americano</li>
-							<li ><span id="selectPrice">4,300</span>원</li>
+							<li ><span id="selectPrice">4300</span>원</li>
 							<li class="selecPnum"></li>
 							<li id="menuCntBtn">
 								<input id="menuMinus" class="cntBtn" type="button" value="-"> 

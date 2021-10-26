@@ -179,11 +179,18 @@ height: 46px;
 		<ul class="main-ul">
 			
 <!---------------------------  -->			
-
-<!----------------------------------  -->	
-			<li class="select-li"><a href="#">발주하기</a>
+			<li class="select-li"><div><a href="/myapp/menu_Coffee">MENU</a></div>
 				<ul class="ulclass">
-					<li><a href="/myapp/purchase">발주하기</a></li>
+					<li><a href="/myapp/menu_Coffee">COFFEE</a></li>
+					<li><a href="/myapp/menu_Food">FOOD</a></li>
+					<li><a href="/myapp/menu_Beverage">BEVERAGE</a></li>
+					<li><a href="/myapp/menu_Product">MD PRODUCT</a></li>
+				</ul>					
+			</li>
+<!----------------------------------  -->	
+			<li class="select-li" ><a href="#">발주하기</a>
+				<ul class="ulclass">
+					<li style="padding-top:17px;"><a href="/myapp/purchase">발주하기</a></li>
 				</ul>					
 			</li>
 <!--------------------------------------------->

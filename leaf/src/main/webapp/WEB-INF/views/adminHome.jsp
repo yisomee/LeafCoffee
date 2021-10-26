@@ -506,7 +506,7 @@ $(function(){/*메뉴바 전체가 나오는거*/
             <div class="face face2">
                 <div class="content">
                     <p><h4> 전국 가맹점을 검색할 수 있습니다.</h4></p>
-                        <a href="#">Search</a>
+                        <a href="/myapp/storemap">Search</a>
                 </div>
             </div>
         </div>
@@ -520,7 +520,7 @@ $(function(){/*메뉴바 전체가 나오는거*/
             <div class="face face2">
                 <div class="content">
                     <p> <h4>매출을 확인할 수 있습니다.</h4></p>
-                        <a href="#">Search</a>
+                        <a href="<%=request.getContextPath()%>/adminSalesMainPage">Search</a>
                 </div>
             </div>
         </div>
@@ -534,7 +534,7 @@ $(function(){/*메뉴바 전체가 나오는거*/
             <div class="face face2">
                 <div class="content">
                     <p> <h4>직원을 검색할 수 있습니다.</h4> </p>
-                        <a href="#">Search</a>
+                        <a href="/myapp/employeeManagePage">Search</a>
                 </div>
             </div>
         </div>
@@ -548,7 +548,7 @@ $(function(){/*메뉴바 전체가 나오는거*/
             <div class="face face2">
                 <div class="content">
                     <p><h4>관련 뉴스를 확인할 수 있습니다.</h4></p>
-                        <a href="#">Search</a>
+                        <a href="/myapp/adminnoticeMain">Search</a>
                 </div>
             </div>
         </div>
@@ -576,17 +576,17 @@ $(function(){/*메뉴바 전체가 나오는거*/
 					                        Tough times never last, but tough people do.<br>
 					                        자세한 사항은 아래 버튼을 클릭해주세요.
 										</div>					                        
-			                       		 <a href="#"><div class="menubtn">자세히 보기</div></a>
+			                       		 <a href="/myapp/adminnoticeDetail?no=34&nowpage=1"><div class="menubtn">자세히 보기</div></a>
 			                    </div>
 			                </div>
 			                <div class="bn" style="background-image:url('img/machine.png');">
 			                    <div class="inner-txt">
-			                        <div class="tt inline-block">커피머신 출시</div>
+			                        <div class="tt inline-block">홀리데이 커피머신 출시</div>
 			                        	<div class="slider-content">	
 					                        It is kind of fun to do the impossible.<br>
 					                        자세한 사항은 아래 버튼을 클릭해주세요.
 					                    </div>    
-			                        <a href="#"><div class="menubtn">자세히 보기</div></a>
+			                        <a href="/myapp/adminnoticeDetail?no=35&nowpage=1"><div class="menubtn">자세히 보기</div></a>
 			                    </div>
 			                </div>			                
 			                <div class="bn" style="background-image:url('img/bongsa.jpg');">
@@ -596,7 +596,7 @@ $(function(){/*메뉴바 전체가 나오는거*/
 					                        I didn’t get there by wishing for it or hoping for it, but by working for it.<br>
 					                        자세한 사항은 아래 버튼을 클릭해주세요.
 					                	</div>
-			                        <a href="#"><div class="menubtn">자세히 보기</div></a>
+			                        <a href="/myapp/adminnoticeDetail?no=33&nowpage=1"><div class="menubtn">자세히 보기</div></a>
 			                    </div>
 			                </div>				                
 			            </div>
@@ -628,7 +628,7 @@ $('#menu-bg').on('mouseleave',function(){
 
 // 	숫자 증가 카운트
 // 가맹점 현황
-let tst = 123;
+let tst = '${vo.totalFran}';
 $({ val : 0 }).animate({ val : tst }, {
   duration: 20000,
   step: function() {
@@ -642,7 +642,7 @@ $({ val : 0 }).animate({ val : tst }, {
 });
 
 // 총 매출
-let tsal = 3832679300;
+let tsal = '${vo.totalsales}';
 $({ val : 0 }).animate({ val : tsal }, {
   duration: 30000,
   step: function() {
@@ -656,7 +656,7 @@ $({ val : 0 }).animate({ val : tsal }, {
 });
 
 // 총 임직원
-let tmg = 6;
+let tmg = '${vo.totalManage}';
 $({ val : 0 }).animate({ val : tmg }, {
   duration: 20000,
   step: function() {
@@ -670,7 +670,7 @@ $({ val : 0 }).animate({ val : tmg }, {
 });
 
 // 함께하는 회원
-let tmb = 201;
+let tmb = '${vo.totalRegi}';
 $({ val : 0 }).animate({ val : tmb }, {
   duration: 20000,
   step: function() {
