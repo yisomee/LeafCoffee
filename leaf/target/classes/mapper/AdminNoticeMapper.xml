@@ -4,12 +4,17 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
  <mapper namespace="com.leaf.myapp.dao.AdminNoticeDAO">
-<!-- <select id="noticeAll" resultType="com.leaf.myapp.vo.AdminNoticeVO">
-  		select admin_no, userid, admin_title, admin_content, to_char(admin_writedate, 'YY-MM-DD') admin_writedate, admin_hit, img, section from adminnotice order by admin_no desc
-  	</select> -->  	
+ 
   	<select  id="noticeView" resultType="com.leaf.myapp.vo.AdminNoticeVO">
-        select admin_no, admin_title, admin_content, img, to_char(admin_writedate, 'YY-MM-DD') admin_writedate
-        from adminnotice where admin_no=#{param1}
+       <!-- select admin_no, admin_title, admin_content, img, to_char(admin_writedate, 'YY-MM-DD') admin_writedate
+        from adminnotice where admin_no=#{param1} --> 
+		select * from(
+		select admin_no, admin_title, admin_content, img, to_char(admin_writedate, 'YY-MM-DD') admin_writedate,
+		lag(admin_no) over(order by admin_no) as prev,
+        lag(admin_title) over(order by admin_no) prev_title,
+        lead(admin_no) over(order by admin_no) as next,
+		lead(admin_title) over(order by admin_no) as next_title from adminnotice)
+		where admin_no=#{param1}
      </select>
      <insert id="adminnoticeWriteOk" parameterType="com.leaf.myapp.vo.AdminNoticeVO">
      	insert into adminnotice(admin_no, userid, admin_title, admin_content, img, section)
@@ -36,10 +41,10 @@
 	     	 	(select * from  
 			     	(select admin_no, userid, admin_title, admin_content, to_char(admin_writedate, 'YY-MM-DD') admin_writedate,
 			     	 admin_hit, img, section from adminnotice
-				            
+				            <if test='searchKeyword!=""'>    		
 				              	where admin_title like '%${searchKeyword}%' or
 				              	admin_content like '%${searchKeyword}%'              	
-				              
+				              </if>
 				              order by admin_no desc)
 			    where rownum<![CDATA[<=]]>#{nowPage}*#{pageRecord} order by admin_no asc)
 		 where rownum<![CDATA[<=]]>#{pageRecord} order by admin_no desc               

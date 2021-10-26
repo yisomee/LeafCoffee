@@ -7,6 +7,7 @@ public class AdminPageVO {
 	private int onePageNumCount=5;
 	private int startPage=1;
 	private int totalRecord;
+	private String searchKeyword="";
 	
 	private int nowRecordMul = nowPage*pageRecord;
 	
@@ -16,7 +17,7 @@ public class AdminPageVO {
 	public void setNowRecordMul(int nowRecordMul) {
 		this.nowRecordMul = nowRecordMul;
 	}
-	private String searchKeyword;
+
 		
 	public String getSearchKeyword() {
 		return searchKeyword;

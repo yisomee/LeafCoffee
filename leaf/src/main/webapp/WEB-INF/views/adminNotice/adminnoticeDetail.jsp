@@ -10,17 +10,26 @@
 		margin-top: 50px;
 	}
 	.menu_bar{
-		border: 1px solid gray;
 	    margin-top: 50px;
 	    font-size: 1.3em;
 	    line-height: 60px;
+	    border-radius: 10px;
+	    padding: 10px;
+	    background-color: antiquewhite;
 	}
 	.bottom_bar{
 		margin-top: 50px;
 	    line-height: 30px;
 		border-top:3px solid gray;
 		border-bottom:3px solid gray;
-		margin-bottom: 50px;
+		margin-bottom: 150px;
+		display: flex;
+	}
+	.bottom_bar>ul{
+		width:100%;
+	}
+	.bottom_bar li{
+		border-bottom:1px solid gray;
 	}
 
 	.btn{
@@ -40,9 +49,7 @@
 		display:flex;
     	justify-content: flex-end;
 	}
-	b{
-		margin-left:30px;
-	}
+	
 	.span{
 		width:150px;
 		background-color:rgb(244, 244, 242);
@@ -50,6 +57,14 @@
 	.content{
 		 margin-left: 110px;
 	}
+	.span{
+		width:100px;
+	}
+	.prev{
+		width:100px;
+		float: left;
+	}
+
 </style>
 <script>
 	function delCheck(admin_no){
@@ -69,9 +84,12 @@
 		<input type="button" value="삭제하기"class="btn" onclick="location.href='javascript:delCheck(${adminnoticeVo.admin_no})'">
 	</div>
 	<div class="bottom_bar">
-		<b>윗글</b>
-		<hr/>
-		<b>아랫글</b>
+		<ul>
+			<li><div class="prev">윗글</div><a href="/myapp/adminnoticeDetail?no=${adminnoticeVo.next}">${adminnoticeVo.next_title}</a></li>
+			<li><div class="prev">아랫글</div><a href="/myapp/adminnoticeDetail?no=${adminnoticeVo.prev}">${adminnoticeVo.prev_title}</a></li>
+		</ul>
+		
+		
 	</div>
 </div>
 <%@ include file="/inc/bottom.jspf" %>

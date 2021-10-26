@@ -1,76 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/inc/franTop.jspf" %>
 <style>
-	.container{
-		margin:0 auto;
-		max-width: 1250px;
-	}
-	h3{
-		margin-top: 50px;
-	}
-	.menu_bar{
-		border: 1px solid gray;
-	}
-	.btn{
-		margin-left:5px;
-		background-color:rgb(119, 119, 119);
-		color:white;
-		width:100px;
-		height:40px;
-	}
-	.button{
-		margin-top:50px;
-		display:flex;
-    	justify-content: flex-end;
-	}
-	b{
-		margin-left:30px;
-	}
-	.content_bar{
-		margin-top: 50px;
-	    line-height: 30px;
-		border-top:3px solid gray;
-		border-bottom:3px solid gray;
-		border-top:3px solid gray;
-		margin-bottom: 50px;
-		
-	}
-	ul{
-		display:flex;
-	}
-	li{
-		line-height:50px;
-		
-	}
-	hr{
-		margin:0px;
-	}
-	input{
-		height:30px;
-		width: 700px;
-	}
-	.container li:nth-of-type(1){
-		width:150px;
-	}
-	textarea{
-		width: 930px;
-		height:400px;
-		resize:none;
-	}
-	.content_bar_text{
-		height:450px;
-		border-bottom:3px solid gray;
-		margin-bottom:30px;
-	}
-	input>file-upload-button{
-		height:30px;
-	}
-	.content_bar_text>ul{
-		border:none;
-	}
-	#filename {
-		display: none;
-	}
+	.container{margin:0 auto;max-width: 1250px;}
+	h3{margin-top: 100px;}
+	.menu_bar{padding: 20px;margin-top: 20px;background-color: lightblue;border-radius: 10px;}
+	.btn{margin-left:5px;background-color:rgb(119, 119, 119);color:white;width:100px;height:40px;margin-bottom: 150px;}
+	.button{margin-top:50px;display:flex;justify-content: flex-end;}
+	b{margin-left:30px;}
+	.content_bar{margin-top: 50px;line-height: 30px;border-top:2px solid gray;border-bottom:2px solid gray;margin-bottom: 50px;}
+	ul{display:flex;}
+	li{line-height:50px;}
+	hr{margin:0px;}
+	input{height:30px;width: 700px;border-top: none;border-left: none;border-right: none;border-bottom: 1px solid;}
+	.select{height: 30px;border-radius: 10px;}
+	.container li:nth-of-type(1){width:150px;}
+	textarea{width: 930px;height:400px;resize:none;}
+	.content_bar_text{height:450px;border-bottom:3px solid gray;margin-bottom:30px;}
+	input>file-upload-button{height:30px;}
+	.content_bar_text>ul{border:none;}
+	#filename {display: none;}
 </style>
 <script>
 $(() => {
@@ -96,7 +44,7 @@ $(() => {
 	<div class="content_bar">
 		<ul>
 			<li><b>구분</b></li>
-			<li><select name="section">
+			<li><select name="section" class="select">
 				    <option value="">구분</option>
 				    <option value="m1">상품출시</option>
 				    <option value="m2">LEAF와문화</option>
@@ -112,7 +60,7 @@ $(() => {
 		<hr/>
 		<ul>
 			<li><b>첨부파일</b></li>
-			<li id="file"><label for="filename" id="filebutton">파일선택</label><div id="uploaded"></div><input type="file" id="filename" /></li>
+			<li id="file"><label for="filename" id="filebutton">파일선택</label><div id="uploaded"></div><input type="file" id="filename" name="img" /></li>
 		</ul>	
 		<hr/>
 	</div>

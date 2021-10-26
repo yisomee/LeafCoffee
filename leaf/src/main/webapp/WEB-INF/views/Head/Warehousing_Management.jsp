@@ -3,16 +3,15 @@
 
 <style>
 	.container{
-      background-color: rgb(245, 240, 233);
       max-width: 1480px;
-      height:855px;
+      height:1200px;
    }
    .table-active{
 		color:white;
 	}
    .purchase_ok{
       width: 100%;
-      height:800px;
+      height:1000px;
       display:flex;
       margin-left:10px; 
       margin-top:5px;
@@ -65,6 +64,18 @@
 		width: 100%;
 		height: 270px;
 	}
+	.table {
+	border-bottom: 2px solid rgb(0, 163, 239);
+}
+	#name {
+	font-size: 2em;
+	font-weight: bold;
+	text-align: center;
+	line-height: 3;
+}
+#name2 {
+	text-align: center;
+}
 </style>
 <script>
 $(()=>{
@@ -90,15 +101,17 @@ $(()=>{
 <body>
 <header>
 	<div id="head_img"></div>
-	<div id="headerText">입고관리</div>
+	<div id="headerText">WAREHOUSING</div>
 </header>
 <div class="container">
+<div id="name">입고관리</div>
+<div id="name2">입고된 목록을 확인할 수 있습니다.</div><hr/>
    <div class="search"><br/>
-      <input type='text' id='myinput' placeholder='검색하기' class='form-control'/>
+      <input type='text' id='myinput' placeholder='입고목록을 검색하세요' class='form-control'/>
       <div class="purchase_ok">
           <table class="table table-hover">
             <thead>
-               <tr class="table-active">
+               <tr class="table">
                   <td>번호</td>
                   <td>업체분류</td>
                   <td>제품명</td>
@@ -131,3 +144,4 @@ $(()=>{
       </div>
    </div>
 </div>
+<%@ include file="/inc/bottom.jspf" %>

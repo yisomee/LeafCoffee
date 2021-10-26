@@ -6,6 +6,7 @@
 <title>사원 등록</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.2.0/css/all.min.css" integrity="sha512-6c4nX2tn5KbzeBJo9Ywpa0Gkt+mzCzJBrE1RB6fmpcsoN+b/w/euwIMuQKNyUoU/nToKN3a8SgNOtPrbW12fug==" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
 <style>	
 	.main-form-Con{max-width: 570px; margin: 0 auto; padding: 70px 0 50px;}
 	.main-form-Con>strong{display: block;font-size: 30px;font-weight: normal;text-align: center; padding:30px;}

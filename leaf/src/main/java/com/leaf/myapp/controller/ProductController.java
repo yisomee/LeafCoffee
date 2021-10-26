@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.leaf.myapp.service.ProductService;
 import com.leaf.myapp.vo.MenuVO;
 import com.leaf.myapp.vo.ProductVO;
+import com.leaf.myapp.vo.RegisterVO;
 
 @Controller
 public class ProductController {
@@ -29,9 +30,10 @@ public class ProductController {
 	@ResponseBody
 	public List<ProductVO>ajaxPartner(int hq_num){
 		ModelAndView mav = new ModelAndView();
-		List<ProductVO> list = productService.ProductPartner(hq_num);			
+		List<ProductVO> list = productService.ProductPartner(hq_num);	
+
 		return list;
-	}
+	} 
 	
 	//발주하기
 	@RequestMapping(value="/Purchase_RegisterOk", method = RequestMethod.POST)
@@ -49,6 +51,7 @@ public class ProductController {
 	      ModelAndView mav = new ModelAndView();
 	      mav.addObject("ProductList", productService.ProductList());
 	      mav.addObject("purchaseList", productService.purchaseList());
+	      mav.addObject("NoProductList", productService.NoProductList());
 	      mav.setViewName("Store/purchase");
 	      return mav;
 	}
@@ -98,7 +101,6 @@ public class ProductController {
 			    	  ProductVO pVo = vo.get(i);
 			    	  int hq_num = pVo.getHq_num();
 			    	  int inventory = productService.ware_cntAll(hq_num).getWare_cntAll() - productService.pc_cntAll(hq_num).getPc_cntAll();
-			    	  System.out.println(inventory);
 			    	vo.get(i).setInventory(inventory);
 			      }
 			      

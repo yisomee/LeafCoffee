@@ -43,6 +43,8 @@ public class MenuController {
 		public ModelAndView MenuDetail(int p_num) {
 			ModelAndView mav = new ModelAndView();
 			mav.addObject("MenuVO",menuService.MenuDetail(p_num));
+			MenuVO vo = menuService.MenuDetail(p_num);
+			System.out.println(vo.getP_info());
 			mav.setViewName("Consumer/menu_detail");
 		return mav;
 		}

@@ -38,6 +38,7 @@ import com.leaf.myapp.vo.NoticeVO;
     	pVo.setTotalRecord(adminnoticeService.totalRecordCount(pVo));
     	mav.addObject("pVo",pVo);   
 		System.out.println("total record: " + pVo.getTotalRecord());
+		
 		mav.addObject("list", adminnoticeService.noticePageSelect(pVo));		
 		System.out.println("list" + adminnoticeService.noticePageSelect(pVo).get(0).getAdmin_no());
 		mav.setViewName("adminNotice/noticeMain");
@@ -47,12 +48,7 @@ import com.leaf.myapp.vo.NoticeVO;
 	//°Ô½Ã±Ûº¸±â
 	@RequestMapping("/adminnoticeDetail")
 	public ModelAndView noticeDetail(int no, AdminNoticeVO vo) {
-		//////////±è½Â±Ô¿ë
-		System.out.println(no);
-		System.out.println(adminnoticeService.noticeView(no).getAdmin_title());
-		System.out.println(vo.getAdmin_title());
 		vo = adminnoticeService.noticeView(no);
-		//////////
 		ModelAndView mav = new ModelAndView();
 		vo.setAdmin_hit(adminnoticeService.hitCount(vo));
 		mav.addObject("adminnoticeVo", vo);		
@@ -98,10 +94,15 @@ import com.leaf.myapp.vo.NoticeVO;
 	@RequestMapping("/adminnoticeDel")
 	public ModelAndView adminnoticeDel(int admin_no, HttpSession session) {
 		String userid = "apple";
-		adminnoticeService.adminnoticeDel(admin_no, userid);
+		int result = adminnoticeService.adminnoticeDel(admin_no, userid);
 		ModelAndView mav = new ModelAndView();
+		if(result>0) {
 		mav.setViewName("redirect:adminnoticeMain");
-	
+		}else {
+			mav.addObject("admin_no",admin_no);
+			mav.setViewName("redirect:adminnoticeDetail");
+			
+		}
 		return mav;
 	}
 	

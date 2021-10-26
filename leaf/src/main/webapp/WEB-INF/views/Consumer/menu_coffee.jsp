@@ -154,23 +154,23 @@ $(function(){
 	$("#All").click(function(){
 		$(".latte").css('display','block');
 		$(".espresso").css('display','block');
-		$(".coffee").css('display','block');
+		$(".shot").css('display','block');
 	});
 	
-	$("#Coffee").click(function(){
-		$(".coffee").css('display','block');
+	$("#Shot").click(function(){
+		$(".shot").css('display','block');
 		$(".latte").css('display','none');
 		$(".espresso").css('display','none');
 		
 	});
 	$("#Latte").click(function(){
 		$(".latte").css('display','block');
-		$(".coffee").css('display','none');
+		$(".shot").css('display','none');
 		$(".espresso").css('display','none');
 	});
 	$("#Espresso").click(function(){
 		$(".espresso").css('display','block');
-		$(".coffee").css('display','none');
+		$(".shot").css('display','none');
 		$(".latte").css('display','none');
 	});
 	
@@ -188,14 +188,13 @@ $(function(){
 		<div class="menu_bar">
 			<ul class="menu_title_container">
 				<li id="All">All</li>
-				<li id="Coffee">Coffee</li>
+				<li id="Shot">Coffee</li>
 				<li id="Latte">Latte</li>
 				<li id="Espresso">Espresso</li>
 			</ul>
 		</div>
 		<div>
-			<ul class="menuList">
-			
+			<ul class="menuList">			
 				<c:forEach var="MenuVO" items="${MenuList}"> 
 				<li class="${MenuVO.s_code}"><div class="imgwrap"><a href="/myapp/menu_detail?p_num=${MenuVO.p_num}"><img src="img/${MenuVO.p_img}" id="img"/></a></div>
 					<div class="imgtext">${MenuVO.p_name}<br/><span class="imgtext2">${MenuVO.p_ename}</span></div>

@@ -7,7 +7,13 @@
 <mapper namespace="com.leaf.myapp.dao.ProductDAO">
 	<!-- 발주페이지 제품리스트 -->
 	<select id="ProductList"  resultType="com.leaf.myapp.vo.ProductVO">
-		select DISTINCT i.hq_num, i.hq_name from items i join product h on i.hq_num = h.hq_num order by hq_num
+		select DISTINCT i.hq_num, i.hq_name from items i join product h on i.hq_num = h.hq_num order by hq_num 
+		<!-- select hq_num, hq_name from items order by hq_num -->
+	</select>
+	<!-- 발주페이지 제품리스트(재고x) -->
+	<select id="NoProductList"  resultType="com.leaf.myapp.vo.ProductVO">
+		select i.hq_num, i.hq_name from items i full outer join product h on i.hq_num = h.hq_num where h.ware_num is null order by hq_num
+		<!-- select hq_num, hq_name from items order by hq_num -->
 	</select>
 	<!-- 발주시 제품클릭하면 파트너, 발주창 ajax-->	
 	<select id="ProductPartner" parameterType="int" resultType="com.leaf.myapp.vo.ProductVO">
@@ -19,9 +25,8 @@
 	</insert>
 	<!-- 가맹점이 보는 발주리스트 (가맹점페이지) -->	
 	<select id="purchaseList" resultType="com.leaf.myapp.vo.ProductVO">
-		select DISTINCT p.pc_num, h.hq_num, i.hq_name, i.ware_price,p.pc_cnt, p.pc_date, order_status from  product h join items i on i.hq_num = h.hq_num join purchase p on i.hq_num = p.hq_num order by p.pc_date desc
+		select DISTINCT p.pc_num, h.hq_num, i.hq_name, i.ware_price,p.pc_cnt, p.pc_date, p.order_status, f.fc_name, f.fc_boss, f.fc_tel from  product h join items i on i.hq_num = h.hq_num join purchase p on i.hq_num = p.hq_num join franchise f on f.fc_num= p.fc_num order by p.pc_date desc
 	</select>
-	
 	<!-- 본사가 보는 전체가맹점 발주리스트(본사페이지) -->	
 	<select id="purchaseListAll" resultType="com.leaf.myapp.vo.ProductVO">
 		select DISTINCT p.pc_num, f.fc_name, h.hq_num, i.hq_name, i.ware_price, p.pc_cnt, p.pc_date, p.order_status from product h join purchase p on p.hq_num = h.hq_num join franchise f on p.fc_num = f.fc_num join items i on i.hq_num = h.hq_num order by p.pc_num

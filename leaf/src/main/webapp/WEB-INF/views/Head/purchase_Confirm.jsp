@@ -1,89 +1,140 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/inc/adminTop.jspf" %>
 <style>
-	.container{
-      background-color: rgb(245, 240, 233);
-      max-width: 1480px;
-      height:1000px;
-   }
-   .table-active{
-		color:white;
-	}
-	.purchase_ok{
-		width: 100%;
-		height:800px;
-		display:flex;
-		margin-left:10px; 
-		margin-top:5px;
-	}
-	
-	.purchase_ok{
-		overflow:scroll;
-	}
-	table,td,tr{
-		padding-top: 0px;
-    	padding-bottom: 0px;
-    	height: 0px;
-    	text-align:center;
-	}
+.container {
+	max-width: 1480px;
+	height: 1200px;
+}
 
-	#name{
-		font-size:1.5em;
-		font-weight:bold;
-		text-align:center;
-		line-height: 3;
-	}
-	#memo{
-		height:200px;
-		margin: 10px;
-	}
-	.memo{
-		font-weight:bold;
-	}
-	#myinput{
-		width: 300px;
-		margin: 10px;
-	}
-	.confirmBtn{
-		height: 40px;
-	    border: none;
-	    background-color: rgb(210, 205, 200);
-	    width: 100%;
-	    color: white;
-	    display: flex;
-	  	justify-content: space-evenly;
-	}
-	textarea{
-		resize:none;
-	}
-	 /*head 이미지*/
-	 header{
-   		height:250px;
-   		position:relative;
-   		}
-   #headerText{
-   		top:-100px;
-   		font-size:3em;
-   		color:white;
-   		opacity:0.5;
-   		text-align:center;
-   		position: relative;
-   		}
-   nav{
-   		display:flex;
-   		justify-content:center;
-   		width:100%;
-   		border-bottom:1px solid gray;
-   		}
-   nav>div{
-   		padding:15px 40px;
-   		}
-	#head_img{
-		background-image:url(https://www.baristapaulbassett.co.kr/images/whatsnew/eventSubVisual.jpg);
-		z-index:-1;
-		width:100%;
-		height:250px;
-	}
+.table-active {
+	color: white;
+}
+
+.purchase_ok {
+	width: 100%;
+	height: 1000px;
+	display: flex;
+	margin-left: 10px;
+	margin-top: 5px;
+}
+
+.purchase_ok {
+	overflow: auto;
+}
+
+#name {
+	font-size: 2em;
+	font-weight: bold;
+	text-align: center;
+	line-height: 3;
+}
+
+#name2 {
+	text-align: center;
+}
+
+#myinput {
+	width: 300px;
+	margin: 10px;
+}
+
+textarea {
+	resize: none;
+}
+/*head 이미지*/
+header {
+	height: 250px;
+	position: relative;
+}
+
+#headerText {
+	top: -100px;
+	font-size: 3em;
+	color: white;
+	opacity: 0.5;
+	text-align: center;
+	position: relative;
+}
+
+nav {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	border-bottom: 1px solid gray;
+}
+
+nav>div {
+	padding: 15px 40px;
+}
+
+#head_img {
+	background-image:
+		url(https://www.baristapaulbassett.co.kr/images/whatsnew/eventSubVisual.jpg);
+	z-index: -1;
+	width: 100%;
+	height: 250px;
+}
+
+.table {
+	border-bottom: 2px solid rgb(0, 163, 239);
+}
+
+.confirmBtn {
+	line-height: 30px;
+	text-align: center; background-color : white; width : 110px; height :
+	30px; border-radius : 2px;
+	left: 40px;
+	border: 1px solid rgb(0, 163, 239);
+	font-size: 0.9em;
+	transition: 0.4s;
+	padding-left: 0px;
+	position: relative;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+#submit>input {
+	font-size: 0.9rem
+}
+
+.confirmBtn:hover {
+	cursor: pointer;
+	box-shadow: inset 30em 0 0 0 rgb(0, 163, 239);
+	color: white;
+	border-color: rgb(0, 163, 239);
+}
+
+#submit>input {
+	font-size: 0.9rem
+}
+
+#register:hover {
+	cursor: pointer;
+	box-shadow: inset 30em 0 0 0 rgb(0, 163, 239);
+	color: white;
+	border-color: rgb(0, 163, 239);
+}
+
+td {
+	font-size: 0.9rem;
+}
+
+.table {
+	border-bottom: 2px solid rgb(0, 163, 239);
+}
+
+table, td {
+	padding-top: 0px;
+	padding-bottom: 0px;
+	height: 0px;
+}
+
+.table td, .table th {
+	padding: .5rem;
+	vertical-align: top;
+	border-top: 1px solid #dee2e6;
+	text-align: center;
+}
 </style>
 <script>
 $(()=>{
@@ -114,12 +165,13 @@ $(()=>{
 </header>
 <div class="container">
 	<div id="name">발주목록확인</div><hr/>
+	<div id="name2">발주 확인버튼을 눌러 상태를 변경하세요.</div><hr/>
 	<div class="search">
 		<input type='text' id='myinput' placeholder='검색하기' class='form-control'/>
 		<div class="purchase_ok">
 			 <table class="table table-hover">
 	      	<thead>
-	            <tr class="table-active">
+	            <tr class="table">
 	            	<td>발주번호</td>
 	            	<td>가맹점명</td>
 	                <td>상품번호</td>

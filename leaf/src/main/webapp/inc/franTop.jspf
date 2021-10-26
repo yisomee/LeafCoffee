@@ -179,15 +179,7 @@ height: 46px;
 		<ul class="main-ul">
 			
 <!---------------------------  -->			
-			<li class="select-li"><div><a href="/myapp/menu_Coffee">MENU</a></div>
-				<ul class="ulclass">
-					<li><a href="/myapp/siren">SIREN ORDER</a></li>
-					<li><a href="/myapp/menu_Coffee">COFFEE</a></li>
-					<li><a href="/myapp/menu_Food">FOOD</a></li>
-					<li><a href="/myapp/menu_Beverage">BEVERAGE</a></li>
-					<li><a href="/myapp/menu_Product">MD PRODUCT</a></li>
-				</ul>			
-			</li>
+
 <!----------------------------------  -->	
 			<li class="select-li"><a href="#">발주하기</a>
 				<ul class="ulclass">
@@ -198,16 +190,16 @@ height: 46px;
 			<li class="select-li"><div><a href="/myapp/franNotice">WHAT`S UP</a></div>
 				<ul class="ulclass">
 					<li><a href="/myapp/franNotice">NOTICE</a></li>
-					<li><a href="/myapp/social">SOCIAL</a></li>
+				
 				</ul>				
 			</li>
 <!--------------------------------------------->			
 			<li class="select-li"><div><a href="/myapp/franchise">FRANCHISE</a></div>
 				<ul class="ulclass">
-					<li><a href="/myapp/storemap">STORE</a></li>
+					
 					<li><a href="/myapp/franchiseInfo">INFOMATION</a></li>
 					<li><a href="/myapp/franchiseRequest">REQUEST</a></li>
-					<li><a href="/myapp/franchiseQuestion">Q&A</a></li>
+					
 				</ul>			
 			</li>
 			

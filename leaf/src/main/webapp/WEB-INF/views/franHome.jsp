@@ -289,10 +289,10 @@ body{
             <img src="img/coffee9.jpg"/>
         </div>
         <div class="item">
-            <img src="img/coffee8.jpg"/>
+            <img src="img/cafe3.jpg"/>
         </div>
         <div class="item">
-            <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8"/>
+            <img src="img/main3.jpg"/>
     	</div>
     </div>
     <div>
