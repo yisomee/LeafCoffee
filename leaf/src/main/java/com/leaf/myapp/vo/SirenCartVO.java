@@ -5,8 +5,7 @@ public class SirenCartVO {
     private int p_num;
     private int od_cnt;
     private int fc_num;
-    private String userid;
-    
+    private String userid;    
     
 	public long getOd_price() {
 		return od_price;

@@ -1,5 +1,8 @@
 package com.leaf.myapp.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
@@ -32,6 +35,7 @@ public class SirenController {
 			return mav;
 		}
 	}
+	//바로주문
 	@RequestMapping("/order")
 	@ResponseBody
 	public void order(SirenCartVO cVo) {
@@ -39,5 +43,27 @@ public class SirenController {
 		if(result>0) {
 			System.out.println("정보전달 성공");
 		}
-	}	
+	}
+	//장바구니 결제
+	@RequestMapping("/cartOrder")
+	@ResponseBody
+	public void cartOrder(String param) {
+		String rows[] = param.split("/");
+
+		for(int i=0;i<rows.length;i++) {
+			SirenCartVO cVo = new SirenCartVO();
+			String cartList[] = rows[i].split(",");
+			cVo.setOd_price(Long.parseLong(cartList[0]));
+			cVo.setP_num(Integer.parseInt(cartList[1]));
+			cVo.setOd_cnt(Integer.parseInt(cartList[2]));
+			cVo.setFc_num(Integer.parseInt(cartList[3]));
+			cVo.setUserid(cartList[4]);
+			
+			int result = sirenService.addOrderTbl(cVo);
+			if(result>0) {
+				System.out.println("결제 성공");
+			}
+		}
+
+	}
 }

@@ -46,7 +46,8 @@
 	.section1{margin-bottom:200px}
 	.fcImg{width:330px}
 	.selectStore{margin-left:50px;display:flex;flex-direction:column;}
-	#findFc{width:306px;height:560px;overflow:auto;}
+	#findFc{width:306px;}
+	#mapList{height:478px;overflow:auto;}
 	.searched{padding:6px;background-color:#F5F0E9}
 	.seleFcname{font-size:1.5rem;font-weight:600;color:#7B3C07;padding:20px 0}
 	#detailStore{font-size:1.4rem;color:#382E2C;font-weight:500;padding-bottom:20px}
@@ -56,7 +57,7 @@
 	.menu_title_container>li{padding:15px}
 	#menuCon{display:flex;align-items:center;margin-bottom:120px}
 	.menu{width:40%}
-	#menuList{width:60%}
+	#menuList{width:60%;height:756px;overflow:auto;}
 	#menuSelect{font-size:1.8rem;padding:20px 0;font-weight:600}
 	#selMenuList{display:flex;flex-direction:column;align-items:center}
 	#selMenuList>li{padding:10px 0}
@@ -134,6 +135,7 @@
 	let cup;
 	let size;
 	let hot_ice;
+    var userid = '${regVo.userid}';
 	$(function() {
 		//메뉴상단바에서 종류 선택 시
 		$("#All").click(function() {
@@ -304,10 +306,26 @@
 		
 		//장바구니 담기 버튼 클릭시
 		$("#addCartBtn").click(function(){
+			var menuCnt = $("#menuCnt").text();
+			var selecPnum = $(".selecPnum").text();
+			var totalPrice = $("#totalPrice").text();
+			var seleFcnum = $(".seleFcnum").text();
+			var price = document.getElementsByClassName(".price");
+			var priceSum;
+			for(var i=0;i<price.length;i++){
+				priceSum = parseInt.(price.item(i));
+				priceSum += 
+			}
+			
+			var section1s = document.getElementsByClassName("section1");
+			for( var i = 0; i < section1s.length; i++ ){ 
+				var section1 = section1s.item(i);
+			}
+
 			if(cup != null && size != null && hot_ice != null){
 				var cartMenu = "<div class='addTotal'>";
 					cartMenu += "<ul class='cartMenu'>";
-					cartMenu += "<li><input type='checkbox'><span class='cartName'>"+ $("#selectName").text() +"</span></li>";
+					cartMenu += "<li><input type='checkbox' name='cartChk' value='"+totalPrice+","+selecPnum+","+menuCnt+","+seleFcnum+","+userid+"' checked='checked'><span class='cartName'>"+ $("#selectName").text() +"</span></li>";
 					cartMenu += "<li id='cartCnt'>"+$("#menuCnt").text()+"</li>";
 					cartMenu += "<li id='cartPriSt'><span class='price'>"+$("#totalPrice").text()+"</span>원</li>";
 					cartMenu += "<li class='seleccartPnum'>"+$(".selecPnum").text()+"</li></ul>";
@@ -331,8 +349,12 @@
 				alert("HOT/ICE를 선택해주세요.");
 			}
 		});
-		$(".searched").children().click(function(){
-			console.log($(this).text());
+		
+		//가맹점 클릭 시 매장상세 변경
+		$(".searched").click(function(){
+			$(".seleFcname").html($(this).children(".fc_name").text());
+			$('.seleFcnum').html($(this).children(".fc_num").text())
+	//		$("#selectEname").html($(this).children(".fc_name").children(".p_ename").text());
 		});
 	});
 </script>
@@ -423,9 +445,9 @@
 				</ul>		
 				<ul class="menuList">
 					<c:forEach var="menuVo" items="${menuVo}">
-					<li class="siren___menu ${menuVo.s_code}">
+					<li class="siren___menu ${menuVo.m_code}">
 						<div class="imgwrap">
-							<img src="img/americano.png" id="img"/>
+							<img src="${menuVo.p_img }" id="img"/>
 						</div>
 						<div class="imgtext">
 							<div class="p_name">${menuVo.p_name}</div>
@@ -497,10 +519,10 @@
 					<li class="searchstore"><input type="text" placeholder="매장명 또는 주소"></li>
 					<li id='mapList'>
 						<c:forEach var="franVo" items="${franVo}">
-						<ul class="searched">
-							<li>${franVo.fc_name}</li>
+						<ul class="searched ">
+							<li class="fc_name">${franVo.fc_name}</li>
 							<li>${franVo.fc_addr}</li>
-							<li>${fc_num}</li>
+							<li class="fc_num">${fc_num}</li>
 						</ul>
 						</c:forEach>
 					</li>
@@ -510,7 +532,7 @@
 					<li id="detailStore">매장 상세</li>
 					<li><img src="img/15066662951506666295_kospi007.jpg" class="fcImg"></li>
 					<li class="seleFcname">역삼아레나빌딩</li>
-					<li class="seleFcnum" style="display:none"></li>
+					<li class="seleFcnum" style="display:none">3</li>
 					<li>-사이렌 오더 운영시간:08:00~21:30</li>
 				</ul>
 			</div>
@@ -531,6 +553,7 @@
 	</form>
 	</section>
 </div>
+
 <script>
     $('#orderBtn').click(function () {
         var IMP = window.IMP;
@@ -576,7 +599,53 @@
             alert(msg);
   //          document.location.href = history.back(); //alert창 확인 후 이동할 url 설정
         });
+               
     });
+</script>
+<script>
+$('#payBtn').click(function () {
+	console.log($("input:checkbox[name=cartChk]").length);
+	console.log($("input:checkbox[name=cartChk]:checked").length);
+    var userName = '${regVo.username}';
+	var cartPrice = $(".cartMon").text();
+	var param = '';
+	$("input[name=cartChk]:checked").each(function(){
+		param += $(this).val()+"/";
+	});
+
+    var IMP = window.IMP;
+    IMP.init('imp54411040');
+
+    IMP.request_pay({
+        pg: 'pg',
+        pay_method:'card',
+        merchant_uid: 'merchant_' + new Date().getTime(),
+        name: '상품명',
+        amount: 100,//cartPrice로 바꾸기
+        buyer_name: userName,
+        buyer_postcode:'113-343',            
+    }, function (rsp) {
+        console.log(rsp);
+        if (rsp.success) {
+            var msg = '결제가 완료되었습니다.';  
+            msg += '고유ID : ' + rsp.imp_uid;
+            msg += '상점 거래ID : ' + rsp.merchant_uid;
+            msg += '결제 금액 : ' + rsp.paid_amount;
+            msg += '카드 승인번호 : ' + rsp.apply_num;
+            console.log(param);
+            $.ajax({
+                type: "GET",
+                url: "/myapp/cartOrder", //충전 금액값을 보낼 url 설정
+                data: { param : param },            
+            });
+        } else {
+            var msg = '결제에 실패하였습니다.';
+            msg += '에러내용 : ' + rsp.error_msg;
+        }
+        alert(msg);
+//          document.location.href = history.back(); //alert창 확인 후 이동할 url 설정
+    });
+});
 </script>
 </body>
 </html>
