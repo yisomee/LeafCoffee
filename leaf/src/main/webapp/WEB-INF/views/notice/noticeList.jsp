@@ -21,7 +21,7 @@
    #detailMenu{display:flex;justify-content:center;width:100%;border-bottom:1px solid gray;}
    #detailMenu>div{padding:15px 40px;}
    #menu1{border-bottom:4px solid rgb(0, 163, 239);}
-   .container{width:1000px;margin:0 auto;}
+   .container{height: 800px;width:1000px;margin:0 auto;}
    .delete_search{display:flex;justify-content:space-between;border-bottom:3px solid gray;margin-top:60px}
    .delete_search>form:nth-child(1){padding-top:18px}
    .delete_search>form:nth-child(1)>button{border:1px solid gray;padding:2px 3px;}

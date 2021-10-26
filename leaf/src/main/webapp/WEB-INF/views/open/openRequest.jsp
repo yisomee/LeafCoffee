@@ -17,7 +17,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');
 html, body {margin: 0; padding: 0; /* background: rgb(249, 244, 240); */font-family: 'Noto Sans KR';}
 ul,li{margin: 0; padding-bottom: 10px; list-style: none;}
-.w250, .w280, .w118{border: none; border-bottom: 1px solid black; height: 30px;}
+.w250, .w280, .w118{border: none; border-bottom: 1px solid #ddd; height: 30px;}
 .container {position: relative;	height: 700px;}
 .leftSide {position: fixed;	top: 20%; background: url(img/pngwing.png) no-repeat; width: 40%; height: 700px;}
 .rightSide {position: absolute;	right: 0px;	width: 60%;	height: 700px;	width: 50%;}
@@ -31,22 +31,24 @@ section {position: relative; height: 700px;	z-index:8;}
     text-align: center;
     background: rgb(0, 163, 239);
     color: white;
-    border-radius: 10px;
-    font-size: 1.4rem;
+    border-radius: 3px;
+    font-size: 1.3rem;
     font-family: 'Noto Sans KR';
     float: left;
     margin-right: 10px;
     cursor: pointer;
 }
+#username{width:500px;}
 .rightTitle{height: 70px;}
-.btn-wrap{width: 430px; margin-left:30px;}
-.agree-info{width: 80%; background: rgb(225,219,209); padding: 10px 20px;}
-.cancel{background: rgb(249, 244, 240); color: rgb(0, 163, 239);}
+.btn-wrap{width: 430px; margin-left:50px; margin-top:35px; }
+.agree-info{    width: 88%; line-height: 25px; background: rgb(225,219,209); padding: 10px 20px;}
+.cancel{background: white; color: rgb(0, 163, 239);}
 #bottombox{height:800px;}
-form[name=frmInquiry] li:nth-of-type(2n-1){padding-top:25px;}
+form[name=frmInquiry] li:nth-of-type(2n-1){padding-top:25px;margin-bottom: 3px;}
 form[name=frmInquiry] input[type=radio]:nth-of-type(2n) {margin-left:30px;}
-#tel1{width:100px;}
-.telinput{width:143px;border: none; border-bottom: 1px solid black;}
+#tel1{width:160px; border: none; border-bottom: 1px solid #ddd;}
+.telinput{border: none; border-bottom: 1px solid #ddd;width: 160px;
+    margin-left: 6px;}
 .errorMessage{color:red; display:none; font-weight: bold;}
 #chat{
 	width: 170px;
@@ -103,6 +105,23 @@ font-size: 0.9rem;
 .chatTitle>span{
 	float:right;
 	color: rgb(0, 163, 239);
+}
+#frm{
+	font-size: 0.9rem;
+}
+input[type=text], select{
+	height: 40px !important;
+	padding-left: 10px !important;
+}
+.email{
+	width: 240px;
+	border: 0;
+	border-bottom: 1px solid #ddd;
+}
+.addr{
+	width: 200px;
+	border: 0;
+	border-bottom: 1px solid #ddd;
 }
 </style>
 <script>
@@ -210,12 +229,12 @@ font-size: 0.9rem;
 			<div class="rightTitle">
 			</div>
 			
-			<form method="post" name="frmInquiry" action="<%=request.getContextPath()%>/registerOpenRequest" onsubmit="return formInputCheck()">
+			<form method="post" id="frm" name="frmInquiry" action="<%=request.getContextPath()%>/registerOpenRequest" onsubmit="return formInputCheck()">
 				<ul>
-					<li>이름<b></b></li>
+					<li><b>이름</b></li>
 					<li><input type="text" id="username" name="username" value="${orqVo.username}"
 						required maxlength="50" class="w280" readonly></li>
-					<li>휴대폰 번호<b>*</b></li>
+					<li><b>휴대폰 번호*</b></li>
 					<li>
 						<select name="tel1" id="tel1">
 							<script>
@@ -236,20 +255,20 @@ font-size: 0.9rem;
 						<input type="text" id="tel3" class="telinput"
 						name="tel3" required maxlength="4" class="w118" value="${orqVo.tel3}"></li>
 					
-					<li>이메일<b>*</b></li>
-					<li><input class="w250" type="text" name="emailid" id="emailid" value="${orqVo.emailid}"> @ 
-					<input class="w250"	type="text" name="domain" id="domain" value="${orqVo.domain}"></li>
-					<li>창업희망지역<b>*</b></li>
-					<li>시/도 : <select name="sido"  id="sido" class="w250"></select>
-					구/군 : <select name="gugun" id="gugun" class="w250"></select> 
+					<li><b>이메일*</b></li>
+					<li><input class="email" type="text" name="emailid" id="emailid" value="${orqVo.emailid}"> @ 
+					<input class="email"	type="text" name="domain" id="domain" value="${orqVo.domain}"></li>
+					<li><b>창업희망지역*</b></li>
+					<li>시/도 : <select name="sido"  id="sido" class="addr"></select>
+					 구/군 : <select name="gugun" id="gugun" class="addr"></select> 
 					</li>
 					<div class="errorMessage" id="localSelect">지역을 선택해주세요!</div>
-					<li>추가 정보 입력</li>
-					<li><textarea cols="63" rows="5" name="content" id="content"
+					<li><b>추가 정보 입력</b></li>
+					<li><textarea cols="57" rows="8" name="content" id="content" style="resize: none;width:500px;"
 							placeholder="점포를 보유하셨거나 입점희망 점포에 대한 사전정보가 있을 경우, 점포의 평수/임대료 등 구체적인 정보를 남겨주시면 조금 더 정확한 상담이 가능합니다. 그 외, 추가문의 사항이 있는 경우 남겨주세요!"
 							></textarea></li>
 					<div class="errorMessage" id="insertContent">추가 정보를 입력해주세요!</div>
-					<li>개인정보 보호를 위한 이용자 동의서</li>
+					<li><b>개인정보 보호를 위한 이용자 동의서</b></li>
 					<li><div class="agree-info">
 							<p>
 								Leaf코리아 창업문의 및 설명회 신청 관련 개인정보 수집동의 <span style="color: red;">(필수)</span><br>
@@ -268,7 +287,7 @@ font-size: 0.9rem;
 						<label for="person_agree_y">동의합니다</label>
 						<input type="radio" value="0" name="person_agree" id="person_agree_n"><label for="person_agree_n">&nbsp;</label>
 						<label for="person_agree_n">동의하지 않습니다</label></li>
-					<li>마케팅 활용 동의서</li>
+					<li><b>마케팅 활용 동의서</b></li>
 					<li><div class="agree-info">
 					<p>
 							마케팅 정보제공 용도로의 이용 동의 <span style="color: red;">(선택)</span><br>

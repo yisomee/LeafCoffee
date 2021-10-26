@@ -18,32 +18,32 @@
 			
 		//ajax로 검색한 리스트 출력.(라디오버튼,사원번호,사원명,직급,연락처,이메일,입사일,재직여부)
 		$.ajax({
-		url: "/myapp/empSearch",
+		url: "/myapp/partSearch",
 		data : "searchKey="+searchKey+"&"+
 				"searchWord="+searchWord+"&"+
 				"nowPage="+nowPage,	
 		success:function(result){ // List<EmployeeVO>
-			let empvo = $(result.empvo);
+			let partvo = $(result.partvo);
 			
-			if(empvo.length==0){
+			if(partvo.length==0){
 				let notSearch = '<div>'+searchWord+'에 대해 0건이 발견되었습니다.</div>';					
 				$('#emp-list').html(notSearch);
 				$('.page_nation').empty();
 			}else{
-				let empNumList = '';
+				let partNumList = '';
 				
-				empvo.each(function(idx,vo){
-					empNumList +='<li><input type="radio" name="emp-select"/></li>'+
-								'<li>'+vo.emp_num+'</li>'+
-								'<li>'+vo.username+'</li>'+
-								'<li>'+vo.dept_name+'</li>'+
-								'<li>'+vo.emp_posi+'</li>'+
-								'<li>'+vo.tel+'</li>'+
-								'<li>'+vo.email+'</li>'+
-								'<li>'+vo.emp_regdate+'</li>'+
-								'<li>'+vo.emp_status+'</li>';
+				partvo.each(function(idx,vo){
+					partNumList +='<li><input type="radio" name="emp-select"/></li>'+
+								'<li>'+vo.part_num+'</li>'+
+								'<li>'+vo.part_code_name+'</li>'+
+								'<li>'+vo.part_company+'</li>'+
+								'<li>'+vo.part_name+'</li>'+
+								'<li>'+vo.part_tel+'</li>'+
+								'<li>'+vo.part_email+'</li>'+
+								
+								'<li>'+vo.part_regdate+'</li>';
 				});				
-				$('#emp-list').html(empNumList);
+				$('#emp-list').html(partNumList);
 				
 				// 페이징					
 				$('.page_nation').empty(); // 버튼을 담을 div를 비워줌
@@ -105,51 +105,36 @@
 			if(searchWord===null || searchWord==""){
 				alert("검색어를 입력해주세요.");
 				return false;
-			}else if(searchKey==='emp_num'){
-				if(!regExpEmpNum.test(searchWord)){
-					alert("사원번호는 4자리 숫자만 입력가능합니다.");
-					return false;
-				}
-			}else if(searchKey==="username"){
-				if(!regExpDeptName.test(searchWord)){
-					alert("올바른 사원명을 입력해주세요");
-					return false;
-				}
-			}else if(searchKey==="dept_name"){
-				if(!regExpDeptName.test(searchWord)){
-					alert("올바른 부서명을 입력해주세요");
-					return false;
-				}
-			}			
+			}		
 			let nowPage=1;
 			
 			$.ajax({
-				url: "/myapp/empSearch",
+				url: "/myapp/partSearch",
 				data : "searchKey="+searchKey+"&"+
 						"searchWord="+searchWord+"&"+
 						"nowPage="+nowPage,
 				success:function(result){
-					let empvo = $(result.empvo);
+					let partvo = $(result.partvo);
 					
-					if(empvo.length==0){
+					if(partvo.length==0){
 						let notSearch = '<div>'+searchWord+'에 대해 0건이 발견되었습니다.</div>';					
 						$('#emp-list').html(notSearch);
 						$('.page_nation').empty();
 					}else{
-						let empNumList = '';					
-						empvo.each(function(idx,vo){
-							empNumList +='<li><input type="radio" name="emp-select"/></li>'+
-										'<li>'+vo.emp_num+'</li>'+
-										'<li>'+vo.username+'</li>'+
-										'<li>'+vo.dept_name+'</li>'+
-										'<li>'+vo.emp_posi+'</li>'+
-										'<li>'+vo.tel+'</li>'+
-										'<li>'+vo.email+'</li>'+
-										'<li>'+vo.emp_regdate+'</li>'+
-										'<li>'+vo.emp_status+'</li>';						
+						let partNumList = '';					
+						partvo.each(function(idx,vo){
+							partNumList +='<li><input type="radio" name="emp-select"/></li>'+
+										'<li>'+vo.part_num+'</li>'+
+										'<li>'+vo.part_code_name+'</li>'+
+										'<li>'+vo.part_company+'</li>'+
+										'<li>'+vo.part_name+'</li>'+
+										'<li>'+vo.part_tel+'</li>'+
+										'<li>'+vo.part_email+'</li>'+
+										
+										'<li>'+vo.part_regdate+'</li>';
 						}); // empvo.each문
 						
-						$('#emp-list').html(empNumList);
+						$('#emp-list').html(partNumList);
 						
 										
 						// 페이징					
@@ -211,18 +196,18 @@
 		$(document).on('click','input[name=emp-select]',function(){
 			let selectEmpNum = $(this).parent().next().text();
 			
-			$('#empChange').click(function(){
+			$('#partnerChange').click(function(){
 				
-				function empChangeGo(emp_num){
+				function empChangeGo(part_num){
 					let empForm = document.createElement('form');
 					empForm.setAttribute('method','post');
-					empForm.setAttribute('action','/myapp/employeeChange');
+					empForm.setAttribute('action','/myapp/partnerChange');
 					
 					let empValue;
 					empValue = document.createElement('input');
 					empValue.setAttribute('type','hidden');
-					empValue.setAttribute('name','emp_num');
-					empValue.setAttribute('value',emp_num);
+					empValue.setAttribute('name','part_num');
+					empValue.setAttribute('value',part_num);
 					
 					empForm.appendChild(empValue);
 					document.body.appendChild(empForm);
@@ -245,8 +230,9 @@
 	
 	#searchForm{width: 730px; height: 60px; margin: 0 auto;}
 	select[name=searchEmpSelect]{height:50px; width:100px; font-size: 0.9rem; border:0; border-bottom:1px solid #ddd;}
+	select[name=searchKey]{height:50px; width:100px; font-size:0.9em;border:0;}
 	input[name="searchWord"]{padding-left: 20px;height:50px; width:500px; font-size:1em;border:0;border-bottom: 1px solid #ddd;}
-	.searchButton{height:50px; width:100px; box-sizing: border-box; font-size:0.9em;background:white;}
+	#searchButton{height:50px; width:100px; box-sizing: border-box; font-size:0.9em;background:white;}
 	
 	/* 사원 리스트 정렬 select박스 */
 	.array_button{width:1400px; height:80px;}
@@ -313,7 +299,7 @@
 	<div class=top-banner-imgCon></div>
 	<nav class="top-banner-nav">
 		<div class="tbn-menu1"><a href="<%=request.getContextPath()%>/partnerManagePage">파트너검색</a></div>
-		<div class="tbn-menu2"><a href="<%=request.getContextPath()%>/partnerManageRegi">파트너등록</a></div>	   
+		<div class="tbn-menu2"><a href="<%=request.getContextPath()%>/partnerRegiPage">파트너등록</a></div>	   
 	</nav>
 	<!-- 메인부 -->
 	<main>
@@ -328,12 +314,12 @@
 			<div class="emptopCon">
 				
 				<div id="searchForm">
-					<select name="searchEmpSelect">
-						<option value="empno">업체명</option>
-						<option value="empname">담당자</option>						
+					<select name="searchKey" id="searchKey">
+						<option value="part_company">업체명</option>
+						<option value="part_name">담당자</option>						
 					</select>
 					<input type="text" name="searchWord" id="searchWord"/>
-					<button type="button" class="searchButton">검색하기</button>
+					<input type="button" value="검색하기" id="searchButton"/>
 				</div>
 			</div>
 			<!-- 협력헙체 리스트 -->
@@ -357,7 +343,7 @@
 			<div class="page_wrap">
 				<!-- 사원등록 -->
 				<div class="emp-button">					
-					<input type="button" value="사원수정" name="partnerChange" id="partnerChange"/>
+					<input type="button" value="파트너수정" name="partnerChange" id="partnerChange"/>
 				</div>
 				<div class="page_nation">
 					

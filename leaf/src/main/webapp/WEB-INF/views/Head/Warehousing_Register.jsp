@@ -146,9 +146,10 @@ nav>div {
 	display: inline-block;
 	height: 40px;
 	margin-right: 20px;
-	
+	border-top: none;
+    border-left: none;
+    border-right: none;
 }
-
 .regiForm-submit {
 	width: 530px;
 	padding: 20px 20px;
@@ -161,6 +162,22 @@ nav>div {
 	border: 1px solid white;
 	color: white;
 
+}
+.regiForm-submit{width: 530px; margin: 0 auto 30px; padding:20px 20px;}
+	.regiForm-submit #part-regi{transition: 0.6s;margin-left: 45px;width:400px; padding:13px;background: white; border: 1px solid rgb(0,192,239); color: rgb(0,192,239); font-size: 1em}
+	.regiForm-submit #part-regi:hover{
+     	box-shadow: inset 30em 0 0 0 rgb(0, 163, 239);
+		color: white !important;
+		border-color: rgb(0, 163, 239);
+   }
+   	#name {
+	font-size: 2em;
+	font-weight: bold;
+	text-align: center;
+	line-height: 3;
+}
+#name2 {
+	text-align: center;
 }
 </style>
 <script>
@@ -180,9 +197,9 @@ $(()=>{
 <div class="container">
 <form method="post" action="/myapp/warehousing_RegisterOk">
 		<div class="main-form-Con">
+		<div id="name">입고등록</div>
+		<div id="name2">입고된 목록을 등록해주세요.</div><hr/>
 			<section class="mf-inputCon">
-				<div class="mfi-img"></div>
-				<p class="mfi-title">입고된정보를 입력해주세요.</p>
 				<div class="mfi-inputbox">
 					<strong> <span>분류명(필수)</span>
 					</strong> <select name="" id="part_code">
@@ -191,9 +208,6 @@ $(()=>{
 						<option value="transit">운송</option>
 						<option value="equipment">설비</option>
 					</select>
-				</div>
-				<div class="mfi-inputbox">
-					
 				</div>
 				<div class="mfi-inputbox">
 					<strong>제품명 <span>(필수)</span>

@@ -267,30 +267,30 @@
 	
 	
 	/*창업문의  검색폼*/
-	.emptopCon{height:100px; background:#ddd; margin-top:50px;}
+	.emptopCon{height:100px; text-align:center; margin-top:50px;}
 	#openImg{height:100px; width:300px; display: inline-block; margin-left:220px; margin-top:10px;}
 	#openImgWord{font-size:1.4em; display:inline-block; position:relative; top:6px; left:35px;}	
 	#searchForm{display: inline-block; width: 730px; height: 60px; position:relative;}
-	select[name="searchKey"]{height:50px; width:100px; font-size:1em;}
-	input[name="searchWord"]{height:50px; width:500px; font-size:1em;}
-	input[value="search"]{height:50px; width:100px; box-sizing: border-box; font-size:1em;}
-	input[name=oq_status]{margin:30px 0px 0px 1237px;}
+	select[name="searchKey"]{height:50px; width:100px; font-size:0.9rem;border:0;}
+	input[name="searchWord"]{padding-left: 20px;height:50px; width:500px; font-size:0.9rem;border:0;border-bottom: 1px solid #ddd;}
+	input[value="Search"]{height:50px; width:100px; box-sizing: border-box; font-size:0.9em;background:white;}
+	input[name=oq_status]{margin:30px 0px 0px 1237px;font-size:0.9em;}
 	
 	/* 창업문의 리스트 정렬 select박스 */
 	.array_button{width:1400px; height:80px;}
-	.array_button>label{font-size:1.2em; margin-left:10px;}
+	.array_button>label{font-size:0.9rem; margin-left:10px;}
 	input[name='replyStateView']{width:16px; height:16px; display:inline-block; margin:40px 0 0 1230px;}
 	
 	/* 창업문의 리스트 top */
 	#open-list-container{width:1400px; height:1000px; margin:50px auto 0 auto;}
-	#open-list-top{overflow:auto; text-align:center; padding:0; background-color:#ddd; height:50px; font-size:1.13em; line-height:45px;}
+	#open-list-top{overflow:auto; text-align:center; padding:0; height:50px; font-size:0.9rem; line-height:45px; border-bottom: 2px solid lightblue; }
 	#open-list-top>li{float:left; width:10%; border-top:3px solid black;}
 	#open-list-top>li:nth-child(6n+3){width:40%;}
 	#open-list-top>li:nth-child(6n+5){width:20%;}
 	
 	/*창업문의 리스트*/
 	#open-list{overflow:auto; text-align:center; padding:0;}
-	#open-list>li{float:left; width:10%; border-bottom: 1px solid black; height:50px; font-size:1.1em; line-height:50px;white-space:nowrap; text-overflow:ellopsis; overflow:hidden;}
+	#open-list>li{float:left; width:10%; border-bottom: 1px solid #ddd; height:50px; font-size:0.9rem; line-height:50px;white-space:nowrap; text-overflow:ellopsis; overflow:hidden;}
 	#open-list>li:nth-child(6n+3){width:40%; text-align:center;}
 	#open-list>li:nth-child(6n+5){width:20%; text-align:center;}
 	
@@ -310,15 +310,77 @@
 	
 	/* 사원 등록, 수정버튼 */
 	.emp-button{display:inline-block; position:absolute; left:1280px;}	
-	#openReply{width:120px; height:30px; font-size:15px; color:#fff; border:0px solid; background:rgb(0,163,239); cursor:pointer;}
+	#openReply{line-height: 33px;
+    text-align: center;
+      background-color: white;
+	    width: 110px;
+	    height: 35px;
+	    border-radius: 2px;
+	    border: 1px solid rgb(0, 163, 239);
+	    font-size: 0.9rem;
+	    color: rgb(0, 163, 239);
+	    margin-left: 7px;
+	    transition: 0.4s;
+	    padding-left: 0px;}
+	    #openReply:hover{
+      cursor: pointer;
+      box-shadow: inset 30em 0 0 0 rgb(0, 163, 239);
+	color: white;
+	border-color: rgb(0, 163, 239);
+   }
 	
 	/* 네비바 창업문의목록 선택된 파란색 밑줄 */
    .top-banner-nav>.tbn-menu1{border-bottom:4px solid rgb(0, 163, 239);}	
+#head_img{
+      background-image:url(img/employeee.jpeg);
+      z-index:-1;
+      width:100%;
+      height:330px;
+      background-size: 100%;
+    background-position-y: 390px;
+   }	
+   
+   header{
+	   height:330px;
+	   position:relative;
+   }
+   
+.custom-shape-divider-bottom-1634814355 {
+    position: absolute;
+    top:360px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1634814355 svg {
+    position: relative;
+    display: block;
+    width: calc(131% + 1.3px);
+    height: 90px;
+}
+
+.custom-shape-divider-bottom-1634814355 .shape-fill {
+    fill: #FFFFFF;
+}
 </style>
 </head>
 <body>
 	<%@ include file="/inc/adminTop.jspf" %>
-	<div class=top-banner-imgCon></div>
+	<header>
+   <div id="head_img"></div>
+   
+</header>
+<div class="custom-shape-divider-bottom-1634814355">
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+        <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+        <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+    </svg>
+</div>
+	
 	<nav class="top-banner-nav">
 	   <div class="tbn-menu1"><a href="<%=request.getContextPath()%>/openQuestionPage">창업문의목록</a></div>	   	   	   
 	</nav>
@@ -332,14 +394,14 @@
 			</div>						
 			<!-- 회원 검색폼 -->
 			<div class="emptopCon">
-				<span id="openImg"><img src="img/empimg.png"><span id="openImgWord">문의검색</span></span>
+				
 				<div id="searchForm">
 					<select name="searchKey" id="searchKey">
 						<option value="username">작성자</option>
 						<option value="content">내용</option>						
 					</select>
 					<input type="text" name="searchWord" id="searchWord"/>
-					<input type="button" value="search"/>
+					<input type="button" value="Search"/>
 				</div>
 			</div>
 			<div class="array_button">

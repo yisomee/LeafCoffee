@@ -27,6 +27,7 @@
 	border-radius: 3px;
 	background-color: rgb(249, 247, 244);
 	display: flex;
+	padding: 20px;
 }
 
 .purchase {
@@ -53,7 +54,7 @@
 
 .purchase_ok {
 	width: 970px;
-	height: 300px;
+	height: 350px;
 	display: flex;
 	box-shadow: 0px 1px 2px 1px lightslategrey;
 	border-radius: 3px;
@@ -98,6 +99,7 @@ table, td {
 	font-size:2em;
 	color: rgb(30, 57, 50);
 	font-weight: bold;
+	margin-top: 20px;
 }
 
 #pc_cnt {
@@ -256,14 +258,15 @@ td{
 	position: relative;
     top: 200px;
 }
-
-.borderless > tbody > tr > td,
-.borderless > tbody > tr > th,
-.borderless > tfoot > tr > td,
-.borderless > tfoot > tr > th,
-.borderless > thead > tr > td,
-.borderless > thead > tr > th {
-    border: none;
+.partner2>ul{
+	display:flex;
+	width:300px;
+}
+.partner2{
+	margin-left:100px;
+}
+.partner2 li:nth-of-type(1){
+	width:100px;
 }
 </style>
 <script>
@@ -367,9 +370,9 @@ $(()=>{
    	   	</div>
    	   	<div id="purchase">
    	   	<form id='frm' method='post' action='/myapp/Purchase_RegisterOk'>
-	    <div>발주할</div>
-	    <div>상품을</div>
-	    <div>선택하세요.</div>
+	    <div>발주할 상품을</div>
+	    <div>선택하세요</div>
+	    <div>&nbsp;&nbsp;&nbsp;-LEAF-</div>
 		<div></div>		   
 	    
 	    
@@ -404,7 +407,7 @@ $(()=>{
 		</div> 
 		</div>
 		</div>	
-	<div class="name">품목</div> <div id="name2">정보</div>
+	<div class="name">품목</div><div id="name2">정보</div>
 				<hr/>
 	<div class="search">
 		<input type='text' id='myinput' placeholder='원하시는 상품을 검색하세요.' class='form-control'/>
@@ -446,49 +449,42 @@ $(()=>{
 	
 	
 	<div class="partner">
-			<table class='table borderless'>
-			<tr>
-				<td><div class='name'>품 목</div></td>
-			</tr>
-			<tr>
-				<td><b>상품번호</b></td>
-				<td id="view7"></td>
-			</tr>
-			<tr>
-				<td><b>제품명</b></td>
-				<td id="view8"></td>
-			</tr>
-			<tr>
-				<td><b>발주가격</b></td>
-				<td id="view9"></td>
-			</tr>
-			</table>
-			<table class='table borderless'>
-			<tr>
-				<td><div class='name'>품목정보</div></td>
-			</tr>
-			<tr>
-				<td><b>제조원</b></td>
-				<td id="view1"></td>
-			</tr>
-			<tr>
-				<td><b>분류</b></td>
-				<td id="view2"></td>
-			</tr>
-			<tr>
-				<td><b>담당자</b></td>
-				<td id="view4"></td>
-			</tr>
-			<tr>
-				<td><b>연락처</b></td>
-				<td id="view5"></td>
-			</tr>
-			<tr>
-				<td><b>이메일</b></td>
-				<td id="view6"></td>
-			</tr>
-		
-		</table>
+		<div class="partner2">
+		<ul>
+				<li></li>
+				<li></li>
+			</ul>	
+			<ul>
+				<li>● 상품번호</li>
+				<li id="view7"></li>
+			</ul>
+			<ul>
+				<li>● 제품명</li>
+				<li id="view8"></li>
+			</ul>	
+			<ul>
+				<li>● 발주가격</li>
+				<li id="view9"></li>
+			</ul>
+			<ul>
+				<li></li>
+				<li></li>
+			</ul>			
+		</div>
+		<div class="partner2">
+			<ul>
+				<li>● 제조원</li>
+				<li id="view1"></li>
+			</ul>
+			<ul>
+				<li>● 담당자</li>
+				<li id="view4"></li>
+			</ul>
+			<ul>
+				<li>● 연락처</li>
+				<li id="view5"></li>
+			</ul>		
+		</div>
 	</div>
 	<form method="post" class="form" name="delsubmit" action="/myapp/purchaseDel">
 	<div class="name">요청내역</div>

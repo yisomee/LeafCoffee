@@ -2,22 +2,21 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/inc/adminTop.jspf"%>
 <style>
-body{
-		margin: 0;
-		background-color:rgb(242, 242, 242);
-	}
-	.container{
-		max-width: 1000px;
-		display: flex;
-	    justify-content: center;
-	    margin:0 auto;
-	    box-shadow: 0px 1px 2px 1px lightslategrey;
-	    background-color:white;
-	    margin-top:100px;
-	    margin-bottom:200px;
-	    
-	}
+body {
+	margin: 0;
+	background-color: rgb(242, 242, 242);
+}
 
+.container {
+	max-width: 1000px;
+	display: flex;
+	justify-content: center;
+	margin: 0 auto;
+	box-shadow: 0px 1px 2px 1px lightslategrey;
+	background-color: white;
+	margin-top: 100px;
+	margin-bottom: 200px;
+}
 
 /*head 이미지*/
 header {
@@ -129,7 +128,6 @@ nav>div {
 .mfi-inputbox .mfi-iB-tel input {
 	width: 30%;
 	margin-right: 20px;
-	
 }
 
 .mfi-inputbox .mfi-iB-tel input:last-of-type {
@@ -141,12 +139,15 @@ nav>div {
 	width: 460px;
 }
 
-.mfi-inputbox #part_code, #part_num, #hq_name1, #hq_name, #part_company {
+.mfi-inputbox #part_code, #part_num, #hq_name1, #hq_name, #ware_price
+	{
 	width: 530px;
 	display: inline-block;
 	height: 40px;
 	margin-right: 20px;
-	
+	border-top: none;
+    border-left: none;
+    border-right: none;
 }
 
 .regiForm-submit {
@@ -160,7 +161,40 @@ nav>div {
 	background: rgb(30, 57, 50);
 	border: 1px solid white;
 	color: white;
+}
 
+.regiForm-submit {
+	width: 530px;
+	margin: 0 auto 30px;
+	padding: 20px 20px;
+}
+
+.regiForm-submit #part-regi {
+	transition: 0.6s;
+	margin-left: 45px;
+	width: 400px;
+	padding: 13px;
+	background: white;
+	border: 1px solid rgb(0, 192, 239);
+	color: rgb(0, 192, 239);
+	font-size: 1em
+}
+
+.regiForm-submit #part-regi:hover {
+	box-shadow: inset 30em 0 0 0 rgb(0, 163, 239);
+	color: white !important;
+	border-color: rgb(0, 163, 239);
+}
+
+#name {
+	font-size: 2em;
+	font-weight: bold;
+	text-align: center;
+	line-height: 3;
+}
+
+#name2 {
+	text-align: center;
 }
 </style>
 <script>
@@ -180,9 +214,9 @@ nav>div {
 <div class="container">
 <form method="post" action="/myapp/items_RegisterOk">
 		<div class="main-form-Con">
+		<div id="name">상품등록</div>
+		<div id="name2">새로운 상품을 등록하세요.</div><hr/>
 			<section class="mf-inputCon">
-				<div class="mfi-img"></div>
-				<p class="mfi-title">새로등록할 제품정보를 입력해주세요.</p>
 				<div class="mfi-inputbox">
 					<strong>상품명 <span>(필수)</span>
 					</strong> <input type="text" name="hq_name" id="hq_name" placeholder="상품명" />

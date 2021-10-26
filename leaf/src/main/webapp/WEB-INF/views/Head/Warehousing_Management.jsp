@@ -9,13 +9,16 @@
    .table-active{
 		color:white;
 	}
+
    .purchase_ok{
       width: 100%;
       height:1000px;
       display:flex;
-      margin-left:10px; 
       margin-top:5px;
-      overflow:auto;
+   }
+   .search{
+   	height:1000px;
+   	overflow:auto;
    }
 
    table,td,tr{

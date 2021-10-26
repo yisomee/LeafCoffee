@@ -7,6 +7,7 @@
 		flex-direction: column;
 		margin:0 auto;
 		max-width: 1250px;
+		
 	}
 	h3{
 		margin-top: 50px;
@@ -56,6 +57,8 @@
 	.seach{
 		border:2px solid rgb(229, 227, 215);
 		width:300px;
+		padding-left: 7px;
+    font-size: 0.9rem;
 	}
 	.btn{
 		margin-left:5px;
@@ -79,14 +82,19 @@
 		height:auto;
 	}
 	.img{
-		height: 250px;
+		
 		width: 300px;
 	}
 	.notice li:nth-of-type(1), .notice_content li:nth-of-type(1){
 		width:30px;
 	}
-	.notice li:nth-of-type(2), .notice_content li:nth-of-type(2){
+	.notice li:nth-of-type(2){
 		width:300px;
+	}
+	.notice_content li:nth-of-type(2){
+		width:300px;
+		height: 200px;
+    overflow: hidden;
 	}
 	.notice li:nth-of-type(3), .notice_content li:nth-of-type(3){
 		width:200px;

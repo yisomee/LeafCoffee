@@ -11,7 +11,7 @@
 		values(opensq.nextval,#{openhopeaddr},#{content},sysdate,#{userid},'답변대기',#{openhopetel},#{openhopeemail})
 	</insert>
 	<select id="authOpenAccess" resultType="int" parameterType="String">
-		select dept_num from employee2 where userid=#{param1}
+		select nvl(max(dept_num),0) dept_num from employee2 where userid=#{param1}
 	</select>
 	<select id="openListpage" resultType="int">
 		select count(oq_num) totalRecord from openQuestion oq

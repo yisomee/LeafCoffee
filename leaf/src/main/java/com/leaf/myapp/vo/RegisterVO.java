@@ -113,11 +113,11 @@ public class RegisterVO {
 		}else {
 			tel = tel1+tel2+tel3;
 		}
-			System.out.println("get");
+			
 		return tel;
 	}
 	public void setTel(String tel) {
-		System.out.println("set");
+		
 		this.tel = tel;
 		
 			}
