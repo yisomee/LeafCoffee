@@ -77,10 +77,15 @@ public class OpenQuestionController {
 		}
 		
 		int authResult = openService.authOpenAccess(authid);// 7200번(가맹관리부)만 접근가능		
-		if(authResult==7200) {
+		if(authResult==0) {			
+//			mav.addObject("noRegiEmp", "noEmp");
+			mav.setViewName("open/openAccessRefuse");
+			return mav;
+		}else if(authResult==7200) {
 			mav.setViewName("open/openMain");
 			return mav;
-		}else {			
+		}else {
+//			mav.addObject("noAcessEmp", authResult);
 			mav.setViewName("open/openAccessRefuse");
 			return mav;
 		}
