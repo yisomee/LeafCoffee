@@ -127,8 +127,7 @@
 				data:openOqNum,				
 				success:function(result){
  					let oqlist = result.oqlistvo;
- 					let rplist = result.rplistvo;
- 					console.log("답변 작성자 아이디"+rplist.userid);
+ 					let rplist = result.rplistvo; 					
 					let tag="";					
 						tag += "<form method='post' id='openreplyfrm'>";
 						tag += "<li>문의번호</li>";
@@ -323,7 +322,7 @@
 					</div>
 					<div class="oqi-box">
 						<strong class="oqi-title">연락처</strong>
-						<label class="oqi-info" id="cli_tel">${oqVo.openhopetel}</label>
+						<label class="oqi-info" id="cli_tel">${oqVo.realtel}</label>
 					</div>
 					<div class="oqi-box">
 						<strong class="oqi-title">창업 희망 지역</strong>

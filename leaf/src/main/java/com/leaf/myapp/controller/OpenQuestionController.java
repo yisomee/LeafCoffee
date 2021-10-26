@@ -23,7 +23,7 @@ public class OpenQuestionController {
 	@Inject
 	OpenService openService;	
 	
-	// 창업문의  10-15 16:32 추가
+	// 창업문의 
 	@RequestMapping("/openRequest")
 	public ModelAndView franchiseRequest(HttpSession ses, OpenRequestVO orqVo) {
 		ModelAndView mav = new ModelAndView();
@@ -49,6 +49,7 @@ public class OpenQuestionController {
 	@RequestMapping(value="/registerOpenRequest", method=RequestMethod.POST)
 	public ModelAndView registerOpenRequest(OpenRequestVO oprVo, HttpSession ses) {
 		ModelAndView mav = new ModelAndView();
+
 		
 		String userid = (String)ses.getAttribute("logid");		
 		oprVo.setUserid(userid);
@@ -148,6 +149,12 @@ public class OpenQuestionController {
 		
 		
 		OpenRequestVO  oq = openService.openBoardInfo(oq_num);
+		String otel = oq.getTel1();
+		String stel = oq.getTel2();
+		String ttel = oq.getTel3();
+		String realtel = otel+"-"+stel+"-"+ttel;		
+		
+		oq.setRealtel(realtel);
 		
 		mav.addObject("oqVo", oq);
 		mav.addObject("rpvo",rpvo);		
@@ -255,14 +262,14 @@ public class OpenQuestionController {
 		
 		int rp_num = openService.openReplyEditNum(oq_num);
 		
-		int replyDeleteResult = openService.openReplyDelete(rp_num);
+		int replyDeleteResult = openService.openReplyDelete(rp_num); // 문의 답변삭제
 		
-		if(replyDeleteResult>0) {
-			oqvo.setReplyexist(1);
-		}else {
+		if(replyDeleteResult>0) { // 삭제완료시
 			// 답변대기로 업데이트하기
 			openService.openReplyDeleteResult(oq_num);
 			oqvo.setOq_status("답변대기");
+		}else {
+			oqvo.setReplyexist(1);
 		}
 		return oqvo;
 	}

@@ -25,6 +25,17 @@ public class OpenRequestVO {
 	
 	private int replyexist=0; // 답글존재여부
 	
+	private String realtel;
+	
+	
+
+	public String getRealtel() {
+		return realtel;
+	}
+
+	public void setRealtel(String realtel) {
+		this.realtel = realtel;
+	}
 
 	public String getUserid() {
 		return userid;
@@ -43,17 +54,16 @@ public class OpenRequestVO {
 	}
 
 	public String getOpenhopetel() {
-		openhopetel = tel1+"-"+tel2+"-"+tel3;
+		openhopetel = tel1+tel2+tel3;
 		return openhopetel;
 	}
 
 	public void setOpenhopetel(String openhopetel) {		
 		this.openhopetel = openhopetel;
 		
-		String[] AllTel = openhopetel.split("-");
-		this.tel1 = AllTel[0];
-		this.tel2 = AllTel[1];
-		this.tel3 = AllTel[2];
+		this.tel1 = openhopetel.substring(0,3);
+		this.tel2 = openhopetel.substring(3,7); 
+		this.tel3 = openhopetel.substring(7,11);
 	}
 
 	public String getTel1() {

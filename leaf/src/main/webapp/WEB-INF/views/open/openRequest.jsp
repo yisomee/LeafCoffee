@@ -245,7 +245,7 @@ font-size: 0.9rem;
 					</li>
 					<div class="errorMessage" id="localSelect">지역을 선택해주세요!</div>
 					<li>추가 정보 입력</li>
-					<li><textarea cols="63" rows="5" name="content" id="content"
+					<li><textarea cols="57" rows="8" name="content" id="content" style="resize: none;"
 							placeholder="점포를 보유하셨거나 입점희망 점포에 대한 사전정보가 있을 경우, 점포의 평수/임대료 등 구체적인 정보를 남겨주시면 조금 더 정확한 상담이 가능합니다. 그 외, 추가문의 사항이 있는 경우 남겨주세요!"
 							></textarea></li>
 					<div class="errorMessage" id="insertContent">추가 정보를 입력해주세요!</div>
