@@ -10,6 +10,7 @@
 	/* 전체선택 */
 	ul,li{list-style:none; padding:0px;}
 	html,body{margin:0px; padding:0px;}
+	body{background:#f3EAEA;}
 	/*-----*/
  
 /* 사이드 메뉴------------------------------------------------------------------------------------ */
@@ -45,13 +46,13 @@
 	/* 상단 알림바*/
 	.topmain{margin:40px auto; width:1600px; position:relative;}
 	.topbox{display:flex; width:900px; justify-content: space-between;}
-	.nav-box{border:1px solid; box-sizing: border-box; border-radius: 4px; height:150px; width:200px; text-align:center; padding:20px;}
+	.nav-box{ box-sizing: border-box; border-radius: 4px; height:150px; width:200px; text-align:center; padding:20px; background:#fff;}
 	.nav-box h2{color:rgb(0,163,239);}
 	
 	
 	/* --------------*/
 	/* 사이드 파이 차트*/
-	.sidePieChartDiv{position:absolute; border:1px solid; top:410px; left: 1140px; width:385px; height:345px;}
+	.sidePieChartDiv{position:absolute; top:407px; left: 1140px; width:385px; height:350px; background:#fff; box-sizing: border-box; border-radius: 4px;}
 	.pie-chart{position: relative; display:inline-block; width:200px; height:200px; border-radius: 50%; transition: 0.3s; left:95px; top:20px;}
 	span.sidePieChartCenter{background:#fff; display : block; position: absolute; top:50%; left:50%; width:160px; height:160px; border-radius: 50%; text-align:center; line-height:160px; font-size:30px; transform: translate(-50%, -50%);}
 	
@@ -61,7 +62,7 @@
 	.datechoicelabel span{position:absolute; font-size:1.7em; top:27px; left:133px;}
 	.datechoicelabel:after{content: ''; display: inline-block;height: 100px; border-left: 2px solid #777; margin-left: 300px;}
 	.choiceDateMain{margin:0 auto; width:1600px;}
-	.choiceDateDiv{border:1px solid; display:inline-block; width:900px; padding:0px 0px 30px 0px;}
+	.choiceDateDiv{display:inline-block; width:900px; padding:0px 0px 30px 0px; background:#fff; box-sizing: border-box; border-radius: 4px;}
 	.choiceDateDiv h4{text-align:center;}
 	
 	#sdate{ cursor:pointer;}
@@ -70,10 +71,10 @@
 	.dateul li{float:left; margin-left:20px;}
 	.dateul input[type=radio]{position:absolute;z-index:-1}
 	.dateboxlabel{display:block;width:72px;height:26px;font-size:14px;font-weight:bold;color:#fff;text-align:center;line-height:25px;text-decoration:none;cursor:pointer;background:#a5b0b6;}
-	.dateformdiv{margin-left:265px;}
+	.dateformdiv{margin-left:175px;}
 	#dateSearchBtn{margin-left: 20px; height: 30px; box-sizing: border-box; border-radius: 4px; border: 0px; width:80px;background: rgb(0,163,239); color:#fff}
 	#choiceOption{width:100px; height:30px; box-sizing: border-box; border-radius: 4px; margin-left:10px;}
-	.dateform{width:150px; text-align:center; height:20px;}
+	.dateform{width:195px; text-align:center; height:20px;}
 	#dateViewBtn{width:100px; background:rgb(0,163,239); color:white; font-weight:500; height:26px; box-sizing: border-box; border:0px solid; cursor:pointer;}
 	.dateChecked{display:block;width:72px;height:26px;font-size:14px;font-weight:bold;color:#fff;text-align:center;line-height:25px;text-decoration:none;cursor:pointer;background:rgb(0,163,239);}	
 	.dateUnChecked{display:block;width:72px;height:26px;font-size:14px;font-weight:bold;color:#fff;text-align:center;line-height:25px;text-decoration:none;cursor:pointer;background:#a5b0b6;}
@@ -81,11 +82,11 @@
 	
 	.maindiv{width:1600px; margin:30px auto;}
 	.searchDiv{height:40px; position:absolute; left:1080px; top:20px; z-index:1;}
-	.searchDiv input[value=search]{cursor:pointer;}
+	.searchDiv input[value=Search]{cursor:pointer;border: 0 solid; box-sizing: border-box; background: lightgray; color: white; font-weight: bold; position: absolute; left: 250px;}
 	.searchDiv input{box-sizing: border-box; border-radius: 4px; height:35px; width:100px; border:1px solid gray;}
 	.searchDiv input[type=text]{width:240px; border:1px solid gray; text-align:center;}
 	.searchDiv input[type=button]{width:100px; border:1px solid gray; margin-left:10px; cursor:pointer;}
-	.salesDiv{width:600px; display:inline-block; border:1px solid; border-radius: 4px; position:absolute; left:925px; height:375px; top:0px;}
+	.salesDiv{width:600px; display:inline-block; border-radius: 4px; position:absolute; left:925px; height:377px; top:0px; background:#fff;}
 	.salesList{overflow:auto; width:95%; margin:70px auto 3px auto;}
 	.salesList>li{float:left; width:20%; text-align:center; border-bottom:1px solid gray; height:50px; line-height:50px; font-size:1.08rem;}
 	.salesList>li:nth-child(1){width:10%;}
@@ -93,14 +94,14 @@
 	.salesList>li:nth-child(4){width:40%;}
 	
 	.salesRankList{overflow:auto; width:95%; margin:0 auto 10px auto; min-height:70px;}
-	.salesRankList>li{float:left; height:40px; line-height:40px; text-align:center; font-size:1.05rem;}
+	.salesRankList>li{float:left; height:40px; line-height:40px; text-align:center; font-size:0.9rem;}
 	.salesRankList>li:nth-child(4n+1){width:10%;}
-	.salesRankList>li:nth-child(4n+2){width:30%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+	.salesRankList>li:nth-child(4n+2){width:30%; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
 	.salesRankList>li:nth-child(4n+3){width:20%;}
 	.salesRankList>li:nth-child(4n+4){width:40%;}
 	
 	/* 차트*/
-	.chartbox{box-sizing: border-box; border-radius: 4px; border:1px solid; width:1100px; height:350px; display:inline-block; padding-top:20px;}
+	.chartbox{box-sizing: border-box; border-radius: 4px; width:1100px; height:350px; display:inline-block; padding-top:20px; background:#fff;}
 	/* ----*/
 	
 /* 페이징 ----------------------------------------------------*/
@@ -117,6 +118,11 @@
 	.page_nation .nnext {background:#f8f8f8 url('img/page_nnext.png') no-repeat center center; margin-right:0;}
 	.page_nation a.active {background-color:#42454c; color:#fff; border:1px solid #42454c;}
 /*--------------------------------------------------------------*/	
+	/* 기간조회시 데이터가 없을경우*/
+	.noDataMainChart{height:250px; display:flex; align-items:center; justify-content:center;}
+	.noDataSideChart{height:340px; display:flex; align-items:center; justify-content:center; position:absolute; top:-19px; background:white; width:380px; left:3px; z-index:1;}
+	.noDataList{height:370px; display:flex; align-items:center; justify-content:center; position:absolute; top:-16px; left:3px; background:white; width:590px; z-index:1;}
+
 </style>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
@@ -268,23 +274,39 @@
 				 "searchWord="+searchWord,
 			success:function(result){
 				
-				let startTopFran = '${topsVo.topTotalFran }';
-				let startTopBuyCnt = '${topsVo.topTotalBuyCnt }';
-				let startTopBuyUser = '${topsVo.topTotalBuyUser }';
-				let startTopSales = '${topsVo.topTotalSales }';
-				
-				startTopFran = priceToString(startTopFran);
-				startTopBuyCnt = priceToString(startTopBuyCnt);
-				startTopBuyUser = priceToString(startTopBuyUser);
-				startTopSales = priceToString(startTopSales);
-
-				$('#topTotalFran').html(startTopFran);
-				$('#topTotalBuyCnt').html(startTopBuyCnt);
-				$('#topTotalBuyUser').html(startTopBuyUser);
-				$('#topTotalSales').html(startTopSales);
-				
+				//
+				if(back!=1){
+					let startTopFran = '${topsVo.topTotalFran }';
+					let startTopBuyCnt = '${topsVo.topTotalBuyCnt }';
+					let startTopBuyUser = '${topsVo.topTotalBuyUser }';
+					let startTopSales = '${topsVo.topTotalSales }';
+					
+					startTopFran = priceToString(startTopFran);
+					startTopBuyCnt = priceToString(startTopBuyCnt);
+					startTopBuyUser = priceToString(startTopBuyUser);
+					startTopSales = priceToString(startTopSales);
+	
+					$('#topTotalFran').html(startTopFran);
+					$('#topTotalBuyCnt').html(startTopBuyCnt);
+					$('#topTotalBuyUser').html(startTopBuyUser);
+					$('#topTotalSales').html(startTopSales);
+				}
 				
 				let chartlist = $(result.chartlist);
+				
+				// 선택한 기간에 조회되는 데이터가 없는 경우
+				if(chartlist.length==0){
+					$('#myChartBox').empty();
+					$('#myChartBox').html('<h2 class="noDataMainChart">해당 기간의 데이터가 없어 조회할 수 없습니다.</h2>');	    					
+					$('.sidePieChartDiv').append('<h4 class="noDataSideChart">해당 기간의 데이터가 없어 조회할 수 없습니다.</h4>');							
+					$('.salesDiv').append('<h3 class="noDataList">해당 기간의 데이터가 없어 목록을 조회할 수 없습니다.</h3>');	    					
+					
+					return;
+				}else{
+					$('.noDataMainChart').remove();
+					$('.noDataSideChart').remove();
+					$('.noDataList').remove();
+				}
 				
 				chartLabels =[]; // x축 라벨 초기화
 				chartData = [];	 // 데이터 초기화   				
@@ -461,6 +483,20 @@
 	    				
 	    				let chartlist = $(result.chartlist);
 	    				
+	    				// 선택한 기간에 조회되는 데이터가 없는 경우
+	    				if(chartlist.length==0){
+	    					$('#myChartBox').empty();
+	    					$('#myChartBox').html('<h2 class="noDataMainChart">해당 기간의 데이터가 없어 조회할 수 없습니다.</h2>');	    					
+							$('.sidePieChartDiv').append('<h4 class="noDataSideChart">해당 기간의 데이터가 없어 조회할 수 없습니다.</h4>');							
+							$('.salesDiv').append('<h3 class="noDataList">해당 기간의 데이터가 없어 목록을 조회할 수 없습니다.</h3>');	    					
+	    					
+							return;
+	    				}else{
+	    					$('.noDataMainChart').remove();
+	    					$('.noDataSideChart').remove();
+	    					$('.noDataList').remove();
+	    				}	    				
+	    				
 	    				chartLabels =[]; // x축 라벨 초기화
 	    				chartData = [];	 // 데이터 초기화   				
 	    				
@@ -570,7 +606,7 @@
 	    
 	    ///////////////////////////////////////////
 	    // 단어 검색
-	    $('input[value=search]').on('click',function(){
+	    $('input[value=Search]').on('click',function(){
 	    	let startdate = $('#sdate').val();
 	    	let enddate = $('#edate').val();
 	    	let inputSearchWord = $('input[name=searchWord]').val();
@@ -661,12 +697,10 @@
 	    					if(nowPage>1){
 	    						$('.page_nation').append('<a class="arrow pprev" href="javascript:startMainChart(1,'+sw+',1,'+startdate+','+enddate+')"></a>');
 	    						$('.page_nation').append('<a class="arrow prev" href="javascript:startMainChart('+nowPageMinerOne+','+sw+',1,'+startdate+','+enddate+')"></a>');
-	    						console.log("검색후 맨처음버튼startdate=>"+startdate);
 	    						
 	    					}else if(nowPage==1){
 	    						$('.page_nation').append('<a class="arrow pprev" href="javascript:startMainChart(1,'+sw+',1,'+startdate+','+enddate+')"></a>');
 	    						$('.page_nation').append('<a class="arrow prev" href="javascript:startMainChart(1,'+sw+',1,'+startdate+','+enddate+')"></a>');
-	    	
 	    											
 	    					}				
 	    					for (var j = result.pagesVo.startPage; j <=result.pagesVo.startPage+result.pagesVo.onePageViewNum-1; j++) {						
@@ -691,8 +725,6 @@
 	    	
 	    					}
 	    					$('.page_nation').append('<a class="arrow nnext" href="javascript:startMainChart('+result.pagesVo.totalPage+','+sw+',1,'+startdate+','+enddate+')"></a>');
-							console.log("검색후 맨다음버튼startdate=>"+startdate);
-	    				
 	    				}
 	    			},error:function(request,status,error){	    				
 	    				alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -810,7 +842,7 @@
 	    	</div>
     		<div class="searchDiv">
 	 			<input type="text" name="searchWord" placeholder="상품명을 입력해주세요"/>
-	 			<input type="submit" value="search"/>
+	 			<input type="submit" value="Search"/>
 	 		</div> 		
  			<div class="salesDiv">
  				<ul class="salesList">
@@ -881,7 +913,7 @@
 			 			</li>		
 		 			</ul>
 		 			<div class="dateformdiv">
-		 				<input type="text" name="sdate" id="sdate" class="dateform" readonly placeholder="시작일 선택">&nbsp;~&nbsp;<input name="edate" id="edate" class="dateform" readonly placeholder="종료일 선택">
+		 				<input name="sdate" id="sdate" class="dateform" readonly placeholder="시작일 선택">&nbsp;~&nbsp;<input name="edate" id="edate" class="dateform" readonly placeholder="종료일 선택">
 		 				<input type="button" value="조회하기" id="dateViewBtn"/>
 		 			</div>
 		 		</div>
@@ -891,27 +923,6 @@
 	 			<div class="box chartbox" id="myChartBox">
 	 				<canvas id="myChart" width="1000" height="300" style="display:inline-block; margin:10px 0px 0px 55px;" ></canvas>
 	 			</div>
-	 			
-<!-- 	 			<div class="searchDiv">
-		 				<input type="text" name="searchWord" placeholder="상품명을 입력해주세요"/>
-		 				<input type="submit" value="search"/>
-		 			</div> 		
-	 			<div class="salesDiv">
-	 				<ul class="salesList">
-	 					if
-	 					<li>순위</li>
-	 					<li>상품번호</li> 					
-	 					<li>상품명</li>
-	 					<li>상품가격<span style="font-size:14px;">(원)</span></li>
-	 					<li>판매수량</li>
-	 					<li>총판매액<span style="font-size:14px;">(원)</span></li>
-	 				</ul>
- 	 				<ul class="salesRankList">
-	 				</ul>
-		 			<div class="page_nation">	 				
-					</div>
-	 			</div> -->
-	 			<!-- 페이징 -->
 	 		</div>
 	</form>        
 </main>
