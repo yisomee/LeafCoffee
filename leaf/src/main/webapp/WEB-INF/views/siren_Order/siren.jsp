@@ -45,6 +45,9 @@
 	#map{width:610px;height:560px;position:relative}
 	.section1{margin-bottom:200px}
 	.fcImg{width:330px}
+	.fc_name{font-weight: 600;color: #7B3C07;}
+	.fc_addr{font-size:0.9rem}
+	
 	.selectStore{margin-left:50px;display:flex;flex-direction:column;}
 	#findFc{width:306px;}
 	#mapList{height:478px;overflow:auto;}
@@ -77,7 +80,7 @@
 	.menuname{margin-left:80px;}
 	.menuname>li{padding:7px 0}
 	.p_ename {font-size:0.8em;color:#9F8362;;}
-	.p_price, .p_num, .s_code, .selecPnum, .seleccartPnum{display:none}
+	.p_price, .p_num, .m_code, .selecPnum, .seleccartPnum{display:none}
 	#shotPrice, #syrupPrice{visibility: hidden;}
 	#img:hover {
 		cursor: pointer;
@@ -105,6 +108,7 @@
 	}		
 	#menuDetail{font-size:1.8em;padding:0 0 50px 106px;}			
 	.searchstore {background:#9F8362;font-size:1.3rem;color:white;text-align:center;padding-top:10px;}	
+	.searchstore>input{width: 290px;border: none;height: 40px;}
 
 	input[type="button"]{width:190px;height:40px;border:1px solid #9F8362;;color:#9F8362;;background:white;}	
 	#store{font-size: 1.8rem;padding:40px 0;font-weight: 600;}	
@@ -130,7 +134,7 @@
 	
 	//메뉴 상세 가격란에 들어갈 가격변수
 	let price;
-	
+	let cost;
 	//선택 된 옵션 val 담는 변수
 	let cup;
 	let size;
@@ -182,18 +186,27 @@
 		//메뉴 선택 시 상세 메뉴에 띄워주기/이전 선택값 초기화
 		$(".siren___menu").click(function() {
 			menuInit();
+			//food일때 옵션 삭제 여기 확인해보기
+			var m_code = $(this).children(".imgtext").children(".m_code").text();
+			console.log(m_code);
+			if(m_code == 'food'){
+				$('#cup').css('display','none');
+			}
 			$("#selectName").html($(this).children(".imgtext").children(".p_name").text());
 			$("#selectEname").html($(this).children(".imgtext").children(".p_ename").text());
 			$("#selectPrice").html($(this).children(".imgtext").children(".p_price").text());
 			$("#totalPrice").html($(this).children(".imgtext").children(".p_price").text());
-			$(".selecPnum").html($(this).children(".imgtext").children(".p_num").text())
+			$(".selecPnum").html($(this).children(".imgtext").children(".p_num").text());
 			price = $(this).children(".imgtext").children(".p_price").text();
+			cost = $(this).children(".imgtext").children(".p_price").text();
 		});		
 		
 		//음료추가
 		$("#menuPlus").click(function(){
 			$("#menuCnt").html(parseInt($("#menuCnt").text())+1);
+			//메뉴를 선택하면  밑의 실행문 사용selectprice
 			$("#selectPrice").html(parseInt($("#selectPrice").text())+parseInt(price));
+			//클릭 안하면 $("#selectPrice").text()) 를 계속 더해줘야함
 			selectPrice = $("#selectPrice").text();
 			$("#totalPrice").html(parseInt(selectPrice)+parseInt(shotPrice)+parseInt(syrupPrice));
 		});
@@ -310,17 +323,6 @@
 			var selecPnum = $(".selecPnum").text();
 			var totalPrice = $("#totalPrice").text();
 			var seleFcnum = $(".seleFcnum").text();
-			var price = document.getElementsByClassName(".price");
-			var priceSum;
-			for(var i=0;i<price.length;i++){
-				priceSum = parseInt.(price.item(i));
-				priceSum += 
-			}
-			
-			var section1s = document.getElementsByClassName("section1");
-			for( var i = 0; i < section1s.length; i++ ){ 
-				var section1 = section1s.item(i);
-			}
 
 			if(cup != null && size != null && hot_ice != null){
 				var cartMenu = "<div class='addTotal'>";
@@ -338,8 +340,10 @@
 					}
 					cartMenu += "</div>";
 				$("#seleInfo").css('display','none');
-				$("#addMenu").append(cartMenu);			
-					console.log($(".selecPnum").text());
+				$("#addMenu").append(cartMenu);	
+				$(".cartMon").html(parseInt($(".cartMon").text())+parseInt(totalPrice));
+				$('#selectPrice').html(cost);
+				$("#totalPrice").html(cost);
 				menuInit();
 			}else if(cup==null){
 				alert("컵을 선택해주세요.");
@@ -453,7 +457,7 @@
 							<div class="p_name">${menuVo.p_name}</div>
 							<div class="p_ename">${menuVo.p_ename}</div>
 							<div class="p_price">${menuVo.p_price}</div>
-							<div class="s_code">${menuVo.s_code}</div>
+							<div class="m_code">${menuVo.m_code}</div>
 							<div class="p_num">${menuVo.p_num }</div>
 						</div>
 					</li>
@@ -521,7 +525,7 @@
 						<c:forEach var="franVo" items="${franVo}">
 						<ul class="searched ">
 							<li class="fc_name">${franVo.fc_name}</li>
-							<li>${franVo.fc_addr}</li>
+							<li class="fc_addr">${franVo.fc_addr}</li>
 							<li class="fc_num">${fc_num}</li>
 						</ul>
 						</c:forEach>

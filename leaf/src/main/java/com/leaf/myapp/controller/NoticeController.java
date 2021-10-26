@@ -55,9 +55,8 @@ public class NoticeController {
 	}
 	//글 삭제
 	@RequestMapping("/noticeDelete")
-	public ModelAndView NoticeDelete(int no, HttpSession session) {
-		String userid = "goguma";
-		int result = noticeService.noticeDel(no, userid);
+	public ModelAndView NoticeDelete(int no) {
+		int result = noticeService.noticeDel(no);
 		ModelAndView mav = new ModelAndView();
 		if(result>0) {
 			mav.setViewName("redirect:noticeList");
@@ -97,8 +96,9 @@ public class NoticeController {
 	}
 	//글쓰기
 	@RequestMapping(value="/noticeWriteOk", method=RequestMethod.POST)
-	public ModelAndView noticeWriteOk(NoticeVO vo, HttpSession session) {
-//		vo.setUserid((String)session.getAttribute("userid"));		
+	public ModelAndView noticeWriteOk(NoticeVO vo, HttpSession session) {	
+		String userid=(String)session.getAttribute("logid");
+		vo.setUserid(userid);
 		int writeResult = noticeService.noticeWrite(vo);
 		ModelAndView mav = new ModelAndView();
 		 if(writeResult>0) {

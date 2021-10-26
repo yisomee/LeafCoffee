@@ -32,6 +32,7 @@
 	.link>li:first-child{font-size:0.8em;font-weight:bold;}
 </style>	
 <script>
+
 	function delCheck(no){
 		if(confirm("삭제할까요?")){
 			location.href='/myapp/noticeDelete?no='+no;
@@ -62,8 +63,10 @@ $(()=>{
 	</div>
 </div>
 <div class="btnList">
-	<button type="button" onclick="location.href='javascript:delCheck(${noticeVo.no})'">삭제</button>
-	<button type="button" onclick="location.href='/myapp/noticeEdit?no=${noticeVo.no}'">수정</button>
+	<c:if test="${noticeVo.userid==logid}">
+ 	<button type="button" onclick="location.href='javascript:delCheck(${noticeVo.no})'">삭제</button>
+	<button type="button" onclick="location.href='/myapp/noticeEdit?no=${noticeVo.no}'">수정</button> 
+	</c:if>
 	<button type="button" onclick="location.href='/myapp/noticeList'">목록</button>
 </div>	
 <div class="prev_nextBtn">

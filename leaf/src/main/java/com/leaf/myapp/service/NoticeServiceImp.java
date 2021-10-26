@@ -31,8 +31,8 @@ public class NoticeServiceImp implements NoticeService{
 		return noticeDAO.noticeEdit(vo);
 	}
 	@Override
-	public int noticeDel(int no, String userid) {
-		return noticeDAO.noticeDel(no, userid);
+	public int noticeDel(int no) {
+		return noticeDAO.noticeDel(no);
 	}
 	@Override
 	public int delChk(int[] delCheck) {

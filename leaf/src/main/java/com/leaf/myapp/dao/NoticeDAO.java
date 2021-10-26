@@ -11,7 +11,7 @@ public interface NoticeDAO {
 	public NoticeVO noticeView(int no);
 	public int noticeWrite(NoticeVO vo);
 	public int noticeEdit(NoticeVO vo);
-	public int noticeDel(int no, String userid);
+	public int noticeDel(int no);
 	
 	public int delChk(int[] delCheck);
 	
