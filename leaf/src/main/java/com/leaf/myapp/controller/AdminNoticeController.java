@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.leaf.myapp.service.AdminNoticeService;
 import com.leaf.myapp.vo.AdminNoticeVO;
 import com.leaf.myapp.vo.AdminPageVO;
+import com.leaf.myapp.vo.RegisterVO;
 
 
 @Controller

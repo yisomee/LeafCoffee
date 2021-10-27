@@ -5,26 +5,27 @@ import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
 import com.leaf.myapp.vo.ProductVO;
+import com.leaf.myapp.vo.RegisterVO;
 
 
 public interface ProductService {
 	public List<ProductVO> ProductList();
-	public List<ProductVO> NoProductList();//¹ßÁÖÇÒ¶§ ÀÔ°íµÈ ¸ñ·Ï º¸´Â ¸®½ºÆ®(Àç°íx)
+	public List<ProductVO> NoProductList();//ë°œì£¼í• ë•Œ ì…ê³ ëœ ëª©ë¡ ë³´ëŠ” ë¦¬ìŠ¤íŠ¸(ì¬ê³ x)
 	public List<ProductVO> ProductPartner(int hq_num);
-	public int Purchase_RegisterOk(ProductVO vo);//¹ßÁÖÇÏ±â
-	public List<ProductVO> purchaseList();//¹ßÁÖÇÑ°Å º¸´Â ¸®½ºÆ®
-	public List<ProductVO> purchaseListAll();// º»»ç°¡ º¸´Â ÀüÃ¼°¡¸ÍÁ¡ ¹ßÁÖ¸®½ºÆ®(º»»çÆäÀÌÁö) 
-	public int purchaseDel(List<Integer> purchaseDel);//°¡¸ÍÁ¡ÀÌ ¹ßÁÖÇÑ°Å »èÁ¦ÇÏ±â 
-	public List<ProductVO> WarehousingList();//º»»ç¿¡¼­ º¸´Â ÀÔ°í¸®½ºÆ®
-	public int Warehousing_RegisterOk(ProductVO vo);//ÀÔ°íµî·Ï
-	public int purchaseConfirm(ProductVO vo);//º»»ç¿¡¼­ È®ÀÎ¹öÆ° 0->1
-	public int purchaseConfirmCnt(ProductVO vo);//º»»ç¿¡¼­ È®ÀÎ¹öÆ°-> ÀÔ°í¼ö·® ÁÙ¾îµå´Â°Å
-	public List<ProductVO> inventory();//Àç°í¸®½ºÆ®
-	public List<ProductVO> selectItems();//  ÀÔ°í»óÇ°µî·Ï ÇÒ¶§ Á¦Ç° ¸®½ºÆ® º¸¿©ÁÖ´Â°Å 
-	public int items_RegisterOk(ProductVO vo);//Á¦Ç°µî·Ï
-	public List<ProductVO> selectPartner();//  ÆÄÆ®³Ê°¡Á®¿À±â
+	public int Purchase_RegisterOk(ProductVO vo);//ë°œì£¼í•˜ê¸°
+	public List<ProductVO> purchaseList(String userid);//ê°€ë§¹ì ì´ ë³´ëŠ” ë°œì£¼ë¦¬ìŠ¤íŠ¸ (ê°€ë§¹ì í˜ì´ì§€)
+	public List<ProductVO> purchaseListAll();// ë³¸ì‚¬ê°€ ë³´ëŠ” ì „ì²´ê°€ë§¹ì  ë°œì£¼ë¦¬ìŠ¤íŠ¸(ë³¸ì‚¬í˜ì´ì§€) 
+	public int purchaseDel(List<Integer> purchaseDel);//ê°€ë§¹ì ì´ ë°œì£¼í•œê±° ì‚­ì œí•˜ê¸° 
+	public List<ProductVO> WarehousingList();//ë³¸ì‚¬ì—ì„œ ë³´ëŠ” ì…ê³ ë¦¬ìŠ¤íŠ¸
+	public int Warehousing_RegisterOk(ProductVO vo);//ì…ê³ ë“±ë¡
+	public int purchaseConfirm(ProductVO vo);//ë³¸ì‚¬ì—ì„œ í™•ì¸ë²„íŠ¼ 0->1
+	public int purchaseConfirmCnt(ProductVO vo);//ë³¸ì‚¬ì—ì„œ í™•ì¸ë²„íŠ¼-> ì…ê³ ìˆ˜ëŸ‰ ì¤„ì–´ë“œëŠ”ê±°
+	public List<ProductVO> inventory();//ì¬ê³ ë¦¬ìŠ¤íŠ¸
+	public List<ProductVO> selectItems();//  ì…ê³ ìƒí’ˆë“±ë¡ í• ë•Œ ì œí’ˆ ë¦¬ìŠ¤íŠ¸ ë³´ì—¬ì£¼ëŠ”ê±° 
+	public int items_RegisterOk(ProductVO vo);//ì œí’ˆë“±ë¡
+	public List<ProductVO> selectPartner();//  íŒŒíŠ¸ë„ˆê°€ì ¸ì˜¤ê¸°
 	public ProductVO ware_cntAll(int hq_num);
 	public ProductVO pc_cntAll(int hq_num);
 	void excelDown(ProductVO vo, HttpServletResponse response) throws Exception;
-	
+	public ProductVO mypage(String userid);
 	}

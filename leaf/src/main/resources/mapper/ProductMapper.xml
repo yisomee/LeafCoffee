@@ -19,13 +19,17 @@
 	<select id="ProductPartner" parameterType="int" resultType="com.leaf.myapp.vo.ProductVO">
   		select h.hq_num, i.hq_name, i.ware_price, p.part_num, p.part_company, p.part_name, p.part_tel, p.part_email, p.part_code_name from product h join items i on i.hq_num = h.hq_num join partner p on i.part_num = p.part_num where h.hq_num=#{param1}
   	</select>
+  	<select id="mypage" resultType="com.leaf.myapp.vo.ProductVO">
+		select f.fc_num, f.fc_name, f.fc_boss, f.fc_tel, r.userid from franchise f join registers r on f.userid=r.userid where r.userid=#{userid}
+	</select>
+  	 
 	<!-- 발주하기 -->	
 	<insert id="Purchase_RegisterOk" parameterType="com.leaf.myapp.vo.ProductVO">	
-		insert into purchase(pc_num, pc_cnt, hq_num , fc_num, order_status) values(purchase_sq.nextval, #{pc_cnt},#{hq_num},224, 1)
+		insert into purchase(pc_num, pc_cnt, hq_num, fc_num, order_status) values(purchase_sq.nextval, #{pc_cnt},#{hq_num},#{fc_num}, 1)
 	</insert>
 	<!-- 가맹점이 보는 발주리스트 (가맹점페이지) -->	
-	<select id="purchaseList" resultType="com.leaf.myapp.vo.ProductVO">
-		select DISTINCT p.pc_num, h.hq_num, i.hq_name, i.ware_price,p.pc_cnt, p.pc_date, p.order_status, f.fc_name, f.fc_boss, f.fc_tel from  product h join items i on i.hq_num = h.hq_num join purchase p on i.hq_num = p.hq_num join franchise f on f.fc_num= p.fc_num order by p.pc_date desc
+	<select id="purchaseList" parameterType="String" resultType="com.leaf.myapp.vo.ProductVO">
+		select DISTINCT p.pc_num, h.hq_num, i.hq_name, i.ware_price,p.pc_cnt, p.pc_date, p.order_status, f.fc_name, f.fc_boss, f.fc_tel, r.userid from  product h join items i on i.hq_num = h.hq_num join purchase p on i.hq_num = p.hq_num join franchise f on f.fc_num= p.fc_num join registers r on r.userid=f.userid where r.userid=#{userid} order by p.pc_date desc
 	</select>
 	<!-- 본사가 보는 전체가맹점 발주리스트(본사페이지) -->	
 	<select id="purchaseListAll" resultType="com.leaf.myapp.vo.ProductVO">

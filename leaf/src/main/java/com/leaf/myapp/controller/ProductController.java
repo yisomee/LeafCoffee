@@ -15,12 +15,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.leaf.myapp.service.ProductService;
+import com.leaf.myapp.service.RegisterService;
 import com.leaf.myapp.vo.ProductVO;
+import com.leaf.myapp.vo.RegisterVO;
 
 @Controller
 public class ProductController {
 	@Inject
 	ProductService productService;
+	RegisterService registerService;
 	
 //////////////////////////////////////////////가맹점 //////////////////////////////////////////////////////		
 	
@@ -37,7 +40,9 @@ public class ProductController {
 	
 	//발주하기
 	@RequestMapping(value="/Purchase_RegisterOk", method = RequestMethod.POST)
-	public ModelAndView Purchase_RegisterOk(ProductVO vo) {
+	public ModelAndView Purchase_RegisterOk(ProductVO vo, HttpSession session) {
+		String userid=(String)session.getAttribute("logid");
+		vo.setUserid(userid);
 		ModelAndView mav = new ModelAndView();  
 		productService.Purchase_RegisterOk(vo);
 		mav.addObject(vo);
@@ -47,10 +52,12 @@ public class ProductController {
 		 
 	// 발주페이지에 발주 클릭시 발주 창 보여주기,발주페이지에 목록보여주기
 	@RequestMapping("/purchase")
-	 public ModelAndView purchaseList() {
+	 public ModelAndView purchaseList(HttpSession session) {
 	      ModelAndView mav = new ModelAndView();
+	      String userid=(String)session.getAttribute("logid");
+	      mav.addObject("registerList",productService.mypage(userid));
 	      mav.addObject("ProductList", productService.ProductList());
-	      mav.addObject("purchaseList", productService.purchaseList());
+	      mav.addObject("purchaseList", productService.purchaseList(userid));
 	      mav.addObject("NoProductList", productService.NoProductList());
 	      mav.setViewName("Store/purchase");
 	      return mav;

@@ -256,7 +256,7 @@ td{
 
 .NoProductList{
 	position: relative;
-    top: 200px;
+    top: 100px;
 }
 .partner2>ul{
 	display:flex;
@@ -270,7 +270,7 @@ td{
 }
 </style>
 <script>
-
+var fc_num = ${registerList.fc_num }
 
 $(document).ready(function() {
 
@@ -333,11 +333,13 @@ $(()=>{
 	  	               $("#view6").html(vo.part_email);
 	  	               
 	  	               tag = "<form id='frm' method='post' action='/myapp/Purchase_RegisterOk'>";
-	  	               tag += "<div>" + vo.hq_num + "</div>"
-	  	               tag += "<div>" + vo.hq_name + "</div>"
-	  	               tag += "<div>" + (vo.ware_price + 2000) + "원</div>"
-	  	               tag += "<input type='text' name='pc_cnt' id='pc_cnt' required/>개"
-	  	               tag += "<div><input id='hq_num' name='hq_num' value='"+ vo.hq_num  +"' type='hidden' /></div>"
+	  	               tag += "<div>" + vo.hq_num + "</div>";
+	  	               tag += "<div>" + vo.hq_name + "</div>";
+	  	               tag += "<div>" + (vo.ware_price + 2000) + "원</div>";
+	  	               tag += "<input type='text' name='pc_cnt' id='pc_cnt' required/>개";
+	  	               tag += "<div><input id='hq_num' name='hq_num' value='"+ vo.hq_num  +"' type='hidden' /></div>";
+	  	             tag += "<div><input id='hq_num' name='fc_num' value='"+ fc_num  +"' type='hidden' /></div>";
+		  	           
 	  	               tag += "<div><input type='submit' class='btn3' value='발주' /></div></form>";
 	  	               $("#purchase").html(tag);
 	  	            });    		           
@@ -345,6 +347,7 @@ $(()=>{
 	      }); // ajax
 	   });// 클릭
 	});	
+	
 </script>
 
 </head>
@@ -366,7 +369,6 @@ $(()=>{
    	   		<div><b><i class="fab fa-envira"></i> 제 품 명 </b></div>
    	   		<div><b><i class="fab fa-envira"></i> 발주가격 </b></div>
    	   		<div><b><i class="fab fa-envira"></i> 발주수량 </b></div>
-   	   		
    	   	</div>
    	   	<div id="purchase">
    	   	<form id='frm' method='post' action='/myapp/Purchase_RegisterOk'>
@@ -388,22 +390,20 @@ $(()=>{
 	</div>
 	 <div class="store">
 		<div class='name'>발 주 처</div>
-   	   	<div class='franchise'>
-			<c:forEach var="ProductVO" items="${purchaseList}" varStatus="status" begin="1" end="1">
-			<hr/>			
+   	   	<div class='franchise'>	
+			<hr/>
 			<ul>
 				<li><b>가맹점명</b></li>
-				<li id="">${ProductVO.fc_name }</li>
+				<li> ${registerList.fc_name }</li>
 			</ul>
 			<ul>
 				<li><b>담당자</b></li>
-				<li id="">${ProductVO.fc_boss }</li>
+				<li>${registerList.fc_boss }</li>
 			</ul>
 			<ul>
 				<li><b>연락처</b></li>
-				<li id="">${ProductVO.fc_tel }</li>
+				<li>${registerList.fc_tel }</li>
 			</ul>
-			</c:forEach>
 		</div> 
 		</div>
 		</div>	

@@ -26,7 +26,7 @@ import com.leaf.myapp.vo.RegisterVO;
 public class ProductServiceImp implements ProductService{
 	@Inject
 	ProductDAO productDAO;
-
+	RegisterService registerService;
 	@Override
 	public List<ProductVO> ProductList() {
 		// TODO Auto-generated method stub
@@ -62,9 +62,9 @@ public class ProductServiceImp implements ProductService{
 
 
 	@Override
-	public List<ProductVO> purchaseList() {
+	public List<ProductVO> purchaseList(String userid) {
 		// TODO Auto-generated method stub
-		return productDAO.purchaseList();
+		return productDAO.purchaseList(userid);
 	}
 
 
@@ -216,4 +216,11 @@ public class ProductServiceImp implements ProductService{
 	      } catch (Exception e) {
 	      }
 	   }
+
+
+	@Override
+	public ProductVO mypage(String userid) {
+		// TODO Auto-generated method stub
+		return productDAO.mypage(userid);
+	}
 	}
