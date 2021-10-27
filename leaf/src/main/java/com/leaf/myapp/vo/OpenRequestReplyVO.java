@@ -1,21 +1,27 @@
 package com.leaf.myapp.vo;
 
 public class OpenRequestReplyVO {
-	private int rp_num;  // ´äº¯¹øÈ£
-	private String rpdate; // ÀÛ¼ºÀÏ
-	private String rpldate; // ÃÖÁ¾¼öÁ¤ÀÏ
-	private String rpcon; // ´äº¯³»¿ë
-	private int oq_num; // ¿ø±Û °Ô½Ã¹øÈ£
+	private int rp_num;  // ï¿½äº¯ï¿½ï¿½È£
+	private String rpdate; // ï¿½Û¼ï¿½ï¿½ï¿½
+	private String rpldate; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private String rpcon; // ï¿½äº¯ï¿½ï¿½ï¿½ï¿½
+	private int oq_num; // ï¿½ï¿½ï¿½ï¿½ ï¿½Ô½Ã¹ï¿½È£
+	private String content;
+	private String userid; // ï¿½ï¿½ï¿½Í°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½
+	private String username; // ï¿½ï¿½ï¿½Í°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½
 	
-	private String userid; // °¡¸Í°ü¸®ºÎ ÀÛ¼ºÀÚ ¾ÆÀÌµð
-	private String username; // °¡¸Í°ü¸®ºÎ ÀÛ¼ºÀÚ Á÷¿ø ÀÌ¸§
-	
-	private int replyinsertresult=1; // ´äº¯µî·Ï ¿©ºÎ (1:¼º°ø, 0:½ÇÆÐ)
+	private int replyinsertresult=1; // ï¿½äº¯ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (1:ï¿½ï¿½ï¿½ï¿½, 0:ï¿½ï¿½ï¿½ï¿½)
 		
-	private int replyeditresult=1;// ´ä±Û¼öÁ¤¼º°ø
-	private int replydeleteresult=1;// ´ä±Û»èÁ¦¼º°ø
+	private int replyeditresult=1;// ï¿½ï¿½Û¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private int replydeleteresult=1;// ï¿½ï¿½Û»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	
 	
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
 	public int getRp_num() {
 		return rp_num;
 	}
