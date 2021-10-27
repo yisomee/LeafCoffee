@@ -112,8 +112,10 @@ $(()=>{
 <div class="container">
       <div class="delete_search">
          <div>
+         <c:if test="${auth=='관리자'}">
             <button id="delBtn"><i class="fas fa-trash-alt"></i> 삭제</button>
-            <button><a href="/myapp/noticeWrite"><i class="fas fa-pencil-alt"></i> 글쓰기</a></button>            
+            <button><a href="/myapp/noticeWrite"><i class="fas fa-pencil-alt"></i> 글쓰기</a></button>  
+         </c:if>            
          </div>
   		 <form method="post" action="/myapp/noticeList" id="listform">
          <div>         
@@ -121,15 +123,25 @@ $(()=>{
          </div> 
          </form>       
       </div>
-     <form id="selectDel" action="/myapp/deleteCheck" method="post">
       <ul class="boardList">
+      	<c:if test="${auth=='관리자'}">
          <li><input type="checkbox" id="allCheck" name="delCheck"/></li>
+         </c:if>
+     <form id="selectDel" action="/myapp/deleteCheck" method="post">
+   	 	 <c:if test="${auth=='관리자'}">
+         <li></li>
+         </c:if>
          <li>NO</li>
          <li>제목</li>
          <li>등록일</li>
          <li>조회수</li>         
          <c:forEach var="noticeVo" items="${list}"> 
-            <li><input type="checkbox" name="delCheck" value="${noticeVo.no}"/></li>
+            <c:if test="${auth=='관리자'}">
+           		<li><input type="checkbox" name="delCheck" value="${noticeVo.no}"/></li>
+            </c:if>
+            <c:if test="${auth=='회원'}">
+            <li></li>
+            </c:if>
             <li>${noticeVo.no }</li>
             <li><a href="/myapp/noticeDetail?no=${noticeVo.no }&nowpage=${pVo.nowPage}">${noticeVo.title }</a></li>
             <li>${noticeVo.writedate }</li>  

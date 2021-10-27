@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.leaf.myapp.dao.NoticeDAO">
-  	<select id="checkAuto" parameterType="String" resultType="com.leaf.myapp.vo.NoticeVO">
+  	<select id="checkAuto" parameterType="String" resultType="String">
   		select auth from registers where userid=#{userid}
   	</select>
   	<select id="noticeAllSelect" resultType="com.leaf.myapp.vo.NoticeVO">

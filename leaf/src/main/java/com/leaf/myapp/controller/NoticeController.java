@@ -26,16 +26,15 @@ public class NoticeController {
     	ModelAndView mav = new ModelAndView();
     	String userid=(String)ses.getAttribute("logid");
     	String auth = noticeService.checkAuto(userid);
+    	System.out.println(auth+",auth");
 		//총레코드수
     	pVo.setTotalRecord(noticeService.totalRecordCount(pVo));
     	System.out.println(pVo.getTotalRecord());
-		mav.addObject("pVo",pVo);   
+		mav.addObject("auth",auth);
+    	mav.addObject("pVo",pVo);   
 		mav.addObject("list", noticeService.noticePageSelect(pVo));
-		if(auth == "관리자") {
-			mav.setViewName("notice/noticeList");			
-		}else {
-			mav.setViewName("notice/userNoticeList");
-		}
+		mav.setViewName("notice/noticeList");			
+				
 		return mav;      
    }
 

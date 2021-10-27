@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.leaf.myapp.dao.SirenDAO">
   	<select id="setSirenList" resultType="com.leaf.myapp.vo.MenuVO">
-  		select p_name,p_ename,p_price,m_code,p_num, p_img from menu order by p_num desc
+  		SELECT p_name,p_ename,p_price,m_code,p_num,p_img FROM menu WHERE m_code NOT IN ('product')
   	</select>
   	<select id="sirenRegData" parameterType="String" resultType="com.leaf.myapp.vo.RegisterVO">
   		select userid, username from registers where username=#{logname}

@@ -12,7 +12,14 @@ public class NoticeVO {
 	private String next_title;	
 	private String prev;
 	private String next;
-		
+	private String auth;
+			
+	public String getAuth() {
+		return auth;
+	}
+	public void setAuth(String auth) {
+		this.auth = auth;
+	}
 	public String getPrev() {
 		return prev;
 	}

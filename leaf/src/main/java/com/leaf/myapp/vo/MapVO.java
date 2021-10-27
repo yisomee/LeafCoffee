@@ -6,7 +6,21 @@ public class MapVO {
 	private String lat;
 	private String lon;
 	private String searchMap;
-
+	private int fc_num;
+	private String fc_img;
+	
+	public int getFc_num() {
+		return fc_num;
+	}
+	public void setFc_num(int fc_num) {
+		this.fc_num = fc_num;
+	}
+	public String getFc_img() {
+		return fc_img;
+	}
+	public void setFc_img(String fc_img) {
+		this.fc_img = fc_img;
+	}
 	public String getSearchMap() {
 		return searchMap;
 	}
