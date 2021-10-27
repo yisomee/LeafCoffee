@@ -2,6 +2,8 @@ package com.leaf.myapp.dao;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import com.leaf.myapp.vo.ProductVO;
 
 public interface ProductDAO {
@@ -26,4 +28,7 @@ public interface ProductDAO {
 	public List<ProductVO> selectPartner();//  파트너가져오기
 	public ProductVO ware_cntAll(int hq_num);
 	public ProductVO pc_cntAll(int hq_num);
+	void excelDown(ProductVO vo, HttpServletResponse response) throws Exception;
+
+	
 }

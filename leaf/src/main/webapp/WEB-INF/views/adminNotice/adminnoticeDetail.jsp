@@ -69,7 +69,9 @@
 <script>
 	function delCheck(admin_no){
 		if(confirm("삭제할까요?")){
-			location.href='/myapp/adminnoticeDel?admin_no='+admin_no;
+			location.href='/myapp/adminnoticeDel?no='+admin_no;
+		}else{
+			alert("삭제불가");
 		}
 	};
 </script>
@@ -80,8 +82,10 @@
 	<div class="content">${adminnoticeVo.admin_content }</div>
 	<div class="button">
 		<input type="button" value="목록" class="btn" onClick="location.href='adminnoticeMain'">
+		<c:if test="${adminnoticeVo.userid==logid}">
 		<input type="button" value="수정하기"class="btn" onclick="location.href='/myapp/adminnoticeEdit?no=${adminnoticeVo.admin_no}'">
 		<input type="button" value="삭제하기"class="btn" onclick="location.href='javascript:delCheck(${adminnoticeVo.admin_no})'">
+		</c:if>
 	</div>
 	<div class="bottom_bar">
 		<ul>

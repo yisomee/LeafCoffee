@@ -2,82 +2,111 @@
 <%@ include file="/inc/adminTop.jspf" %>
 
 <style>
-	.container{
-      max-width: 1480px;
-      height:1200px;
-   }
-   .table-active{
-		color:white;
-	}
+.container {
+	max-width: 1480px;
+	height: 1200px;
+}
 
-   .purchase_ok{
-      width: 100%;
-      height:1000px;
-      display:flex;
-      margin-top:5px;
-   }
-   .search{
-   	height:1000px;
-   	overflow:auto;
-   }
+.table-active {
+	color: white;
+}
 
-   table,td,tr{
-      padding-top: 0px;
-       padding-bottom: 0px;
-       height: 0px;
-       text-align:center;
-   }
+.purchase_ok {
+	width: 100%;
+	height: 800px;
+	display: flex;
+	margin-top: 5px;
+	overflow: auto;
+}
 
-   #myinput{
-      width: 300px;
-      margin: 10px;
-      float: left;
-   }
+.search {
+	height: 1000px;
+}
 
-	/*head 이미지*/
-	header {
-		height: 270px;
-		position: relative;
-	}
-	
-	#headerText {
-		top: -100px;
-		font-size: 3em;
-		color: white;
-		opacity: 0.5;
-		text-align: center;
-		position: relative;
-	}
-	
-	nav {
-		display: flex;
-		justify-content: center;
-		width: 100%;
-		border-bottom: 1px solid gray;
-	}
-	
-	nav>div {
-		padding: 15px 40px;
-	}
-	
-	#head_img {
-		background-image:
-			url(http://localhost:9090/myapp/img/managerbannerimg.jpg);
-		z-index: -1;
-		width: 100%;
-		height: 270px;
-	}
-	.table {
+table, td, tr {
+	padding-top: 0px;
+	padding-bottom: 0px;
+	height: 0px;
+	text-align: center;
+}
+
+#myinput {
+	width: 300px;
+	margin: 10px;
+	float: left;
+}
+
+/*head 이미지*/
+header {
+	height: 270px;
+	position: relative;
+}
+
+#headerText {
+	top: -100px;
+	font-size: 3em;
+	color: white;
+	opacity: 0.5;
+	text-align: center;
+	position: relative;
+}
+
+nav {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	border-bottom: 1px solid gray;
+}
+
+nav>div {
+	padding: 15px 40px;
+}
+
+#head_img {
+	background-image:
+		url(http://localhost:9090/myapp/img/managerbannerimg.jpg);
+	z-index: -1;
+	width: 100%;
+	height: 270px;
+}
+
+.table {
 	border-bottom: 2px solid rgb(0, 163, 239);
 }
-	#name {
+
+#name {
 	font-size: 2em;
 	font-weight: bold;
 	text-align: center;
 	line-height: 3;
 }
+
 #name2 {
 	text-align: center;
+}
+
+.excel {
+	position: relative;
+	top: 12px;
+	height: 35px;
+	border: none;
+	width: 150px;
+	background-color: white;
+	border-radius: 2px;
+	border: 1px solid rgb(0, 163, 239);
+	font-size: 0.9em;
+	transition: 0.4s;
+	padding-left: 0px;
+	position: relative;
+	display: flex;
+	justify-content: space-evenly;
+	margin-left: 1300px;
+}
+.excel:hover {
+	cursor: pointer;
+	box-shadow: inset 30em 0 0 0 rgb(0, 163, 239);
+	color: white;
+	border-color: rgb(0, 163, 239);
 }
 </style>
 <script>
@@ -109,8 +138,12 @@ $(()=>{
 <div class="container">
 <div id="name">입고관리</div>
 <div id="name2">입고된 목록을 확인할 수 있습니다.</div><hr/>
+
    <div class="search"><br/>
       <input type='text' id='myinput' placeholder='입고목록을 검색하세요' class='form-control'/>
+      <form action="/myapp/excelDown" method="post">
+		   <input type="submit" value='엑셀 다운로드' class="excel">
+		</form>
       <div class="purchase_ok">
           <table class="table table-hover">
             <thead>

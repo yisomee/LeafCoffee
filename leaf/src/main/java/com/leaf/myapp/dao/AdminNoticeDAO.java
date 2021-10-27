@@ -13,7 +13,7 @@ public interface AdminNoticeDAO {
 	public AdminNoticeVO noticeView(int no);//글내용보기
 	public int adminnoticeWriteOk(AdminNoticeVO vo);//글쓰기
 	public int adminnoticeEditOk(AdminNoticeVO vo);//글수정
-	public int adminnoticeDel(int admin_no, String userid);//글삭제
+	public int adminnoticeDel(int no, String userid);//글삭제
 	
 	//조회수
 	public int hitCount(AdminNoticeVO vo);

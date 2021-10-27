@@ -1,14 +1,19 @@
 package com.leaf.myapp.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.reflection.SystemMetaObject;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -80,6 +85,8 @@ public class ProductController {
 		      ModelAndView mav = new ModelAndView();
 		      List<ProductVO> vo = productService.WarehousingList();
 		    
+		      
+		      
 		      mav.addObject("WarehousingList", productService.WarehousingList());
 		      mav.setViewName("Head/Warehousing_Management");
 		      return mav;
@@ -152,5 +159,10 @@ public class ProductController {
 			mav.addObject("no", vo.getPc_num());
 			return mav;
 		}
-	
-	}
+		@RequestMapping(value="/excelDown")
+		@ResponseBody
+		public void excelDown(@ModelAttribute ProductVO vo, HttpServletResponse response, HttpServletRequest request) throws Exception{
+		   productService.excelDown(vo, response);
+		
+		}
+			}

@@ -11,8 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.leaf.myapp.service.AdminNoticeService;
 import com.leaf.myapp.vo.AdminNoticeVO;
 import com.leaf.myapp.vo.AdminPageVO;
-import com.leaf.myapp.vo.NoticePagingVO;
-import com.leaf.myapp.vo.NoticeVO;
+
 
 @Controller
 
@@ -64,7 +63,9 @@ import com.leaf.myapp.vo.NoticeVO;
 	@RequestMapping(value="/adminnoticeWriteOk", method=RequestMethod.POST)
 	public ModelAndView noticeWriteOk(AdminNoticeVO vo, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		//vo.setUserid((String)session.getAttribute("userid"));		
+		String userid=(String)session.getAttribute("logid");
+		vo.setUserid(userid);
+		System.out.println(userid);
 		adminnoticeService.adminnoticeWriteOk(vo);
 		mav.setViewName("redirect:adminnoticeMain");
 		     return mav;
@@ -82,7 +83,8 @@ import com.leaf.myapp.vo.NoticeVO;
 	//글수정
 	@RequestMapping(value="/adminnoticeEditOk", method=RequestMethod.POST)
 	public ModelAndView noticeEditOk(AdminNoticeVO vo, HttpSession ses) {
-		//vo.setUserid((String)ses.getAttribute("userid"));
+		String userid=(String)ses.getAttribute("logid");
+		vo.setUserid(userid);
 		ModelAndView mav = new ModelAndView();
 		adminnoticeService.adminnoticeEditOk(vo);
 			mav.addObject("no", vo.getAdmin_no());
@@ -92,16 +94,16 @@ import com.leaf.myapp.vo.NoticeVO;
 	}
 	//글 삭제
 	@RequestMapping("/adminnoticeDel")
-	public ModelAndView adminnoticeDel(int admin_no, HttpSession session) {
-		String userid = "apple";
-		int result = adminnoticeService.adminnoticeDel(admin_no, userid);
+	public ModelAndView adminnoticeDel(int no, HttpSession session) {
+		String userid=(String)session.getAttribute("logid");
+		
+		
+		int result = adminnoticeService.adminnoticeDel(no, userid);
 		ModelAndView mav = new ModelAndView();
 		if(result>0) {
 		mav.setViewName("redirect:adminnoticeMain");
 		}else {
-			mav.addObject("admin_no",admin_no);
 			mav.setViewName("redirect:adminnoticeDetail");
-			
 		}
 		return mav;
 	}

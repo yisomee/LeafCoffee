@@ -10,7 +10,7 @@ public interface AdminNoticeService {
 	public AdminNoticeVO noticeView(int no);
 	public int adminnoticeWriteOk(AdminNoticeVO vo);//글쓰기
 	public int adminnoticeEditOk(AdminNoticeVO vo);//글수정
-	public int adminnoticeDel(int admin_no, String userid);//글삭제
+	public int adminnoticeDel(int no, String userid);//글삭제
 	
 	//페이징
 	public int totalRecordCount(AdminPageVO pVo);
