@@ -40,9 +40,9 @@ public int adminnoticeEditOk(AdminNoticeVO vo) {
 }
 
 @Override
-public int adminnoticeDel(int admin_no, String userid) {
+public int adminnoticeDel(int no, String userid) {
 	// TODO Auto-generated method stub
-	return adminnoticedao.adminnoticeDel(admin_no, userid);
+	return adminnoticedao.adminnoticeDel(no, userid);
 }
 
 @Override

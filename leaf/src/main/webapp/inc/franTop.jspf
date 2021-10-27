@@ -156,8 +156,16 @@ height: 46px;
 <div class="header">
    <div class="login">
       <ul>
+      	<c:if test="${auth=='master'}">
          <li><a href="/myapp/adminHome">본사</a></li>
          <li><a href="/myapp/franHome">가맹점</a></li>
+         </c:if>
+         
+         <c:if test="${auth=='fran'}">
+         <li><a href="/myapp/franHome">가맹점</a></li>
+         </c:if>
+         
+         
          <c:if test="${logname==null}"><li><a href="/myapp/login">LOGIN</a></li></c:if>
          <c:if test="${logname!=null}"><li><a href="/myapp/logout">LOGOUT</a></li></c:if>
          <div class="logname">${logname}
@@ -179,11 +187,18 @@ height: 46px;
 		<ul class="main-ul">
 			
 <!---------------------------  -->			
-
-<!----------------------------------  -->	
-			<li class="select-li"><a href="#">발주하기</a>
+			<li class="select-li"><div><a href="/myapp/menu_Coffee">MENU</a></div>
 				<ul class="ulclass">
-					<li><a href="/myapp/purchase">발주하기</a></li>
+					<li><a href="/myapp/menu_Coffee">COFFEE</a></li>
+					<li><a href="/myapp/menu_Food">FOOD</a></li>
+					<li><a href="/myapp/menu_Beverage">BEVERAGE</a></li>
+					<li><a href="/myapp/menu_Product">MD PRODUCT</a></li>
+				</ul>					
+			</li>
+<!----------------------------------  -->	
+			<li class="select-li" ><a href="#">발주하기</a>
+				<ul class="ulclass">
+					<li style="padding-top:17px;"><a href="/myapp/purchase">발주하기</a></li>
 				</ul>					
 			</li>
 <!--------------------------------------------->

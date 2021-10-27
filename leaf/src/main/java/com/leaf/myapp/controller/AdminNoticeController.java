@@ -11,8 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.leaf.myapp.service.AdminNoticeService;
 import com.leaf.myapp.vo.AdminNoticeVO;
 import com.leaf.myapp.vo.AdminPageVO;
-import com.leaf.myapp.vo.NoticePagingVO;
-import com.leaf.myapp.vo.NoticeVO;
+
 
 @Controller
 
@@ -20,7 +19,7 @@ import com.leaf.myapp.vo.NoticeVO;
 	@Inject
 	AdminNoticeService adminnoticeService;
 /*
-	//°Ô½Ã±Û ¸®½ºÆ®
+	//ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
     @RequestMapping("/adminnoticeMain")
     public ModelAndView adminnoticeList() {
     	ModelAndView mav = new ModelAndView();
@@ -30,11 +29,11 @@ import com.leaf.myapp.vo.NoticeVO;
    }
     
  * */
-	//°Ô½Ã±Û ¸®½ºÆ®
+	//ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
     @RequestMapping("/adminnoticeMain")
     public ModelAndView noticePageSelect(AdminPageVO pVo) {
     	ModelAndView mav = new ModelAndView();
-       //ÃÑ·¹ÄÚµå¼ö
+       //ï¿½Ñ·ï¿½ï¿½Úµï¿½ï¿½
     	pVo.setTotalRecord(adminnoticeService.totalRecordCount(pVo));
     	mav.addObject("pVo",pVo);   
 		System.out.println("total record: " + pVo.getTotalRecord());
@@ -45,7 +44,7 @@ import com.leaf.myapp.vo.NoticeVO;
 		return mav;      
    }
     
-	//°Ô½Ã±Ûº¸±â
+	//ï¿½Ô½Ã±Ûºï¿½ï¿½ï¿½
 	@RequestMapping("/adminnoticeDetail")
 	public ModelAndView noticeDetail(int no, AdminNoticeVO vo) {
 		vo = adminnoticeService.noticeView(no);
@@ -55,22 +54,25 @@ import com.leaf.myapp.vo.NoticeVO;
 		mav.setViewName("adminNotice/adminnoticeDetail");
 		return mav;	
 	}
-	//±Û¾²±âÆû
+	//ï¿½Û¾ï¿½ï¿½ï¿½ï¿½ï¿½
 		@RequestMapping("/adminnoticeWrite")
 		public String noticeWrite(){
 			return "/adminNotice/noticeForm";
 		}
-	//±Û¾²±â
+	//ï¿½Û¾ï¿½ï¿½ï¿½
 	@RequestMapping(value="/adminnoticeWriteOk", method=RequestMethod.POST)
 	public ModelAndView noticeWriteOk(AdminNoticeVO vo, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		//vo.setUserid((String)session.getAttribute("userid"));		
+		String userid=(String)session.getAttribute("logid");
+		vo.setUserid(userid);
+		System.out.println(userid);
 		adminnoticeService.adminnoticeWriteOk(vo);
+		mav.addObject("userid", userid);
 		mav.setViewName("redirect:adminnoticeMain");
 		     return mav;
 		}
 	
-	//±Û¼öÁ¤Æû
+	//ï¿½Û¼ï¿½ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping("/adminnoticeEdit")
 	public ModelAndView noticeEdit(int no){
 		ModelAndView mav = new ModelAndView();
@@ -79,10 +81,11 @@ import com.leaf.myapp.vo.NoticeVO;
 		return mav;
 	}
 	
-	//±Û¼öÁ¤
+	//ï¿½Û¼ï¿½ï¿½ï¿½
 	@RequestMapping(value="/adminnoticeEditOk", method=RequestMethod.POST)
 	public ModelAndView noticeEditOk(AdminNoticeVO vo, HttpSession ses) {
-		//vo.setUserid((String)ses.getAttribute("userid"));
+		String userid=(String)ses.getAttribute("logid");
+		vo.setUserid(userid);
 		ModelAndView mav = new ModelAndView();
 		adminnoticeService.adminnoticeEditOk(vo);
 			mav.addObject("no", vo.getAdmin_no());
@@ -90,18 +93,18 @@ import com.leaf.myapp.vo.NoticeVO;
 
 		return mav;
 	}
-	//±Û »èÁ¦
+	//ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping("/adminnoticeDel")
-	public ModelAndView adminnoticeDel(int admin_no, HttpSession session) {
-		String userid = "apple";
-		int result = adminnoticeService.adminnoticeDel(admin_no, userid);
+	public ModelAndView adminnoticeDel(int no, HttpSession session) {
+		String userid=(String)session.getAttribute("logid");
+		
+		
+		int result = adminnoticeService.adminnoticeDel(no, userid);
 		ModelAndView mav = new ModelAndView();
 		if(result>0) {
 		mav.setViewName("redirect:adminnoticeMain");
 		}else {
-			mav.addObject("admin_no",admin_no);
 			mav.setViewName("redirect:adminnoticeDetail");
-			
 		}
 		return mav;
 	}

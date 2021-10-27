@@ -139,6 +139,7 @@ public class RegisterController {
 			ses.setAttribute("logid", resultVO.getUserid());
 			ses.setAttribute("logname", resultVO.getUsername());
 			ses.setAttribute("membership", resultVO.getMembership());
+			ses.setAttribute("auth", resultVO.getAuth());
 			mv.setViewName("redirect:/");
 		}
 		

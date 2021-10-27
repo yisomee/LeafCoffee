@@ -9,7 +9,7 @@
        <!-- select admin_no, admin_title, admin_content, img, to_char(admin_writedate, 'YY-MM-DD') admin_writedate
         from adminnotice where admin_no=#{param1} --> 
 		select * from(
-		select admin_no, admin_title, admin_content, img, to_char(admin_writedate, 'YY-MM-DD') admin_writedate,
+		select admin_no, userid, admin_title, admin_content, img, to_char(admin_writedate, 'YY-MM-DD') admin_writedate,
 		lag(admin_no) over(order by admin_no) as prev,
         lag(admin_title) over(order by admin_no) prev_title,
         lead(admin_no) over(order by admin_no) as next,
@@ -18,14 +18,14 @@
      </select>
      <insert id="adminnoticeWriteOk" parameterType="com.leaf.myapp.vo.AdminNoticeVO">
      	insert into adminnotice(admin_no, userid, admin_title, admin_content, img, section)
-     	values(adminnotice_sq.nextval, 'apple',#{admin_title},#{admin_content},#{img},#{section})
+     	values(adminnotice_sq.nextval,#{userid},#{admin_title},#{admin_content},#{img},#{section})
      </insert>
      <update id="adminnoticeEditOk" parameterType="com.leaf.myapp.vo.AdminNoticeVO">
      	update adminnotice set admin_title=#{admin_title}, admin_content=#{admin_content} , img=#{img}, section=#{section} 
-     	where admin_no=#{admin_no} and userid='apple'
+     	where admin_no=#{admin_no} and userid=#{userid}
      </update>
      <delete id="adminnoticeDel">
-     	delete from adminnotice where admin_no=#{param1} and userid='apple'
+     	delete from adminnotice where admin_no=#{param1} and userid=#{param2}
      </delete>
      
      <!--  paging  -->

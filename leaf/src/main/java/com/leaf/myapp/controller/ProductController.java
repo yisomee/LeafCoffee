@@ -3,29 +3,29 @@ package com.leaf.myapp.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.reflection.SystemMetaObject;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.leaf.myapp.service.ProductService;
-import com.leaf.myapp.vo.MenuVO;
 import com.leaf.myapp.vo.ProductVO;
-import com.leaf.myapp.vo.RegisterVO;
 
 @Controller
 public class ProductController {
 	@Inject
 	ProductService productService;
 	
-//////////////////////////////////////////////°¡¸ÍÁ¡ //////////////////////////////////////////////////////		
+//////////////////////////////////////////////ê°€ë§¹ì  //////////////////////////////////////////////////////		
 	
 	
-	//¹ßÁÖÆäÀÌÁö¿¡ ¸ñ·ÏÅ¬¸¯½Ã ÆÄÆ®³Ê, ¹ßÁÖÃ¢ ¶ç¿ì±â ajax
+	//ë°œì£¼í˜ì´ì§€ì— ëª©ë¡í´ë¦­ì‹œ íŒŒíŠ¸ë„ˆ, ë°œì£¼ì°½ ë„ìš°ê¸° ajax
 	@RequestMapping(value="/purchasePartner")
 	@ResponseBody
 	public List<ProductVO>ajaxPartner(int hq_num){
@@ -35,7 +35,7 @@ public class ProductController {
 		return list;
 	} 
 	
-	//¹ßÁÖÇÏ±â
+	//ë°œì£¼í•˜ê¸°
 	@RequestMapping(value="/Purchase_RegisterOk", method = RequestMethod.POST)
 	public ModelAndView Purchase_RegisterOk(ProductVO vo) {
 		ModelAndView mav = new ModelAndView();  
@@ -45,7 +45,7 @@ public class ProductController {
 		return mav;
 	}
 		 
-	// ¹ßÁÖÆäÀÌÁö¿¡ ¹ßÁÖ Å¬¸¯½Ã ¹ßÁÖ Ã¢ º¸¿©ÁÖ±â,¹ßÁÖÆäÀÌÁö¿¡ ¸ñ·Ïº¸¿©ÁÖ±â
+	// ë°œì£¼í˜ì´ì§€ì— ë°œì£¼ í´ë¦­ì‹œ ë°œì£¼ ì°½ ë³´ì—¬ì£¼ê¸°,ë°œì£¼í˜ì´ì§€ì— ëª©ë¡ë³´ì—¬ì£¼ê¸°
 	@RequestMapping("/purchase")
 	 public ModelAndView purchaseList() {
 	      ModelAndView mav = new ModelAndView();
@@ -55,7 +55,7 @@ public class ProductController {
 	      mav.setViewName("Store/purchase");
 	      return mav;
 	}
-	 //¿©·¯·¹ÄÚµå ¹è¿­·Î »èÁ¦ÇÏ±â (¹ßÁÖ»èÁ¦)
+	 //ì—¬ëŸ¬ë ˆì½”ë“œ ë°°ì—´ë¡œ ì‚­ì œí•˜ê¸° (ë°œì£¼ì‚­ì œ)
 	@RequestMapping(value="/purchaseDel",method=RequestMethod.POST)
 	   public ModelAndView purchaseDel(ProductVO vo) {
 		ModelAndView mav = new ModelAndView();
@@ -70,21 +70,23 @@ public class ProductController {
 			return "Store/purchase_Modify";
 	}
 	
-//////////////////////////////////////////////º»»ç //////////////////////////////////////////////////////	
+//////////////////////////////////////////////ë³¸ì‚¬ //////////////////////////////////////////////////////	
 	
 	
 	
-		//ÀÔ°í¸®½ºÆ®
+		//ì…ê³ ë¦¬ìŠ¤íŠ¸
 		@RequestMapping("/Warehousing_Management")
 		 public ModelAndView WarehousingList() {
 		      ModelAndView mav = new ModelAndView();
 		      List<ProductVO> vo = productService.WarehousingList();
 		    
+		      
+		      
 		      mav.addObject("WarehousingList", productService.WarehousingList());
 		      mav.setViewName("Head/Warehousing_Management");
 		      return mav;
 		}
-		// º»»ç°¡ º¸´Â ÀüÃ¼°¡¸ÍÁ¡ ¹ßÁÖ¸®½ºÆ®(º»»çÆäÀÌÁö) 
+		// ë³¸ì‚¬ê°€ ë³´ëŠ” ì „ì²´ê°€ë§¹ì  ë°œì£¼ë¦¬ìŠ¤íŠ¸(ë³¸ì‚¬í˜ì´ì§€) 
 		@RequestMapping("/purchase_Confirm")
 		 public ModelAndView purchaseListAll() {
 		      ModelAndView mav = new ModelAndView();
@@ -92,7 +94,7 @@ public class ProductController {
 		      mav.setViewName("Head/purchase_Confirm");
 		      return mav;
 		}
-		//Àç°í¸®½ºÆ®
+		//ì¬ê³ ë¦¬ìŠ¤íŠ¸
 			@RequestMapping("/inventory")
 			 public ModelAndView inventoryList() {
 			      ModelAndView mav = new ModelAndView();
@@ -116,7 +118,7 @@ public class ProductController {
 		      return mav;
 			
 		}	
-		//ÀÔ°íµî·ÏÇÏ±â
+		//ì…ê³ ë“±ë¡í•˜ê¸°
 		@RequestMapping(value="/warehousing_RegisterOk", method=RequestMethod.POST)
 		public ModelAndView Warehousing_RegisterOk(ProductVO vo, HttpSession ses) {
 			ModelAndView mav = new ModelAndView();  
@@ -125,7 +127,7 @@ public class ProductController {
 			mav.setViewName("redirect:Warehousing_Management");
 			return mav;
 		}
-		//Á¦Ç°µî·ÏÇÏ±â
+		//ì œí’ˆë“±ë¡í•˜ê¸°
 		@RequestMapping(value="/items_RegisterOk", method=RequestMethod.POST)
 		public ModelAndView items_RegisterOk(ProductVO vo, HttpSession ses) {
 			ModelAndView mav = new ModelAndView();
@@ -141,7 +143,7 @@ public class ProductController {
 		      mav.setViewName("Head/items_Register");
 		      return mav;
 		}
-		//¹ßÁÖÈ®ÀÎ ÆäÀÌÁö¿¡¼­ È®ÀÎ¹öÆ° ´©¸£¸é ´ë±â-> ¿Ï·á·Î º¯°æ
+		//ë°œì£¼í™•ì¸ í˜ì´ì§€ì—ì„œ í™•ì¸ë²„íŠ¼ ëˆ„ë¥´ë©´ ëŒ€ê¸°-> ì™„ë£Œë¡œ ë³€ê²½
 		@RequestMapping(value="/purchaseConfirm", method=RequestMethod.POST)
 		public ModelAndView purchaseConfirm(ProductVO vo, HttpSession ses) {
 		
@@ -152,5 +154,10 @@ public class ProductController {
 			mav.addObject("no", vo.getPc_num());
 			return mav;
 		}
-	
-	}
+		@RequestMapping(value="/excelDown")
+		@ResponseBody
+		public void excelDown(@ModelAttribute ProductVO vo, HttpServletResponse response, HttpServletRequest request) throws Exception{
+		   productService.excelDown(vo, response);
+		
+		}
+			}

@@ -209,6 +209,7 @@
 		});		
 		let price = $("#selectPrice").text();
 		//음료추가
+		price = $("#selectPrice").text();
 		$("#menuPlus").click(function(){
 			$("#menuCnt").html(parseInt($("#menuCnt").text())+1);
 			//메뉴를 선택하면  밑의 실행문 사용selectprice
