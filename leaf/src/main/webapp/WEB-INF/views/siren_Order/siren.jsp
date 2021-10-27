@@ -60,7 +60,7 @@
 	.menu_title_container>li{padding:15px}
 	#menuCon{display:flex;align-items:center;margin-bottom:120px}
 	.menu{width:40%}
-	#menuList{width:60%;height:756px;overflow:auto;}
+	#menuList{width:60%;}
 	#menuSelect{font-size:1.8rem;padding:20px 0;font-weight:600}
 	#selMenuList{display:flex;flex-direction:column;align-items:center}
 	#selMenuList>li{padding:10px 0}
@@ -73,8 +73,8 @@
 	/*메뉴리스트*/
 	.clicked{background-color:#9F8362 !important; color:white !important}
 	.imgwrap{width:110px;height:110px;display:flex;justify-content:center;border-radius:100%;margin:30px;}
-	#img{width:110px;height:110px;border-radius:100%;}
-	.menuList{display:flex;justify-content:center;flex-wrap:wrap;margin-top:50px;}
+	.img{width:110px;height:110px;border-radius:100%;}
+	.menuList{display:flex;justify-content:center;flex-wrap:wrap;margin-top:50px;height:756px;overflow:auto;}
 	.menuList>li{display:flex;flex-direction:column;align-items:center;}
 	.imgtext{text-align:center;}
 	.menuname{margin-left:80px;}
@@ -82,7 +82,7 @@
 	.p_ename {font-size:0.8em;color:#9F8362;;}
 	.p_price, .p_num, .m_code, .selecPnum, .seleccartPnum{display:none}
 	#shotPrice, #syrupPrice{visibility: hidden;}
-	#img:hover {
+	.img:hover {
 		cursor: pointer;
 		transform: scale(1.2); /* 마우스 오버시 이미지 크기를 1.1 배만큼 확대시킨다. */
 		-o-transform: scale(1.2);
@@ -94,7 +94,7 @@
 		-webkit-transition: transform .35s;
 		transition: all 0.3s ease-in-out;
 	}
-	#img:not(:hover) {
+	.img:not(:hover) {
 		cursor: pointer;
 		transform: scale(1); /* 마우스 오버시 이미지 크기를 1.1 배만큼 확대시킨다. */
 		-o-transform: scale(1);
@@ -133,7 +133,7 @@
 	let syrupPrice = 0;
 	
 	//메뉴 상세 가격란에 들어갈 가격변수
-	let price;
+	
 	let cost;
 	//선택 된 옵션 val 담는 변수
 	let cup;
@@ -146,21 +146,25 @@
 			$(".coffee").css('display', 'block');
 			$(".beverage").css('display', 'block');
 			$(".food").css('display', 'block');
+			$(".product").css('display', 'none');
 		});
 		$("#Coffee").click(function() {
 			$(".coffee").css('display', 'block');
 			$(".beverage").css('display', 'none');
 			$(".food").css('display', 'none');
+			$(".product").css('display', 'none');
 		});
 		$("#Beverage").click(function() {
 			$(".beverage").css('display', 'block');
 			$(".coffee").css('display', 'none');
 			$(".food").css('display', 'none');
+			$(".product").css('display', 'none');
 		});
 		$("#Food").click(function() {
 			$(".food").css('display', 'block');
 			$(".coffee").css('display', 'none');
 			$(".beverage").css('display', 'none');
+			$(".product").css('display', 'none');
 		});
 		
 		//옵션 선택값 초기화
@@ -188,10 +192,13 @@
 			menuInit();
 			//food일때 옵션 삭제 여기 확인해보기
 			var m_code = $(this).children(".imgtext").children(".m_code").text();
+			var img = $(this).children(".imgwrap").children(".hideImg").text();
 			console.log(m_code);
 			if(m_code == 'food'){
 				$('#cup').css('display','none');
 			}
+			console.log($(this).children(".imgwrap").children(".hideImg").text());
+			$("#seleImg").html("<img src= 'img/"+img+ "' class='seleImg' style='width:150px;height:150px;'/>");
 			$("#selectName").html($(this).children(".imgtext").children(".p_name").text());
 			$("#selectEname").html($(this).children(".imgtext").children(".p_ename").text());
 			$("#selectPrice").html($(this).children(".imgtext").children(".p_price").text());
@@ -200,7 +207,7 @@
 			price = $(this).children(".imgtext").children(".p_price").text();
 			cost = $(this).children(".imgtext").children(".p_price").text();
 		});		
-		
+		let price = $("#selectPrice").text();
 		//음료추가
 		$("#menuPlus").click(function(){
 			$("#menuCnt").html(parseInt($("#menuCnt").text())+1);
@@ -324,7 +331,13 @@
 			var totalPrice = $("#totalPrice").text();
 			var seleFcnum = $(".seleFcnum").text();
 
-			if(cup != null && size != null && hot_ice != null){
+			if(cup==null){
+				alert("컵을 선택해주세요.");
+			}else if(size==null){
+				alert("사이즈를 선택해주세요.");
+			}else if(hot_ice==null){
+				alert("HOT/ICE를 선택해주세요.");
+			}else if(cup != null && size != null && hot_ice != null){
 				var cartMenu = "<div class='addTotal'>";
 					cartMenu += "<ul class='cartMenu'>";
 					cartMenu += "<li><input type='checkbox' name='cartChk' value='"+totalPrice+","+selecPnum+","+menuCnt+","+seleFcnum+","+userid+"' checked='checked'><span class='cartName'>"+ $("#selectName").text() +"</span></li>";
@@ -344,21 +357,20 @@
 				$(".cartMon").html(parseInt($(".cartMon").text())+parseInt(totalPrice));
 				$('#selectPrice').html(cost);
 				$("#totalPrice").html(cost);
-				menuInit();
-			}else if(cup==null){
-				alert("컵을 선택해주세요.");
-			}else if(size==null){
-				alert("사이즈를 선택해주세요.");
-			}else if(hot_ice==null){
-				alert("HOT/ICE를 선택해주세요.");
+				menuInit();			
 			}
 		});
 		
 		//가맹점 클릭 시 매장상세 변경
 		$(".searched").click(function(){
+			console.log("emfdha");
+			var fcImg = $(this).children(".fcImg").text();
+			console.log(fcImg);
+			
 			$(".seleFcname").html($(this).children(".fc_name").text());
 			$('.seleFcnum').html($(this).children(".fc_num").text())
-	//		$("#selectEname").html($(this).children(".fc_name").children(".p_ename").text());
+			$(".sirenImg").html("<img src= 'img/"+fcImg+"'class='fcImg'/>");
+	//		$("#selectEname").html($(this).children(".fc_name").schildren(".p_ename").text());
 		});
 	});
 </script>
@@ -367,22 +379,74 @@
 	// https://cloud.google.com/maps-platform/
 	// https://maps.googlepis.com/
 	//위도, 경도
-	var latitude = 37.5729503;
-	var longitude = 126.9793578;
+	var latitude = 37.5010689;
+	var longitude = 127.0430285;
 
 	function initMap() {
 		var myCenter = new google.maps.LatLng(latitude, longitude);
 		// 지도를 그릴 때 필요한  기타점을 JSON형식의 데이터로 생성한다.							
 		var mapProperty = {
 			center : myCenter,
-			zoom : 17,//0~21까지의 값을 사용한다. 숫자가 클수록 확대된다.
+			zoom : 14,//0~21까지의 값을 사용한다. 숫자가 클수록 확대된다.
 			mapTypeId : google.maps.MapTypeId.ROADMAP
 		//지도종류(ROADMAP, HYBRID, STEELITE, TERRAIN)
 		};
 		//지도를 표시할 곳	
-		var map = new google.maps.Map(document.getElementById("map"),
-				mapProperty);
+		var map = new google.maps.Map(document.getElementById("map"), mapProperty);
+		//마커표시
+		var geocoder = new google.maps.Geocoder();
+	 	geocodeAddress(geocoder, map);
+
+        function geocodeAddress(geocoder, resultMap) {
+            console.log('geocodeAddress 함수 실행');
+     		resultedMap= resultMap;
+     	
+     		mapList();
+        }
 	}	
+	function mapList(searchMap){
+		$.ajax({
+	    	//데이터베이스에서 주소 목록을 가져온다.
+		url: '/myapp/map',
+		data: {search:searchMap},
+		success:function(e){
+			
+			var tag="";
+			
+	      	for(var i in e){
+	      		var lat = Number(e[i].lat);
+	      		var lon = Number(e[i].lon);
+	      		var darwin = new google.maps.LatLng(lat, lon);
+			        // 맵 마커
+		        var marker = new google.maps.Marker({
+                      map: resultedMap,
+                      position: {lat:lat,lng:lon},
+                      title:e[i].fc_name
+                });
+		        marker.addListener("click", (event) => {
+		        	resultedMap.setZoom(15);
+		        	resultedMap.setCenter(event.latLng);
+		        	
+		        });
+					tag += "<li>"+e[i].fc_name+"<br /> "+e[i].fc_addr+"<br /></li> ";
+	            };
+				
+				$('#mapList').append(tag);
+				
+			}, error:function(){
+				console.log("error");
+			}
+		});
+		
+	}
+	
+	$(()=>{
+		   $('#searchMap').keyup(function(){
+			   $('#mapList').html("");
+			   mapList($('#searchMap').val());
+		   });
+		});
+
 </script>
 </head>
 <body>
@@ -451,7 +515,8 @@
 					<c:forEach var="menuVo" items="${menuVo}">
 					<li class="siren___menu ${menuVo.m_code}">
 						<div class="imgwrap">
-							<img src="${menuVo.p_img }" id="img"/>
+							<img src="img/${menuVo.p_img}" class="img"/>
+							<div class='hideImg' style="display:none">${menuVo.p_img}</div>
 						</div>
 						<div class="imgtext">
 							<div class="p_name">${menuVo.p_name}</div>
@@ -468,11 +533,11 @@
 				<div id="menuDetail">메뉴 상세</div>
 				<ul id="selMenuList">
 					<li style="display:flex;">
-						<img src="img/americano.png" id="img"style="width: 150px; height: 150px;" /> 
+						<li id="seleImg"> <img src="img/americano.png" class="seleImg"style="width: 150px; height: 150px;" /></li> 
 						<ul class="menuname">
 							<li id="selectName">아메리카노</li>
 							<li id="selectEname" class="p_ename">Americano</li>
-							<li ><span id="selectPrice">4,300</span>원</li>
+							<li ><span id="selectPrice">4300</span>원</li>
 							<li class="selecPnum"></li>
 							<li id="menuCntBtn">
 								<input id="menuMinus" class="cntBtn" type="button" value="-"> 
@@ -520,13 +585,15 @@
 			<div id="mapCon">
 				<ul id="findFc">
 					<li class="searchstore">매장찾기</li>
-					<li class="searchstore"><input type="text" placeholder="매장명 또는 주소"></li>
+					<li class="searchstore"><input type="text" id="searchMap" name="searchMap" placeholder="매장명 또는 주소"></li>
 					<li id='mapList'>
 						<c:forEach var="franVo" items="${franVo}">
 						<ul class="searched ">
 							<li class="fc_name">${franVo.fc_name}</li>
 							<li class="fc_addr">${franVo.fc_addr}</li>
-							<li class="fc_num">${fc_num}</li>
+							<li class="fc_num">${franVo.fc_num}</li>
+							${franVo.fc_img}
+							<li class="fcImg" style="display:none">${franVo.fc_img}</li>
 						</ul>
 						</c:forEach>
 					</li>
@@ -534,9 +601,9 @@
 				<div id="map" class="list"></div>
 				<ul class="selectStore">
 					<li id="detailStore">매장 상세</li>
-					<li><img src="img/15066662951506666295_kospi007.jpg" class="fcImg"></li>
+					<li class="sirenImg"><img src="img/sirenImg3.jpg"/></li>
 					<li class="seleFcname">역삼아레나빌딩</li>
-					<li class="seleFcnum" style="display:none">3</li>
+					<li class="seleFcnum" style="display:none"></li>
 					<li>-사이렌 오더 운영시간:08:00~21:30</li>
 				</ul>
 			</div>
