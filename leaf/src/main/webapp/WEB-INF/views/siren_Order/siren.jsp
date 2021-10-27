@@ -48,7 +48,7 @@
 	
 	.fc_name{font-weight: 600;color: #7B3C07;}
 	.fc_addr{font-size:0.9rem}
-	.fc_num, .fcImg{display:none}
+	.fc_num, .fcImg, .seleMcode{display:none}
 	
 	.selectStore{margin-left:50px;display:flex;flex-direction:column;}
 	#findFc{width:306px;}
@@ -144,6 +144,7 @@
 	let hot_ice;
     var userid = '${regVo.userid}';
     let m_code;
+    var seleFcnum;
 	$(function() {
 		//메뉴상단바에서 종류 선택 시
 		$("#All").click(function() {
@@ -345,7 +346,11 @@
 	         var menuCnt = $("#menuCnt").text();
 	         var selecPnum = $(".selecPnum").text();
 	         var totalPrice = $("#totalPrice").text();
-	         var seleFcnum = $(".seleFcnum").text();
+	         seleFcnum = $(".seleFcnum").text();
+	         console.log(seleFcnum);
+	         if(seleFcnum==''){
+	        	alert("매장을 선택해주세요.");
+	         }else{
 			if(m_code =='food'){
 				 var food = "<div class='addTotal'>";
 				 food += "<ul class='cartMenu'>";
@@ -399,7 +404,7 @@
 		         }
 			}
 	        
-	          
+	         }  
 	      });
 		
 		//가맹점 클릭 시 매장상세 변경
@@ -408,7 +413,8 @@
 			var fcImg = $(this).children(".fcImg").text();
 		
 			$(".seleFcname").html($(this).children(".fc_name").text());
-			$('.seleFcnum').html($(this).children(".fc_num").text())
+			$('.seleFcnum').html($(this).children(".fc_num").text());
+			seleFcnum = $(".seleFcnum").text();
 			$(".sirenImg").html("<img src= 'img/"+fcImg+"'id='fcImg'/>");
 	//		$("#selectEname").html($(this).children(".fc_name").schildren(".p_ename").text());
 		});
@@ -701,12 +707,8 @@
 	            buyer_name: userName,
 	            buyer_postcode:'113-343',            
 	        }, function (rsp) {
-		        menuInit(); //실행안됨
-		        cup=null;
-	            shot=null;
-	            hot_ice=null;
 	            if (rsp.success) {
-	                var msg = '결제가 완료되었습니다.';
+	                var msg = '결제가 완료되었습니다.';	                
 	                msg += '고유ID : ' + rsp.imp_uid;
 	                msg += '상점 거래ID : ' + rsp.merchant_uid;
 	                msg += '결제 금액 : ' + rsp.paid_amount;
@@ -727,7 +729,7 @@
 	                msg += '에러내용 : ' + rsp.error_msg;
 	            }
 	            alert(msg);
-	  //          document.location.href = history.back(); //alert창 확인 후 이동할 url 설정
+	            document.location.href = '/myapp/siren'; //alert창 확인 후 이동할 url 설정
 	        });
 
          }
@@ -746,6 +748,7 @@ $('#payBtn').click(function () {
 	$("input[name=cartChk]:checked").each(function(){
 		param += $(this).val()+"/";
 	});
+	console.log(param);
 	if($(".seleFcnum").text()==''){
    		alert("매장을 선택하세요.");
     }else if($("input:checkbox[name=cartChk]:checked").length<1){
@@ -778,7 +781,7 @@ $('#payBtn').click(function () {
 	            msg += '에러내용 : ' + rsp.error_msg;
 	        }
 	        alert(msg);
-	        //document.location.href = history.back(); //alert창 확인 후 이동할 url 설정
+	        document.location.href = '/myapp/siren';
 	    });
     }
 });
