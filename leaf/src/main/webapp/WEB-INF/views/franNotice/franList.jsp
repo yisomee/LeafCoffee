@@ -72,25 +72,41 @@ $(()=>{
    });
 
 });
-/*댓글 
+</script>
+<script>
 $(function(){
 	
 	$('#searchKeyword').keyup(function(){
+		console.log('kkk');
 		var search=$('#searchKeyword').val();
-		console.log(search);
-		
-	}
-    $.ajax({
-   		type:"get",
-       url:"/myapp/franNotice",
-       data:{ keyword : $(this).val() },
-       success:function(result){
-   
-       }
-    });
- });
-*/
 
+	    $.ajax({
+	       url:"/myapp/FranSearch",
+	       data:{searchKeyword:search}, // 
+	       success:function(result){
+	    	   console.log(result);
+	    	   let fran = $(result);
+	    	   var tag ="";
+	    	   fran.each(function(idx,vo){
+	    		   
+	    	   tag+="<li><input type='checkbox' name='delCheck' value='"+vo.no+"'/></li>";
+	    	   tag+="<li>"+vo.no+"</li>";
+	           tag+="<li><a href='/myapp/frannoticeDetail?no="+vo.no+"&nowpage=1'>"+vo.title +"</a></li>";
+	           tag+="<li>"+vo.userid+"</li>";
+	           tag+="<li>"+vo.writedate+"</li>";
+	           tag+="<li>"+vo.hit+"</li>";
+	    	  
+	    	   });
+		
+	           
+	           $('#list1').html(tag);
+	      	 },error:function(error){
+	      		 alert("mmmmmm");
+	      	 }
+     
+ 		 });
+ 	});
+});
 </script>
 </head>
 <body>

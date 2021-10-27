@@ -1,6 +1,7 @@
 package com.leaf.myapp.controller;
 
 import java.lang.reflect.Array;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.leaf.myapp.service.FranNoticeService;
@@ -21,6 +23,17 @@ public class FranNoticeController {
 
 @Inject
 FranNoticeService frannoticeservice;
+
+//검색어 
+@RequestMapping("/FranSearch")
+@ResponseBody
+public List<FranNoticeVO> FranSearch(FranPageVO pVo){
+	List<FranNoticeVO> fran=frannoticeservice.noticeAllSelect(pVo);
+	
+	//System.out.println("나와라"+frannoticeservice.noticeAllSelect(pVo).size());
+	return fran;
+	
+}
 
 //글목록
 @RequestMapping("/franNotice")
