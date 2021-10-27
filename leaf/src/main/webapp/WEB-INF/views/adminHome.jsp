@@ -376,7 +376,7 @@ $(function(){/*메뉴바 전체가 나오는거*/
 <div id="chatTab">
 	<ul>
 		<li class="chatTitle">leaf <div id ="chatClose"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="InnerIconstyled__Icon-sc-197h5bb-0 jdUMxO FullHeaderstyled__ThemeCloseIcon-sc-1aljhke-10 drXuSo" defaultOpacity="0.6" hoveredOpacity="1" margintop="0" marginright="0" marginbottom="0" marginleft="0"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M16.4818 4.69668L15.3033 3.51817L10 8.82147L4.69671 3.51817L3.5182 4.69668L8.8215 9.99998L3.51819 15.3033L4.6967 16.4818L10 11.1785L15.3033 16.4818L16.4818 15.3033L11.1785 9.99998L16.4818 4.69668Z"></path></svg></div></li>
-		<iframe id="chatBody" src="http://192.168.0.29:10077/leafAdmin"><input type="button" value="새 문의하기" onclick="javascript:chat()"/></iframe>
+		<iframe id="chatBody" src="http://192.168.0.45:10077/leafAdmin"><input type="button" value="새 문의하기" onclick="javascript:chat()"/></iframe>
 			
 	
 	

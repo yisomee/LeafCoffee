@@ -135,7 +135,7 @@
 								<span>(필수)</span>
 							</strong>
 							<div class="mfi-iB-tel">
-								<select id="part_tel1" name="part_tel1">
+								<select id="tel1" name="tel1">
 									<option value="010">010</option>
 									<option value="011">011</option>
 									<option value="016">016</option>
@@ -143,8 +143,8 @@
 									<option value="018">018</option>
 									<option value="019">019</option>								
 								</select>
-								<input type="text" name="part_tel2" id="part_tel2"/>
-								<input type="text" name="part_tel3" id="part_tel3"/>
+								<input type="text" name="tel2" id="tel2"/>
+								<input type="text" name="tel3" id="tel3"/>
 							</div>
 						</div>
 						<div class="mfi-inputbox">

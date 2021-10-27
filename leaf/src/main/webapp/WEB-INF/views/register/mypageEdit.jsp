@@ -240,6 +240,33 @@ border-right:none;
  .inp { padding: 10px 10px; background-color: #f1f1f1; border-radius: 4px; border: 0px; } 
 
  .inp:focus { outline: none; background-color: #eee; } 
+ #orderList,  #openReply{
+     height: 300px;
+    overflow: auto;
+    }
+ #orderList>li, #openReply>li{
+ 	float:left;
+ 	border-bottom: 1px solid #ddd;
+ 	height: 25px;
+    line-height: 25px;
+ }
+ #orderList>li:nth-child(3n-3){
+	width:25%;
+ }
+ #orderList>li:nth-child(3n-2){
+ 	width:25%;
+ }
+ #orderList>li:nth-child(3n-1){
+ width:50%;
+ }
+
+ #openReply>li:nth-child(2n-1){
+	width:50%;
+ }
+ #openReply>li:nth-child(2n-2){
+ 	width:50%;
+ }
+
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
@@ -248,7 +275,25 @@ border-right:none;
          
       
          
-         <div class="imgdiv"/> <img src="img/ilustcut.png" /></div>
+         <div class="imgdiv"/> 
+	         <ul id="orderList">
+	         	<h3>주문내역</h3>
+	         	<li>상품명</li><li>가격</li><li>일자</li>
+	         	<c:forEach var="orderVo" items="${orderList}"> 
+		            <li>${orderVo.p_name}</li>
+		            <li>${orderVo.menutotal}</li>
+		            <li>${orderVo.od_time}</li>
+		         </c:forEach>
+	         </ul>
+	         <ul id="openReply">
+	         	<h3>창업문의 답글확인</h3>
+	         	<li>문의내용</li><li>답변내용</li>
+	         	<c:forEach var="openVo" items="${openReply}">
+	         		<li>${openVo.cotent}</li>
+	         		<li>${openVo.rpcon}</li>
+	         	</c:forEach>
+	         </ul>
+         </div>
          <div class="formdiv">
             <form method="post" id="registerform" action="/myapp/mypageOk" onsubmit="return allCheck()">
          <ul>

@@ -12,8 +12,6 @@ public class PartnerVO {
 	private String tel3;
 	
 	private String part_email;
-	private String emailid; // @��
-	private String domain;
 	
 	private String part_code_name; // ��Ʈ�ʺз���
 	private String part_regdate; // ��Ʈ�� �����
@@ -58,7 +56,7 @@ public class PartnerVO {
 		this.part_name = part_name;
 	}
 	public String getPart_tel() {
-		if(tel1!=null) {
+		if(tel2!=null) {
 			part_tel = tel1+"-"+tel2+"-"+tel3;
 		}
 		return part_tel;
@@ -71,18 +69,10 @@ public class PartnerVO {
 		this.tel3 = AllTel[2];
 	}
 	public String getPart_email() {
-		if(emailid!=null) {
-			part_email = emailid+"@"+domain;
-		}
 		return part_email;
 	}
 	public void setPart_email(String part_email) {
 		this.part_email = part_email;
-		
-			String[] mail = part_email.split("@");
-			this.emailid = mail[0];
-			this.domain = mail[1];
-		
 	}
 	public String getPart_code_name() {
 		return part_code_name;

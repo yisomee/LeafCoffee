@@ -1,6 +1,7 @@
 package com.leaf.myapp.service;
 
 import java.util.HashMap;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -8,6 +9,8 @@ import org.json.simple.JSONObject;
 import org.springframework.stereotype.Service;
 
 import com.leaf.myapp.dao.RegisterDAO;
+import com.leaf.myapp.vo.OpenRequestReplyVO;
+import com.leaf.myapp.vo.OrderListVO;
 import com.leaf.myapp.vo.RegisterVO;
 
 import net.nurigo.java_sdk.api.Message;
@@ -89,6 +92,18 @@ public int passwordUpdate(String tel, String email, String userpwd) {
 public int mypageOk(RegisterVO rgVo) {
 	
 	return registerdao.mypageOk(rgVo);
+}
+
+@Override
+public List<OrderListVO> orderList(String id) {
+	// TODO Auto-generated method stub
+	return registerdao.orderList(id);
+}
+
+@Override
+public List<OpenRequestReplyVO> openReply(String id) {
+	// TODO Auto-generated method stub
+	return registerdao.openReply(id);
 }
  
 

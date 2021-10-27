@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.security.Provider.Service;
+import java.util.List;
 import java.util.Random;
 
 import javax.inject.Inject;
@@ -25,6 +26,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.leaf.myapp.service.RegisterService;
+import com.leaf.myapp.vo.OpenRequestReplyVO;
+import com.leaf.myapp.vo.OrderListVO;
 import com.leaf.myapp.vo.RegisterVO;
 
 @Controller
@@ -69,16 +72,16 @@ public class RegisterController {
 		
 		
 		String id=(String)ses.getAttribute("logid");
-		RegisterVO vo=registerService.mypage(id);
-	
-		
 		ModelAndView mv = new ModelAndView();
-		
-		mv.addObject("vo",vo);
-		System.out.println("아이디"+vo.getUserid());
-		System.out.println("주소"+vo.getAddr1());
-		System.out.println("이름"+vo.getUsername());
-		System.out.println("연락처"+vo.getTel());
+		mv.addObject("vo",registerService.mypage(id));
+		List<OrderListVO> orderList = registerService.orderList(id);
+		if(orderList!=null) {
+			mv.addObject("orderList",orderList);
+		}
+		List<OpenRequestReplyVO> openReply = registerService.openReply(id);
+		if(openReply!=null) {
+			mv.addObject("openReply",openReply);
+		}
 		mv.setViewName("register/mypageEdit");
 	   return mv;
 	}
