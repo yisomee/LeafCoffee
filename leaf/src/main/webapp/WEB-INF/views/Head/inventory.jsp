@@ -56,27 +56,24 @@ nav>div {
 	height: 270px;
 }
 
-#register {
-	line-height: 34px;
-	text-align: center;
-	background-color: white;
-	width: 110px;
+.register{
+	position: relative;
+	top: 12px;
 	height: 35px;
+	border: none;
+	width: 150px;
+	background-color: white;
 	border-radius: 2px;
 	border: 1px solid rgb(0, 163, 239);
 	font-size: 0.9em;
-	color: rgb(0, 163, 239);
 	transition: 0.4s;
 	padding-left: 0px;
-	margin-top: 10px;
-	margin-left: 1000px;
+	position: relative;
+	display: flex;
+	justify-content: space-evenly;
+	margin-left:1300px;
 }
-
-#submit>input {
-	font-size: 0.9rem
-}
-
-#register:hover {
+.register:hover {
 	cursor: pointer;
 	box-shadow: inset 30em 0 0 0 rgb(0, 163, 239);
 	color: white;
@@ -144,7 +141,7 @@ $(()=>{
 <div id="name2">새로운 제품을 등록 할 수 있습니다.</div><hr/>
    <div class="search"><br/>
       <input type='text' id='myinput' placeholder='재고상품을 검색하세요' class='form-control'/>
-      <input type="button" id="register" value="제품등록하기" onClick="location.href='items_Register'">
+      <input type="button" class="register" value="상품등록하기" onClick="location.href='items_Register'">
       <div class="purchase_ok">
           <table class="table table-hover">
             <thead>

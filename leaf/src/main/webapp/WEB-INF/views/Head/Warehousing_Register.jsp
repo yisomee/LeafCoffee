@@ -15,7 +15,7 @@ body{
 	    background-color:white;
 	    margin-top:100px;
 	    margin-bottom:200px;
-	    
+	    height:900px;
 	}
 
 
@@ -69,12 +69,12 @@ nav>div {
 
 .mf-inputCon {
 	border: 1px solid #ddd;
-	border-bottom: 0px solid gray;
 	border-radius: 3px;
 	box-sizing: border-box;
 	max-width: 570px;
 	margin: 0 auto 30px;
 	position: relative;
+	top:30px;
 }
 
 .mfi-img {
@@ -198,7 +198,7 @@ $(()=>{
 <form method="post" action="/myapp/warehousing_RegisterOk">
 		<div class="main-form-Con">
 		<div id="name">입고등록</div>
-		<div id="name2">입고된 목록을 등록해주세요.</div><hr/>
+		<div id="name2">입고를 등록해주세요.</div><hr/>
 			<section class="mf-inputCon">
 				<div class="mfi-inputbox">
 					<strong> <span>분류명(필수)</span>

@@ -85,7 +85,7 @@ nav>div {
 	text-align: center;
 }
 
-.excel {
+.excel, .register{
 	position: relative;
 	top: 12px;
 	height: 35px;
@@ -100,13 +100,20 @@ nav>div {
 	position: relative;
 	display: flex;
 	justify-content: space-evenly;
-	margin-left: 1300px;
+	
 }
-.excel:hover {
+.excel:hover, .register:hover {
 	cursor: pointer;
 	box-shadow: inset 30em 0 0 0 rgb(0, 163, 239);
 	color: white;
 	border-color: rgb(0, 163, 239);
+}
+.btn{
+	display:flex;
+}
+.register{
+	margin-left:780px;
+	margin-right:20px;
 }
 </style>
 <script>
@@ -140,10 +147,13 @@ $(()=>{
 <div id="name2">입고된 목록을 확인할 수 있습니다.</div><hr/>
 
    <div class="search"><br/>
+   <div class="btn">
       <input type='text' id='myinput' placeholder='입고목록을 검색하세요' class='form-control'/>
+	  <input type="button" class="register" value="입고등록" onClick="location.href='Warehousing_Register'">
       <form action="/myapp/excelDown" method="post">
 		   <input type="submit" value='엑셀 다운로드' class="excel">
 		</form>
+	</div>	
       <div class="purchase_ok">
           <table class="table table-hover">
             <thead>
