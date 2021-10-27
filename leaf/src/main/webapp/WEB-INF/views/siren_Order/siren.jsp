@@ -81,7 +81,7 @@
 	.imgtext{text-align:center;}
 	.menuname{margin-left:80px;}
 	.menuname>li{padding:7px 0}
-	.p_ename {font-size:0.8em;color:#9F8362;;}
+	.p_ename {font-size:0.8em;color:#9F8362;}
 	.p_price, .p_num, .m_code, .selecPnum, .seleccartPnum{display:none}
 	#shotPrice, #syrupPrice{visibility: hidden;}
 	#detailSty{display:flex}

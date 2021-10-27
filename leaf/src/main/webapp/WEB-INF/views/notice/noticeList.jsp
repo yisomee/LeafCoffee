@@ -28,7 +28,10 @@
    .delete_search>div{padding-bottom:15px}
    .delete_search>div>form{border:1px solid gray;}
    ::placeholder{padding-left:5px}
-   #searchKeyword{height:30px;width:250px;padding:4px;margin-right:2px;border:none;}
+   #searchKeyword{height:41px;width:250px;padding:4px;margin-right:2px;border:none;}
+   #searchBox{border:1px solid gray;margin:10px}
+   #delBtn{border:2px solid gray;padding:5px 14px}
+   #writeBtn{padding: 5px 7px;border::2px solid gray;}
    #searchIcon{font-size:1.2em; padding:6px 6px 4px 6px;border:none;}
    .boardList{overflow:auto;}
    .boardList>li{float:left;border-bottom:1px solid gray; height:40px; line-height:40px;}
@@ -114,21 +117,21 @@ $(()=>{
          <div>
          <c:if test="${auth=='관리자'}">
             <button id="delBtn"><i class="fas fa-trash-alt"></i> 삭제</button>
-            <button><a href="/myapp/noticeWrite"><i class="fas fa-pencil-alt"></i> 글쓰기</a></button>  
+            <button id="writeBtn"><a href="/myapp/noticeWrite"><i class="fas fa-pencil-alt"></i> 글쓰기</a></button>  
          </c:if>            
          </div>
   		 <form method="post" action="/myapp/noticeList" id="listform">
-         <div>         
+         <div id='searchBox'>         
             <input type="text" id="searchKeyword" name="searchKeyword" placeholder="검색어를 입력해 주세요."/><button id="searchIcon"><i class="fas fa-search"></i></button>         
          </div> 
          </form>       
       </div>
+     <form id="selectDel" action="/myapp/deleteCheck" method="post">
       <ul class="boardList">
       	<c:if test="${auth=='관리자'}">
          <li><input type="checkbox" id="allCheck" name="delCheck"/></li>
          </c:if>
-     <form id="selectDel" action="/myapp/deleteCheck" method="post">
-   	 	 <c:if test="${auth=='관리자'}">
+   	 	 <c:if test="${auth!='관리자'}">
          <li></li>
          </c:if>
          <li>NO</li>
@@ -139,7 +142,7 @@ $(()=>{
             <c:if test="${auth=='관리자'}">
            		<li><input type="checkbox" name="delCheck" value="${noticeVo.no}"/></li>
             </c:if>
-            <c:if test="${auth=='회원'}">
+            <c:if test="${auth!='관리자'}">
             <li></li>
             </c:if>
             <li>${noticeVo.no }</li>
