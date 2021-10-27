@@ -22,15 +22,20 @@ public class NoticeController {
 	
 	//게시글 리스트
     @RequestMapping("/noticeList")
-    public ModelAndView boardList(NoticePagingVO pVo) {
+    public ModelAndView boardList(NoticePagingVO pVo, HttpSession ses) {
     	ModelAndView mav = new ModelAndView();
-        System.out.println(pVo.getSearchKeyword());
+    	String userid=(String)ses.getAttribute("logid");
+    	String auth = noticeService.checkAuto(userid);
 		//총레코드수
     	pVo.setTotalRecord(noticeService.totalRecordCount(pVo));
     	System.out.println(pVo.getTotalRecord());
 		mav.addObject("pVo",pVo);   
-		mav.addObject("list",noticeService.noticePageSelect(pVo));
-		mav.setViewName("notice/noticeList");
+		mav.addObject("list", noticeService.noticePageSelect(pVo));
+		if(auth == "관리자") {
+			mav.setViewName("notice/noticeList");			
+		}else {
+			mav.setViewName("notice/userNoticeList");
+		}
 		return mav;      
    }
 

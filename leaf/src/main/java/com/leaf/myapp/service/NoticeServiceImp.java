@@ -49,5 +49,9 @@ public class NoticeServiceImp implements NoticeService{
 	@Override
 	public int hitCount(NoticeVO vo) {
 		return noticeDAO.hitCount(vo);
+	}
+	@Override
+	public String checkAuto(String userid) {
+		return noticeDAO.checkAuto(userid);
 	}	
 }

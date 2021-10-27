@@ -4,7 +4,14 @@ public class FranVO {
 	private int fc_num;
 	private String fc_name;
 	private String fc_addr;
-	
+	private String fc_img;
+		
+	public String getFc_img() {
+		return fc_img;
+	}
+	public void setFc_img(String fc_img) {
+		this.fc_img = fc_img;
+	}
 	public int getFc_num() {
 		return fc_num;
 	}

@@ -3,6 +3,9 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.leaf.myapp.dao.NoticeDAO">
+  	<select id="checkAuto" parameterType="String" resultType="com.leaf.myapp.vo.NoticeVO">
+  		select auth from registers where userid=#{userid}
+  	</select>
   	<select id="noticeAllSelect" resultType="com.leaf.myapp.vo.NoticeVO">
   		select no, title, to_char(writedate, 'YY-MM-DD') writedate, hit from notice order by no desc
   	</select>
@@ -10,14 +13,22 @@
   		update notice set hit=hit+1 where no=#{no}
   	</update>
   	  <select  id="noticeView" resultType="com.leaf.myapp.vo.NoticeVO">
-        select no, title, content, userid, to_char(writedate, 'YY-MM-DD') writedate from notice where no=#{param1}
+   <!--     select no, title, content, userid, to_char(writedate, 'YY-MM-DD') writedate from notice where no=#{param1}  --> 
+    
+    	select * from(
+		select no, title, content, userid, to_char(writedate, 'YY-MM-DD') writedate,
+		lag(no) over(order by no) as prev,
+        lag(title) over(order by no) prev_title,
+        lead(no) over(order by no) as next,
+		lead(title) over(order by no) as next_title from notice)
+		where no=#{param1}
      </select>
      <insert id="noticeWrite" parameterType="com.leaf.myapp.vo.NoticeVO">
      	insert into notice(no, title, content) 
      	values(noticeSq.nextval, #{title}, #{content})
      </insert>
      <update id="noticeEdit" parameterType="com.leaf.myapp.vo.NoticeVO">
-     	update notice set title=#{title}, content=#{content} from notice where no=#{no}
+     	update notice set title=#{title}, content=#{content} where no=#{no}
      </update>
      <delete id="noticeDel" >
      	delete from notice where no=#{param1}

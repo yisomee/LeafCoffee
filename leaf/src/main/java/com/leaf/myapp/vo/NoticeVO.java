@@ -8,7 +8,35 @@ public class NoticeVO {
 	private String userid;
 	private String content;
 	private int[] delCheck;
+	private String prev_title;
+	private String next_title;	
+	private String prev;
+	private String next;
 		
+	public String getPrev() {
+		return prev;
+	}
+	public void setPrev(String prev) {
+		this.prev = prev;
+	}
+	public String getNext() {
+		return next;
+	}
+	public void setNext(String next) {
+		this.next = next;
+	}
+	public String getPrev_title() {
+		return prev_title;
+	}
+	public void setPrev_title(String prev_title) {
+		this.prev_title = prev_title;
+	}
+	public String getNext_title() {
+		return next_title;
+	}
+	public void setNext_title(String next_title) {
+		this.next_title = next_title;
+	}
 	public String getUserid() {
 		return userid;
 	}

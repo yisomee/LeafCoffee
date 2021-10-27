@@ -15,13 +15,13 @@
    a{color:gray}
    a:link, a:hover a:visited{text-decoration: none;}
    button{background-color:white;cursor:pointer;}
-   header img{width:100%;height:250px;}
-   header{height:250px;position:relative;}
-   #headerText{position:relative;top:-100px;left:790px;font-size:3em;color:white;opacity:0.5}
+   header img{width:100%;height:330px;}
+   header{height:330px;position:relative;}
+   #headerText{position:relative;top:-100px;left:820px;font-size:3em;color:white;opacity:0.5}
    #detailMenu{display:flex;justify-content:center;width:100%;border-bottom:1px solid gray;}
    #detailMenu>div{padding:15px 40px;}
    #menu1{border-bottom:4px solid rgb(0, 163, 239);}
-   .container{width:1000px;margin:0 auto;}
+   .container{height: 800px;width:1000px;margin:0 auto;}
    .delete_search{display:flex;justify-content:space-between;border-bottom:3px solid gray;margin-top:60px}
    .delete_search>form:nth-child(1){padding-top:18px}
    .delete_search>form:nth-child(1)>button{border:1px solid gray;padding:2px 3px;}
@@ -45,12 +45,33 @@
    .paging{display:flex;justify-content:center;margin:30px 0;font-size:1.2em;}
    .paging>li{margin:0 10px;}
    .now>a{font-weight:bold;text-decoration:underline solid #00A3EF;color:#382E2C;font-size:1.1em}
+.custom-shape-divider-bottom-1634814551 {
+    position: absolute;
+    top:363px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1634814551 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 87px;
+    transform: rotateY(180deg);
+}
+
+.custom-shape-divider-bottom-1634814551 .shape-fill {
+    fill: #FFFFFF;
+}
 </style>
 <script>
 $(()=>{   
    $("#headerText").animate({
-       top: "-160px", opacity:1
-       }, 1200,);
+       top: "-205px", opacity:0.9
+       }, 600,);
    $("#menu1").click(function(){
       $(this).css('border-bottom','4px solid rgb(0, 163, 239)');
       $("#menu2").css('border','none');
@@ -74,15 +95,26 @@ $(()=>{
 <body>
 <%@ include file="/inc/top.jspf" %>
 <header>
-   <img src="https://www.baristapaulbassett.co.kr/images/menu/subVisual_coffee.jpg"/>
+   <img src="https://www.starbucks.co.kr/common/img/coffee/coffee_espresso_wrap_bg.jpg"/>
    <div id="headerText">WHAT'S NEW</div>
 </header>
+<div class="custom-shape-divider-bottom-1634814551">
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+        <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+        <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+    </svg>
+</div>
 <nav id="detailMenu"> 
    <div id="menu1"><a href="/myapp/noticeList">공지사항</a></div>
    <div id="menu2"><a href="/myapp/social">사회공헌</a></div>
 </nav>
 <div class="container">
       <div class="delete_search">
+         <div>
+            <button id="delBtn"><i class="fas fa-trash-alt"></i> 삭제</button>
+            <button><a href="/myapp/noticeWrite"><i class="fas fa-pencil-alt"></i> 글쓰기</a></button>            
+         </div>
   		 <form method="post" action="/myapp/noticeList" id="listform">
          <div>         
             <input type="text" id="searchKeyword" name="searchKeyword" placeholder="검색어를 입력해 주세요."/><button id="searchIcon"><i class="fas fa-search"></i></button>         
@@ -91,6 +123,7 @@ $(()=>{
       </div>
      <form id="selectDel" action="/myapp/deleteCheck" method="post">
       <ul class="boardList">
+         <li><input type="checkbox" id="allCheck" name="delCheck"/></li>
          <li>NO</li>
          <li>제목</li>
          <li>등록일</li>
@@ -128,5 +161,6 @@ $(()=>{
       </ul>
     
 </div>
+<%@ include file="/inc/bottom.jspf" %>
 </body>
 </html>

@@ -73,14 +73,14 @@ $(()=>{
 	<div class="prev">
 		<button><i class="fas fa-chevron-left"></i></button>
 		<ul class="link">
-			<li><a href="#">PREV</a></li>
-			<li><a href="#">추석 연휴 영업 시간 안내</a></li>
+			<li><a href="/myapp/noticeDetail?no=${noticeVo.prev }">PREV</a></li>
+			<li><a href="/myapp/noticeDetail?no=${noticeVo.prev }">${noticeVo.prev_title }</a></li>
 		</ul>
 	</div>
 	<div class="next">
 		<ul class="link">
-			<li><a href="#">NEXT</a></li>
-			<li><a href="#">추석 연휴 영업 시간 안내</a></li>
+			<li><a href="/myapp/noticeDetail?no=${noticeVo.next }">NEXT</a></li>
+			<li><a href="/myapp/noticeDetail?no=${noticeVo.next }">${noticeVo.next_title }</a></li>
 		</ul>
 		<button><i class="fas fa-chevron-right"></i></button>
 	</div>

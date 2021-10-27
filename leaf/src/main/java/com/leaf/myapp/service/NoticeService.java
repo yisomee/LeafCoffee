@@ -7,6 +7,7 @@ import com.leaf.myapp.vo.NoticeVO;
 
 public interface NoticeService {
 //	public List<NoticeVO> noticeAllSelect();
+	public String checkAuto(String userid);
 	public int hitCount(NoticeVO vo);
 	public NoticeVO noticeView(int no);
 	public int noticeWrite(NoticeVO vo);
