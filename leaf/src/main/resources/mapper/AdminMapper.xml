@@ -7,7 +7,7 @@
 		select count(fc_num) TotalFran from franchise
 	</select>
 	<select id="TotalManage" resultType="Integer">
-		select count(userid) TotalManage from registers where auth not in '회원'
+		select count(userid) TotalManage from registers where auth not in 'member'
 	</select>
 	<select id="TotalRegi" resultType="Integer">
 		select count(userid) TotalRegi from registers

@@ -289,7 +289,7 @@ border-right:none;
 	         	<h3>창업문의 답글확인</h3>
 	         	<li>문의내용</li><li>답변내용</li>
 	         	<c:forEach var="openVo" items="${openReply}">
-	         		<li>${openVo.cotent}</li>
+	         		<li>${openVo.content}</li>
 	         		<li>${openVo.rpcon}</li>
 	         	</c:forEach>
 	         </ul>
