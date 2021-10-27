@@ -21,7 +21,7 @@
   	</select>
 	<!-- 발주하기 -->	
 	<insert id="Purchase_RegisterOk" parameterType="com.leaf.myapp.vo.ProductVO">	
-		insert into purchase(pc_num, pc_cnt, hq_num , fc_num, order_status) values(purchase_sq.nextval, #{pc_cnt},#{hq_num}, 3 , 1)
+		insert into purchase(pc_num, pc_cnt, hq_num , fc_num, order_status) values(purchase_sq.nextval, #{pc_cnt},#{hq_num},224, 1)
 	</insert>
 	<!-- 가맹점이 보는 발주리스트 (가맹점페이지) -->	
 	<select id="purchaseList" resultType="com.leaf.myapp.vo.ProductVO">

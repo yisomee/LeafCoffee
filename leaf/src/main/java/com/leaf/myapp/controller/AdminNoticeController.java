@@ -19,7 +19,7 @@ import com.leaf.myapp.vo.AdminPageVO;
 	@Inject
 	AdminNoticeService adminnoticeService;
 /*
-	//°Ô½Ã±Û ¸®½ºÆ®
+	//ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
     @RequestMapping("/adminnoticeMain")
     public ModelAndView adminnoticeList() {
     	ModelAndView mav = new ModelAndView();
@@ -29,11 +29,11 @@ import com.leaf.myapp.vo.AdminPageVO;
    }
     
  * */
-	//°Ô½Ã±Û ¸®½ºÆ®
+	//ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
     @RequestMapping("/adminnoticeMain")
     public ModelAndView noticePageSelect(AdminPageVO pVo) {
     	ModelAndView mav = new ModelAndView();
-       //ÃÑ·¹ÄÚµå¼ö
+       //ï¿½Ñ·ï¿½ï¿½Úµï¿½ï¿½
     	pVo.setTotalRecord(adminnoticeService.totalRecordCount(pVo));
     	mav.addObject("pVo",pVo);   
 		System.out.println("total record: " + pVo.getTotalRecord());
@@ -44,7 +44,7 @@ import com.leaf.myapp.vo.AdminPageVO;
 		return mav;      
    }
     
-	//°Ô½Ã±Ûº¸±â
+	//ï¿½Ô½Ã±Ûºï¿½ï¿½ï¿½
 	@RequestMapping("/adminnoticeDetail")
 	public ModelAndView noticeDetail(int no, AdminNoticeVO vo) {
 		vo = adminnoticeService.noticeView(no);
@@ -54,12 +54,12 @@ import com.leaf.myapp.vo.AdminPageVO;
 		mav.setViewName("adminNotice/adminnoticeDetail");
 		return mav;	
 	}
-	//±Û¾²±âÆû
+	//ï¿½Û¾ï¿½ï¿½ï¿½ï¿½ï¿½
 		@RequestMapping("/adminnoticeWrite")
 		public String noticeWrite(){
 			return "/adminNotice/noticeForm";
 		}
-	//±Û¾²±â
+	//ï¿½Û¾ï¿½ï¿½ï¿½
 	@RequestMapping(value="/adminnoticeWriteOk", method=RequestMethod.POST)
 	public ModelAndView noticeWriteOk(AdminNoticeVO vo, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
@@ -67,11 +67,12 @@ import com.leaf.myapp.vo.AdminPageVO;
 		vo.setUserid(userid);
 		System.out.println(userid);
 		adminnoticeService.adminnoticeWriteOk(vo);
+		mav.addObject("userid", userid);
 		mav.setViewName("redirect:adminnoticeMain");
 		     return mav;
 		}
 	
-	//±Û¼öÁ¤Æû
+	//ï¿½Û¼ï¿½ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping("/adminnoticeEdit")
 	public ModelAndView noticeEdit(int no){
 		ModelAndView mav = new ModelAndView();
@@ -80,7 +81,7 @@ import com.leaf.myapp.vo.AdminPageVO;
 		return mav;
 	}
 	
-	//±Û¼öÁ¤
+	//ï¿½Û¼ï¿½ï¿½ï¿½
 	@RequestMapping(value="/adminnoticeEditOk", method=RequestMethod.POST)
 	public ModelAndView noticeEditOk(AdminNoticeVO vo, HttpSession ses) {
 		String userid=(String)ses.getAttribute("logid");
@@ -92,7 +93,7 @@ import com.leaf.myapp.vo.AdminPageVO;
 
 		return mav;
 	}
-	//±Û »èÁ¦
+	//ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping("/adminnoticeDel")
 	public ModelAndView adminnoticeDel(int no, HttpSession session) {
 		String userid=(String)session.getAttribute("logid");

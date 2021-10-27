@@ -40,7 +40,6 @@
 		height:40px;
 	}
 	.img{
-	    height: 1000px;
 	    width: 1000px;
 	    margin: 110px;
 	}
@@ -83,6 +82,7 @@
 	<div class="button">
 		<input type="button" value="목록" class="btn" onClick="location.href='adminnoticeMain'">
 		<c:if test="${adminnoticeVo.userid==logid}">
+		
 		<input type="button" value="수정하기"class="btn" onclick="location.href='/myapp/adminnoticeEdit?no=${adminnoticeVo.admin_no}'">
 		<input type="button" value="삭제하기"class="btn" onclick="location.href='javascript:delCheck(${adminnoticeVo.admin_no})'">
 		</c:if>

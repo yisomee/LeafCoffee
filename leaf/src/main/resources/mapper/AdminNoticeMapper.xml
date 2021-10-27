@@ -9,7 +9,7 @@
        <!-- select admin_no, admin_title, admin_content, img, to_char(admin_writedate, 'YY-MM-DD') admin_writedate
         from adminnotice where admin_no=#{param1} --> 
 		select * from(
-		select admin_no, admin_title, admin_content, img, to_char(admin_writedate, 'YY-MM-DD') admin_writedate,
+		select admin_no, userid, admin_title, admin_content, img, to_char(admin_writedate, 'YY-MM-DD') admin_writedate,
 		lag(admin_no) over(order by admin_no) as prev,
         lag(admin_title) over(order by admin_no) prev_title,
         lead(admin_no) over(order by admin_no) as next,
