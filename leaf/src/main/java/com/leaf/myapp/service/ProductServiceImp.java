@@ -150,19 +150,19 @@ public class ProductServiceImp implements ProductService{
 	   public void excelDown(ProductVO vo, HttpServletResponse response) throws Exception {
 	   try {
 		   List<ProductVO> testList = productDAO.WarehousingList();
-	      //Excel Down ½ÃÀÛ
+	      //Excel Down 
 	      Workbook workbook = new HSSFWorkbook();
 
-	      //½ÃÆ®»ı¼º
-	      Sheet sheet = workbook.createSheet("ÀÔ°í°ü¸®");
-	      //Çà, ¿­, ¿­¹øÈ£
+	      
+	      Sheet sheet = workbook.createSheet("ì…ê³ ê´€ë¦¬");
+	     
 
 	      Row row = null;
 	      Cell cell = null;
 	      int rowNo = 0;
 
-	      // Çì´õ¸í ¼³Á¤
-	      String[] headerArray = {"NO", "¾÷Ã¼ºĞ·ù","Á¦Ç°¸í","ÀÔ°í°¡°İ","ÀÔ°í¼ö·®","°Å·¡Ã³¸í","´ã´çÀÚ","°Å·¡Ã³¹øÈ£","¿¬¶ôÃ³","ÀÔ°í³¯Â¥"};
+	      
+	      String[] headerArray = {"NO", "ì—…ì²´ë¶„ë¥˜","ì œí’ˆëª…","ì…ê³ ê°€ê²©","ì…ê³ ìˆ˜ëŸ‰","ê±°ë˜ì²˜ëª…","ë‹´ë‹¹ì","ê±°ë˜ì²˜ë²ˆí˜¸","ì—°ë½ì²˜","ì…ê³ ë‚ ì§œ"};
 
 	      row = sheet.createRow(rowNo++);
 
@@ -207,11 +207,11 @@ public class ProductServiceImp implements ProductService{
 	          cell.setCellValue(excelData.getWare_date());
 	      }
 
-	      // ÄÁÅÙÃ÷ Å¸ÀÔ°ú ÆÄÀÏ¸í ÁöÁ¤
+	      
 	      response.setContentType("ms-vnd/excel");
-	      response.setHeader("Content-Disposition", "attachment; filename=" + java.net.URLEncoder.encode("ÀÔ°í°ü¸®.xls", "UTF8"));
+	      response.setHeader("Content-Disposition", "attachment; filename=" + java.net.URLEncoder.encode("ì…ê³ ê´€ë¦¬.xls", "UTF-8"));
 
-	      // ¿¢¼¿ Ãâ·Â
+	      
 	      workbook.write(response.getOutputStream());
 	      } catch (Exception e) {
 	      }
