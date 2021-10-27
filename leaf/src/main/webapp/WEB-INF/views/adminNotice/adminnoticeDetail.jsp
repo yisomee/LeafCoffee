@@ -30,6 +30,8 @@
 	}
 	.bottom_bar li{
 		border-bottom:1px solid gray;
+		width:100%;
+		display:flex;
 	}
 
 	.btn{
@@ -61,7 +63,6 @@
 	}
 	.prev{
 		width:100px;
-		float: left;
 	}
 
 </style>

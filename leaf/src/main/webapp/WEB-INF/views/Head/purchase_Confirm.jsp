@@ -20,6 +20,7 @@
 
 .purchase_ok {
 	overflow: auto;
+	height: 800px;
 }
 
 #name {
