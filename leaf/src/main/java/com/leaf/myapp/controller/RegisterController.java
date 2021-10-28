@@ -1,17 +1,12 @@
 package com.leaf.myapp.controller;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.security.Provider.Service;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import javax.inject.Inject;
 import javax.mail.internet.MimeMessage;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.mybatis.logging.Logger;
@@ -19,7 +14,6 @@ import org.mybatis.logging.LoggerFactory;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -27,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.leaf.myapp.service.RegisterService;
 import com.leaf.myapp.vo.OpenRequestReplyVO;
+import com.leaf.myapp.vo.OpenRequestVO;
 import com.leaf.myapp.vo.OrderListVO;
 import com.leaf.myapp.vo.RegisterVO;
 
@@ -78,10 +73,10 @@ public class RegisterController {
 		if(orderList!=null) {
 			mv.addObject("orderList",orderList);
 		}
-		List<OpenRequestReplyVO> openReply = registerService.openReply(id);
-		if(openReply!=null) {
-			mv.addObject("openReply",openReply);
-		}
+//		List<OpenRequestReplyVO> openReply = registerService.openReply(id);
+//		if(openReply!=null) {
+//			mv.addObject("openReply",openReply);
+//		}
 		mv.setViewName("register/mypageEdit");
 	   return mv;
 	}
@@ -329,4 +324,25 @@ public class RegisterController {
         
         return result;
     }
+    
+    
+    // 마이페이지 창업문의게시글
+    @RequestMapping("/myPageOpenQuestion")
+    public ModelAndView myPageOpenQuestion(OpenRequestVO oqVo, OpenRequestReplyVO rpVo, HttpSession ses) {
+    	
+    	String id = (String)ses.getAttribute("logid");
+    	
+    	List<OpenRequestReplyVO> rpList = new ArrayList<OpenRequestReplyVO>();
+    	rpList = registerService.openReply(id);
+    	
+    	ModelAndView mav = new ModelAndView();
+   	
+    	if(rpList!=null) {
+			mav.addObject("openReply",rpList);
+			mav.setViewName("register/myPageOpenQuestion");
+		} 	
+    	
+    	return mav;
+    }
+    
 }

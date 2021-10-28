@@ -51,6 +51,10 @@
 	    	on m.p_num = o.p_num where userid=#{param1}
 	</select>
 	<select id="openReply" resultType="com.leaf.myapp.vo.OpenRequestReplyVO">
-		select oq.userid, oq.content, nvl(rp.rpcon,'답변대기') rpcon, oq.oq_num from openquestion oq  join openreply rp on oq.oq_num= rp.oq_num(+) where oq.userid=#{param1}
+		select oq.content, oq.writedate openrequestwrtiedate, nvl(rp.rpcon,'답변대기') rpcon, to_char(nvl(rp.rpldate,to_date('01','MM'))) rpldate
+		from openquestion oq  
+			join openreply rp 
+		on oq.oq_num= rp.oq_num(+) 
+		where oq.userid=#{param1}
 	</select>
 </mapper>

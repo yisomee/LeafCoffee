@@ -334,7 +334,7 @@ $(()=>{
 </div>
 <nav id="detailMenu">
 	<div id="menu1"><a href="/myapp/membership">주문내역</a></div>
-	<div id="menu2"><a href="/myapp/memberGrade">창업문의 내역</a></div>
+	<div id="menu2"><a href="/myapp/myPageOpenQuestion">창업문의 내역</a></div>
 	<div id="menu3"><a href="/myapp/memberGrade">개인정보 수정</a></div>
 </nav>
    <div class="containers">

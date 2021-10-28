@@ -16,6 +16,17 @@ public class OpenRequestReplyVO {
 	private int replydeleteresult=1;// ��ۻ�������
 	
 	
+	private String openrequestwrtiedate;
+	
+	
+	
+	
+	public String getOpenrequestwrtiedate() {
+		return openrequestwrtiedate;
+	}
+	public void setOpenrequestwrtiedate(String openrequestwrtiedate) {
+		this.openrequestwrtiedate = openrequestwrtiedate;
+	}
 	public String getContent() {
 		return content;
 	}
