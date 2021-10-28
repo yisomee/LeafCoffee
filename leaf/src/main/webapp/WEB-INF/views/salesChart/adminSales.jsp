@@ -811,7 +811,7 @@
            </ul>
             <ul class="logout">
                 <li>
-                   <a href="#">
+                   <a href="/myapp/logout">
                          <i class="fa fa-2x"></i>
                         <span class="nav-text">Logout</span>
                     </a>

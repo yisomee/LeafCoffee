@@ -21,9 +21,9 @@
 				"nowPage="+nowPage+"&"+
 				"oq_status="+oq_status,
 		success:function(result){
-			console.log(result);
+
 			let openvo = $(result.openvo);
-			console.log(openvo);
+
 			
 			if(openvo.length==0){
 				let notSearch = '<div>'+searchWord+'에 대해 0건이 발견되었습니다.</div>';					
@@ -194,7 +194,7 @@
 							for (var j = result.pvo.startPage; j <=result.pvo.startPage+result.pvo.onePageViewNum-1; j++) {
 
 								if(j<=result.pvo.totalPage){
-									console.log("토탈페이지=>"+result.pvo.totalPage);
+
 									if(j==nowPage){
 										$('.page_nation').append('<a class="active" href="javascript:listSelect('+j+','+sk+','+sw+','+st+')">'+j+'</a>');
 									}else if(j!=nowPage){
@@ -291,8 +291,8 @@
 	/*창업문의 리스트*/
 	#open-list{overflow:auto; text-align:center; padding:0;}
 	#open-list>li{float:left; width:10%; border-bottom: 1px solid #ddd; height:50px; font-size:0.9rem; line-height:50px;white-space:nowrap; text-overflow:ellopsis; overflow:hidden;}
-	#open-list>li:nth-child(6n+3){width:40%; text-align:center;}
-	#open-list>li:nth-child(6n+5){width:20%; text-align:center;}
+	#open-list>li:nth-child(6n+3){width:40%; text-align:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+	#open-list>li:nth-child(6n+5){width:20%; text-align:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
 	
 	
 	/* 페이징 번호*/
