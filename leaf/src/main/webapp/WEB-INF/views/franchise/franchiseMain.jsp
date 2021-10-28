@@ -71,24 +71,28 @@ button{
 	width:400px;
 	position:absolute;
 	top: 98px;
-	
+	    line-height: 30px
 }
 .bn1{
 	left:60%;
 }
+.bn1>button{
+ margin-top:20px;}
 .bn2{left:10%}
 .bn2>button{
-background: white;}
+background: white; margin-top:20px;}
 .bn3{left:60%;
 color: white;}
 .bn3>button{
 background: rgb(57,47,46);
 	border: 2px solid white;
 	color:white;
-	font-family: 'Do Hyeon'}
+	margin-top:20px;
+	}
 .bn4{left:10%}
 .bn4>button{
 background: rgb(215,210,204);
+margin-top:20px;
 }
 .txthead{
 font-size:1.9rem;

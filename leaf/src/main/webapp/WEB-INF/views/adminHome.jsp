@@ -629,7 +629,7 @@ $('#menu-bg').on('mouseleave',function(){
 // 가맹점 현황
 let tst = '${vo.totalFran}';
 $({ val : 0 }).animate({ val : tst }, {
-  duration: 20000,
+  duration: 5000,
   step: function() {
     var num = numberWithCommas(Math.floor(this.val)); // 소수점 이하 버림
     $(".total-store").text(num);
@@ -643,7 +643,7 @@ $({ val : 0 }).animate({ val : tst }, {
 // 총 매출
 let tsal = '${vo.totalsales}';
 $({ val : 0 }).animate({ val : tsal }, {
-  duration: 30000,
+  duration: 5000,
   step: function() {
     var num = numberWithCommas(Math.floor(this.val));
     $(".total-sale").text(num);
@@ -657,7 +657,7 @@ $({ val : 0 }).animate({ val : tsal }, {
 // 총 임직원
 let tmg = '${vo.totalManage}';
 $({ val : 0 }).animate({ val : tmg }, {
-  duration: 20000,
+  duration: 5000,
   step: function() {
     var num = numberWithCommas(Math.floor(this.val));
     $(".total-maneger").text(num);
@@ -671,7 +671,7 @@ $({ val : 0 }).animate({ val : tmg }, {
 // 함께하는 회원
 let tmb = '${vo.totalRegi}';
 $({ val : 0 }).animate({ val : tmb }, {
-  duration: 20000,
+  duration: 5000,
   step: function() {
     var num = numberWithCommas(Math.floor(this.val));
     $(".total-member").text(num);

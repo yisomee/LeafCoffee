@@ -51,6 +51,6 @@
 	    	on m.p_num = o.p_num where userid=#{param1}
 	</select>
 	<select id="openReply" resultType="com.leaf.myapp.vo.OpenRequestReplyVO">
-		select oq.content, rp.rpcon from openquestion oq join openreply rp on oq.oq_num= rp.oq_num where rp.userid = #{param1}
+		select oq.userid, oq.content, nvl(rp.rpcon,'답변대기') rpcon, oq.oq_num from openquestion oq  join openreply rp on oq.oq_num= rp.oq_num(+) where oq.userid=#{param1}
 	</select>
 </mapper>

@@ -196,13 +196,14 @@ height: 46px;
 				</ul>					
 			</li>
 <!----------------------------------  -->	
-			<c:if test="${auth=='fran'}">
+			
 			<li class="select-li" ><a href="#">발주하기</a>
+			
 				<ul class="ulclass">
 					<li style="padding-top:17px;"><a href="/myapp/purchase">발주하기</a></li>
 				</ul>					
 			</li>
-			</c:if>
+			
 <!--------------------------------------------->
 			<li class="select-li"><div><a href="/myapp/franNotice">WHAT`S UP</a></div>
 				<ul class="ulclass">

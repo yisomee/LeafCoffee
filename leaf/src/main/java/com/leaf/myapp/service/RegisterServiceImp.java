@@ -35,8 +35,8 @@ public class RegisterServiceImp implements RegisterService {
    @Override //문자인증
    public void certifiedPhoneNumber(String phoneNumber, String cerNum) {
 
-       String api_key = "NCS6YSKXNCFAMBQ8";
-       String api_secret = "G8PBJXQOUWASLAOBGEIQOMXFIHEZYZHY";
+       String api_key = "NCS4SHKDY9DSSQEC";
+       String api_secret = "ZXD4KLFCHNJA89ICRGPT8ECNRXJ4DUO9";
        Message coolsms = new Message(api_key, api_secret);
 
        // 4 params(to, from, type, text) are mandatory. must be filled

@@ -10,7 +10,9 @@
 
 
 <style>
-
+header{height:330px;}
+	header img{height:330px;width:100%}
+		#headerText{position:relative;top:-100px;left:860px;font-size:3em;color:white;opacity:0.5}
    ul,li{margin:0; padding:0; list-style:none;}
    .imglogo{
       height:250px;
@@ -249,6 +251,7 @@ border-right:none;
  	border-bottom: 1px solid #ddd;
  	height: 25px;
     line-height: 25px;
+    overflow:hidden;
  }
  #orderList>li:nth-child(3n-3){
 	width:25%;
@@ -266,11 +269,74 @@ border-right:none;
  #openReply>li:nth-child(2n-2){
  	width:50%;
  }
+	.custom-shape-divider-bottom-1634814182 {
+    position: absolute;
+    top:375px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
 
+.custom-shape-divider-bottom-1634814182 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 75px;
+}
+
+.custom-shape-divider-bottom-1634814182 .shape-fill {
+    fill: #FFFFFF;
+}
+#detailMenu{display:flex;justify-content:center;width:100%;border-bottom:1px solid gray;}
+	#detailMenu>div:first-child{padding:15px 53px}
+	#detailMenu>div:last-child{padding:15px 28px}
+	#detailMenu a{color:#62605F;}
+	#menu1{border-bottom:4px solid rgb(0, 163, 239);}
+	#menu2{padding: 15px 28px;}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+$(()=>{	
+	$("#headerText").animate({
+	  	  top: "-205px", opacity:0.9
+	  	  }, 600,);
+	$("#menu1").click(function(){
+		$(this).css('color','rgb(0, 163, 239)').css('border-bottom','4px solid rgb(0, 163, 239)');
+		$("#menu2").css('border','none');
+		$("#menu3").css('border','none');
+	});
+	$("#menu2").click(function(){
+		$(this).css('color','rgb(0, 163, 239)').css('border-bottom','4px solid rgb(0, 163, 239)');
+		$("#menu1").css('border','none');
+		$("#menu3").css('border','none');
+	});
+	$("#menu3").click(function(){
+		$(this).css('color','rgb(0, 163, 239)').css('border-bottom','4px solid rgb(0, 163, 239)');
+		$("#menu1").css('border','none');
+		$("#menu2").css('border','none');
+	});
+});
+</script>
 </head>
 <body>
+<header>
+	<img src="https://www.baristapaulbassett.co.kr/images/whatsnew/eventSubVisual.jpg"/>
+	<span id="headerText">My Page</span>
+</header>
+<div class="custom-shape-divider-bottom-1634814182">
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+        <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+        <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+    </svg>
+</div>
+<nav id="detailMenu">
+	<div id="menu1"><a href="/myapp/membership">주문내역</a></div>
+	<div id="menu2"><a href="/myapp/memberGrade">창업문의 내역</a></div>
+	<div id="menu3"><a href="/myapp/memberGrade">개인정보 수정</a></div>
+</nav>
    <div class="containers">
          
       
@@ -288,10 +354,16 @@ border-right:none;
 	         <ul id="openReply">
 	         	<h3>창업문의 답글확인</h3>
 	         	<li>문의내용</li><li>답변내용</li>
-	         	<c:forEach var="openVo" items="${openReply}">
-	         		<li>${openVo.content}</li>
-	         		<li>${openVo.rpcon}</li>
-	         	</c:forEach>
+	         
+	         	<c:if test='${openReply!=""}'>
+		         	<c:forEach var="openVo" items="${openReply}">
+		         		<li>${openVo.content}</li>
+		         		<li>${openVo.rpcon}</li>
+		         	</c:forEach>
+	         	</c:if>
+<%-- 	         	<c:if test="${openReply==[]}"> --%>
+<!-- 	         		답변대기중인 문의사항입니다. -->
+<%-- 	         	</c:if> --%>
 	         </ul>
          </div>
          <div class="formdiv">
