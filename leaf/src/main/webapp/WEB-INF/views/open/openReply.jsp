@@ -41,34 +41,14 @@
 	.owc-ct li input[type=text]{border:0px solid; text-align:center; width:100%; height:100%;}
 	
 	#lastdatelabel{height:25px;}
-	#lastdatevalue{height:25px;}
-	
-	
-	
-	
+	#lastdatevalue{height:25px;}	
 	.owc-ct .rpcontent{resize:none; background:#fff; width:95%; height:220px; line-height:35px; font-size:1.2em;
 					border-collapse:collapse; border:1px solid gray; text-align:left;
 	}	
 	.owc-ct #text-count{font-size:1.3em;float:right; margin:10px 20px;font-family: 'Noto Sans KR';}
-	.owc-ct #replywritebtn{line-height: 38px;
-    text-align: center;
-      background-color: white;
-	    width: 150px;
-	    height: 40px;
-	    border-radius: 2px;
-	    border: 1px solid rgb(0, 163, 239);
-	    font-size: 0.9rem;
-	    color: rgb(0, 163, 239);
-	    margin-left: 7px;
-	    transition: 0.4s;
-	    padding-left: 0px;}
-	#replywritebtn:hover{
-      cursor: pointer;
-      box-shadow: inset 30em 0 0 0 rgb(0, 163, 239);
-	color: white;
-	border-color: rgb(0, 163, 239);
-   }
-	
+	.owc-ct #replywritebtn{line-height: 38px; text-align: center; background-color: white; width: 150px; height: 40px; border-radius: 2px;
+	    border: 1px solid rgb(0, 163, 239); font-size: 0.9rem; color: rgb(0, 163, 239); transition: 0.4s; padding-left: 0px; position:absolute; left:385px; top:247px;}
+	#replywritebtn:hover{cursor: pointer; box-shadow: inset 30em 0 0 0 rgb(0, 163, 239); color: white; border-color: rgb(0, 163, 239);}
 	#rpconlabel{border:0px;}
 	input[type=button]{width:100px; height:35px;border: 0px solid; background: rgb(0,192,239); color: #fff; font-weight: bold;
 				box-sizing: border-box; position:relative; top:20px; left:966px;
@@ -79,7 +59,14 @@
 	#rpcon{border:0;}
 	#content{resize: none; border:0px; width:100%; height:100%; text-align:center;}
 	#content:focus{outline:none;}
-	#openreplyfrm{font-size:0.9rem;}		
+	#openreplyfrm{font-size:0.9rem;}	
+	#openListGoBtn{line-height: 38px; text-align: center; background-color: white; width: 150px; height: 40px; border-radius: 2px;
+	    border: 1px solid rgb(0, 163, 239); font-size: 0.9rem; color: rgb(0, 163, 239); margin:30px 0px 0px 1040px; transition: 0.4s; padding-left: 0px; display:inline-block;}
+	#openListGoBtn:hover{cursor: pointer; box-shadow: inset 30em 0 0 0 rgb(0, 163, 239); color: white;border-color: rgb(0, 163, 239);}
+	#replyOkListGo{position:absolute; left:500px; top: 300px;}
+	#replyOkopenListGoBtn{display:inline-block; width:100px; height:35px; position:absolute; background-color: rgb(0, 192, 239); top:1668px; left:1245px; color:#fff; text-align:center;
+							font-weight:600; padding:7px;
+	}    	
 </style>
 <script>	
 
@@ -110,19 +97,21 @@
 						tag += "<li><textarea name='rpcon' id='rpcon' class='rpcontent' cols='50' rows='11'></textarea>";
 						tag += "<label id='text-count'>0/500글자</label>";
 						tag += "<input type='submit' value='답변하기' id='replywritebtn'/></li></form></ul>";
+					    tag += "<a href='/myapp/openQuestionPage' id='openListGoBtn'>목록으로</a>";	
 					}else{ // 답글이 있는 경우
 						tag += "<li><input type='text' name='username' value='${rpvo.username}'></li>";			
 						tag += "<li id='lastdatelabel'>최종답변일</li>";
 						tag += "<li id='lastdatevalue'><input type='text' name='rpldate' value='${rpvo.rpldate}'/></li>"
-						tag += "<li>답변내용</li>";
+						tag += "<li>답변내용</li>";						
 						
 						if('${rpvo.userid}'!='nosamereplyid'){// 로그인한 사람이 답글 작성자인 경우		
 							tag += "<li><textarea class='rpcontent' id='rpcon' name='rpcon' readonly>${rpvo.rpcon}</textarea>";
 							tag += "<label id='text-count' style='display:none';>0/500글자</label></li><ul>";
+							$('.editbtn').append("<a href='/myapp/openQuestionPage' id='replyOkopenListGoBtn'>목록으로</a>");
 							$('.editbtn').append("<input type='button' value='수정하기'/></form>");
 							$('.editbtn').append("<input type='button' value='삭제하기'/></form>");
 						}else{ // 로그인한 사람이 답글 작성자가 아닌경우
-							tag += "<li><textarea class='rpcontent' id='rpcon' name='rpcon' readonly>${rpvo.rpcon}</textarea></li></form></ul>";
+							tag += "<li><textarea class='rpcontent' id='rpcon' name='rpcon' readonly>${rpvo.rpcon}</textarea></li><a href='/myapp/openQuestionPage' id='openListGoBtn'>목록으로</a></form></ul>";
 						}
 					}
 					$('.owc-ct').empty();
@@ -163,6 +152,7 @@
 						tag += "<li><textarea name='rpcon' id='rpcon' class='rpcontent' cols='50' rows='11'></textarea>";
 						tag += "<label id='text-count'>0/500글자</label>";
 						tag += "<input type='submit' value='답변하기' id='replywritebtn'/></li></form></ul>";
+						tag += "<a href='/myapp/openQuestionPage' id='openListGoBtn'>목록으로</a>";
 						$('.editbtn').empty();
 					}else{ // 답글이 있는 경우
 						tag += "<li><input type='text' name='username' value='"+rplist.username+"'></li>";			
@@ -174,10 +164,11 @@
 							tag += "<li><textarea class='rpcontent' id='rpcon' name='rpcon' readonly>"+rplist.rpcon+"</textarea>";
 							tag += "<label id='text-count' style='display:none';>0/500글자</label></li><ul>";
 							$('.editbtn').empty();
+							$('.editbtn').append("<a href='/myapp/openQuestionPage' id='replyOkopenListGoBtn'>목록으로</a>");
 							$('.editbtn').append("<input type='button' value='수정하기'/></form>");
 							$('.editbtn').append("<input type='button' value='삭제하기'/></form>");
 						}else{ // 로그인한 사람이 답글 작성자가 아닌경우
-							tag += "<li><textarea class='rpcontent' id='rpcon' name='rpcon' readonly>"+rplist.rpcon+"</textarea></li></form></ul>";
+							tag += "<li><textarea class='rpcontent' id='rpcon' name='rpcon' readonly>"+rplist.rpcon+"</textarea></li><a href='/myapp/openQuestionPage' id='openListGoBtn'>목록으로</a></form></ul>";
 						}
 					}
 					$('.owc-ct').empty();					
