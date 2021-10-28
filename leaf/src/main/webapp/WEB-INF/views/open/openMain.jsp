@@ -413,7 +413,7 @@
 				<ul id="open-list-top">
 					<li>선택</li>				
 					<li>NO</li>
-					<li>제목</li>
+					<li>내용</li>
 					<li>작성자</li>
 					<li>등록일</li>
 					<li>답변상태</li>					
