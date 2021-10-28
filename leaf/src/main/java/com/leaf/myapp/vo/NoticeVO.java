@@ -13,7 +13,14 @@ public class NoticeVO {
 	private String prev;
 	private String next;
 	private String auth;
+	private String n_img;
 			
+	public String getN_img() {
+		return n_img;
+	}
+	public void setN_img(String n_img) {
+		this.n_img = n_img;
+	}
 	public String getAuth() {
 		return auth;
 	}

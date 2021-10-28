@@ -30,6 +30,7 @@
 	.prev{display:flex;border-right:1px solid gray;padding:0 50px;}
 	.next{display:flex;}
 	.link>li:first-child{font-size:0.8em;font-weight:bold;}
+	.content>img{width:700px;height:1000px}
 </style>	
 <script>
 
@@ -59,7 +60,7 @@ $(()=>{
 			<div class="title">${noticeVo.title }</div>
 			<div><strong>등록일</strong> <span style="color:gray">${noticeVo.writedate }</span></div> 
 		</div>
-		<div class="content">${noticeVo.content }</div>
+		<div class="content"><img src="img/${noticeVo.n_img }"/><br/><br/>${noticeVo.content }</div>
 	</div>
 </div>
 <div class="btnList">

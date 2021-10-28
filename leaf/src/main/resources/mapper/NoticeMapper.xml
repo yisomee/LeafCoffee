@@ -16,7 +16,7 @@
    <!--     select no, title, content, userid, to_char(writedate, 'YY-MM-DD') writedate from notice where no=#{param1}  --> 
     
     	select * from(
-		select no, title, content, userid, to_char(writedate, 'YY-MM-DD') writedate,
+		select no, title, content, userid,n_img, to_char(writedate, 'YY-MM-DD') writedate,
 		lag(no) over(order by no) as prev,
         lag(title) over(order by no) prev_title,
         lead(no) over(order by no) as next,
