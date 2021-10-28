@@ -166,9 +166,12 @@ height: 46px;
          <c:if test="${logname==null}"><li><a href="/myapp/login">LOGIN</a></li></c:if>
          <c:if test="${logname!=null}"><li><a href="/myapp/logout">LOGOUT</a></li></c:if>
          <div class="logname">${logname}
+         <c:if test="${membership==0}">Welcome <i class="fab fa-envira" style="color:gray;"></i></c:if>
          <c:if test="${membership==1}">Silver <i class="fab fa-envira" style="color:gray;"></i></c:if>
          <c:if test="${membership==2}">Gold <i class="fab fa-envira" style="color:gold;"></i></c:if>
-         <c:if test="${membership==3}">Platinum <i class="fab fa-envira"style="color:blue;"></i></c:if></div>
+         <c:if test="${membership==3}">Platinum <i class="fab fa-envira"style="color:blue;"></i></c:if>
+         <c:if test="${membership==4}"> </i></c:if>
+         </div>
        
          <c:if test="${logname==null}"><li><a href="/myapp/register">JOIN</a></li></c:if>
          <c:if test="${logname!=null}"><li><a href="/myapp/mypage">마이페이지</a></li></c:if>

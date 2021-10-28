@@ -199,7 +199,11 @@ $(()=>{
 	               	    <td><c:if test="${ProductVO.order_status == 1}">대기</c:if>
 	               	    	<c:if test="${ProductVO.order_status == 2}">완료</c:if>
 	               	    </td>
-	               	    <td><form method="post" id="form" action="/myapp/purchaseConfirm"><input type="submit" class='confirmBtn' value="확인"/><input type="hidden" name="pc_num" value="${ProductVO.pc_num }"></form></td>  					
+	               	    <td>
+	               	    <c:if test="${ProductVO.order_status == 1}">
+	               	    <form method="post" id="form" action="/myapp/purchaseConfirm"><input type="submit" class='confirmBtn' value="확인"/><input type="hidden" name="pc_num" value="${ProductVO.pc_num }"></form> 					
+		            	</c:if>
+		            	</td> 
 		            </tr>
 		            </c:forEach>
 	         </tbody>

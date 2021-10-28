@@ -16,6 +16,7 @@ body {
 	background-color: white;
 	margin-top: 100px;
 	margin-bottom: 200px;
+	height:900px;
 }
 
 /*head 이미지*/
@@ -68,12 +69,12 @@ nav>div {
 
 .mf-inputCon {
 	border: 1px solid #ddd;
-	border-bottom: 0px solid gray;
 	border-radius: 3px;
 	box-sizing: border-box;
 	max-width: 570px;
 	margin: 0 auto 30px;
 	position: relative;
+	top:30px;
 }
 
 .mfi-img {
