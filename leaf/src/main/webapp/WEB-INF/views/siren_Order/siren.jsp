@@ -225,7 +225,6 @@
 		});		
 		let price = $("#selectPrice").text();
 		//음료추가
-		price = $("#selectPrice").text();
 		$("#menuPlus").click(function(){
 			$("#menuCnt").html(parseInt($("#menuCnt").text())+1);
 			//메뉴를 선택하면  밑의 실행문 사용selectprice
@@ -301,22 +300,24 @@
 		$("#shotPlus").click(function(){
 			$("#shotCnt").html(parseInt($("#shotCnt").text())+1);
 			$("#shotPrice").html(parseInt($("#shotPrice").text())+shot);
+			selectPrice = $("#selectPrice").text();
 			if(parseInt($("#shotCnt").text())>0){
 				$("#shotPrice").css('visibility','visible');
 			}
-			shotPrice = $("#shotPrice").text();	
-			$("#totalPrice").html(parseInt(selectPrice)+parseInt(shotPrice)+parseInt(syrupPrice));
+				shotPrice = $("#shotPrice").text();	
+				console.log('selectPri-'+selectPrice+"shotPr-"+shotPrice+'syrup='+syrupPrice);
+				$("#totalPrice").html(parseInt(selectPrice)+parseInt(shotPrice)+parseInt(syrupPrice));
 		});
 		$("#shotMinus").click(function(){
 			if(parseInt($("#shotCnt").text())>0 && parseInt($("#shotPrice").text())>0){
 				$("#shotCnt").html(parseInt($("#shotCnt").text())-1);
 				$("#shotPrice").html(parseInt($("#shotPrice").text())-shot);
+				shotPrice = $("#shotPrice").text();	
+				$("#totalPrice").html(parseInt(selectPrice)+parseInt(shotPrice)+parseInt(syrupPrice));
 			}
 			if(parseInt($("#shotCnt").text())<1){
 				$("#shotPrice").css('visibility','hidden');
 			}
-			shotPrice = $("#shotPrice").text();	
-			$("#totalPrice").html(parseInt(selectPrice)+parseInt(shotPrice)+parseInt(syrupPrice));
 		});
 		
 		//시럽 +,-/시럽은 몇번을 추가해도 500원 
@@ -332,13 +333,13 @@
 		$("#syrupMinus").click(function(){
 			if(parseInt($("#syrupNum").text())>0){
 				$("#syrupNum").html(parseInt($("#syrupNum").text())-1);
+				syrupPrice = $("#syrupPrice").text();
+				$("#totalPrice").html(parseInt(selectPrice)+parseInt(shotPrice)+parseInt(syrupPrice));
 			}
 			if(parseInt($("#syrupNum").text())<1){
 				$("#syrupPrice").html(0);
 				$("#syrupPrice").css('visibility','hidden');
 			}
-			syrupPrice = $("#syrupPrice").text();
-			$("#totalPrice").html(parseInt(selectPrice)+parseInt(shotPrice)+parseInt(syrupPrice));
 		});
 		
 	      //장바구니 담기 버튼 클릭시
@@ -688,7 +689,7 @@
         var p_num = $('.selecPnum').text();
         var od_cnt = $('#menuCnt').text();
         var selectName = $('#selectName').text();
-        
+        console.log('머니-'+money);
         if(cup==null){
             alert("컵을 선택해주세요.");
          }else if(size==null){
@@ -703,7 +704,7 @@
 	            pay_method:'card',
 	            merchant_uid: 'merchant_' + new Date().getTime(),
 	            name: selectName,
-	            amount: 100,//money로 바꾸기
+	            amount: money,//money로 바꾸기
 	            buyer_name: userName,
 	            buyer_postcode:'113-343',            
 	        }, function (rsp) {
@@ -744,6 +745,8 @@ $('#payBtn').click(function () {
     IMP.init('imp54411040');
     var userName = '${regVo.username}';
 	var cartPrice = $(".cartMon").text();
+	console.log("결제");
+	console.log(cartPrice);
 	var param = '';
 	$("input[name=cartChk]:checked").each(function(){
 		param += $(this).val()+"/";
@@ -759,7 +762,7 @@ $('#payBtn').click(function () {
 	        pay_method:'card',
 	        merchant_uid: 'merchant_' + new Date().getTime(),
 	        name: '총'+$("input:checkbox[name=cartChk]:checked").length+"건",
-	        amount: 100,//cartPrice로 바꾸기
+	        amount: cartPrice,//cartPrice로 바꾸기
 	        buyer_name: userName,
 	        buyer_postcode:'113-343',            
 	    }, function (rsp) {
