@@ -64,11 +64,12 @@
 	    border: 1px solid rgb(0, 163, 239); font-size: 0.9rem; color: rgb(0, 163, 239); margin:30px 0px 0px 1040px; transition: 0.4s; padding-left: 0px; display:inline-block;}
 	#openListGoBtn:hover{cursor: pointer; box-shadow: inset 30em 0 0 0 rgb(0, 163, 239); color: white;border-color: rgb(0, 163, 239);}
 	#replyOkListGo{position:absolute; left:500px; top: 300px;}
-	#replyOkopenListGoBtn{display:inline-block; width:100px; height:35px; position:absolute; background-color: rgb(0, 192, 239); top:1668px; left:1245px; color:#fff; text-align:center;
+	#replyOkopenListGoBtn{display:inline-block; width:100px; height:35px; position:absolute; background-color: rgb(0, 192, 239); top:1667px; left:1187px; color:#fff; text-align:center;
 							font-weight:600; padding:7px;
 	}    	
 </style>
 <script>	
+	let regex = /<br\s*[\/]?>/gi;
 
 	$(()=>{
 		
@@ -87,7 +88,10 @@
 						tag += "<li>등록일</li>";
 						tag += "<li><input type='text' name='writedate' value='${oqVo.writedate}'/></li>";
 						tag += "<li>내용</li>";			
-						tag += "<li><textarea name='content' id='content'>${oqVo.content}</textarea></li>";
+						tag += "<li><textarea name='content' id='content'>";
+						let realcontent= '${oqVo.content}';
+						realcontent = realcontent.replace(regex,"\r\n");
+						tag += realcontent+"</textarea></li>";
 						tag += "<li>답변상태</li>";
 						tag += "<li><input type='text' name='oq_status' value='${oqVo.oq_status}'></li>";
 						tag += "<li>답변자</li>";
@@ -142,7 +146,10 @@
 						tag += "<li>등록일</li>";
 						tag += "<li><input type='text' name='writedate' value='"+oqlist.writedate+"'/></li>";
 						tag += "<li>내용</li>";			
-						tag += "<li><input type='text' name='content' value='"+oqlist.content+"'></li>";
+						let realcontent= oqlist.content;
+						realcontent = realcontent.replace(regex,"\r\n");
+						tag += "<li><input type='text' name='content' value='realcontent'></li>";
+//						tag += "<li><input type='text' name='content' value='"+oqlist.content+"'></li>";
 						tag += "<li>답변상태</li>";
 						tag += "<li><input type='text' name='oq_status' value='"+oqlist.oq_status+"'></li>";
 						tag += "<li>답변자</li>";
@@ -159,7 +166,7 @@
 						tag += "<li id='lastdatelabel'>최종답변일</li>";
 						tag += "<li id='lastdatevalue'><input type='text' name='rpldate' value='"+rplist.rpldate+"'/></li>"
 						tag += "<li>답변내용</li>";
-						console.log(rplist.userid!='nosamereplyid');
+
 						if(rplist.userid!='nosamereplyid'){// 로그인한 사람이 답글 작성자인 경우		
 							tag += "<li><textarea class='rpcontent' id='rpcon' name='rpcon' readonly>"+rplist.rpcon+"</textarea>";
 							tag += "<label id='text-count' style='display:none';>0/500글자</label></li><ul>";
@@ -235,8 +242,7 @@
 				let rpcontent = $('#rpcon').val();
 				
 				$('#rpcon').change(function(e) {
-					console.log(e.target.value);
-					console.log($('#rpcon').val());
+
 					rpcontent = $('#rpcon').val();
 				});
 				
