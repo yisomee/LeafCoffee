@@ -2,33 +2,33 @@ package com.leaf.myapp.vo;
 
 public class EmployeeVO {
 	private int emp_num;
-	private String emp_posi; // ����
-	private String emp_regdate; // �Ի���		
-	private int dept_num; // �μ��ڵ�
-	private String dept_name; // �μ���
-	private String emp_status; // ��������
+	private String emp_posi; // 占쏙옙占쏙옙
+	private String emp_regdate; // 占쌉삼옙占쏙옙		
+	private int dept_num; // 占싸쇽옙占쌘듸옙
+	private String dept_name; // 占싸쇽옙占쏙옙
+	private String emp_status; // 占쏙옙占쏙옙占쏙옙占쏙옙
 	
 	
-	private String nullid; // ������ �Ǿ������� �������� ���� ���̵�
+	private String nullid; // 占쏙옙占쏙옙占쏙옙 占실억옙占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占싱듸옙
 	private String userid;
 	private String userpwd;
 	private String username;
 	private String birth;
 	private int membership;
-	private String regdate; //ȸ�������
+	private String regdate; //회占쏙옙占쏙옙占쏙옙占�
 	private String addr;
 	private String auth;
 	
-	// ����ó
+	// 占쏙옙占쏙옙처
 	private String tel;
 	private String tel1;
 	private String tel2;
 	private String tel3;
 	
-	// �̸���
+	// 占싱몌옙占쏙옙
 	private String email;
-	private String emailid; // @��
-	private String domain; // @��
+	private String emailid; // @占쏙옙
+	private String domain; // @占쏙옙
 	
 	
 	public int getEmp_num() {
@@ -118,17 +118,19 @@ public class EmployeeVO {
 		this.auth = auth;
 	}
 	public String getTel() {
-		if(tel!=null) {
-			tel1 = tel.substring(0,3);
-			tel2 = tel.substring(3,7);
-			tel3 = tel.substring(7);
-		}else {
-			tel = tel1+tel2+tel3;
-		}
+		
+		tel = tel1+tel2+tel3;
+		
 		return tel;
 	}
 	public void setTel(String tel) {		
 		this.tel = tel;
+		
+		if(tel!=null) {
+			tel1 = tel.substring(0,3);
+			tel2 = tel.substring(3,7);
+			tel3 = tel.substring(7);
+		}
 	}
 	public String getTel1() {
 		return tel1;
