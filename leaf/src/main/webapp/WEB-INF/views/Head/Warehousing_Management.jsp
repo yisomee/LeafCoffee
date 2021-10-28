@@ -115,6 +115,11 @@ nav>div {
 	margin-left:780px;
 	margin-right:20px;
 }
+#searchList td:hover{
+	font-weight:bold;
+	cursor: pointer;
+	font-size:2em;
+}
 </style>
 <script>
 $(()=>{

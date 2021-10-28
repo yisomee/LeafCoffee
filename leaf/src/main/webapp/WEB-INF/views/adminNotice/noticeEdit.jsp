@@ -21,7 +21,18 @@
 	#filename {display: none;}
 </style>
 <script>
-
+$(() => {
+	$("input[type='file']").change(function(event){
+		var imageFile = event.target.files[0];
+		console.log(imageFile.name);
+		var reader = new FileReader();
+		reader.onload = (e) => {
+			$("#fileimg").children().attr("src", e.target.result);
+			$("#uploaded").html(imageFile.name);
+		};
+		reader.readAsDataURL(imageFile);
+	});
+});
 </script>
 <div class="container">
 	<h3><b>공지사항수정</b></h3>
