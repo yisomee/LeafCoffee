@@ -17,7 +17,6 @@
 	box-shadow: 0px 1px 2px 1px lightslategrey;
 	border-radius: 3px;
 	height: 910px;
-	background-color: rgb(249, 247, 244);
 	cursor: pointer;
 }
 
@@ -25,7 +24,6 @@
 	margin-right: 10px;
 	box-shadow: 0px 1px 2px 1px lightslategrey;
 	border-radius: 3px;
-	background-color: rgb(249, 247, 244);
 	display: flex;
 	padding: 20px;
 }
@@ -37,7 +35,6 @@
 	flex-direction: column;
 	box-shadow: 0px 1px 2px 1px lightslategrey;
 	border-radius: 3px;
-	background-color: rgb(249, 247, 244);
 }
 
 .store {
@@ -48,7 +45,6 @@
 	flex-direction: column;
 	box-shadow: 0px 1px 2px 1px lightslategrey;
 	border-radius: 3px;
-	background-color: rgb(249, 247, 244);
 	padding: 14px;
 }
 
@@ -59,7 +55,6 @@
 	box-shadow: 0px 1px 2px 1px lightslategrey;
 	border-radius: 3px;
 	overflow: auto;
-	background-color: rgb(249, 247, 244);
 }
 
 .text {
@@ -106,7 +101,6 @@ table, td {
 	width: 100px;
 	display: inline-block;
 	height: 30px;
-	background-color: rgb(249, 247, 244);
 }
 
 #delBtn {
@@ -205,7 +199,6 @@ input {
 	border-left: 0px;
 	border-bottom: 1px solid;
 	outline: none;
-	background-color: rgb(236, 236, 236);
 }
 
 .searchPartner {

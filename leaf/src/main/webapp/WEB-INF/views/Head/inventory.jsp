@@ -109,6 +109,11 @@ table, td {
 #name2 {
 	text-align: center;
 }
+#searchList td:hover{
+	font-weight:bold;
+	cursor: pointer;
+	font-size:2em;
+}
 </style>
 <script>
 $(()=>{

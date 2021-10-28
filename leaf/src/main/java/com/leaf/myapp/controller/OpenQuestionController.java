@@ -49,7 +49,9 @@ public class OpenQuestionController {
 	@RequestMapping(value="/registerOpenRequest", method=RequestMethod.POST)
 	public ModelAndView registerOpenRequest(OpenRequestVO oprVo, HttpSession ses) {
 		ModelAndView mav = new ModelAndView();
-
+		
+		String content = oprVo.getContent();
+		oprVo.setContent(content.replace("\r\n", "<br>"));
 		
 		String userid = (String)ses.getAttribute("logid");		
 		oprVo.setUserid(userid);
@@ -159,7 +161,7 @@ public class OpenQuestionController {
 		String ttel = oq.getTel3();
 		String realtel = otel+"-"+stel+"-"+ttel;		
 		
-		oq.setRealtel(realtel);
+		oq.setRealtel(realtel);	
 		
 		mav.addObject("oqVo", oq);
 		mav.addObject("rpvo",rpvo);		
