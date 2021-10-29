@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ include file="/inc/top.jspf" %>
 <!DOCTYPE html>
@@ -62,9 +62,9 @@
 	#detailMenu>div:first-child{padding:15px 53px}
 	#detailMenu>div:last-child{padding:15px 28px}
 	#detailMenu a{color:#62605F;}	
-	#menu2{padding: 15px 28px;border-bottom:4px solid rgb(0, 163, 239);}
-	
-	/* ¸®½ºÆ® */
+	#menu1{padding: 15px 28px;border-bottom:4px solid rgb(0, 163, 239);}
+	#menu2{padding: 15px 28px;}
+	/* ë¦¬ìŠ¤íŠ¸ */
 	.notice-con{width:1400px; margin:50px auto 0;}
 	.page-main-notice{text-align:center;}
 	.page-main-notice>h3{font-size: 2em; color: #333; font-weight: 700; margin-bottom: 20px;}
@@ -90,9 +90,38 @@
 	#emp-list>li{float:left; width:20%; border-bottom: 1px solid #ddd; height:50px; font-size:1.1em; line-height:50px;}
 	#emp-list>li:nth-of-type(4n+1){width:30%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
 	#emp-list>li:nth-of-type(4n+3){width:30%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+ 
+ #orderList{
+     height: 900px;
+    overflow: auto;
+    }
+ #orderList>li{
+ 	float:left;
+ 	border-bottom: 1px solid #ddd;
+ 	height: 25px;
+    line-height: 25px;
+    overflow:hidden;
+        height: 120px;
+    line-height: 120px;
+ }
+ #img{width: 100px;
+ }
+ #orderList>li:nth-child(6n-6){width:25%;}
+ #orderList>li:nth-child(6n-5){width:15%;}
+ #orderList>li:nth-child(6n-4){width:15%;}
+ #orderList>li:nth-child(6n-3){width:15%;}
+ #orderList>li:nth-child(6n-2){width:15%;}
+ #orderList>li:nth-child(6n-1){width:15%;}
+
+.listTitle{
+	height: 30px !important;
+	line-height: 30px !important;
+	border-bottom: 1px solid lightblue !important;
+	
+}
 </style>
 </head>
-<body>
+<body> 
 <header>
 	<img src="https://www.baristapaulbassett.co.kr/images/whatsnew/eventSubVisual.jpg"/>
 	<span id="headerText">My Page</span>
@@ -105,39 +134,31 @@
     </svg>
 </div>
 <nav id="detailMenu">
-	<div id="menu1"><a href="/myapp/orderList">ÁÖ¹®³»¿ª</a></div>
-	<div id="menu2"><a href="/myapp/myPageOpenQuestion">Ã¢¾÷¹®ÀÇ ³»¿ª</a></div>
-	<div id="menu3"><a href="/myapp/mypage">°³ÀÎÁ¤º¸ ¼öÁ¤</a></div>
+	<div id="menu1"><a href="/myapp/orderList">ì£¼ë¬¸ë‚´ì—­</a></div>
+	<div id="menu2"><a href="/myapp/myPageOpenQuestion">ì°½ì—…ë¬¸ì˜ ë‚´ì—­</a></div>
+	<div id="menu3"><a href="/myapp/mypage">ê°œì¸ì •ë³´ ìˆ˜ì •</a></div>
 </nav>   
 	<div class="notice-con">
 		<div class="page-main-notice">
-			<h3>Ã¢¾÷¹®ÀÇ ³»¿ª</h3>
-			<p>Ã¢¾÷¹®ÀÇ ³»¿ªÀ» È®ÀÎÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù</p>
+			<h3>ì£¼ë¬¸ë‚´ì—­</h3>
+			<p>ì£¼ë¬¸ ë‚´ì—­ì„ í™•ì¸í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤</p>
 		</div>	
 	</div>
 	<div class="containers">
 	
 		<div class="manage-listCon">
-			<ul id="emp-list-top">
-				<li>¹®ÀÇ³»¿ë</li>
-				<li>¹®ÀÇµî·ÏÀÏ</li>
-				<li>´äº¯³»¿ë</li>
-				<li>´äº¯µî·ÏÀÏ</li>
-			</ul>
-			<ul id="emp-list">
-			<c:forEach var="oqVo" items="${openReply}">
-				<li>${oqVo.content}</li>
-				<li>${oqVo.openrequestwrtiedate}</li>
-				<li>${oqVo.rpcon}</li>
-				<c:if test="${oqVo.rpcon=='´äº¯´ë±â'}">
-					<li>´äº¯´ë±âÁßÀÔ´Ï´Ù...</li>
-				</c:if>
-				<c:if test="${oqVo.rpcon!='´äº¯´ë±â'}">
-					<li>${oqVo.rpldate}</li>
-				</c:if>	
-			</c:forEach>
-			</ul>
-			</ul>		
+			<ul id="orderList">
+	         
+	         	<li class="listTitle">ìƒí’ˆì´ë¯¸ì§€</li><li class="listTitle">ìƒí’ˆëª…</li><li class="listTitle">ìƒí’ˆìˆ˜ëŸ‰</li><li class="listTitle">ê°œë³„ê°€ê²©</li><li class="listTitle">ì´ê°€ê²©</li><li class="listTitle">ì¼ì</li>
+	         	<c:forEach var="orderVo" items="${orderList}">
+	         		<li><img src="img/${orderVo.p_img}" id="img"/></li> 
+		            <li>${orderVo.p_name}</li>
+		            <li>${orderVo.od_cnt}</li>
+		            <li>${orderVo.p_price}</li>
+		            <li>${orderVo.menutotal}</li>
+		            <li>${orderVo.od_time}</li>
+		         </c:forEach>
+	         </ul>
 		</div>
 	</div>	
 </body>

@@ -293,7 +293,7 @@ border-right:none;
 	#detailMenu>div:first-child{padding:15px 53px}
 	#detailMenu>div:last-child{padding:15px 28px}
 	#detailMenu a{color:#62605F;}
-	#menu1{border-bottom:4px solid rgb(0, 163, 239);}
+	#menu3{border-bottom:4px solid rgb(0, 163, 239);}
 	#menu2{padding: 15px 28px;}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -333,38 +333,17 @@ $(()=>{
     </svg>
 </div>
 <nav id="detailMenu">
-	<div id="menu1"><a href="/myapp/membership">주문내역</a></div>
+	<div id="menu1"><a href="/myapp/orderList">주문내역</a></div>
 	<div id="menu2"><a href="/myapp/myPageOpenQuestion">창업문의 내역</a></div>
-	<div id="menu3"><a href="/myapp/memberGrade">개인정보 수정</a></div>
+	<div id="menu3"><a href="/myapp/mypage">개인정보 수정</a></div>
 </nav>
    <div class="containers">
          
       
          
          <div class="imgdiv"/> 
-	         <ul id="orderList">
-	         	<h3>주문내역</h3>
-	         	<li>상품명</li><li>가격</li><li>일자</li>
-	         	<c:forEach var="orderVo" items="${orderList}"> 
-		            <li>${orderVo.p_name}</li>
-		            <li>${orderVo.menutotal}</li>
-		            <li>${orderVo.od_time}</li>
-		         </c:forEach>
-	         </ul>
-	         <ul id="openReply">
-	         	<h3>창업문의 답글확인</h3>
-	         	<li>문의내용</li><li>답변내용</li>
+	         <img src="img/ilustcut.png" />
 	         
-	         	<c:if test='${openReply!=""}'>
-		         	<c:forEach var="openVo" items="${openReply}">
-		         		<li>${openVo.content}</li>
-		         		<li>${openVo.rpcon}</li>
-		         	</c:forEach>
-	         	</c:if>
-<%-- 	         	<c:if test="${openReply==[]}"> --%>
-<!-- 	         		답변대기중인 문의사항입니다. -->
-<%-- 	         	</c:if> --%>
-	         </ul>
          </div>
          <div class="formdiv">
             <form method="post" id="registerform" action="/myapp/mypageOk" onsubmit="return allCheck()">

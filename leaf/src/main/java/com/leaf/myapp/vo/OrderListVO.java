@@ -7,6 +7,15 @@ public class OrderListVO {
 	private int p_price;
 	private String p_name;
 	private int menutotal;
+	private String p_img;
+	  
+	
+	public String getP_img() {
+		return p_img;
+	}
+	public void setP_img(String p_img) {
+		this.p_img = p_img;
+	}
 	public String getUserid() {
 		return userid;
 	}

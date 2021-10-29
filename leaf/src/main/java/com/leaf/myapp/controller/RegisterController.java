@@ -344,5 +344,18 @@ public class RegisterController {
     	
     	return mav;
     }
-    
+    @RequestMapping("/orderList")
+	public ModelAndView orderList(HttpSession ses) {
+		
+		
+		String id=(String)ses.getAttribute("logid");
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("vo",registerService.mypage(id));
+		List<OrderListVO> orderList = registerService.orderList(id);
+		if(orderList!=null) {
+			mv.addObject("orderList",orderList);
+		}
+		mv.setViewName("register/orderList");
+	   return mv;
+	}
 }

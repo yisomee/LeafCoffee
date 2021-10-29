@@ -46,7 +46,7 @@
 	
 	<!-- mypage  창업답글 주문 내용 불러오기 -->
 	<select id="orderList" resultType="com.leaf.myapp.vo.OrderListVO">
-		select o.userid, to_char(od_time,'YYYY-MM-DD') od_time, o.od_cnt, m.p_price, m.p_name, (m.p_price*o.od_cnt)menutotal from order1 o
+		select m.p_img, o.userid, to_char(od_time,'YYYY-MM-DD') od_time, o.od_cnt, m.p_price, m.p_name, (m.p_price*o.od_cnt)menutotal from order1 o
 	    	join menu m
 	    	on m.p_num = o.p_num where userid=#{param1}
 	</select>
