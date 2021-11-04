@@ -33,18 +33,18 @@ public class SirenController {
 			mav.addObject("franVo" , sirenService.fcList());
 			mav.setViewName("siren_Order/siren");
 			return mav;
-		}
+		} 
 	}
-	//¹Ù·ÎÁÖ¹®
+	//ï¿½Ù·ï¿½ï¿½Ö¹ï¿½
 	@RequestMapping("/order")
 	@ResponseBody
 	public void order(SirenCartVO cVo) {
 		int result = sirenService.addOrderTbl(cVo);
 		if(result>0) {
-			System.out.println("Á¤º¸Àü´Þ ¼º°ø");
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 		}
 	}
-	//Àå¹Ù±¸´Ï °áÁ¦
+	//ï¿½ï¿½Ù±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping("/cartOrder")
 	@ResponseBody
 	public void cartOrder(String param) {
@@ -61,9 +61,8 @@ public class SirenController {
 			
 			int result = sirenService.addOrderTbl(cVo);
 			if(result>0) {
-				System.out.println("°áÁ¦ ¼º°ø");
+				System.out.println("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 			}
 		}
-
 	}
 }

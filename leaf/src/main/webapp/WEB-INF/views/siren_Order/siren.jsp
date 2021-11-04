@@ -135,8 +135,7 @@
 	let shotPrice = 0;
 	let syrupPrice = 0;
 	
-	//메뉴 상세 가격란에 들어갈 가격변수
-	
+	//메뉴 상세 가격란에 들어갈 가격변수	
 	let cost;
 	//선택 된 옵션 val 담는 변수
 	let cup;
@@ -453,7 +452,7 @@
 	}	
 	function mapList(searchMap){
 		$.ajax({
-	    	//데이터베이스에서 주소 목록을 가져온다.
+	    //데이터베이스에서 주소 목록을 가져온다.
 		url: '/myapp/map',
 		data: {search:searchMap},
 		success:function(e){
@@ -475,7 +474,6 @@
 		        	resultedMap.setCenter(event.latLng);
 		        	
 		        });
-			//		tag += "<li>"+e[i].fc_name+"<br /> "+e[i].fc_addr+"<br /></li> ";
 					tag += "<ul class='searched'>";
 					tag += "<li class='fc_name'>"+e[i].fc_name+"</li>";
 					tag += "<li class='fc_addr'>"+e[i].fc_addr+"</li>";
@@ -498,7 +496,7 @@
 			   $('#mapList').html("");
 			   mapList($('#searchMap').val());
 		   });
-		});
+	});
 
 </script>
 </head>

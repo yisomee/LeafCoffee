@@ -173,8 +173,7 @@ $(()=>{
          <c:if test="${pVo.nowPage<pVo.totalPage}">
             <li class='page-item'><a href="/myapp/noticeList?nowPage=${pVo.nowPage+1 }<c:if test='${searchKeyword != null}'>&searchKeyword=${pVo.searchKeyword}</c:if>"><i class="fas fa-angle-right"></i></a></li>
          </c:if>   
-      </ul>
-    
+      </ul>   
 </div>
 <%@ include file="/inc/bottom.jspf" %>
 </body>
