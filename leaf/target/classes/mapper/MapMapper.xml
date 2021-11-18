@@ -5,7 +5,7 @@
 <mapper namespace="com.leaf.myapp.dao.MapDAO">
 
 <select id="mapAll" resultType="com.leaf.myapp.vo.MapVO">
-	select fc_name,fc_addr, lat, lon,fc_num, fc_img  from franchise 
+	select fc_name,fc_addr, lat, lon, fc_num, fc_img from franchise 
 	<if test='searchMap!=""'>    		
 				where fc_name like '%${searchMap}%'			
 	</if>	

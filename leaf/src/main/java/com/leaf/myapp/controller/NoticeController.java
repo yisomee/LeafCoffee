@@ -50,13 +50,23 @@ public class NoticeController {
 	*/
 	//게시글보기
 	@RequestMapping("/noticeDetail")
+	public ModelAndView noticeDetail(int no) {
+		ModelAndView mav = new ModelAndView();	
+		NoticeVO vo = new NoticeVO();
+		vo.setHit(noticeService.hitCount(no));		
+		mav.addObject("noticeVo", noticeService.noticeView(no));		
+		mav.setViewName("notice/noticeDetail");
+		return mav;	
+	}
+	//게시글보기
+/*	@RequestMapping("/noticeDetail")
 	public ModelAndView noticeDetail(int no, NoticeVO vo) {
 		ModelAndView mav = new ModelAndView();	
 		vo.setHit(noticeService.hitCount(vo));		
 		mav.addObject("noticeVo", noticeService.noticeView(no));		
 		mav.setViewName("notice/noticeDetail");
 		return mav;	
-	}
+	}*/
 	//글 삭제
 	@RequestMapping("/noticeDelete")
 	public ModelAndView NoticeDelete(int no) {

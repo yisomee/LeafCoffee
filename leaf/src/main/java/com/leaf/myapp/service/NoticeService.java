@@ -8,12 +8,12 @@ import com.leaf.myapp.vo.NoticeVO;
 public interface NoticeService {
 //	public List<NoticeVO> noticeAllSelect();
 	public String checkAuto(String userid);
-	public int hitCount(NoticeVO vo);
+	public int hitCount(int no);
 	public NoticeVO noticeView(int no);
 	public int noticeWrite(NoticeVO vo);
 	public int noticeEdit(NoticeVO vo);
 	public int noticeDel(int no);
 	public int delChk(int[] delCheck);
-	public int totalRecordCount(NoticePagingVO pVo);//ÃÑ·¹ÄÚµå¼ö
-	public List<NoticeVO> noticePageSelect(NoticePagingVO pVo); //ÆäÀÌÁö ¼±ÅÃ
+	public int totalRecordCount(NoticePagingVO pVo);//ï¿½Ñ·ï¿½ï¿½Úµï¿½ï¿½
+	public List<NoticeVO> noticePageSelect(NoticePagingVO pVo); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 }

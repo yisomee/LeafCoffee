@@ -463,11 +463,11 @@
 	      		var lat = Number(e[i].lat);
 	      		var lon = Number(e[i].lon);
 	      		var darwin = new google.maps.LatLng(lat, lon);
-			        // 맵 마커
+			    // 맵 마커
 		        var marker = new google.maps.Marker({
                       map: resultedMap,
                       position: {lat:lat,lng:lon},
-                      title:e[i].fc_name
+                  //    title:e[i].fc_name
                 });
 		        marker.addListener("click", (event) => {
 		        	resultedMap.setZoom(15);

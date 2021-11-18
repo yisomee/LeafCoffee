@@ -146,7 +146,7 @@ $(()=>{
             <li></li>
             </c:if>
             <li>${noticeVo.no }</li>
-            <li><a href="/myapp/noticeDetail?no=${noticeVo.no }&nowpage=${pVo.nowPage}">${noticeVo.title }</a></li>
+            <li><a href="/myapp/noticeDetail?no=${noticeVo.no }">${noticeVo.title }</a></li>
             <li>${noticeVo.writedate }</li>  
             <li>${noticeVo.hit }</li>
          </c:forEach>
